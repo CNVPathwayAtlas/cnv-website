@@ -1,0 +1,47 @@
+/* This is the style of the table called in cnv-page.html */
+/* It makes sure that the full width of the table is displayed to avoid the scrolling bar */
+
+/* Ensure the table layout is full-width */
+
+/* Style the table */
+#gene-info-table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 20px auto;
+    font-size: 14px;
+    border: 2px solid #a19f9f;
+}
+
+/* Style table headers */
+#gene-info-table th {
+    background-color:rgb(83, 83, 83);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #333;
+}
+
+/* Style table rows */
+#gene-info-table td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Remove underline from links */
+#gene-info-table td a {
+    color: #1a5b9c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Add hover effect for links */
+#gene-info-table td a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Alternate row coloring */
+#gene-info-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,99 @@
+---
+layout: default
+toc: true
+---
+
+{% include head.html %}
+
+<head>
+    <!-- Link to the table styling file -->
+    <link rel="stylesheet" href="{{ '/assets/css/cnvs-table-style.scss' | relative_url }}">
+
+    <!-- jQuery (must be loaded first) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    <!-- DataTable JS -->
+    <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <script src="{{ '/assets/js/cnvs-table-filter.js' | relative_url }}"></script>
+</head>
+
+
+<style>
+    /* Page Layout */
+    .page-content {
+        max-width: 1280px;
+    }
+
+    /* Main Content */
+    .content-wrapper {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 1280px;
+    }
+
+    h3 {
+        margin-top: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    .initial-content {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="page-content">
+    <div class="content-wrapper">
+        <h1>Copy Number Variants overview table</h1>
+        <div class="table-container">
+            <div class="table-container">
+                <div id="cnvs-table-filter"></div>
+                <table id="cnvs-table" class="display">
+                    <thead>
+                        <tr>
+                            <th>CNV</th>
+                            <th>Locus</th>
+                            <th>Chromosome</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Common Phenotypic Feature</th>
+                            <th>WikiPathways ID</th>
+                            <th>ORPHAcode</th>
+                            <th>Genes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cnv in site.cnvs %}
+                        <tr>
+                            <td><a href="{{ cnv.url }}">{{ cnv.cnv }}</a></td>
+                            <td>{{ cnv.locus }}</td>
+                            <td>{{ cnv.chromosome }}</td>
+                            <td>{{ cnv.start }}</td>
+                            <td>{{ cnv.end }}</td>
+                            <td>{{ cnv.phenotypic_features }}</td>
+                            <td>
+                                <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html">
+                                    {{ cnv.wikipathways_id }}
+                                </a>
+                            </td>
+                            <td>{{ cnv.orphacode }}</td>
+                            <td>{{ cnv.genes | join: ", " }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+# Template
+#__________________________________________________________________________________________________________________________
+
+# cnv_01:
+#   wikipathways_id:
+#   genes:
+#     - 
+#     - 
+#   locus: 
+#   chromosome:
+#   start:
+#   end:
+#   phenotypic_features:
+#   orphacode: 
+#   prevalence:
+#   description: 
+#   detailed_clinical_description:
+
+#__________________________________________________________________________________________________________________________
+
+16p13.11:
+  wikipathways_id: WP5502
+  genes:
+    - BMERB1
+    - MARF1
+    - NDE1
+    - MYH11
+    - CEP20
+    - ABCC1
+    - ABCC6
+  locus: 16p13.11
+  chromosome: 16
+  start: 15511655
+  end: 16293689
+  phenotypic_features: Developmental delay, speech delay, autism spectrum disorder, intellectual disability
+  orphacode: ORPHA12345
+  prevalence:
+  description: 
+  detailed_clinical_description:
+
+22q11.2:
+  wikipathways_id: WP4657
+  genes:
+    - PRODH
+    - DGCR2
+    - ESS2
+    - TSSK2
+    - GSC2
+    - SLC25A1
+    - CLTCL1
+    - HIRA
+    - MRPL40
+    - C22orf39
+    - UFD1
+    - CDC45
+    - CLDN5
+    - SEPTIN5
+    - GP1BB
+    - TBX1
+    - GNB1L
+    - RTL10
+    - TXNRD2
+    - COMT
+    - ARVCF
+    - TANGO2
+    - DGCR8
+    - TRMT2A
+    - RANBP1
+    - ZDHHC8
+    - RTN4R
+    - DGCR6L
+    - GGTLC3
+    - RIMBP3
+    - FAM230A
+    - USP41P
+    - ZNF74
+    - SCARF2
+    - KLHL22
+    - MED15
+    - PI4KA
+    - SERPIND1
+    - SNAP29
+    - CRKL
+    - AIFM3
+    - LZTR1
+    - THAP7
+    - P2RX6
+    - SLC7A4
+    - LRRC74B
+  locus: 22q11.21
+  chromosome: 22
+  start: 18546090
+  end: 19024995
+  phenotypic_features: Cleft palate, congenital heart defects, developmental delay, intellectual disability
+  orphacode: ORPHA6789

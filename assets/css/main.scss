@@ -1,0 +1,18 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+@import "gene-info-table-style";
+@import "cnvs-table-style";
+
+.feature__item img {
+    width: 150px;  
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 10px; /* Rounded corners */
+}

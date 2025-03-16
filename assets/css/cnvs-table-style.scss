@@ -1,0 +1,50 @@
+/* This is the style of the table called in cnvs-overview.html */
+/* It makes sure that the full width of the table is displayed to avoid the scrolling bar */
+
+/* Ensure the table layout is full-width */
+#cnvs-table-container {
+    width: 100%;
+    min-height: 500px; 
+    position: relative;
+}
+
+#cnvs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cnvs-table th, 
+#cnvs-table td {
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#cnvs-table th {
+    background-color: #f2f2f2;
+}
+
+/* Make sure the search bar stays with the table */
+#cnvs-table-filter {
+    margin-bottom: 20px;
+    margin-top: 20px; /* Adjust spacing if needed */
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* To ensure the input aligns properly */
+input[type="text"] {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 100%; 
+}
+
+.table-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
