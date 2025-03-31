@@ -28,17 +28,41 @@ toc: true
         <h1>{{ page.title }}</h1>
 
         <div class="table-container">
-            <h3>Chromosomal location</h3>
-            Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}
+            <h3>Description</h3>
+            {{ page.description }}
 
-            <h3>Prevalence</h3>
-            Get it if available from ORPHADATA via their API when given access
+            <h3>Chromosomal location</h3>
+            <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}&amp;dgv=pack&amp;knownGene=full&amp;omimGene=pack" target="_blank" >Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}</a>
+            <img src="{{ page.cytoband }}" width="994" height="27" style="display: inline;">
+            
+            <h3>Orphanet disorders</h3>
+            <ol>
+                {% for orphadata in page.orphadata %}
+                <li>
+                    {% if orphadata.orphacode %}<strong>ORPHA: <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" >{{
+                        orphadata.orphacode }}</a>{% endif %},
+                    {% if orphadata.cause %}{{ orphadata.cause }} syndrome {% endif %}</strong> <br>
+                    <strong>OMIM:</strong>
+                    {% assign omim_exists = true %}
+                    {% for omim in orphadata.omim %}
+                        {% if omim and omim.size > 0 %}
+                            {% assign omim_exists = false %}
+                            <a href="https://omim.org/entry/{{ omim_entry }}">{{ omim }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if omim_exists == true %}
+                        NA
+                    {% endif %} <br>
+                    {% if orphadata.description %}<strong>Description:</strong> {{ orphadata.description }}{% endif %} <br>
+                    {% if orphadata.prevalence %}<strong>Prevalence:</strong> {{ orphadata.prevalence }}{% endif %} 
+                    
+                </li>
+                {% endfor %}
+            </ol>         
 
             <h3>Common phenotypic features</h3>
             {{ page.phenotypic_features }}
-
-            <h3>Detailed clinical description</h3>
-            Get it if available from ORPHADATA via their API when given access
 
             <h3>Interactive Pathway Viewer</h3>
             <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="600px"
@@ -54,7 +78,7 @@ toc: true
                             <th>NCBI</th>
                             <th>Ensembl</th>
                             <th>UniProt</th>
-                            <th>OMIM</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -128,7 +152,6 @@ toc: true
                 const ncbiId = geneData.entrez_id || 'No ID';
                 const ensemblId = geneData.ensembl_gene_id || 'No ID';
                 const uniprotId = geneData.uniprot_ids ? geneData.uniprot_ids[0] : 'No ID';
-                const omimId = geneData.omim_id || 'No ID';
 
                 return `
                 <tr>
@@ -137,7 +160,6 @@ toc: true
                     <td><a href="https://www.ncbi.nlm.nih.gov/gene/${ncbiId}" target="_blank">${ncbiId}</a></td>
                     <td><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g=${ensemblId}" target="_blank">${ensemblId}</a></td>
                     <td><a href="https://www.uniprot.org/uniprotkb/${uniprotId}" target="_blank">${uniprotId}</a></td>
-                    <td><a href="https://omim.org/entry/${omimId}" target="_blank">${omimId}</a></td>
                 </tr>
             `;
             } else {

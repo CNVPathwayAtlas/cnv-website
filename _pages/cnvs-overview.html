@@ -70,6 +70,7 @@ toc: true
                             <th>Common Phenotypic Feature</th>
                             <th>WikiPathways ID</th>
                             <th>ORPHAcode</th>
+                            <th>OMIM</th>
                             <th>Genes</th>
                         </tr>
                     </thead>
@@ -87,8 +88,47 @@ toc: true
                                     {{ cnv.wikipathways_id }}
                                 </a>
                             </td>
-                            <td>{{ cnv.orphacode }}</td>
-                            <td>{{ cnv.genes | join: ", " }}</td>
+                            <td>
+                                {% assign missing_orphacodes = true %}
+                                {% for orphadata in cnv.orphadata %}
+                                    {% if orphadata.orphacode %}<a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" >{{
+                                        orphadata.orphacode}}</a>{% endif %}
+                                        {% assign missing_orphacodes = false %}
+                                    {% if orphadata.cause %}({{ orphadata.cause }}) {% endif %}
+                                    <br>
+                                {% endfor %}
+
+                                {% if missing_orphacodes == true %}
+                                    NA
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% assign omim_exists = true %}
+                                {% for orphadata in cnv.orphadata %}
+                                    {% if orphadata.omim and orphadata.omim.size > 0 %}
+                                        {% assign omim_exists = false %}
+                                        {% for omim_entry in orphadata.omim limit:3 %}
+                                            <a href="https://omim.org/entry/{{ omim_entry }}">{{ omim_entry }}</a>
+                                            {% unless forloop.last %} {% endunless %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                    
+                                {% if omim_exists == true %}
+                                    NA
+                                {% endif %}
+                                
+                            
+                            </td>
+
+                            <td>
+                                <span id="gene-container-{{ forloop.index }}">
+                                    {{ cnv.genes | slice: 0, 3 | join: ", " }}
+                                </span>
+                                {% if cnv.genes.size > 3 %}
+                                    <a href="#" class="show-more" data-index="{{ forloop.index }}" data-genes='{{ cnv.genes | jsonify }}'>more</a>
+                                {% endif %}
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -97,3 +137,34 @@ toc: true
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".show-more, .show-less").forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                const index = this.getAttribute("data-index");
+                const allGenes = JSON.parse(this.getAttribute("data-genes"));
+                const container = document.getElementById("gene-container-" + index);
+                
+                if (this.classList.contains("show-more")) {
+                    // Show the full gene list
+                    container.innerText = allGenes.join(", ");
+                    
+                    // "Show Less"
+                    this.innerText = "less";
+                    this.classList.remove("show-more");
+                    this.classList.add("show-less");
+                } else if (this.classList.contains("show-less")) {
+                    // Show only the first 3 genes
+                    container.innerText = allGenes.slice(0, 3).join(", ");
+                    
+                    // "Show More"
+                    this.innerText = "more";
+                    this.classList.remove("show-less");
+                    this.classList.add("show-more");
+                }
+            });
+        });
+    });
+</script>
