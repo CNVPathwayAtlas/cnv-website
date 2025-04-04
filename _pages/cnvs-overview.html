@@ -63,8 +63,8 @@ toc: true
                     <thead>
                         <tr>
                             <th>CNV</th>
-                            <th>Locus</th>
-                            <th>Chromosome</th>
+                            <th>Locus GRCh37/hg19</th>
+                            <th>Chr</th>
                             <th>Start</th>
                             <th>End</th>
                             <th>Common Phenotypic Feature</th>
@@ -77,25 +77,24 @@ toc: true
                     <tbody>
                         {% for cnv in site.cnvs %}
                         <tr>
-                            <td><a href="{{ cnv.url }}">{{ cnv.cnv }}</a></td>
+                            <td><a href="{{ cnv.url }}" target="_blank">{{ cnv.cnv }}</a></td>
                             <td>{{ cnv.locus }}</td>
                             <td>{{ cnv.chromosome }}</td>
                             <td>{{ cnv.start }}</td>
                             <td>{{ cnv.end }}</td>
                             <td>{{ cnv.phenotypic_features }}</td>
                             <td>
-                                <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html">
+                                <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html" target="_blank">
                                     {{ cnv.wikipathways_id }}
                                 </a>
                             </td>
                             <td>
                                 {% assign missing_orphacodes = true %}
                                 {% for orphadata in cnv.orphadata %}
-                                    {% if orphadata.orphacode %}<a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" >{{
+                                    {% if orphadata.orphacode %}<a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank">{{
                                         orphadata.orphacode}}</a>{% endif %}
                                         {% assign missing_orphacodes = false %}
                                     {% if orphadata.cause %}({{ orphadata.cause }}) {% endif %}
-                                    <br>
                                 {% endfor %}
 
                                 {% if missing_orphacodes == true %}
@@ -108,7 +107,7 @@ toc: true
                                     {% if orphadata.omim and orphadata.omim.size > 0 %}
                                         {% assign omim_exists = false %}
                                         {% for omim_entry in orphadata.omim limit:3 %}
-                                            <a href="https://omim.org/entry/{{ omim_entry }}">{{ omim_entry }}</a>
+                                            <a href="https://omim.org/entry/{{ omim_entry }}" target="_blank">{{ omim_entry }}</a>
                                             {% unless forloop.last %} {% endunless %}
                                         {% endfor %}
                                     {% endif %}
