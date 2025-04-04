@@ -29,40 +29,50 @@ toc: true
 
         <div class="table-container">
             <h3>Description</h3>
-            {{ page.description }}
-
-            <h3>Chromosomal location</h3>
+            <p style="margin: 0;">{{ page.description }}</p>
+            
+            <h3>Genomic location GRCh37/hg19</h3>
             <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}&amp;dgv=pack&amp;knownGene=full&amp;omimGene=pack" target="_blank" >Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}</a>
-            <img src="{{ page.cytoband }}" width="994" height="27" style="display: inline;">
+            <img src="{{ page.cytoband }}" width="1200" height="40" style="display: inline;">
             
             <h3>Orphanet disorders</h3>
             <ol>
                 {% for orphadata in page.orphadata %}
                 <li>
-                    {% if orphadata.orphacode %}<strong>ORPHA: <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" >{{
-                        orphadata.orphacode }}</a>{% endif %},
-                    {% if orphadata.cause %}{{ orphadata.cause }} syndrome {% endif %}</strong> <br>
+                    {% if orphadata.orphacode %}
+                        <strong>ORPHA:</strong> 
+                        <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank">
+                            {{ orphadata.orphacode }}
+                        </a>
+                    {% endif %},
+                    {% if orphadata.cause %}{{ orphadata.cause }} syndrome{% endif %} <br>
+            
                     <strong>OMIM:</strong>
                     {% assign omim_exists = true %}
                     {% for omim in orphadata.omim %}
                         {% if omim and omim.size > 0 %}
                             {% assign omim_exists = false %}
-                            <a href="https://omim.org/entry/{{ omim_entry }}">{{ omim }}</a>
+                            <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>
                         {% endif %}
                     {% endfor %}
-
-                    {% if omim_exists == true %}
-                        NA
+                    {% if omim_exists == true %}NA{% endif %}
+            
+                    {% if orphadata.description %}
+                        <strong>Description:</strong> {{ orphadata.description }}
                     {% endif %} <br>
-                    {% if orphadata.description %}<strong>Description:</strong> {{ orphadata.description }}{% endif %} <br>
-                    {% if orphadata.prevalence %}<strong>Prevalence:</strong> {{ orphadata.prevalence }}{% endif %} 
-                    
+                    {% if orphadata.prevalence %}
+                        <strong>Prevalence:</strong> {{ orphadata.prevalence }}
+                    {% endif %} <br> 
+            
+                    <strong>Very frequent (99-80%) phenotypic features:</strong>
+                    <span class="phenotype-list" data-orphacode="{{ orphadata.orphacode }}" data-frequency="very-frequent">Loading...</span><br>
+                
+                    <!-- <strong>Frequent (79-30%) phenotypic features:</strong>
+                    <span class="phenotype-list" data-orphacode="{{ orphadata.orphacode }}" data-frequency="frequent">Loading...</span> -->
+
                 </li>
                 {% endfor %}
-            </ol>         
-
-            <h3>Common phenotypic features</h3>
-            {{ page.phenotypic_features }}
+            </ol>      
 
             <h3>Interactive Pathway Viewer</h3>
             <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="600px"
@@ -113,6 +123,85 @@ toc: true
 </div>
 
 <script>
+    async function fetchPhenotypeData(orphacode) {
+        try {
+            const apiUrl = `https://api.orphadata.com/rd-phenotypes/orphacodes/${orphacode}?lang=en`;
+            const response = await fetch(apiUrl);
+
+            if (!response.ok) {
+                console.error(`Failed to fetch phenotype data for ORPHA ${orphacode}`);
+                return [];
+            }
+
+            const data = await response.json();
+            if (!data.data || !data.data.results || !data.data.results.Disorder) {
+                console.warn(`No disorder data found for ORPHA ${orphacode}`);
+                return [];
+            }
+
+            const disorder = data.data.results.Disorder;
+            if (!disorder.HPODisorderAssociation) {
+                console.warn(`No phenotypic associations found for ORPHA ${orphacode}`);
+                return [];
+            }
+
+            // Extract both "Very frequent (99-80%)" and "Frequent (79-30%)" phenotypes
+            const frequentPhenotypes = disorder.HPODisorderAssociation
+                .filter(hpo => hpo.HPOFrequency.includes("Very frequent") || hpo.HPOFrequency.includes("Frequent"))
+                .map(hpo => ({
+                    id: hpo.HPO.HPOId,
+                    term: hpo.HPO.HPOTerm,
+                    frequency: hpo.HPOFrequency
+                }));
+
+            return frequentPhenotypes;
+        } catch (error) {
+            console.error(`Error fetching phenotype data for ORPHA ${orphacode}:`, error);
+            return [];
+        }
+    }   
+
+    async function updatePhenotypes() {
+        const phenotypeLists = document.querySelectorAll(".phenotype-list");
+
+        for (const span of phenotypeLists) {
+            const orphacode = span.getAttribute("data-orphacode");
+            const frequency = span.getAttribute("data-frequency");
+
+            if (!orphacode) {
+                console.warn("No ORPHAcode found for phenotype list.");
+                continue;
+            }
+
+            const phenotypes = await fetchPhenotypeData(orphacode);
+
+            if (phenotypes.length > 0) {
+                // Filter phenotypes based on frequency (very-frequent or frequent)
+                const filteredPhenotypes = phenotypes.filter(phenotype => 
+                    (frequency === "very-frequent" && phenotype.frequency.includes("Very frequent")) ||
+                    (frequency === "frequent" && phenotype.frequency.includes("Frequent"))
+                );
+
+                if (filteredPhenotypes.length > 0) {
+                    // Comma-separated hyperlinked phenotypes
+                    const phenotypeLinks = filteredPhenotypes.map(phenotype =>
+                        `<a href="https://hpo.jax.org/app/browse/term/${phenotype.id}" target="_blank">${phenotype.term}</a>`
+                    ).join(", ");
+
+                    span.innerHTML = phenotypeLinks;
+                } else {
+                    // Display message if no phenotypes found
+                    span.innerHTML = `No ${frequency} phenotypic features found.`;
+                }
+            } else {
+                span.innerHTML = `No phenotypic features found for ORPHA ${orphacode}.`;
+            }
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", updatePhenotypes);
+
     async function fetchGeneData(geneSymbol) {
         try {
             const response = await fetch(`https://rest.genenames.org/fetch/symbol/${geneSymbol}`, {
@@ -209,4 +298,14 @@ toc: true
         display: flex;
         justify-content: center;
     }
+
+    .phenotype-list a {
+    text-decoration: none; /* Remove underline */
+    color: inherit;
+    }
+
+    .phenotype-list a:hover {
+        text-decoration: underline; /* Optional: Underline on hover */
+    }
+
 </style>
