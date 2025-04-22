@@ -29,55 +29,80 @@ toc: true
 
         <div class="table-container">
             <h3>Description</h3>
-            <p style="margin: 0;">{{ page.description }}</p>
-            
+            <p style="margin: 0;">{{ page.description }}
+            PubMed IDs:
+            {% if page.pubmed_ids %}
+                {% for pubmed_id in page.pubmed_ids %}
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>
+                {% endfor %}
+            {% endif %}
+            </p>
             <h3>Genomic location GRCh37/hg19</h3>
             <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}&amp;dgv=pack&amp;knownGene=full&amp;omimGene=pack" target="_blank" >Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}</a>
             <img src="{{ page.cytoband }}" width="1200" height="40" style="display: inline;">
             
-            <h3>Orphanet disorders</h3>
+            <h3>Disorders</h3>
             <ol>
                 {% for orphadata in page.orphadata %}
                 <li>
                     {% if orphadata.orphacode %}
-                        <strong>ORPHA:</strong> 
-                        <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank">
+                        <strong style="color: #6A5ACD;">ORPHA:</strong>
+                        <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank" style="color: #6A5ACD;">
                             {{ orphadata.orphacode }}
                         </a>
-                    {% endif %},
-                    {% if orphadata.cause %}{{ orphadata.cause }} syndrome{% endif %} <br>
             
-                    <strong>OMIM:</strong>
-                    {% assign omim_exists = true %}
-                    {% for omim in orphadata.omim %}
-                        {% if omim and omim.size > 0 %}
-                            {% assign omim_exists = false %}
-                            <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>
+                        {% if orphadata.cause %}<span>{{ orphadata.cause }} syndrome</span>{% endif %} <br>
+                        
+                        <strong>OMIM:</strong>
+                        {% if orphadata.omim %}
+                            {% for omim in orphadata.omim %}
+                                <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <span class="omim-ids" data-orphacode="{{ orphadata.orphacode }}"></span>
                         {% endif %}
-                    {% endfor %}
-                    {% if omim_exists == true %}NA{% endif %}
-            
-                    {% if orphadata.description %}
-                        <strong>Description:</strong> {{ orphadata.description }}
-                    {% endif %} <br>
-                    {% if orphadata.prevalence %}
-                        <strong>Prevalence:</strong> {{ orphadata.prevalence }}
-                    {% endif %} <br> 
-            
-                    <strong>Very frequent (99-80%) phenotypic features:</strong>
-                    <span class="phenotype-list" data-orphacode="{{ orphadata.orphacode }}" data-frequency="very-frequent">Loading...</span><br>
+                        <br>
                 
-                    <!-- <strong>Frequent (79-30%) phenotypic features:</strong>
-                    <span class="phenotype-list" data-orphacode="{{ orphadata.orphacode }}" data-frequency="frequent">Loading...</span> -->
+                        <strong>Disease description:</strong>
+                        {% if orphadata.description %}
+                            <span>{{ orphadata.description }}</span><br>
+                        {% else %}
+                            <span class="disease-description" data-orphacode="{{ orphadata.orphacode }}">Loading...</span><br>
+                        {% endif %}
+                        {% if orphadata.prevalence %}
+                            <strong>Prevalence:</strong> {{ orphadata.prevalence }}
+                        {% endif %} <br> 
+                
+                        <strong>Very frequent (99-80%) phenotypic features:</strong>
+                        {% if orphadata.phenotypes %}
+                            <span>{{ orphadata.phenotypes }}</span><br>
+                        {% else %}
+                            <span class="phenotype-list" data-orphacode="{{ orphadata.orphacode }}" data-frequency="very-frequent">Loading...</span><br>
+                        {% endif %}
 
+                        <strong>PubMed IDs:</strong>
+                        {% if orphadata.pubmed_ids %}
+                            {% for pubmed_id in orphadata.pubmed_ids %}
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>
+                            {% endfor %}
+                        {% endif %}
+                        {% endif %}
+                    <br>
                 </li>
                 {% endfor %}
-            </ol>      
+            </ol>     
 
             <h3>Interactive Pathway Viewer</h3>
-            <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="600px"
-                height="300px" style="overflow:hidden;"></iframe>
-
+            <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="1000px"
+                height="600px" style="overflow:hidden;"></iframe>
+            <div style="margin-top: 10px;">
+                <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html" 
+                    target="_blank" 
+                    style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; text-decoration: none; font-size: 14px;">
+                    View on WikiPathways
+                </a>
+            </div>
+             
             <h3>Gene information</h3>
             <div class="table-container">
                 <table id="gene-info-table" class="display">
@@ -95,73 +120,66 @@ toc: true
                     </tbody>
                 </table>
             </div>
-
-            <h2>References</h2>
-            <ol>
-                {% for ref in page.references %}
-                <li>
-                    <em>{{ ref.title }}</em>.
-                    {% if ref.id %}[{{ ref.id }}] {% endif %}
-                    {% if ref.authors %}{{ ref.authors }}, {% endif %}
-                    {% if ref.journal %}<strong>{{ ref.journal }}</strong>, {% endif %}
-                    {% if ref.publisher %}{{ ref.publisher }}, {% endif %}
-                    {% if ref.year %}{{ ref.year }}, {% endif %}
-                    {% if ref.volume %}Vol. {{ ref.volume }}, {% endif %}
-                    {% if ref.issue %}Issue {{ ref.issue }}, {% endif %}
-                    {% if ref.pages %}pp. {{ ref.pages }}, {% endif %}
-                    {% if ref.isbn %}ISBN: {{ ref.isbn }}, {% endif %}
-                    {% if ref.pmid %}PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/{{ ref.pmid }}/" target="_blank">{{
-                        ref.pmid }}</a>{% endif %}
-                    {% if ref.link %}<a href="{{ ref.link }}" target="_blank">[Link]</a>{% endif %}
-                    {% if ref.retrieved %}(Retrieved: {{ ref.retrieved }}){% endif %}
-                </li>
-                {% endfor %}
-            </ol>
-
         </div>
     </div>
 </div>
 
 <script>
-    async function fetchPhenotypeData(orphacode) {
+    async function fetchDiseaseDescription(orphacode) {
         try {
-            const apiUrl = `https://api.orphadata.com/rd-phenotypes/orphacodes/${orphacode}?lang=en`;
+            const apiUrl = `https://api.orphadata.com/rd-cross-referencing/orphacodes/${orphacode}?lang=en`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
-                console.error(`Failed to fetch phenotype data for ORPHA ${orphacode}`);
-                return [];
+                console.error(`Failed to fetch data for ORPHA ${orphacode}`);
+                return { description: "Error fetching data.", omimIds: [] };
             }
 
             const data = await response.json();
-            if (!data.data || !data.data.results || !data.data.results.Disorder) {
-                console.warn(`No disorder data found for ORPHA ${orphacode}`);
-                return [];
-            }
+            const results = data?.data?.results;
 
-            const disorder = data.data.results.Disorder;
-            if (!disorder.HPODisorderAssociation) {
-                console.warn(`No phenotypic associations found for ORPHA ${orphacode}`);
-                return [];
-            }
+            const definition = results?.SummaryInformation?.[0]?.Definition || "No description available.";
 
-            // Extract both "Very frequent (99-80%)" and "Frequent (79-30%)" phenotypes
-            const frequentPhenotypes = disorder.HPODisorderAssociation
-                .filter(hpo => hpo.HPOFrequency.includes("Very frequent") || hpo.HPOFrequency.includes("Frequent"))
-                .map(hpo => ({
-                    id: hpo.HPO.HPOId,
-                    term: hpo.HPO.HPOTerm,
-                    frequency: hpo.HPOFrequency
-                }));
+            const omimIds = (results?.ExternalReference || [])
+                .filter(ref => ref.Source === "OMIM" && ref.Reference)
+                .map(ref => ref.Reference);
 
-            return frequentPhenotypes;
+            return {
+                description: definition,
+                omimIds
+            };
         } catch (error) {
-            console.error(`Error fetching phenotype data for ORPHA ${orphacode}:`, error);
-            return [];
+            console.error(`Error fetching description data for ORPHA ${orphacode}:`, error);
+            return {
+                description: "Error fetching data.",
+                omimIds: []
+            };
         }
-    }   
+    }
 
-    async function updatePhenotypes() {
+    document.addEventListener("DOMContentLoaded", async () => {
+        const diseaseDescriptions = document.querySelectorAll(".disease-description");
+        const omimSpans = document.querySelectorAll(".omim-ids");
+
+        for (const descriptionElement of diseaseDescriptions) {
+            const orphacode = descriptionElement.getAttribute("data-orphacode");
+
+            if (orphacode) {
+                const { description, omimIds } = await fetchDiseaseDescription(orphacode);
+                descriptionElement.innerHTML = description;
+                
+                // OMIM ids from the orphadata cross-referencing
+                const omimSpan = document.querySelector(`.omim-ids[data-orphacode="${orphacode}"]`);
+                if (omimSpan) {
+                    omimSpan.innerHTML = omimIds.length > 0
+                        ? omimIds.map(id => `<a href="https://omim.org/entry/${id}" target="_blank">${id}</a>`).join(", ")
+                        : "NA";
+                }
+            }
+        }
+    });
+
+    async function fetchDiseasePhenotypes() {
         const phenotypeLists = document.querySelectorAll(".phenotype-list");
 
         for (const span of phenotypeLists) {
@@ -173,34 +191,50 @@ toc: true
                 continue;
             }
 
-            const phenotypes = await fetchPhenotypeData(orphacode);
+            try {
+                const apiUrl = `https://api.orphadata.com/rd-phenotypes/orphacodes/${orphacode}?lang=en`;
+                const response = await fetch(apiUrl);
 
-            if (phenotypes.length > 0) {
-                // Filter phenotypes based on frequency (very-frequent or frequent)
-                const filteredPhenotypes = phenotypes.filter(phenotype => 
-                    (frequency === "very-frequent" && phenotype.frequency.includes("Very frequent")) ||
-                    (frequency === "frequent" && phenotype.frequency.includes("Frequent"))
-                );
+                if (!response.ok) {
+                    console.error(`Failed to fetch phenotype data for ORPHA ${orphacode}`);
+                    span.innerHTML = `Error fetching data for ORPHA ${orphacode}.`;
+                    continue;
+                }
+
+                const data = await response.json();
+                const disorder = data?.data?.results?.Disorder;
+
+                if (!disorder?.HPODisorderAssociation) {
+                    console.warn(`No phenotypic associations found for ORPHA ${orphacode}`);
+                    span.innerHTML = `No phenotypic features found for ORPHA ${orphacode}.`;
+                    continue;
+                }
+
+                const filteredPhenotypes = disorder.HPODisorderAssociation
+                    .filter(hpo =>
+                        (frequency === "very-frequent" && hpo.HPOFrequency.includes("Very frequent")) ||
+                        (frequency === "frequent" && hpo.HPOFrequency.includes("Frequent"))
+                    )
+                    .map(hpo => ({
+                        id: hpo.HPO.HPOId,
+                        term: hpo.HPO.HPOTerm
+                    }));
 
                 if (filteredPhenotypes.length > 0) {
-                    // Comma-separated hyperlinked phenotypes
-                    const phenotypeLinks = filteredPhenotypes.map(phenotype =>
-                        `<a href="https://hpo.jax.org/app/browse/term/${phenotype.id}" target="_blank">${phenotype.term}</a>`
+                    span.innerHTML = filteredPhenotypes.map(p =>
+                        `<a href="https://hpo.jax.org/app/browse/term/${p.id}" target="_blank">${p.term}</a>`
                     ).join(", ");
-
-                    span.innerHTML = phenotypeLinks;
                 } else {
-                    // Display message if no phenotypes found
                     span.innerHTML = `No ${frequency} phenotypic features found.`;
                 }
-            } else {
-                span.innerHTML = `No phenotypic features found for ORPHA ${orphacode}.`;
+            } catch (error) {
+                console.error(`Error processing ORPHA ${orphacode}:`, error);
+                span.innerHTML = `Error processing data for ORPHA ${orphacode}.`;
             }
         }
     }
 
-
-    document.addEventListener("DOMContentLoaded", updatePhenotypes);
+    document.addEventListener("DOMContentLoaded", fetchDiseasePhenotypes);
 
     async function fetchGeneData(geneSymbol) {
         try {
@@ -263,9 +297,9 @@ toc: true
         tableBody.innerHTML = rowsHTML.join('');
     }
 
-
     const geneSymbols = {{ page.genes | jsonify }};
     displayGeneLinks(geneSymbols);
+
 </script>
 
 
