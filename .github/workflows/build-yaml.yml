@@ -12,12 +12,6 @@ jobs:
       - name: Checkout cnv-booklet
         uses: actions/checkout@v3
 
-      - name: Checkout cnv-data
-        uses: actions/checkout@v3
-        with:
-          repository: alexandra-valeanu/cnv-data
-          path: cnv-data
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
