@@ -1,0 +1,39 @@
+name: Build CNV YAML files
+
+on:
+  repository_dispatch:
+    types: [cnv-data-updated]
+
+jobs:
+  build-yamls:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout cnv-booklet
+        uses: actions/checkout@v3
+
+      - name: Checkout cnv-data
+        uses: actions/checkout@v3
+        with:
+          repository: alexandra-valeanu/cnv-data
+          path: cnv-data
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas openpyxl pyyaml
+
+      - name: Run YAML builder script
+        run: python scripts/build_yaml_files.py
+        
+      - name: Commit and push updated YAMLs
+        run: |
+          git config --global user.name "alexandra-valeanu"
+          git config --global user.email "valeanualexandra17@gmail.com"
+          git add _cnvs/*.yml
+          git diff --cached --quiet || git commit -m "Update CNV YAMLs from latest cnv-data"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/alexandra-valeanu/cnv-booklet.git HEAD:main

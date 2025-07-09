@@ -331,20 +331,17 @@ defaults:
       layout: single
       author_profile: true
 
+  # _cnvs collection
+  - scope:
+      path: ""
+      type: cnvs
+    values:
+      layout: cnv-page
+
 collections:
   pages:
     output: true
     permalink: /:path/
   cnvs:
     output: true
-    permalink: /cnv/:title/
-
-
-
-# defaults:
-#   - scope:
-#       path: "home.md"
-#       type: "pages"
-#     values:
-#       permalink: /
-#       layout: "splash"
+    permalink: /cnv/:name/

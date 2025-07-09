@@ -1,169 +1,167 @@
 ---
 layout: default
+title: CNVs Overview
+permalink: /cnvs/
 toc: true
 ---
 
 {% include head.html %}
 
 <head>
-    <!-- Link to the table styling file -->
+    <!-- CSS style -->
     <link rel="stylesheet" href="{{ '/assets/css/cnvs-table-style.scss' | relative_url }}">
 
-    <!-- jQuery (must be loaded first) -->
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- DataTable CSS -->
+    <!-- DataTables CSS and JS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-
-    <!-- DataTable JS -->
     <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
+    <!-- Custom JS for the table filter -->
     <script src="{{ '/assets/js/cnvs-table-filter.js' | relative_url }}"></script>
 </head>
 
-
 <style>
-    /* Page Layout */
-    .page-content {
-        max-width: 1280px;
-    }
-
-    /* Main Content */
-    .content-wrapper {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        max-width: 1280px;
-    }
-
-    h3 {
-        margin-top: 20px;
-    }
-
-    ul {
-        list-style: none;
-        padding-left: 20px;
-    }
-
-    .initial-content {
-        display: flex;
-        justify-content: center;
-    }
+  .page-content {
+    max-width: 1280px;
+    margin: auto;
+  }
+  .content-wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    margin-bottom: 1em;
+  }
+  /* Gene list toggle styles */
+  a.show-more, a.show-less {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    margin-left: 0.3em;
+  }
 </style>
 
 <div class="page-content">
-    <div class="content-wrapper">
-        <h1>Copy Number Variants overview table</h1>
-        <div class="table-container">
-            <div class="table-container">
-                <div id="cnvs-table-filter"></div>
-                <table id="cnvs-table" class="display">
-                    <thead>
-                        <tr>
-                            <th>CNV</th>
-                            <th>Locus GRCh37/hg19</th>
-                            <th>Chr</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <!-- <th>Common Phenotypic Feature</th> -->
-                            <th>WikiPathways ID</th>
-                            <th>ORPHAcode</th>
-                            <th>OMIM</th>
-                            <th>Genes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for cnv in site.cnvs %}
-                        <tr>
-                            <td><a href="{{ cnv.url }}" target="_blank">{{ cnv.cnv }}</a></td>
-                            <td>{{ cnv.locus }}</td>
-                            <td>{{ cnv.chromosome }}</td>
-                            <td>{{ cnv.start }}</td>
-                            <td>{{ cnv.end }}</td>
-                            <!-- <td>{{ cnv.phenotypic_features }}</td> -->
-                            <td>
-                                <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html" target="_blank">
-                                    {{ cnv.wikipathways_id }}
-                                </a>
-                            </td>
-                            <td>
-                                {% assign missing_orphacodes = true %}
-                                {% for orphadata in cnv.orphadata %}
-                                    {% if orphadata.orphacode %}<a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank">{{
-                                        orphadata.orphacode}}</a>{% endif %}
-                                        {% assign missing_orphacodes = false %}
-                                    {% if orphadata.cause %}({{ orphadata.cause }}) {% endif %}
-                                {% endfor %}
+  <div class="content-wrapper">
+    <h1>Copy Number Variants Overview</h1>
 
-                                {% if missing_orphacodes == true %}
-                                    NA
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% assign omim_exists = true %}
-                                {% for orphadata in cnv.orphadata %}
-                                    {% if orphadata.omim and orphadata.omim.size > 0 %}
-                                        {% assign omim_exists = false %}
-                                        {% for omim_entry in orphadata.omim limit:3 %}
-                                            <a href="https://omim.org/entry/{{ omim_entry }}" target="_blank">{{ omim_entry }}</a>
-                                            {% unless forloop.last %} {% endunless %}
-                                        {% endfor %}
-                                    {% endif %}
-                                {% endfor %}
-                                    
-                                {% if omim_exists == true %}
-                                    NA
-                                {% endif %}
-                                
-                            
-                            </td>
-
-                            <td>
-                                <span id="gene-container-{{ forloop.index }}">
-                                    {{ cnv.genes | slice: 0, 3 | join: ", " }}
-                                </span>
-                                {% if cnv.genes.size > 3 %}
-                                    <a href="#" class="show-more" data-index="{{ forloop.index }}" data-genes='{{ cnv.genes | jsonify }}'>more</a>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    <table id="cnvs-table" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>CNV</th>
+          <th>Locus GRCh37/hg19</th>
+          <th>Chr</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>WikiPathways ID</th>
+          <th>ORPHAcode</th>
+          <th>OMIM</th>
+          <th>Genes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cnv in site.cnvs %}
+          <tr>
+            <td><a href="{{ cnv.url }}">{{ cnv.cnv | default: cnv.locus | default: cnv.title }}</a></td>
+            <td>{{ cnv.locus | default: "NA" }}</td>
+            <td>{{ cnv.chromosome | default: "NA" }}</td>
+            <td>{{ cnv.start | default: "NA" }}</td>
+            <td>{{ cnv.end | default: "NA" }}</td>
+            <td>
+              {% if cnv.wikipathways_id %}
+                <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html" target="_blank">{{ cnv.wikipathways_id }}</a>
+              {% else %}
+                NA
+              {% endif %}
+            </td>
+            <td>
+              {% if cnv.orphadata %}
+                {% assign orphacodes = "" %}
+                {% for orpha in cnv.orphadata %}
+                  {% if orpha.orphacode %}
+                    {% assign orphacodes = orphacodes | append: '<a href="https://www.orpha.net/en/disease/detail/' | append: orpha.orphacode | append: '" target="_blank">' | append: orpha.orphacode | append: '</a>' %}
+                    {% if orpha.cause %}
+                      {% assign orphacodes = orphacodes | append: ' (' | append: orpha.cause | append: ')' %}
+                    {% endif %}
+                    {% unless forloop.last %}{% assign orphacodes = orphacodes | append: ", " %}{% endunless %}
+                  {% endif %}
+                {% endfor %}
+                {{ orphacodes | strip_html | replace: ',', ', ' | markdownify }}
+              {% else %}
+                NA
+              {% endif %}
+            </td>
+            <td>
+              {% if cnv.orphadata %}
+                {% assign omim_ids = "" %}
+                {% for orpha in cnv.orphadata %}
+                  {% if orpha.omim and orpha.omim.size > 0 %}
+                    {% for omim_id in orpha.omim %}
+                      {% assign omim_ids = omim_ids | append: '<a href="https://omim.org/entry/' | append: omim_id | append: '" target="_blank">' | append: omim_id | append: '</a>' %}
+                      {% unless forloop.last %}{% assign omim_ids = omim_ids | append: ", " %}{% endunless %}
+                    {% endfor %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {{ omim_ids | strip_html | replace: ',', ', ' | markdownify }}
+              {% else %}
+                NA
+              {% endif %}
+            </td>
+            <td>
+              <span id="gene-container-{{ forloop.index }}">
+                {% if cnv.genes %}
+                  {{ cnv.genes | slice: 0, 3 | join: ", " }}
+                {% else %}
+                  NA
+                {% endif %}
+              </span>
+              {% if cnv.genes and cnv.genes.size > 3 %}
+                <a href="#" class="show-more" data-index="{{ forloop.index }}" data-genes='{{ cnv.genes | jsonify }}'>more</a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".show-more, .show-less").forEach(link => {
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                const index = this.getAttribute("data-index");
-                const allGenes = JSON.parse(this.getAttribute("data-genes"));
-                const container = document.getElementById("gene-container-" + index);
-                
-                if (this.classList.contains("show-more")) {
-                    // Show the full gene list
-                    container.innerText = allGenes.join(", ");
-                    
-                    // "Show Less"
-                    this.innerText = "less";
-                    this.classList.remove("show-more");
-                    this.classList.add("show-less");
-                } else if (this.classList.contains("show-less")) {
-                    // Show only the first 3 genes
-                    container.innerText = allGenes.slice(0, 3).join(", ");
-                    
-                    // "Show More"
-                    this.innerText = "more";
-                    this.classList.remove("show-less");
-                    this.classList.add("show-more");
-                }
-            });
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize DataTables
+    $('#cnvs-table').DataTable({
+      paging: true,
+      searching: true,
+      info: true,
+      lengthChange: true,
+      order: [[0, 'asc']]
     });
+
+    // Toggle full gene list on click
+    document.querySelectorAll(".show-more, .show-less").forEach(link => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const index = this.getAttribute("data-index");
+        const allGenes = JSON.parse(this.getAttribute("data-genes"));
+        const container = document.getElementById("gene-container-" + index);
+
+        if (this.classList.contains("show-more")) {
+          container.innerText = allGenes.join(", ");
+          this.innerText = "less";
+          this.classList.remove("show-more");
+          this.classList.add("show-less");
+        } else if (this.classList.contains("show-less")) {
+          container.innerText = allGenes.slice(0, 3).join(", ");
+          this.innerText = "more";
+          this.classList.remove("show-less");
+          this.classList.add("show-more");
+        }
+      });
+    });
+  });
 </script>
