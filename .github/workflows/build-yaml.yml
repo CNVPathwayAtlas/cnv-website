@@ -12,6 +12,10 @@ jobs:
       - name: Checkout cnv-booklet
         uses: actions/checkout@v3
 
+      - name: Clone cnv-data
+        run: |
+          git clone https://github.com/alexandra-valeanu/cnv-data.git
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -23,11 +27,11 @@ jobs:
 
       - name: Run YAML builder script
         run: python scripts/build_yaml_files.py
-        
+
       - name: Commit and push updated YAMLs
         run: |
           git config --global user.name "alexandra-valeanu"
           git config --global user.email "valeanualexandra17@gmail.com"
           git add _cnvs/*.yml
           git diff --cached --quiet || git commit -m "Update CNV YAMLs from latest cnv-data"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/alexandra-valeanu/cnv-booklet.git HEAD:main
+          git push https://x-access-token:${{ secrets.CNV_RELEASE_AUTOMATION }}@github.com/alexandra-valeanu/cnv-booklet.git HEAD:main
