@@ -4,185 +4,194 @@ toc: true
 ---
 
 <head>
-    <!-- Link to the table styling file -->
-    <link rel="stylesheet" href="{{ '/assets/css/gene-info-table-style.scss' | relative_url }}">
-
-    <!-- jQuery (must be loaded first) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTable CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-
-    <!-- DataTable JS -->
-    <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
-    <!-- <script src="{{ '/assets/js/gene-table-filter.js' | relative_url }}"></script> -->
+  <link rel="stylesheet" href="{{ '/assets/css/gene-info-table-style.scss' | relative_url }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 </head>
 
 {% include head.html %}
 
 <div class="page-content">
+  <div class="content-wrapper">
 
-    <div class="content-wrapper">
+    <h1>{{ page.title }}</h1>
 
-        <h1>{{ page.title }}</h1>
+    <div class="table-container">
+      <h3>Description</h3>
+      <p>{{ page.description }}</p>
 
-        <div class="table-container">
-            <h3>Description</h3>
-            <p style="margin: 0;">{{ page.description }}
-            PubMed IDs:
-            {% if page.pubmed_ids %}
-                {% for pubmed_id in page.pubmed_ids %}
-                    <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>
-                {% endfor %}
-            {% endif %}
-            </p>
-            <h3>Genomic location GRCh37/hg19</h3>
-            <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}&amp;dgv=pack&amp;knownGene=full&amp;omimGene=pack" target="_blank" >Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}</a>
-            <img src="{{ page.cytoband }}" width="1200" height="40" style="display: inline;">
-            
-            <h3>Disorder Information from Orphanet</h3>
-            {% if page.orphadata and page.orphadata.size > 0 %}
-                <ol>
-                    {% assign has_orphacode = false %}
-                    {% for orphadata in page.orphadata %}
-                        {% if orphadata.orphacode %}
-                            {% assign has_orphacode = true %}
-                        {% endif %}
-                    {% endfor %}
+      <!-- <h3>PubMed IDs</h3>
+      {% if page.pubmed_ids %}
+        <p>
+          {% for pubmed_id in page.pubmed_ids %}
+            <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </p>
+      {% else %}
+        <p>No PubMed IDs available.</p>
+      {% endif %} -->
 
-                    {% if has_orphacode %}
-                        {% for orphadata in page.orphadata %}
-                            {% if orphadata.orphacode %}
-                                <li>
-                                    <strong style="color: #6A5ACD;">ORPHA:</strong>
-                                    <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank" style="color: #6A5ACD;">
-                                        {{ orphadata.orphacode }}
-                                    </a>
+      <h3>Genomic location GRCh37/hg19</h3>
+      <p>
+        <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position=chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}&dgv=pack&knownGene=full&omimGene=pack" target="_blank">
+          Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}
+        </a>
+      </p>
+      {% if page.cytoband %}
+        <img src="{{ page.cytoband }}" width="1200" height="40" alt="Cytoband Image">
+      {% endif %}
 
-                                    {% if orphadata.cause %}<span>{{ orphadata.cause }} syndrome</span>{% endif %} <br>
-
-                                    <strong>OMIM:</strong>
-                                    {% if orphadata.omim %}
-                                        {% for omim in orphadata.omim %}
-                                            <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>
-                                        {% endfor %}
-                                    {% else %}
-                                        NA
-                                    {% endif %}
-                                    <br>
-
-                                    <strong>Disease description:</strong>
-                                    {% if orphadata.description %}
-                                        <span>{{ orphadata.description }}</span><br>
-                                    {% else %}
-                                        <span>No description available.</span><br>
-                                    {% endif %}
-                                    {% if orphadata.prevalence %}
-                                        <strong>Prevalence:</strong> {{ orphadata.prevalence }}
-                                    {% endif %} <br>
-
-                                    <strong>Very frequent (99-80%) phenotypic features:</strong>
-                                    {% if orphadata.phenotypes %}
-                                        <span>{{ orphadata.phenotypes }}</span><br>
-                                    {% else %}
-                                        <span>No phenotypic features available.</span><br>
-                                    {% endif %}
-
-                                    <strong>PubMed IDs:</strong>
-                                    {% if orphadata.pubmed_ids %}
-                                        {% for pubmed_id in orphadata.pubmed_ids %}
-                                            <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>
-                                        {% endfor %}
-                                    {% endif %}
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        <p><em>This CNV is not yet linked to an orphacode.</em></p>
-                    {% endif %}
-                </ol>
-            {% else %}
-                <p><em>This CNV is not yet linked to an orphacode.</em></p>
-            {% endif %}
-
-            <h3>Interactive Pathway Viewer</h3>
-            <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="1000px"
-                height="600px" style="overflow:hidden;"></iframe>
-            <div style="margin-top: 10px;">
-                <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html" 
-                    target="_blank" 
-                    style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; text-decoration: none; font-size: 14px;">
-                    View on WikiPathways
+      <h3>Disorder Information from Orphanet</h3>
+      {% if page.orphadata and page.orphadata.size > 0 %}
+        <ol>
+          {% for orphadata in page.orphadata %}
+            {% if orphadata.orphacode %}
+              <li>
+                <strong>ORPHA:</strong>
+                <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank">
+                  {{ orphadata.orphacode }}
                 </a>
-            </div>
-             
-            <h3>Gene information</h3>
-            <div class="table-container">
-                <table id="gene-info-table" class="display">
-                    <thead>
-                        <tr>
-                            <th>HGNC</th>
-                            <th>Gene Name</th>
-                            <th>NCBI</th>
-                            <th>Ensembl</th>
-                            <th>UniProt</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for gene in page.genes %}
-                            <tr>
-                                <td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/{{ gene.hgnc_id }}" target="_blank">{{ gene.symbol }}</a></td>
-                                <td>{{ gene.name }}</td>
-                                <td><a href="https://www.ncbi.nlm.nih.gov/gene/{{ gene.entrez_id }}" target="_blank">{{ gene.entrez_id }}</a></td>
-                                <td><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ gene.ensembl_id }}" target="_blank">{{ gene.ensembl_id }}</a></td>
-                                <td><a href="https://www.uniprot.org/uniprotkb/{{ gene.uniprot_id }}" target="_blank">{{ gene.uniprot_id }}</a></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+
+                {% if orphadata.cause %} <span>{{ orphadata.cause | capitalize }} syndrome</span> {% endif %} <br>
+
+                <strong>OMIM:</strong>
+                {% if orphadata.omim %}
+                  {% for omim in orphadata.omim %}
+                    <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}
+                  {% endfor %}
+                {% else %}
+                  NA
+                {% endif %} <br>
+
+                <strong>Disease description:</strong>
+                {% if orphadata.description %}
+                  <span>{{ orphadata.description }}</span><br>
+                {% else %}
+                  <span>No description available.</span><br>
+                {% endif %}
+
+                {% if orphadata.prevalence %}
+                  <strong>Prevalence:</strong> {{ orphadata.prevalence }}<br>
+                {% endif %}
+
+                <strong>Very frequent (99–80%) phenotypic features:</strong>
+                {% if orphadata.phenotypes and orphadata.phenotypes.size > 0 %}
+                <span>
+                {% for phenotype in orphadata.phenotypes %}
+                    {% if phenotype.hpo_id %}
+                    <a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank" style="text-decoration: none; color: inherit;">{{ phenotype.name }}</a>
+                    {% else %}
+                    {{ phenotype.name }}
+                    {% endif %}
+                    {% unless forloop.last %},{% endunless %}
+                {% endfor %}
+                </span>
+                {% else %}
+                <span>No phenotypic features available.</span>
+                {% endif %}
+
+                {% if orphadata.pubmed_ids %}
+                  <br><strong>PubMed IDs:</strong>
+                  {% for pubmed_id in orphadata.pubmed_ids %}
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>{% unless forloop.last %}, {% endunless %}
+                  {% endfor %}
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+      {% else %}
+        <p><em>This CNV is not yet linked to an OrphaCode.</em></p>
+      {% endif %}
+
+      {% if page.wikipathways_id %}
+        <h3>Interactive Pathway Viewer</h3>
+        <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="1000px" height="600px" style="overflow:hidden;"></iframe>
+        <div style="margin-top: 10px;">
+          <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html"
+             target="_blank"
+             style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; text-decoration: none; font-size: 14px;">
+            View on WikiPathways
+          </a>
         </div>
+      {% endif %}
+
+      {% if page.genes %}
+        <h3>Gene Information</h3>
+        <table id="gene-info-table" class="display">
+          <thead>
+            <tr>
+              <th>HGNC</th>
+              <th>Gene Name</th>
+              <th>NCBI</th>
+              <th>Ensembl</th>
+              <th>UniProt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for gene in page.genes %}
+              <tr>
+                <td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/{{ gene.hgnc_id }}" target="_blank">{{ gene.symbol }}</a></td>
+                <td>{{ gene.name }}</td>
+                <td><a href="https://www.ncbi.nlm.nih.gov/gene/{{ gene.entrez_id }}" target="_blank">{{ gene.entrez_id }}</a></td>
+                <td><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ gene.ensembl_id }}" target="_blank">{{ gene.ensembl_id }}</a></td>
+                <td><a href="https://www.uniprot.org/uniprotkb/{{ gene.uniprot_id }}" target="_blank">{{ gene.uniprot_id }}</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
     </div>
+  </div>
 </div>
 
+<script>
+  $(document).ready(function () {
+    $('#gene-info-table').DataTable();
+  });
+</script>
+
 <style>
-    /* Page Layout */
-    .page-content {
-        max-width: 1280px;
-    }
+  .page-content {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
 
-    /* Main Content */
-    .content-wrapper {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        max-width: 1280px;
-    }
+  .content-wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    h3 {
-        margin-top: 20px;
-    }
+  h3 {
+    margin-top: 30px;
+    color: #333;
+  }
 
-    ul {
-        list-style: none;
-        padding-left: 20px;
-    }
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
 
-    .initial-content {
-        display: flex;
-        justify-content: center;
-    }
+  table.display {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
 
-    .phenotype-list a {
-    text-decoration: none; /* Remove underline */
+  .phenotype-continuous {
+    white-space: nowrap;
+    letter-spacing: normal;
+  }
+
+  .phenotype-continuous a {
+    text-decoration: none;
     color: inherit;
-    }
+  }
 
-    .phenotype-list a:hover {
-        text-decoration: underline; /* Optional: Underline on hover */
-    }
-
+  .phenotype-continuous a:hover {
+    text-decoration: underline;
+  }
 </style>
