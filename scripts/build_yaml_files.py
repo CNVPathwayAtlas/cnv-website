@@ -1,45 +1,125 @@
-import re
-import yaml
 import pandas as pd
 from pathlib import Path
-import sys
+import yaml
+import re
+from typing import Optional, Tuple, List, Dict, Any
 
-def get_latest_csv(dir_path, pattern):
+
+def get_latest_csv(dir_path: Path, pattern: str) -> Path:
     files = sorted(dir_path.glob(pattern), reverse=True)
     if not files:
-        raise FileNotFoundError(f"No files found matching: {pattern} in {dir_path}")
+        raise FileNotFoundError(f"No files matching {pattern} found in {dir_path}")
     return files[0]
 
-def parse_gene_info(gene_symbol, hgnc_df):
-    row = hgnc_df[hgnc_df["symbol"] == gene_symbol]
-    if row.empty:
-        return {"symbol": gene_symbol, "info": "Not found in HGNC"}
-    else:
-        return {
-            "symbol": gene_symbol,
-            "name": row.iloc[0]["name"],
-            "ensembl": row.iloc[0]["ensembl_gene_id"],
-            "entrez": row.iloc[0]["entrez_id"]
-        }
 
-def parse_disease_info(orpha_code, orpha_df):
-    row = orpha_df[orpha_df["ORPHAcode"] == orpha_code]
-    if row.empty:
-        return {"ORPHAcode": orpha_code, "info": "Not found in Orphadata"}
-    else:
-        return {
-            "ORPHAcode": orpha_code,
-            "name": row.iloc[0]["preferred_name"],
-            "phenotypes": row.iloc[0]["phenotypes"]
-        }
+def parse_region(region_str: Optional[str]) -> Tuple[Optional[str], Optional[int], Optional[int]]:
+    if not region_str:
+        return None, None, None
+    m = re.match(r"[cC]hr(\d+|[XYxy]):(\d+)-(\d+)", region_str)
+    if not m:
+        return None, None, None
+    chrom = m.group(1).upper()
+    start, end = int(m.group(2)), int(m.group(3))
+    return chrom, start, end
 
-def main():
-     # Input file path
+
+def clean_gene_list(genes_str: Optional[str]) -> List[str]:
+    if not isinstance(genes_str, str) or not genes_str.strip():
+        return []
+    clean_str = re.sub(r"<.*?>", "", genes_str)
+    # split on ; or , or whitespace
+    genes = [g.strip() for g in re.split(r"[;,]\s*|\s+", clean_str) if g.strip()]
+    return genes
+
+
+def nan_to_none(df: pd.DataFrame) -> pd.DataFrame:
+    return df.where(pd.notnull(df), None)
+
+
+def parse_phenotypes(phenotypes_str: Optional[str]) -> List[Dict[str, Optional[str]]]:
+    if not phenotypes_str:
+        return []
+    phenotype_list = []
+    for part in phenotypes_str.split(";"):
+        part = part.strip()
+        if not part:
+            continue
+        m = re.match(r"(.+?)\s*\(?HP:(\d{7})\)?", part)
+        if m:
+            phenotype_list.append({"name": m.group(1).strip(), "hpo_id": f"HP:{m.group(2)}"})
+        else:
+            phenotype_list.append({"name": part, "hpo_id": None})
+    return phenotype_list
+
+
+def build_hgnc_dict(df_hgnc: pd.DataFrame) -> Dict[str, Dict[str, Optional[str]]]:
+    hgnc_dict = {}
+    for _, row in df_hgnc.iterrows():
+        sym = row.get("symbol") or row.get("hgnc_symbol")
+        if sym:
+            hgnc_dict[sym] = {
+                "name": row.get("name"),
+                "entrez_id": row.get("entrez_id"),
+                "ensembl_id": row.get("ensembl_gene_id"),
+                "uniprot_id": row.get("uniprot_ids"),
+            }
+    return hgnc_dict
+
+
+def build_orpha_dict(df_orpha: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
+    orpha_dict = {}
+    for _, row in df_orpha.iterrows():
+        code = str(row.get("OrphaCode", "")).strip()
+        if not code:
+            continue
+        omim_raw = row.get("OMIM") or ""
+        omim_list = [o.strip() for o in omim_raw.split(";") if o.strip()] if omim_raw else []
+        orpha_dict[code] = {
+            "definition": row.get("Definition"),
+            "phenotypes": row.get("Phenotypes"),
+            "prevalence": row.get("Prevalence"),
+            "omim": omim_list,
+            "pubmed_ids": [],  # TODO populate with actual PubMed IDs from orphadata
+        }
+    return orpha_dict
+
+
+def parse_orphacodes(orphacodes_str: str, orpha_dict: Dict[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
+    if not orphacodes_str.strip():
+        return []
+    orphacodes_list = []
+    entries = [e.strip() for e in re.split(r"[;,]", orphacodes_str) if e.strip()]
+    for entry in entries:
+        m = re.match(r"(\d+)(?:\(([^)]+)\))?", entry)
+        if not m:
+            continue
+        code, cause = m.group(1), m.group(2) if m.group(2) else None
+        orpha_info = orpha_dict.get(code, {})
+        orphacodes_list.append({
+            "orphacode": code,
+            "cause": cause,
+            "definition": orpha_info.get("definition"),
+            "prevalence": orpha_info.get("prevalence"),
+            "phenotypes": parse_phenotypes(orpha_info.get("phenotypes")),
+            "omim": orpha_info.get("omim"),
+            "pubmed_ids": orpha_info.get("pubmed_ids", []),
+        })
+    return orphacodes_list
+
+
+def write_yaml_file(path: Path, yaml_dict: Dict[str, Any]) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("---\n")
+        yaml.dump(yaml_dict, f, sort_keys=False, allow_unicode=True)
+        f.write("---\n")
+
+
+def main() -> None:
     input_dir = Path("cnv-data/data/input")
-    excel_path = input_dir / "cnv_data.xlsx"
-
-     # Filtered CSV data in data/latest
     latest_dir = Path("cnv-data/data/latest")
+    output_path = Path("_cnvs")
+    output_path.mkdir(exist_ok=True)
+
     print(f"Looking for latest HGNC CSV in: {latest_dir}")
     hgnc_csv = get_latest_csv(latest_dir, "hgnc_filtered_*.csv")
     print(f"Found HGNC CSV: {hgnc_csv}")
@@ -48,44 +128,65 @@ def main():
     orpha_csv = get_latest_csv(latest_dir, "orphadata_filtered_*.csv")
     print(f"Found Orphadata CSV: {orpha_csv}")
 
-    if not excel_path.exists():
-        raise FileNotFoundError(f"Input Excel file not found: {excel_path}")
+    cnv_input = input_dir / "cnv_data.xlsx"
 
-    # Output path
-    yaml_dir = Path("_cnvs")
-    yaml_dir.mkdir(parents=True, exist_ok=True)
+    print("Loading data...")
+    df_cnv = nan_to_none(pd.read_excel(cnv_input))
+    df_hgnc = nan_to_none(pd.read_csv(hgnc_csv, sep="\t", dtype=str))
+    df_orpha = nan_to_none(pd.read_csv(orpha_csv, dtype=str, encoding="utf-8", quotechar='"'))
 
-    # Load input files
-    print(f"Loading Excel: {excel_path}")
-    df = pd.read_excel(excel_path)
-    print(f"Loading HGNC CSV: {hgnc_csv}")
-    hgnc = pd.read_csv(hgnc_csv, sep="\t")
-    print(f"Loading Orphadata CSV: {orpha_csv}")
-    orpha = pd.read_csv(orpha_csv, sep="\t")
+    print("Building lookup dictionaries...")
+    hgnc_dict = build_hgnc_dict(df_hgnc)
+    orpha_dict = build_orpha_dict(df_orpha)
 
-    for _, row in df.iterrows():
-        locus = str(row["locus"]).replace(":", "-")
-        genes = [g.strip() for g in str(row["genes"]).split(",") if g.strip()]
-        orpha_codes = re.findall(r"\d+", str(row["Orphacodes"]))
+    cnv_nr = 0
+
+    for idx, row in df_cnv.iterrows():
+        locus = row.get("locus") or f"cnv_{idx}"
+        extra = str(row.get("extra") or "").strip()
+        region = row.get("region") or ""
+        chrom, start, end = parse_region(region)
+        description = row.get("Description")
+        wikipathways_id = row.get("WikiPathway ID")
+
+        cnv_name = f"{locus}-{extra} Copy Number Variation Syndrome" if extra else row.get("Pathway name")
+
+        genes = clean_gene_list(row.get("genes"))
+        genes_info = [
+            {**{"symbol": g}, **hgnc_dict.get(g, {"name": None, "entrez_id": None, "ensembl_id": None, "uniprot_id": None})}
+            for g in genes
+        ]
+
+        orphacodes_list = parse_orphacodes(str(row.get("Orphacodes") or ""), orpha_dict)
 
         yaml_dict = {
-            "wikipathway": row.get("WikiPathway ID", ""),
-            "locus": row.get("locus", ""),
-            "region": row.get("region", ""),
-            "description": row.get("Description", ""),
-            "genes": [parse_gene_info(g, hgnc) for g in genes],
-            "diseases": [parse_disease_info(int(code), orpha) for code in orpha_codes],
+            "layout": "cnv-page",
+            "title": cnv_name,
+            "cnv": locus,
+            "locus": locus,
+            "chromosome": chrom,
+            "start": start,
+            "end": end,
+            "cytoband": f"/assets/images/cytoband/{locus}.png" if locus else None,
+            "description": description,
+            "pubmed_ids": [],
+            "genes": genes_info,
+            "wikipathways_id": wikipathways_id,
+            "orphadata": orphacodes_list,
         }
 
-        output_file = yaml_dir / f"{locus}.yml"
-        with open(output_file, "w", encoding="utf-8") as f:
-            yaml.dump(yaml_dict, f, sort_keys=False, allow_unicode=True)
+        raw_name = f"{locus}-{extra}" if extra else locus or f"cnv_{idx}"
+        filename = re.sub(r"[:\s]", "", raw_name)
+        if not filename or filename.lower() == "na":
+            filename = f"cnv_{idx}"
+        yaml_filename = output_path / f"{filename}.md"
 
-        print(f"Generated: {output_file.name}")
+        write_yaml_file(yaml_filename, yaml_dict)
+        cnv_nr += 1
+        print(f"Written {yaml_filename.name}")
+
+    print(f"{cnv_nr} YAML files created in {output_path}")
+
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        print(f"ERROR: {e}", file=sys.stderr)
-        sys.exit(1)
+    main()
