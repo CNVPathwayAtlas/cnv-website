@@ -30,10 +30,10 @@ jobs:
 
       - name: Commit and push updated YAMLs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_GITHUB_TOKEN: ${{ secrets.CNV_RELEASE_AUTOMATION }}
         run: |
           git config --global user.name "alexandra-valeanu"
           git config --global user.email "valeanualexandra17@gmail.com"
           git add _cnvs/*.md
           git diff --cached --quiet || git commit -m "Update CNV YAMLs from latest cnv-data"
-          git push origin HEAD:main
+          git push https://x-access-token:${MY_GITHUB_TOKEN}@github.com/alexandra-valeanu/cnv-booklet.git HEAD:main
