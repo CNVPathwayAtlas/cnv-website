@@ -7,11 +7,11 @@ on:
 jobs:
   build-yamls:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout cnv-booklet
         uses: actions/checkout@v3
-
+        with:
+          token: ${{ secrets.CNV_RELEASE_AUTOMATION }}
       - name: Clone cnv-data
         run: |
           git clone https://github.com/alexandra-valeanu/cnv-data.git
@@ -29,8 +29,6 @@ jobs:
         run: python scripts/build_yaml_files.py
 
       - name: Commit and push updated YAMLs
-        env:
-          MY_GITHUB_TOKEN: ${{ secrets.CNV_RELEASE_AUTOMATION }}
         run: |
           git config --global user.name "alexandra-valeanu"
           git config --global user.email "valeanualexandra17@gmail.com"
