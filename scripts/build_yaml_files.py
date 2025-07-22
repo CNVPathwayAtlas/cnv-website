@@ -149,7 +149,7 @@ def main() -> None:
         description = row.get("Description")
         wikipathways_id = row.get("WikiPathway ID")
 
-        cnv_name = f"{locus}-{extra} Copy Number Variation Syndrome" if extra else row.get("Pathway name")
+        cnv_name = f"{locus}-{extra} Copy Number Variation Syndrome" if extra else f"{locus} Copy Number Variation Syndrome"
 
         genes = clean_gene_list(row.get("genes"))
         genes_info = [
