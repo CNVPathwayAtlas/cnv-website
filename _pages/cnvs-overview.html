@@ -45,7 +45,7 @@ permalink: /cnvs-overview/
       {% for cnv in site.cnvs %}
         {% assign gene_symbols = cnv.genes | map: "symbol" %}
         <tr>
-          <td><a href="{{ cnv.url }}" target="_blank">{{ cnv.cnv | default: cnv.locus | default: cnv.title }}</a></td>
+          <td><a href="{{ site.baseurl }}/{{ cnv.url }}" target="_blank">{{ cnv.cnv | default: cnv.locus | default: cnv.title }}</a></td>
           <td>{{ cnv.locus | default: "NA" }}</td>
           <td data-order="{{ cnv.chromosome | remove: 'X' | remove: 'Y' | plus: 0 }}">{{ cnv.chromosome | default: "NA" }}</td>
           <td data-order="{{ cnv.start | plus: 0 }}">{{ cnv.start | default: "NA" }}</td>
