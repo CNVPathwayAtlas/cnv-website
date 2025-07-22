@@ -1,0 +1,38 @@
+name: Export CNVs to table
+
+on:
+  workflow_run:
+    workflows: ["Build CNV YAML files"]
+    types:
+      - completed
+
+jobs:
+  export-to-table:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cnv-booklet
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CNV_RELEASE_AUTOMATION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas openpyxl pyyaml
+
+      - name: Run additional script
+        run: python scripts/export_cnvs_to_table.py
+
+      - name: Commit and push exported tables
+        run: |
+          git config --global user.name "alexandra-valeanu"
+          git config --global user.email "valeanualexandra17@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.CNV_RELEASE_AUTOMATION }}@github.com/alexandra-valeanu/cnv-booklet.git
+          git add assets/data/all_cnvs_table.xlsx assets/data/all_cnvs_table.csv 
+          git diff --cached --quiet || git commit -m "Export CNVs to table"
+          git push origin HEAD:main
+
