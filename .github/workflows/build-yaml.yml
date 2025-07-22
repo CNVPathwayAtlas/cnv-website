@@ -32,7 +32,7 @@ jobs:
         run: |
           git config --global user.name "alexandra-valeanu"
           git config --global user.email "valeanualexandra17@gmail.com"
-          git remote set-url origin https://x-access-token:${MY_GITHUB_TOKEN}@github.com/alexandra-valeanu/cnv-booklet.git
+          git remote set-url origin https://x-access-token:${{ secrets.CNV_RELEASE_AUTOMATION }}@github.com/alexandra-valeanu/cnv-booklet.git
           git add _cnvs/*.md
           git diff --cached --quiet || git commit -m "Update CNV YAMLs from latest cnv-data"
           git push origin HEAD:main
