@@ -90,7 +90,7 @@ def main():
             df[col] = ""
 
     df = df[column_order]
-    df.to_csv(output_dir / "all_cnvs_table.csv", index=False)
+    df.to_csv(output_dir / "all_cnvs_table.csv", sep="\t", index=False)
     df.to_excel(output_dir / "all_cnvs_table.xlsx", index=False)
     print("Exported: all_cnvs_table.csv and all_cnvs_table.xlsx")
 
