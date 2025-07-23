@@ -168,7 +168,7 @@ def main() -> None:
             "chromosome": chrom,
             "start": start,
             "end": end,
-            "cytoband": f"/assets/images/cytoband/{locus}.png" if locus else None,
+            "cytoband": f"/assets/images/cytoband/{locus}-{extra}.png" if extra else f"/assets/images/cytoband/{locus}.png",
             "description": description,
             "pubmed_ids": [],
             "genes": genes_info,
@@ -176,10 +176,8 @@ def main() -> None:
             "orphadata": orphacodes_list,
         }
 
-        raw_name = f"{locus}-{extra}" if extra else locus or f"cnv_{idx}"
+        raw_name = f"{locus}-{extra}" if extra else locus
         filename = re.sub(r"[:\s]", "", raw_name)
-        if not filename or filename.lower() == "na":
-            filename = f"cnv_{idx}"
         yaml_filename = output_path / f"{filename}.md"
 
         write_yaml_file(yaml_filename, yaml_dict)
