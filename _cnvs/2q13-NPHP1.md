@@ -1,7 +1,7 @@
 ---
 layout: cnv-page
 title: 2q13-NPHP1 Copy Number Variation Syndrome
-cnv: 2q13
+cnv: 2q13-NPHP1
 locus: 2q13
 chromosome: '2'
 start: 110880926
