@@ -59,6 +59,7 @@ def build_hgnc_dict(df_hgnc: pd.DataFrame) -> Dict[str, Dict[str, Optional[str]]
         if sym:
             hgnc_dict[sym] = {
                 "name": row.get("name"),
+                "hgnc_id": row.get("hgnc_id"),
                 "entrez_id": row.get("entrez_id"),
                 "ensembl_id": row.get("ensembl_gene_id"),
                 "uniprot_id": row.get("uniprot_ids"),
@@ -153,7 +154,7 @@ def main() -> None:
 
         genes = clean_gene_list(row.get("genes"))
         genes_info = [
-            {**{"symbol": g}, **hgnc_dict.get(g, {"name": None, "entrez_id": None, "ensembl_id": None, "uniprot_id": None})}
+            {**{"symbol": g}, **hgnc_dict.get(g, {"name": None, "hgnc_id": None, "entrez_id": None, "ensembl_id": None, "uniprot_id": None})}
             for g in genes
         ]
 

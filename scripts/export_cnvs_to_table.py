@@ -13,6 +13,7 @@ def build_row(base, gene, orpha, phenotype=None):
         **base,
         "genes_symbol": safe_get(gene, "symbol"),
         "genes_name": safe_get(gene, "name"),
+        "hgnc_id": safe_get(gene, "hgnc_id"),
         "genes_entrez_id": safe_get(gene, "entrez_id"),
         "genes_ensembl_id": safe_get(gene, "ensembl_id"),
         "genes_uniprot_id": safe_get(gene, "uniprot_id"),
@@ -78,7 +79,7 @@ def main():
 
     column_order = [
         "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_ids",
-        "genes_symbol", "genes_name", "genes_entrez_id", "genes_ensembl_id", "genes_uniprot_id",
+        "genes_symbol", "genes_name", "hgnc_id", "genes_entrez_id", "genes_ensembl_id", "genes_uniprot_id",
         "wikipathways_id", "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
         "orphadata_prevalence", "orphadata_phenotypes", "orphadata_hpo_id",
         "orphadata_omim", "orphadata_pubmed_ids"

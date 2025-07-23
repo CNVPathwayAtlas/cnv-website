@@ -131,7 +131,7 @@ toc: true
           <tbody>
             {% for gene in page.genes %}
               <tr>
-                <td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/{{ gene.hgnc_id }}" target="_blank">{{ gene.symbol }}</a></td>
+                <td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/{{ gene.hgnc_id }}" target="_blank">{{ gene.smybol }}</a></td>
                 <td>{{ gene.name }}</td>
                 <td><a href="https://www.ncbi.nlm.nih.gov/gene/{{ gene.entrez_id }}" target="_blank">{{ gene.entrez_id }}</a></td>
                 <td><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ gene.ensembl_id }}" target="_blank">{{ gene.ensembl_id }}</a></td>
