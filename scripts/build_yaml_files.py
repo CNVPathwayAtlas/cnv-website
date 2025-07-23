@@ -163,7 +163,7 @@ def main() -> None:
         yaml_dict = {
             "layout": "cnv-page",
             "title": cnv_name,
-            "cnv": locus,
+            "cnv": f"{locus}-{extra}" if extra else locus,
             "locus": locus,
             "chromosome": chrom,
             "start": start,
