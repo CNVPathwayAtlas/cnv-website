@@ -43,7 +43,7 @@ def flatten_yaml_to_rows(yaml_path):
             "start": data.get("start", ""),
             "end": data.get("end", ""),
             "description": data.get("description", ""),
-            "pubmed_ids": ";".join(get_list(data.get("pubmed_ids"))),
+            "pubmed_id": ";".join(get_list(data.get("pubmed_id"))),
             "wikipathways_id": data.get("wikipathways_id", ""),
         }
 
