@@ -8,7 +8,7 @@ start: 110880926
 end: 110962590
 cytoband: /assets/images/cytoband/2q13-NPHP1.png
 description: null
-pubmed_ids: []
+pubmed_id: .nan
 genes:
 - symbol: NPHP1
   name: nephrocystin 1
