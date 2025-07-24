@@ -147,18 +147,17 @@ def main() -> None:
         extra = str(row.get("extra") or "").strip()
         region = row.get("region") or ""
         chrom, start, end = parse_region(region)
-        description = row.get("Description")
-        wikipathways_id = row.get("WikiPathway ID")
-
+        description = row.get("description")
+        wikipathways_id = row.get("wikipathways_id")
         cnv_name = f"{locus}-{extra} Copy Number Variation Syndrome" if extra else f"{locus} Copy Number Variation Syndrome"
-
+        pubmed_id = row.get("pubmed_id")
         genes = clean_gene_list(row.get("genes"))
         genes_info = [
             {**{"symbol": g}, **hgnc_dict.get(g, {"name": None, "hgnc_id": None, "entrez_id": None, "ensembl_id": None, "uniprot_id": None})}
             for g in genes
         ]
 
-        orphacodes_list = parse_orphacodes(str(row.get("Orphacodes") or ""), orpha_dict)
+        orphacodes_list = parse_orphacodes(str(row.get("orphacodes") or ""), orpha_dict)
 
         yaml_dict = {
             "layout": "cnv-page",
@@ -170,7 +169,7 @@ def main() -> None:
             "end": end,
             "cytoband": f"/assets/images/cytoband/{locus}-{extra}.png" if extra else f"/assets/images/cytoband/{locus}.png",
             "description": description,
-            "pubmed_ids": [],
+            "pubmed_id": pubmed_id,
             "genes": genes_info,
             "wikipathways_id": wikipathways_id,
             "orphadata": orphacodes_list,
