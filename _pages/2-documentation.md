@@ -94,4 +94,8 @@ Nucleic Acids Research (Database issue)
 <a href="https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkac888/6761747" class="paper-link">NAR</a> | <a href="http://europepmc.org/article/MED/36243972" class="paper-link">EuropePMC</a> | <a href="https://pubmed.ncbi.nlm.nih.gov/36243972/" class="paper-link">PubMed</a>
 
 # Disclaimer
-We are not affiliated with Orphanet or HGNC. We did not modify the data from Orphanet and HGNC.
+We are not affiliated with Orphanet or HGNC. We did not modify the data from Orphanet and HGNC. <br>
+
+The content in this booklet is provided for informational and research purposes only and is not intended as  medical, legal, or professional advice. The information presented here is offered for improving the understanding of rare copy number variation syndromes. <br>
+
+Every effort has been made to ensure the accuracy and usefulness of the information contained in this booklet. However, the authors do not claim any liability arising from the use or misuse of this material. Use of the content is at the user's own discretion and risk. <br>
