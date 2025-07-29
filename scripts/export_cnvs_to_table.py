@@ -78,7 +78,7 @@ def main():
     df = pd.DataFrame(all_rows)
 
     column_order = [
-        "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_ids",
+        "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_id",
         "genes_symbol", "genes_name", "hgnc_id", "genes_entrez_id", "genes_ensembl_id", "genes_uniprot_id",
         "wikipathways_id", "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
         "orphadata_prevalence", "orphadata_phenotypes", "orphadata_hpo_id",
