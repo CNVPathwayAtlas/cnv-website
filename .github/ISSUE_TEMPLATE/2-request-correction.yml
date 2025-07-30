@@ -3,26 +3,18 @@ description: Report an error or suggest a correction to existing CNV data.
 labels: [data-correction]
 body:
   - type: input
-    id: name
+    id: cnv-name
     attributes:
-      label: Your name
-      placeholder: e.g., Carl Jung
+      label: CNV name
+      placeholder: e.g., 22q11.2 copy number variant
     validations:
-      required: true
-
-  - type: input
-    id: email
-    attributes:
-      label: Your email
-      placeholder: carl@example.com
-    validations:
-      required: true
+      required: false
 
   - type: textarea
-    id: message
+    id: correction-details
     attributes:
-      label: Correction Details
+      label: Correction details
       description: Describe the data you want to correct, and explain what should be changed or fixed.
-      placeholder: e.g., The gene listed for 22q11.2 deletion is incorrect — it should include TBX1...
+      placeholder: e.g., The gene listed for 22q11.2 deletion is incorrect. It should include TBX1...
     validations:
       required: true
