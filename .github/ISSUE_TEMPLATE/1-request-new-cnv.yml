@@ -15,7 +15,7 @@ body:
     attributes:
       label: Genomic coordinates
       description: Specify the reference genome build (e.g., GRCh37 or GRCh38) and coordinates.
-      placeholder: e.g., chr16:29,500,000-30,100,000 (GRCh37)
+      placeholder: "e.g., chr16:29,500,000-30,100,000 (GRCh37)"
     validations:
       required: true
 
@@ -24,7 +24,7 @@ body:
     attributes:
       label: References
       description: Add supporting literature (PubMed IDs, DOIs, or other sources).
-      placeholder: e.g., PMID: 12345678, DOI: 10.1016/j.cell.2020.01.001
+      placeholder: "e.g., PMID: 12345678, DOI: 10.1016/j.cell.2020.01.001"
     validations:
       required: true
 
