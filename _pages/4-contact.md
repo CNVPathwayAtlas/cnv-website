@@ -5,10 +5,10 @@ title: "Contact us"
 
 ### Contact us via GitHub issue forms:
 - For requesting a new CNV:  
-  [Submit a new CNV request](https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=1-request-new-cnv.yml)
+<a href="https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=1-request-new-cnv.yml" target="_blank">Submit a new CNV request</a>
 
 - For requesting data correction:  
-  [Submit a data correction request](https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=2-request-correction.yml)
+<a href="https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=2-request-correction.yml" target="_blank">Submit a new CNV request</a>
 
 ---
 
