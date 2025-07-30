@@ -1,0 +1,28 @@
+name: New CNV request
+description: Submit a request to add a new copy number variant (CNV) to the dataset.
+labels: [new-cnv-request]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Your name
+      placeholder: e.g., Carl Jung
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Your email
+      placeholder: carl@example.com
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: CNV Details
+      description: Please describe the CNV you would like to submit, including relevant coordinates, gene(s), and references if available.
+      placeholder: e.g., 16p11.2 CNV affecting gene X, associated with condition Y...
+    validations:
+      required: true
