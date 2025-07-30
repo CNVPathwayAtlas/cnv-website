@@ -18,26 +18,23 @@ Copy number variants (CNVs) are structural genomic alterations involving DNA seg
 </figure>
 
 # CNV selection criteria
-
-We selected CNVs based on the availability of curated molecular pathways in the <a href="https://www.wikipathways.org/communities/rarediseases.html" target="_blank">WikiPathways Rare Diseases community</a>. In total, this resource includes 34 unique molecular pathways.
+We selected CNVs based on the availability of curated molecular pathways in the <a href="https://www.wikipathways.org/communities/rarediseases.html" target="_blank">WikiPathways Rare Diseases community</a>. In total, this resource includes 35 unique molecular pathways.
 
 Most CNVs represented here are recurrent (i.e., involve the same genomic breakpoints) and are known to have a high prevalence among individuals with psychiatric disorders such as schizophrenia, as reported by <a href="https://pubmed.ncbi.nlm.nih.gov/27869829/" target="_blank">Marshall et al., 2017</a>. However, this resource is not limited to schizophrenia associated CNVs.
 
 # Data linked to each CNV
-
 Diseases associated with deletions or duplications in specific genomic regions were collected from established databases such as <a href="https://www.orphadata.com/" target="_blank">OrphaData</a> and <a href="https://omim.org/" target="_blank">OMIM</a>.
 Each CNV was linked to these resources using their unique identifiers ORPHAcodes and OMIM IDs, respectively.  
 When information was missing from these databases, we conducted literature research to supplement the data.
 
 ## Disease associated information
-From OrphaData, we retrieved:
+From OrphaData we retrieved:
 - Disease descriptions  
 - Prevalence   
-
 - Associated OMIM IDs  
 - Phenotypic features labeled as *Very frequent (99–80%)*  
 
-These phenotypic features were mapped to the [Human Phenotype Ontology (HPO)](https://hpo.jax.org/), providing structured and computable clinical data.
+These phenotypic features were mapped to the <a href="https://hpo.jax.org/" target="_blank">Human Phenotype Ontology (HPO)</a>, providing structured and computable clinical data.
 
 ## Genes associated information
 For gene level information, we queried the <a href="https://www.genenames.org/" target="_blank">HGNC</a> database to extract:
@@ -51,12 +48,31 @@ For gene level information, we queried the <a href="https://www.genenames.org/" 
 </figure>
 
 # Molecular pathway construction
+To build molecular pathways we used <a href="https://pathvisio.org/" target="_blank">PathVisio</a> together with <a href="https://pathvisio.org/plugins/plugins-repo" target="_blank"> BridgeDb and WikiPathways plugins</a>.
 
-*To be added.*  
+If you are new to PathVisio, start by following this
+<a href="https://academy.wikipathways.org/stages/walk-install-pv/" target="_blank">PathVisio setup tutorial</a> to install the software and required plugins.
+
+Once set up, you can learn how to create your own pathway using the
+<a href="https://academy.wikipathways.org/path.html" target="_blank">WikiPathways Academy</a>.
+
+After creating your pathway, you can upload it to <a href="https://www.wikipathways.org/" target="_blank">WikiPathways</a> to share your knowledge with the community and even become a curator.
 
 # Further analysis with Cytoscape
+You can download the entire copy number variants table from the <a href="https://alexandra-valeanu.github.io/cnv-booklet/" target="_blank">main page</a>.
 
-*To be added.*  
+| cnv | locus | chromosome | start | end | description | pubmed_id | genes_hgnc_symbol | genes_hgnc_name | genes_hgnc_id | genes_entrez_id | genes_ensembl_id | genes_uniprot_id | wikipathways_id | orphadata_orphacode | orphadata_cause | orphadata_definition | orphadata_prevalence | orphadata_phenotypes | orphadata_hpo_id | orphadata_omim_id |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1p36.33-p36.32 | 1p36.33-p36.32 | 1 | 0 | 2500000 | 1p36.33-p36.32 deletion or duplication... | - | OR4F5 | olfactory receptor... | HGNC:14825  | 79501 | ENSG00000186092 | Q8NH21 | WP5345 | 1606 | deletion | A rare chromosomal anomaly... | 15.0 (1–5 / 10 000)... | Pointed chin | HP:0000307 | 616975;607872 |
+
+1. Open Cytoscape or download it from <a href="https://cytoscape.org/" target="_blank">cytoscape.org</a>
+2. Go to **File → Import → Network from File**
+3. Select your **CNV table** (e.g. all_cnvs_table.xlsx or a filtered version)
+4. In the import dialog, set the appropriate columns:
+   - one column as **Source Node** (e.g. `cnv`)
+   - another as **Target Node** (e.g. `genes_hgnc_symbol`)
+5. Click **OK** to import and view the network
+6. **Extend the network** using the <a href="https://apps.cytoscape.org/apps/cytargetlinker" target="_blank">cytargetlinker app</a> with drug-, pathway-, or disease-related <a href="https://cytargetlinker.github.io/pages/linksets" target="_blank">linksets</a>
 
 # Licence
 This content is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Commons Attribution 4.0 International (CC BY 4.0) licence</a>. This means you are free to reuse the content in any way, including copying, distributing, displaying, or using it for commercial purposes, in any country or jurisdiction. The only requirement is that you give appropriate credit to us and to the original data sources we used (see citation guidelines below).
