@@ -3,25 +3,33 @@ permalink: /contact/
 title: "Contact us"
 ---
 
-Fill out the form below to send us a message about a CNV request or a mistake in the data.
+### Contact us via GitHub issue forms:
+- For requesting a new CNV:  
+  [Submit a new CNV request](https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=1-request-new-cnv.yml)
 
+- For requesting data correction:  
+  [Submit a data correction request](https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=2-request-correction.yml)
+
+---
+
+### Contact us by email for other inquiries:
 <form
   action="https://formspree.io/f/xkgovkzr"
   method="POST"
   enctype="multipart/form-data"
 >
   <label for="name">
-    Your name:
+    Your name:<br>
     <input type="text" name="name" id="name" required>
   </label>
 
   <label for="email">
-    Your email:
+    Your email:<br>
     <input type="email" name="email" id="email" required>
   </label>
 
   <label for="message">
-    Your message:
+    Your message:<br>
     <textarea name="message" id="message" required></textarea>
   </label>
 
