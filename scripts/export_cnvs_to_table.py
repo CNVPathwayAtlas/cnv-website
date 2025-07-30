@@ -11,9 +11,9 @@ def safe_get(d, key, default=""):
 def build_row(base, gene, orpha, phenotype=None):
     return {
         **base,
-        "genes_symbol": safe_get(gene, "symbol"),
-        "genes_name": safe_get(gene, "name"),
-        "hgnc_id": safe_get(gene, "hgnc_id"),
+        "genes_hgnc_symbol": safe_get(gene, "symbol"),
+        "genes_hgnc_name": safe_get(gene, "name"),
+        "genes_hgnc_id": safe_get(gene, "hgnc_id"),
         "genes_entrez_id": safe_get(gene, "entrez_id"),
         "genes_ensembl_id": safe_get(gene, "ensembl_id"),
         "genes_uniprot_id": safe_get(gene, "uniprot_id"),
@@ -23,8 +23,8 @@ def build_row(base, gene, orpha, phenotype=None):
         "orphadata_prevalence": safe_get(orpha, "prevalence"),
         "orphadata_phenotypes": safe_get(phenotype, "name") if phenotype else "",
         "orphadata_hpo_id": safe_get(phenotype, "hpo_id") if phenotype else "",
-        "orphadata_omim": ";".join(get_list(orpha.get("omim"))),
-        "orphadata_pubmed_ids": ";".join(get_list(orpha.get("pubmed_ids"))),
+        "orphadata_omim_id": ";".join(get_list(orpha.get("omim"))),
+        "orphadata_pubmed_id": ";".join(get_list(orpha.get("pubmed_ids"))),
     }
 
 def flatten_yaml_to_rows(yaml_path):
@@ -79,10 +79,10 @@ def main():
 
     column_order = [
         "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_id",
-        "genes_symbol", "genes_name", "hgnc_id", "genes_entrez_id", "genes_ensembl_id", "genes_uniprot_id",
+        "genes_hgnc_symbol", "genes_hgnc_name", "genes_hgnc_id", "genes_entrez_id", "genes_ensembl_id", "genes_uniprot_id",
         "wikipathways_id", "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
         "orphadata_prevalence", "orphadata_phenotypes", "orphadata_hpo_id",
-        "orphadata_omim", "orphadata_pubmed_ids"
+        "orphadata_omim_id", "orphadata_pubmed_id"
     ]
 
     # Make sure all expected columns exist
