@@ -3,26 +3,36 @@ description: Submit a request to add a new copy number variant (CNV) to the data
 labels: [new-cnv-request]
 body:
   - type: input
-    id: name
+    id: cnv-name
     attributes:
-      label: Your name
-      placeholder: e.g., Carl Jung
+      label: CNV name
+      placeholder: e.g., 16p11.2 copy number variation
     validations:
       required: true
 
   - type: input
-    id: email
+    id: coordinates
     attributes:
-      label: Your email
-      placeholder: carl@example.com
+      label: Genomic coordinates
+      description: Specify the reference genome build (e.g., GRCh37 or GRCh38) and coordinates.
+      placeholder: e.g., chr16:29,500,000-30,100,000 (GRCh37)
     validations:
       required: true
 
   - type: textarea
-    id: message
+    id: references
     attributes:
-      label: CNV Details
-      description: Please describe the CNV you would like to submit, including relevant coordinates, gene(s), and references if available.
-      placeholder: e.g., 16p11.2 CNV affecting gene X, associated with condition Y...
+      label: References
+      description: Add supporting literature (PubMed IDs, DOIs, or other sources).
+      placeholder: e.g., PMID: 12345678, DOI: 10.1016/j.cell.2020.01.001
     validations:
       required: true
+
+  - type: textarea
+    id: associated-diseases
+    attributes:
+      label: Associated syndromes or diseases
+      description: Known deletion or duplication syndromes associated with this CNV. Include Orphanet disease names and ORPHAcodes if available.
+      placeholder: e.g., 16p11.2 deletion syndrome (ORPHA:9876)
+    validations:
+      required: false
