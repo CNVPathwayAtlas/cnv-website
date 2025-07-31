@@ -1,6 +1,7 @@
 ---
 permalink: /contact/
 title: "Contact us"
+layout: single
 ---
 
 ### Contact us via GitHub issue forms:

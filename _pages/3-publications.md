@@ -1,6 +1,7 @@
 ---
 permalink: /publications/
 title: "Publications"
+layout: single
 ---
 
 ## Our key related research articles

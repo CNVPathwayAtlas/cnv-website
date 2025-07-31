@@ -2,8 +2,9 @@
 permalink: /documentation/
 title: "Documentation"
 toc: true
-toc_label: "Table of Contents"
+toc_label: "Contents"
 toc_sticky: true
+layout: single
 ---
 
 This documentation provides detailed information on how we collected data and constructed molecular pathways, as well as how the data can be used for further analysis.

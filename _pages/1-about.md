@@ -1,6 +1,7 @@
 ---
 permalink: /about/
 title: "About"
+layout: single
 ---
 
 This project presents a curated collection of rare copy number variants (CNVs), assembled by Alexandra Valeanu and Freddie Ehrhart as part of a PhD project at Maastricht University, The Netherlands.
