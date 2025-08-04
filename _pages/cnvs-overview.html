@@ -58,35 +58,40 @@ permalink: /cnvs-overview/
             {% endif %}
           </td>
           <td>
+            {% assign has_orphacode = false %}
             {% if cnv.orphadata %}
               {% for orpha in cnv.orphadata %}
                 {% if orpha.orphacode %}
+                  {% assign has_orphacode = true %}
                   <a href="https://www.orpha.net/consor/cgi-bin/OC_Exp.php?lng=EN&Expert={{ orpha.orphacode }}" target="_blank">{{ orpha.orphacode }}</a>{% if orpha.cause %} ({{ orpha.cause }}){% endif %}{% unless forloop.last %}, {% endunless %}
                 {% endif %}
               {% endfor %}
-            {% else %}
-              NA
             {% endif %}
+            {% unless has_orphacode %}
+              NA
+            {% endunless %}
           </td>
           <td>
             {% assign all_omim_ids = "" | split: "" %}
+            {% assign has_omim = false %}
             {% if cnv.orphadata %}
               {% for orpha in cnv.orphadata %}
                 {% if orpha.omim %}
                   {% assign all_omim_ids = all_omim_ids | concat: orpha.omim %}
+                  {% assign has_omim = true %}
                 {% endif %}
               {% endfor %}
             {% endif %}
 
-            {% if all_omim_ids.size > 0 %}
+            {% if has_omim %}
               {% assign unique_omim_ids = all_omim_ids | uniq %}
               {% for id in unique_omim_ids %}
                 <a href="https://omim.org/entry/{{ id }}" target="_blank">{{ id }}</a>{% unless forloop.last %}, {% endunless %}
               {% endfor %}
             {% else %}
+              NA
             {% endif %}
-          </td>
-
+          </td>          
           <td>
             <span id="gene-container-{{ forloop.index }}">
               {% if gene_symbols %}
