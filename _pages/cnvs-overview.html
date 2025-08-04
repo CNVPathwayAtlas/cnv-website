@@ -73,25 +73,23 @@ permalink: /cnvs-overview/
           </td>
           <td>
             {% assign all_omim_ids = "" | split: "" %}
-            {% assign has_omim = false %}
             {% if cnv.orphadata %}
               {% for orpha in cnv.orphadata %}
                 {% if orpha.omim %}
                   {% assign all_omim_ids = all_omim_ids | concat: orpha.omim %}
-                  {% assign has_omim = true %}
                 {% endif %}
               {% endfor %}
             {% endif %}
 
-            {% if has_omim %}
-              {% assign unique_omim_ids = all_omim_ids | uniq %}
+            {% assign unique_omim_ids = all_omim_ids | uniq %}
+            {% if unique_omim_ids.size > 0 %}
               {% for id in unique_omim_ids %}
                 <a href="https://omim.org/entry/{{ id }}" target="_blank">{{ id }}</a>{% unless forloop.last %}, {% endunless %}
               {% endfor %}
             {% else %}
               NA
             {% endif %}
-          </td>          
+          </td>        
           <td>
             <span id="gene-container-{{ forloop.index }}">
               {% if gene_symbols %}
