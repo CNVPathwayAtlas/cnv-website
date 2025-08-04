@@ -24,4 +24,4 @@ Ultimately, this structured data (**CNV → Diseases → Genes → Pathways**) w
   <a href="https://www.maastrichtuniversity.nl/tamj-van-amelsvoort" target="_blank">Maastricht University Profile</a>
 
 ### Funding
-This research is supported by <a href="https://erdera.org/" target="_blank">ERDERA (European Rare Disease Research Alliance)</a>.
+This research is supported by <a href="https://erdera.org/" target="_blank">ERDERA (European Rare Disease Research Alliance)</a> and the European Union under grant agreement <a href="https://cordis.europa.eu/project/id/101156595" target="_blank">101156595</a>.
