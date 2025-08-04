@@ -16,3 +16,16 @@ search: false
     object-fit: cover; 
     border-radius: 10px; /* Rounded corners */
 }
+
+.page__footer-logos {
+  display: flex;
+  justify-content: flex-end;     /* aligns logos to the right */
+  align-items: center;
+  gap: 15px;                      /* space between logos */
+  margin-top: 10px;
+}
+
+.page__footer-logos img {
+  height: 40px;                
+  display: block;
+}
