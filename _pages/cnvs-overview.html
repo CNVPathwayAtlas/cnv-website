@@ -101,6 +101,11 @@ permalink: /cnvs-overview/
             {% if gene_symbols.size > 3 %}
               <a href="#" class="show-more" data-index="{{ forloop.index }}" data-genes='{{ gene_symbols | jsonify }}'>more</a>
             {% endif %}
+            {% if gene_symbols %}
+              <span class="gene-search-hidden" style="display:none;">
+                {{ gene_symbols | join: ", " }}
+              </span>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
