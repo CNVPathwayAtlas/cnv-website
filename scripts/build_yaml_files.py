@@ -149,7 +149,7 @@ def main() -> None:
         chrom, start, end = parse_region(region)
         description = row.get("description")
         wikipathways_id = row.get("wikipathways_id")
-        cnv_name = f"{locus}-{extra} Copy Number Variation Syndrome" if extra else f"{locus} Copy Number Variation Syndrome"
+        cnv_name = f"{locus}-{extra} Copy Number Variation" if extra else f"{locus} Copy Number Variation"
         pubmed_id = row.get("pubmed_id")
         genes = clean_gene_list(row.get("genes"))
         genes_info = [
