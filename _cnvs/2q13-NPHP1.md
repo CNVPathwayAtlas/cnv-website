@@ -1,6 +1,6 @@
 ---
 layout: cnv-page
-title: 2q13-NPHP1 Copy Number Variation Syndrome
+title: 2q13-NPHP1 Copy Number Variation
 cnv: 2q13-NPHP1
 locus: 2q13
 chromosome: '2'
