@@ -27,6 +27,16 @@ def build_row(base, gene, orpha, phenotype=None):
         "orphadata_pubmed_id": ";".join(get_list(orpha.get("pubmed_ids"))),
     }
 
+
+ORPHADATA_DEFAULT = {
+    "orphacode": "NA",
+    "cause": "NA",
+    "definition": "NA",
+    "prevalence": "NA",
+    "phenotypes": [],
+    "omim": [],
+    "pubmed_ids": []
+}
 def flatten_yaml_to_rows(yaml_path):
     rows = []
     with open(yaml_path, "r", encoding="utf-8") as f:
@@ -48,7 +58,10 @@ def flatten_yaml_to_rows(yaml_path):
         }
 
         genes = get_list(data.get("genes", [{}]))
-        orphadata = get_list(data.get("orphadata", [{}]))
+        
+        orphadata = get_list(data.get("orphadata"))
+        if not orphadata:
+            orphadata = [ORPHADATA_DEFAULT.copy()]
 
         for gene in genes:
             for orpha in orphadata:
