@@ -63,11 +63,11 @@ toc: true
                   NA
                 {% endif %} <br>
 
-                <strong>Disease description:</strong>
-                {% if orphadata.description %}
-                  <span>{{ orphadata.description }}</span><br>
+                <strong>Disease definition:</strong>
+                {% if orphadata.definition %}
+                  <span>{{ orphadata.definition }}</span><br>
                 {% else %}
-                  <span>No description available.</span><br>
+                  <span>No definition available.</span><br>
                 {% endif %}
 
                 {% if orphadata.prevalence %}
