@@ -13,6 +13,12 @@ toc: true
 
 <div class="page-content">
   <div class="content-wrapper">
+    <div style="margin-bottom: 20px; text-align: right; width: 100%;">
+      <button onclick="window.print()" 
+          style="padding: 10px 15px; background-color: rgb(135, 153, 172); color: white; border: none; border-radius: 5px; font-size: 14px; cursor: pointer;">
+          Download Page
+      </button>
+    </div>
 
     <h1>{{ page.title }}</h1>
 
@@ -192,4 +198,11 @@ toc: true
   .phenotype-continuous a:hover {
     text-decoration: underline;
   }
+
+  @media print {
+    button {
+        display: none;
+    }
+  }
+
 </style>
