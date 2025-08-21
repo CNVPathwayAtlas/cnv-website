@@ -201,8 +201,20 @@ toc: true
 
   @media print {
     button {
-        display: none;
+      display: none;
     }
+
+    /* Scale the content to 60% to include thw gene table */
+    body {
+      transform: scale(0.6);   
+      transform-origin: top left; 
+      width: 166.66%; 
+    }
+
+    /* @page {
+      margin: 10mm;
+    } */
+
   }
 
 </style>
