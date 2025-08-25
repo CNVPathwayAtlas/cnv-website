@@ -60,7 +60,6 @@ toc: true
 
                 {% if orphadata.cause %} <span>{{ orphadata.cause | capitalize }} syndrome</span> {% endif %} <br>
 
-                <strong>OMIM:</strong>
                 {% if orphadata.omim %}
                   {% for omim in orphadata.omim %}
                     <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}
@@ -83,7 +82,7 @@ toc: true
                 <strong>Very frequent (99–80%) phenotypic features:</strong>
                 {% if orphadata.phenotypes and orphadata.phenotypes.size > 0 %}
                 <span>
-                  {% for phenotype in orphadata.phenotypes %}
+                  {% for phenotype in orphadata.phenotypes_very_frequent %}
                     {% if phenotype.hpo_id %}
                       <a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank" style="text-decoration: none; color: inherit;">{{ phenotype.name | strip }}</a>{% unless forloop.last %}, {% endunless %}
                     {% else %}
