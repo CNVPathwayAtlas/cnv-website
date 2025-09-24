@@ -11,7 +11,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout cnv-booklet
+      - name: Checkout cnv-website
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.CNV_RELEASE_AUTOMATION }}

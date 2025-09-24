@@ -8,7 +8,7 @@ jobs:
   build-yamls:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout cnv-booklet
+      - name: Checkout cnv-website
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.CNV_RELEASE_AUTOMATION }}

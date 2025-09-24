@@ -6,10 +6,10 @@ layout: single
 
 ### Contact us via GitHub issue forms:
 - For requesting a new CNV:  
-<a href="https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=1-request-new-cnv.yml" target="_blank">Submit a new CNV request</a>
+<a href="https://github.com/CNVPathwayAtlas/cnv-website/blob/main/.github/ISSUE_TEMPLATE/1-request-new-cnv.yml" target="_blank">Submit a new CNV request</a>
 
 - For requesting data correction:  
-<a href="https://github.com/alexandra-valeanu/cnv-booklet/issues/new?template=2-request-correction.yml" target="_blank">Submit a new data correction request</a>
+<a href="https://github.com/CNVPathwayAtlas/cnv-website/blob/main/.github/ISSUE_TEMPLATE/2-request-correction.yml" target="_blank">Submit a new data correction request</a>
 
 ---
 

@@ -7,7 +7,7 @@ layout: single
 ## Our key related research articles
 This section features research publications authored by our team.
 
-- **<a href="link-to-paper" target="_blank">CNV Booklet</a>** – A.V. *et al.*, Aiming for Nature- Scientific Data - Data Descriptor, 2025/2026.
+- **<a href="link-to-paper" target="_blank">CNVPathwayAtlas</a>** – A.V. *et al.*, Aiming for Nature- Scientific Data - Data Descriptor, 2025/2026.
 
 - **<a href="https://doi.org/10.1080/15622975.2024.2327027" target="_blank">Copy number variant risk loci for schizophrenia converge on the BDNF pathway</a>** – Ehrhart, F., Silva, A., Amelsvoort, T. van, von Scheibler, E., Evelo, C., & Linden, D. E. J., *The World Journal of Biological Psychiatry*, 2024.
 

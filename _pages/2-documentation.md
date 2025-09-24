@@ -60,7 +60,7 @@ Once set up, you can learn how to create your own pathway using the
 After creating your pathway, you can upload it to <a href="https://www.wikipathways.org/" target="_blank">WikiPathways</a> to share your knowledge with the community and even become a curator.
 
 # Further analysis with Cytoscape
-You can download the entire copy number variants table from the <a href="https://alexandra-valeanu.github.io/cnv-booklet/" target="_blank">main page</a>.
+You can download the entire copy number variants table from the <a href="https://cnvpathwayatlas.github.io/cnv-website/" target="_blank">main page</a>.
 
 | cnv | locus | chromosome | start | end | description | pubmed_id | genes_hgnc_symbol | genes_hgnc_name | genes_hgnc_id | genes_entrez_id | genes_ensembl_id | genes_uniprot_id | wikipathways_id | orphadata_orphacode | orphadata_cause | orphadata_definition | orphadata_prevalence | orphadata_phenotypes | orphadata_hpo_id | orphadata_omim_id |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -81,14 +81,14 @@ This content is licensed under the <a href="https://creativecommons.org/licenses
 # How to cite
 ## How to cite our work
 ### CNV website
-CNV-Booklet: A comprehensive resource of Rare Copy Number Variants. Available on https://alexandra-valeanu.github.io/cnv-booklet/ (accessed on date). 
+CNVPathwayAtlas: A comprehensive resource of Rare Copy Number Variants. Available on https://cnvpathwayatlas.github.io/cnv-website/ (accessed on date). 
 
 ### Data version 
 You can cite the latest data version, or the specific version you used, from Zenodo:
 <a href="https://doi.org/10.5281/zenodo.16319401" target="_blank"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.16319401.svg" alt="DOI"></a>
 
 Example citation for Release v_2025-07-22 (Harvard style):
-Alexandra Valeanu (2025) ‘alexandra-valeanu/cnv-data: Release v_2025-07-22’. Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.16319401" target="_blank">10.5281/zenodo.16319401</a>. 
+Alexandra Valeanu (2025) ‘CNVPathwayAtlas/cnv-data: Release v_2025-07-22’. Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.16319401" target="_blank">10.5281/zenodo.16319401</a>. 
 
 ## How to cite external data sources
 ### Orphanet/Orphadata
@@ -113,6 +113,6 @@ Nucleic Acids Research (Database issue)
 # Disclaimer
 We are not affiliated with Orphanet or HGNC. We did not modify the data from Orphanet and HGNC. <br>
 
-The content in this booklet is provided for informational and research purposes only and is not intended as  medical, legal, or professional advice. The information presented here is offered for improving the understanding of rare copy number variation syndromes. <br>
+The content in this resource is provided for informational and research purposes only and is not intended as  medical, legal, or professional advice. The information presented here is offered for improving the understanding of rare copy number variation syndromes. <br>
 
-Every effort has been made to ensure the accuracy and usefulness of the information contained in this booklet. However, the authors do not claim any liability arising from the use or misuse of this material. Use of the content is at the user's own discretion and risk. <br>
+Every effort has been made to ensure the accuracy and usefulness of the information contained in this resource. However, the authors do not claim any liability arising from the use or misuse of this material. Use of the content is at the user's own discretion and risk. <br>
