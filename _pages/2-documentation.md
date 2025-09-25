@@ -33,7 +33,7 @@ From OrphaData we retrieved:
 - Disease descriptions  
 - Prevalence   
 - Associated OMIM IDs  
-- Phenotypic features labeled as *Very frequent (99–80%)*  
+- Phenotypic features labeled as obligate (100%), very frequent (99%-80%), frequent (79%-30%), occasional (29%-5%)
 
 These phenotypic features were mapped to the <a href="https://hpo.jax.org/" target="_blank">Human Phenotype Ontology (HPO)</a>, providing structured and computable clinical data.
 

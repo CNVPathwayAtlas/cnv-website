@@ -13,6 +13,7 @@ ORPHADATA_DEFAULT = {
     "cause": "NA",
     "definition": "NA",
     "prevalence": "NA",
+    "phenotypes_obligate": [],
     "phenotypes_very_frequent": [],
     "phenotypes_frequent": [],
     "phenotypes_occasional": [],
@@ -22,6 +23,7 @@ ORPHADATA_DEFAULT = {
 
 def build_row(base, gene, orpha, phenotype=None, freq_category=None):
     freq_map = {
+        "obligate": "orphadata_phenotypes_obligate",
         "very_frequent": "orphadata_phenotypes_very_frequent",
         "frequent": "orphadata_phenotypes_frequent",
         "occasional": "orphadata_phenotypes_occasional"
@@ -39,6 +41,7 @@ def build_row(base, gene, orpha, phenotype=None, freq_category=None):
         "orphadata_cause": safe_get(orpha, "cause"),
         "orphadata_definition": safe_get(orpha, "definition"),
         "orphadata_prevalence": safe_get(orpha, "prevalence"),
+        "orphadata_phenotypes_obligate": "",
         "orphadata_phenotypes_very_frequent": "",
         "orphadata_phenotypes_frequent": "",
         "orphadata_phenotypes_occasional": "",
@@ -82,6 +85,7 @@ def flatten_yaml_to_rows(yaml_path):
         for gene in genes:
             for orpha in orphadata_list:
                 for freq_key, freq_cat in [
+                    ("phenotypes_obligate", "obligate"),
                     ("phenotypes_very_frequent", "very_frequent"),
                     ("phenotypes_frequent", "frequent"),
                     ("phenotypes_occasional", "occasional"),
@@ -117,6 +121,7 @@ def main():
         "genes_ensembl_id", "genes_uniprot_id", "wikipathways_id",
         "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
         "orphadata_prevalence",
+        "orphadata_phenotypes_obligate",
         "orphadata_phenotypes_very_frequent",
         "orphadata_phenotypes_frequent",
         "orphadata_phenotypes_occasional",

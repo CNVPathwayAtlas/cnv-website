@@ -77,6 +77,7 @@ def build_orpha_dict(df_orpha: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
         omim_list = [o.strip() for o in omim_raw.split(";") if o.strip()] if omim_raw else []
         orpha_dict[code] = {
             "definition": row.get("Definition"),
+            "phenotypes_obligate": row.get("Phenotypes_Obligate"),
             "phenotypes_very_frequent": row.get("Phenotypes_Very_frequent"),
             "phenotypes_frequent": row.get("Phenotypes_Frequent"),
             "phenotypes_occasional": row.get("Phenotypes_Occasional"),
@@ -103,6 +104,7 @@ def parse_orphacodes(orphacodes_str: str, orpha_dict: Dict[str, Dict[str, Any]])
             "cause": cause,
             "definition": orpha_info.get("definition"),
             "prevalence": orpha_info.get("prevalence"),
+            "phenotypes_obligate": parse_phenotypes(orpha_info.get("phenotypes_obligate")),
             "phenotypes_very_frequent": parse_phenotypes(orpha_info.get("phenotypes_very_frequent")),
             "phenotypes_frequent": parse_phenotypes(orpha_info.get("phenotypes_frequent")),
             "phenotypes_occasional": parse_phenotypes(orpha_info.get("phenotypes_occasional")),
