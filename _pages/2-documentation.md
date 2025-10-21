@@ -59,6 +59,15 @@ Once set up, you can learn how to create your own pathway using the
 
 After creating your pathway, you can upload it to <a href="https://www.wikipathways.org/" target="_blank">WikiPathways</a> to share your knowledge with the community and even become a curator.
 
+# Uploading a new CNV
+You can use our <a href="https://cnvpathwayatlas.github.io/cnv-website/contact/" target="_blank">contact forms</a> if you want to request a new CNV or you want to report an error 
+
+If you are already part of the CNVPatwayAtlas team and want to add a new CNV you can then: 
+- make your CNV pathway, upload it to WikiPatwhays
+- Follow the steps from 
+
+https://github.com/CNVPathwayAtlas/cnv-data
+
 # Further analysis with Cytoscape
 You can download the entire copy number variants table from the <a href="https://cnvpathwayatlas.github.io/cnv-website/" target="_blank">main page</a>.
 
@@ -75,20 +84,22 @@ You can download the entire copy number variants table from the <a href="https:/
 5. Click **OK** to import and view the network
 6. **Extend the network** using the <a href="https://apps.cytoscape.org/apps/cytargetlinker" target="_blank">cytargetlinker app</a> with drug-, pathway-, or disease-related <a href="https://cytargetlinker.github.io/pages/linksets" target="_blank">linksets</a>
 
+You can also do the analysis programatically using Python or R. For Python code, see the usecase repository <a href="https://github.com/CNVPathwayAtlas/cnv-usecase" target="_blank">CNVPathwayAtlas/cnv-usecase</a>.
+
 # Licence
 This content is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Commons Attribution 4.0 International (CC BY 4.0) licence</a>. This means you are free to reuse the content in any way, including copying, distributing, displaying, or using it for commercial purposes, in any country or jurisdiction. The only requirement is that you give appropriate credit to us and to the original data sources we used (see citation guidelines below).
 
 # How to cite
 ## How to cite our work
-### CNV website
-CNVPathwayAtlas: A comprehensive resource of Rare Copy Number Variants. Available on https://cnvpathwayatlas.github.io/cnv-website/ (accessed on date). 
+### CNVPathwayAtlas website
+*CNVPathwayAtlas*: A comprehensive resource of Rare Copy Number Variants. Available on https://cnvpathwayatlas.github.io/cnv-website/ (accessed on date). 
 
 ### Data version 
-You can cite the latest data version, or the specific version you used, from Zenodo:
-<a href="https://doi.org/10.5281/zenodo.16319401" target="_blank"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.16319401.svg" alt="DOI"></a>
+You can cite the latest release from Zenodo:
+- doi: <a href="https://doi.org/10.5281/zenodo.17226746" target="_blank">10.5281/zenodo.17226746</a>. 
 
-Example citation for Release v_2025-07-22 (Harvard style):
-Alexandra Valeanu (2025) ‘CNVPathwayAtlas/cnv-data: Release v_2025-07-22’. Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.16319401" target="_blank">10.5281/zenodo.16319401</a>. 
+If you want to cite a specific release, e.g. Release v_2025-09-29 (Harvard style):
+- Alexandra Valeanu (2025) ‘CNVPathwayAtlas/cnv-data: Release v_2025-09-29’. Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.17226747" target="_blank">10.5281/zenodo.17226747</a>. 
 
 ## How to cite external data sources
 ### Orphanet/Orphadata
