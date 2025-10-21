@@ -14,6 +14,12 @@ Ultimately, this structured data (**CNV → Diseases → Genes → Pathways**) w
 - **Alexandra Valeanu**, PhD Candidate  
   <a href="https://www.maastrichtuniversity.nl/valeanu" target="_blank">Maastricht University Profile</a>
 
+- **Yuanyuan Duan**, PhD Candidate  
+  <a href="https://www.maastrichtuniversity.nl/dy-duan" target="_blank">Maastricht University Profile</a>
+
+- **Javier Millán Acosta**, PhD Candidate  
+  <a href="https://www.maastrichtuniversity.nl/j-millán-acosta" target="_blank">Maastricht University Profile</a>
+
 - **Dr. Friederike Ehrhart**, Assistant Professor  
   <a href="https://www.maastrichtuniversity.nl/f-ehrhart" target="_blank">Maastricht University Profile</a>
 
