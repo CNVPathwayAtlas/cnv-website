@@ -7,7 +7,11 @@ chromosome: '2'
 start: 110880926
 end: 110962590
 cytoband: /assets/images/cytoband/2q13-NPHP1.png
-description: null
+description: Mutations or loss of NPHP1 cause nephronophthisis (NPHP), a rare genetic
+  disorder. Due to the involvement of NPHP1 in ciliary function and cellular orientation
+  in kidney, the main symptoms of the disorder are found in kidney development and
+  function. However, as in many ciliopathies, neuronal functions are also affected,
+  causing psychiatric disorders.
 pubmed_id: .nan
 genes:
 - symbol: NPHP1
