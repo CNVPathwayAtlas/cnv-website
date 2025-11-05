@@ -59,7 +59,8 @@ toc: true
                 </a>
 
                 {% if orphadata.cause %} <span>{{ orphadata.cause | capitalize }} syndrome</span> {% endif %} <br>
-
+                
+                <strong>OMIM:</strong>
                 {% if orphadata.omim %}
                   {% for omim in orphadata.omim %}
                     <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}
