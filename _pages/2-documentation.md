@@ -15,7 +15,7 @@ Copy number variants (CNVs) are structural genomic alterations involving DNA seg
 
 <figure id="fig:cnv">
   <img src="{{ site.baseurl }}/assets/images/cnv.png" alt="CNV representation" style="max-width:100%; height:auto;" />
-  <figcaption><strong>Figure 1:</strong> Types of copy number variants (CNVs). Source: <a href="https://pubmed.ncbi.nlm.nih.gov/36737482/" target="_blank">Mollon et al., 2023</a>.</figcaption>
+  <figcaption><strong>Figure 1:</strong> Types of copy number variants (CNVs). Modified figure from: <a href="https://pubmed.ncbi.nlm.nih.gov/36737482/" target="_blank">Mollon et al., 2023</a>.</figcaption>
 </figure>
 
 # CNV selection criteria
