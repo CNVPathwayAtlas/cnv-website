@@ -14,7 +14,7 @@ This documentation provides detailed information on how we collected data and co
 Copy number variants (CNVs) are structural genomic alterations involving DNA segments typically larger than 1 kilobase (kb). They contribute to human genetic diversity and have been implicated in various neurodevelopmental and neuropsychiatric disorders, including intellectual disability (ID), autism spectrum disorder (ASD), bipolar disorder (BD), and schizophrenia (SCZ). (<a href="https://pubmed.ncbi.nlm.nih.gov/16418744/" target="_blank">Feuk et al., 2006</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/17122850/" target="_blank">Redon et al., 2006</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/34504065/" target="_blank">Rees et al., 2021</a>)
 
 <figure id="fig:cnv">
-  <img src="{{ site.baseurl }}/assets/images/cnv.png" alt="CNV representation" style="max-width:100%; height:auto;" />
+  <img src="{{ site.baseurl }}/assets/images/cnv.png" alt="CNV representation" style="max-width:70%; height:auto;" />
   <figcaption><strong>Figure 1:</strong> Types of copy number variants (CNVs). Modified figure from: <a href="https://pubmed.ncbi.nlm.nih.gov/36737482/" target="_blank">Mollon et al., 2023</a>.</figcaption>
 </figure>
 
