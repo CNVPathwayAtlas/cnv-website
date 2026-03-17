@@ -1,0 +1,39 @@
+name: Generate HPO groups
+
+on:
+  workflow_run:
+    workflows: ["Build CNV YAML files"]
+    types:
+      - completed
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  generate-hpo-groups:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cnv-website
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CNV_RELEASE_AUTOMATION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Create assets/data directory
+        run: mkdir -p assets/data
+
+      - name: Generate HPO groups
+        run: python scripts/generate-hpo-groups.py
+
+      - name: Commit and push HPO categories
+        run: |
+          git config --global user.name "alexandra-valeanu"
+          git config --global user.email "valeanualexandra17@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.CNV_RELEASE_AUTOMATION }}@github.com/CNVPathwayAtlas/cnv-website.git
+          git add assets/data/hpo_categories.json
+          git diff --cached --quiet || git commit -m "Update HPO categories"
+          git push origin HEAD:main
