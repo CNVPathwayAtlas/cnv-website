@@ -4,26 +4,41 @@ toc: true
 ---
 
 <head>
+  <meta name="baseurl" content="{{ site.baseurl }}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="{{ site.baseurl }}/_js/phenotype-grouping/phenotype-grouper.js"></script>
 </head>
 
 {% include head.html %}
 
 <div class="page-content">
   <div class="content-wrapper">
-    <div style="margin-bottom: 20px; text-align: right; width: 100%;">
-      <button onclick="window.print()" 
-          style="padding: 10px 15px; background-color: rgb(135, 153, 172); color: white; border: none; border-radius: 5px; font-size: 14px; cursor: pointer;">
-          Download Page
+    <div class="page-actions">
+      <button onclick="window.print()" class="download-button" type="button">
+          Download as PDF
       </button>
     </div>
 
-    <h1>{{ page.title }}</h1>
+    <div class="page-title-row">
+      <h1 class="page-title">{{ page.title }}</h1>
+    </div>
 
-    <div class="table-container">
-      <h3>Description</h3>
+    <div class="content-grid">
+      <nav class="page-toc" aria-label="Table of contents">
+        <h3>Table of contents</h3>
+        <ul>
+          <li><a href="#description">Description</a></li>
+          <li><a href="#genomic-location">Genomic location</a></li>
+          <li><a href="#orphanet-disorder-information">Disorder Information from Orphanet</a></li>
+          <li><a href="#molecular-pathway">Molecular pathway</a></li>
+          <li><a href="#gene-information">Gene Information</a></li>
+        </ul>
+      </nav>
+
+      <div class="table-container">
+      <h3 id="description">Description</h3>
       <p>{{ page.description }}</p>
 
       <!-- <h3>PubMed IDs</h3>
@@ -37,92 +52,191 @@ toc: true
         <p>No PubMed IDs available.</p>
       {% endif %} -->
 
-      <h3>Genomic location GRCh37/hg19</h3>
-      <p>
-        <strong>Genome Browser:</strong> <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position=chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}&dgv=pack&knownGene=full&omimGene=pack" target="_blank">
-          Chr{{ page.chromosome }}:{{ page.start }}-{{ page.end }}
-        </a>
-      </p>
-      {% if page.cytoband %}
-        <img src="{{ site.baseurl }}{{ page.cytoband }}" width="1200" height="40" alt="Cytoband Image">
+      {% assign jbrowse_app_url = page.jbrowse_app_url | default: "https://jbrowse.org/code/jb2/main/" %}
+      {% assign hg19_config = page.jbrowse_hg19_config | default: "https://jbrowse.org/ucsc/hg19/config.json" %}
+      {% assign hg38_config = page.jbrowse_hg38_config | default: "https://jbrowse.org/ucsc/hg38/config.json" %}
+      {% assign hg19_loc = page.jbrowse_hg19_loc %}
+      {% if hg19_loc == nil or hg19_loc == "" %}
+        {% assign hg19_loc = "chr" | append: page.chromosome | append: ":" | append: page.start | append: "-" | append: page.end %}
+      {% endif %}
+      {% assign hg38_loc = page.jbrowse_hg38_loc | default: hg19_loc %}
+      {% assign hg19_label = page.jbrowse_hg19_label | default: "Chr" | append: page.chromosome | append: ":" | append: page.start | append: "-" | append: page.end %}
+      {% assign hg38_label = page.jbrowse_hg38_label | default: hg38_loc %}
+      {% assign hg19_tracks = page.jbrowse_hg19_tracks | default: "hg19-cytoBandIdeo,hg19-ncbiRefSeqCurated" %}
+      {% assign hg38_tracks = page.jbrowse_hg38_tracks | default: "hg38-cytoBandIdeo,hg38-ncbiRefSeqCurated" %}
+      {% assign session_name = hg19_label %}
+
+      <h3 id="genomic-location">Genomic location</h3>
+      {% if hg19_config or hg38_config %}
+        {% capture hg19_url %}{{ jbrowse_app_url }}?config={{ hg19_config | url_encode }}&assembly=hg19&loc={{ hg19_loc | url_encode }}&tracks={{ hg19_tracks | url_encode }}&sessionName={{ session_name | url_encode }}{% endcapture %}
+        {% capture hg38_url %}{{ jbrowse_app_url }}?config={{ hg38_config | url_encode }}&assembly=hg38&loc={{ hg38_loc | url_encode }}&tracks={{ hg38_tracks | url_encode }}&sessionName={{ hg38_label | url_encode }}{% endcapture %}
+
+        <div class="jbrowse-controls" data-hg19-url="{{ hg19_url | strip }}" data-hg38-url="{{ hg38_url | strip }}" data-default-assembly="{{ page.jbrowse_default_assembly | default: 'hg19' }}">
+          <strong>Assembly:</strong>
+          {% if hg19_config %}
+            <button type="button" class="jbrowse-switch" data-target-assembly="hg19">GRCh37 / hg19</button>
+          {% endif %}
+          {% if hg38_config %}
+            <button type="button" class="jbrowse-switch" data-target-assembly="hg38">GRCh38 / hg38</button>
+          {% endif %}
+        </div>
+
+        <p style="margin: 0 0 8px;">
+          <strong style="font-size: 14px; color: #475569;">Coordinates:</strong>
+          <span class="jbrowse-coords" data-hg19-loc="{{ hg19_label }}" data-hg38-loc="{{ hg38_label }}"></span>
+        </p>
+
+        <iframe id="jbrowse-frame" title="JBrowse 2 genome browser" width="100%" height="280" loading="lazy"></iframe>
       {% endif %}
 
-      <h3>Disorder Information from Orphanet</h3>
+      <!-- {% if page.cytoband %}
+        <img src="{{ site.baseurl }}{{ page.cytoband }}" width="1200" height="40" alt="Cytoband Image">
+      {% endif %} -->
+
+      <h3 id="orphanet-disorder-information">Disorder Information from Orphanet</h3>
       {% if page.orphadata and page.orphadata.size > 0 %}
-        <ol>
+        <div class="orphanet-list">
           {% for orphadata in page.orphadata %}
             {% if orphadata.orphacode %}
-              <li>
-                <strong>ORPHA:</strong>
-                <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank">
-                  {{ orphadata.orphacode }}
-                </a>
+              <div class="disorder-card">
+                <div class="disorder-header">
+                  <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank" class="orpha-link">
+                    ORPHA:{{ orphadata.orphacode }}
+                  </a>
+                  {% if orphadata.cause %}<span class="syndrome-type">{{ orphadata.cause | capitalize }} syndrome</span>{% endif %}
+                </div>
 
-                {% if orphadata.cause %} <span>{{ orphadata.cause | capitalize }} syndrome</span> {% endif %} <br>
-                
-                <strong>OMIM:</strong>
-                {% if orphadata.omim %}
-                  {% for omim in orphadata.omim %}
-                    <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}
-                  {% endfor %}
+                <div class="disorder-meta">
+                  <div class="meta-row">
+                    <span class="meta-label">OMIM:</span>
+                    <span class="meta-value">
+                      {% if orphadata.omim %}
+                        {% for omim in orphadata.omim %}
+                          <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                      {% else %}
+                        NA
+                      {% endif %}
+                    </span>
+                  </div>
+                  {% if orphadata.prevalence %}
+                  <div class="meta-row">
+                    <span class="meta-label">Prevalence:</span>
+                    <span class="meta-value">{{ orphadata.prevalence }}</span>
+                  </div>
+                  {% endif %}
+                </div>
+
+                <div class="disorder-definition">
+                  <span class="meta-label">Definition:</span>
+                  {% if orphadata.definition %}
+                    <p>{{ orphadata.definition }}</p>
+                  {% else %}
+                    <span class="no-data">No definition available.</span>
+                  {% endif %}
+                </div>
+
+                {% assign has_phenotypes = false %}
+                {% if orphadata.phenotypes_obligate and orphadata.phenotypes_obligate.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata.phenotypes_very_frequent and orphadata.phenotypes_very_frequent.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata.phenotypes_frequent and orphadata.phenotypes_frequent.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata.phenotypes_occasional and orphadata.phenotypes_occasional.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+
+                <div class="disorder-phenotypes">
+                  <span class="meta-label">Phenotypic features:</span>
+                {% if has_phenotypes %}
+                <table class="phenotype-freq-table" data-phenotype-table data-orpha-index="{{ forloop.index0 }}">
+                  <thead>
+                    <tr>
+                      <th>Obligate<br><small>(100%)</small></th>
+                      <th>Very frequent<br><small>(99–80%)</small></th>
+                      <th>Frequent<br><small>(79–30%)</small></th>
+                      <th>Occasional<br><small>(29–5%)</small></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-freq="obligate">
+                        {% if orphadata.phenotypes_obligate and orphadata.phenotypes_obligate.size > 0 %}
+                          <ul class="phenotype-list">
+                            {% for phenotype in orphadata.phenotypes_obligate %}
+                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <span class="no-phenotypes">—</span>
+                        {% endif %}
+                      </td>
+                      <td data-freq="very_frequent">
+                        {% if orphadata.phenotypes_very_frequent and orphadata.phenotypes_very_frequent.size > 0 %}
+                          <ul class="phenotype-list">
+                            {% for phenotype in orphadata.phenotypes_very_frequent %}
+                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <span class="no-phenotypes">—</span>
+                        {% endif %}
+                      </td>
+                      <td data-freq="frequent">
+                        {% if orphadata.phenotypes_frequent and orphadata.phenotypes_frequent.size > 0 %}
+                          <ul class="phenotype-list">
+                            {% for phenotype in orphadata.phenotypes_frequent %}
+                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <span class="no-phenotypes">—</span>
+                        {% endif %}
+                      </td>
+                      <td data-freq="occasional">
+                        {% if orphadata.phenotypes_occasional and orphadata.phenotypes_occasional.size > 0 %}
+                          <ul class="phenotype-list">
+                            {% for phenotype in orphadata.phenotypes_occasional %}
+                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <span class="no-phenotypes">—</span>
+                        {% endif %}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <script type="application/json" data-phenotypes-json data-orpha-index="{{ forloop.index0 }}">
+                {
+                  "obligate": {% if orphadata.phenotypes_obligate %}{{ orphadata.phenotypes_obligate | jsonify }}{% else %}[]{% endif %},
+                  "very_frequent": {% if orphadata.phenotypes_very_frequent %}{{ orphadata.phenotypes_very_frequent | jsonify }}{% else %}[]{% endif %},
+                  "frequent": {% if orphadata.phenotypes_frequent %}{{ orphadata.phenotypes_frequent | jsonify }}{% else %}[]{% endif %},
+                  "occasional": {% if orphadata.phenotypes_occasional %}{{ orphadata.phenotypes_occasional | jsonify }}{% else %}[]{% endif %}
+                }
+                </script>
                 {% else %}
-                  NA
-                {% endif %} <br>
-
-                <strong>Disease definition:</strong>
-                {% if orphadata.definition %}
-                  <span>{{ orphadata.definition }}</span><br>
-                {% else %}
-                  <span>No definition available.</span><br>
+                <span class="no-data">No phenotypes available for now</span>
                 {% endif %}
-
-                {% if orphadata.prevalence %}
-                  <strong>World-wide prevalence:</strong> {{ orphadata.prevalence }}<br>
-                {% endif %}
-
-                <strong>Very frequent (99–80%) phenotypic features:</strong>
-                {% if orphadata.phenotypes and orphadata.phenotypes.size > 0 %}
-                <span>
-                  {% for phenotype in orphadata.phenotypes_very_frequent %}
-                    {% if phenotype.hpo_id %}
-                      <a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank" style="text-decoration: none; color: inherit;">{{ phenotype.name | strip }}</a>{% unless forloop.last %}, {% endunless %}
-                    {% else %}
-                      {{ phenotype.name | strip }}{% unless forloop.last %}, {% endunless %}
-                    {% endif %}
-                  {% endfor %}
-                </span>
-                {% else %}
-                <span>No phenotypic features found for this frequency. Download the full dataset from the Home page to explore other frequencies (e.g., occasional).</span>
-                {% endif %}
-
-                <!-- {% if orphadata.pubmed_ids %}
-                  <br><strong>PubMed IDs:</strong>
-                  {% for pubmed_id in orphadata.pubmed_ids %}
-                    <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>{% unless forloop.last %}, {% endunless %}
-                  {% endfor %}
-                {% endif %} -->
-              </li>
+                </div>
+              </div>
             {% endif %}
           {% endfor %}
-        </ol>
+        </div>
       {% else %}
         <p><em>This CNV is not yet linked to an OrphaCode.</em></p>
       {% endif %}
 
       {% if page.wikipathways_id %}
-        <h3>Interactive Pathway Viewer</h3>
-        <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="1000px" height="600px" style="overflow:hidden;"></iframe>
-        <div style="margin-top: 10px;">
+        <h3 id="molecular-pathway">Molecular pathway</h3>
+        <div class="pathway-container">
+          <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="900px" height="400px" loading="lazy"></iframe>
           <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html"
              target="_blank"
-             style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; text-decoration: none; font-size: 14px;">
+             class="pathway-link">
             View on WikiPathways
           </a>
         </div>
       {% endif %}
 
       {% if page.genes %}
-        <h3>Gene Information</h3>
+        <h3 id="gene-information">Gene Information</h3>
         <table id="gene-info-table" class="display">
           <thead>
             <tr>
@@ -146,37 +260,275 @@ toc: true
           </tbody>
         </table>
       {% endif %}
+      </div>
     </div>
   </div>
 </div>
 
 <script>
   $(document).ready(function () {
-    $('#gene-info-table').DataTable();
+    if ($('#gene-info-table').length) {
+      $('#gene-info-table').DataTable();
+    }
+
+    var controls = document.querySelector('.jbrowse-controls');
+    var frame = document.getElementById('jbrowse-frame');
+    var coordsLabel = document.querySelector('.jbrowse-coords');
+    if (controls && frame && coordsLabel) {
+      var urls = {
+        hg19: controls.dataset.hg19Url,
+        hg38: controls.dataset.hg38Url,
+      };
+
+      var coords = {
+        hg19: coordsLabel.dataset.hg19Loc,
+        hg38: coordsLabel.dataset.hg38Loc,
+      };
+
+      var defaultAssembly = controls.dataset.defaultAssembly;
+      if (!urls[defaultAssembly]) {
+        defaultAssembly = urls.hg19 ? 'hg19' : 'hg38';
+      }
+
+      function setAssembly(assembly) {
+        if (!urls[assembly]) return;
+        frame.src = urls[assembly];
+        coordsLabel.textContent = coords[assembly] || '';
+        document.querySelectorAll('.jbrowse-switch').forEach(function (button) {
+          var isActive = button.dataset.targetAssembly === assembly;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      document.querySelectorAll('.jbrowse-switch').forEach(function (button) {
+        button.addEventListener('click', function () {
+          setAssembly(button.dataset.targetAssembly);
+        });
+      });
+
+      setAssembly(defaultAssembly);
+    }
+
+    // Phenotype grouping
+    if (typeof PhenotypeGrouper !== 'undefined') {
+      initPhenotypeGrouping();
+    }
+
+    // Expand all details before printing, restore after
+    var originalPageLength;
+    window.addEventListener('beforeprint', function() {
+      // Expand all phenotype details
+      document.querySelectorAll('details').forEach(function(detail) {
+        detail.dataset.wasOpen = detail.open;
+        detail.open = true;
+      });
+
+      // Show all rows in DataTable
+      if ($.fn.DataTable && $('#gene-info-table').length) {
+        var table = $('#gene-info-table').DataTable();
+        originalPageLength = table.page.len();
+        table.page.len(-1).draw();
+      }
+    });
+
+    window.addEventListener('afterprint', function() {
+      // Restore phenotype details state
+      document.querySelectorAll('details').forEach(function(detail) {
+        detail.open = detail.dataset.wasOpen === 'true';
+      });
+
+      // Restore DataTable pagination
+      if ($.fn.DataTable && $('#gene-info-table').length && originalPageLength) {
+        var table = $('#gene-info-table').DataTable();
+        table.page.len(originalPageLength).draw();
+      }
+    });
   });
+
+  async function initPhenotypeGrouping() {
+    var jsonScripts = document.querySelectorAll('script[data-phenotypes-json]');
+
+    for (var script of jsonScripts) {
+      var orphaIndex = script.dataset.orphaIndex;
+      var table = document.querySelector('table[data-phenotype-table][data-orpha-index="' + orphaIndex + '"]');
+      if (!table) continue;
+
+      try {
+        var data = JSON.parse(script.textContent);
+        var freqColumns = ['obligate', 'very_frequent', 'frequent', 'occasional'];
+
+        for (var freq of freqColumns) {
+          var phenotypes = data[freq];
+          if (!phenotypes || phenotypes.length === 0) continue;
+
+          var cell = table.querySelector('td[data-freq="' + freq + '"]');
+          if (!cell) continue;
+
+          var groups = await PhenotypeGrouper.groupPhenotypes(phenotypes);
+          cell.innerHTML = renderGroupedPhenotypes(groups);
+        }
+      } catch (e) {
+        console.error('Error grouping phenotypes:', e);
+      }
+    }
+  }
+
+  function renderGroupedPhenotypes(groups) {
+    if (!groups || groups.length === 0) {
+      return '<span class="no-phenotypes">No phenotypes available for now</span>';
+    }
+
+    return groups.map(function(group) {
+      var items = group.phenotypes.map(function(p) {
+        var link = 'https://hpo.jax.org/app/browse/term/' + p.hpo_id;
+        return '<li><a href="' + link + '" target="_blank">' + p.name + '</a></li>';
+      }).join('');
+
+      var parentLabel = group.parent.label;
+      var parentLink = group.parent.id
+        ? '<a href="https://hpo.jax.org/app/browse/term/' + group.parent.id + '" target="_blank">' + parentLabel + '</a>'
+        : parentLabel;
+
+      return '<div class="phenotype-group">' +
+        '<details>' +
+        '<summary class="group-header">' + parentLink + ' <span class="group-count">(' + group.phenotypes.length + ')</span></summary>' +
+        '<ul class="phenotype-list grouped">' + items + '</ul>' +
+        '</details>' +
+        '</div>';
+    }).join('');
+  }
 </script>
 
 <style>
   .page-content {
-    max-width: 1280px;
+    max-width: 1360px;
     margin: 0 auto;
+    padding: 0 20px;
+    color: #1f2937;
   }
 
   .content-wrapper {
-    padding: 20px;
+    padding: 24px 0 32px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .page-title-row {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 28px;
+    align-items: end;
+  }
+
+  .page-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .download-button {
+    padding: 8px 14px;
+    background: #aaacb0;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .download-button:hover {
+    background: #1d4ed8;
+  }
+
+  .download-button:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+  }
+
+  .page-title {
+    grid-column: 2;
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.2;
+    color: #0f172a;
   }
 
   h3 {
-    margin-top: 30px;
-    color: #333;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    color: #1e3a8a;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
   }
 
   .table-container {
     width: 100%;
     overflow-x: auto;
+  }
+
+  .table-container > h3:first-child {
+    margin-top: 0;
+  }
+
+  .table-container > p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #374151;
+    margin: 0 0 8px;
+  }
+
+  .page-toc {
+    width: 100%;
+    position: sticky;
+    top: 20px;
+    padding: 14px 16px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    box-sizing: border-box;
+  }
+
+  .page-toc h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #1e3a8a;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .page-toc ul {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.6;
+    font-size: 13px;
+  }
+
+  .page-toc li + li {
+    margin-top: 6px;
+  }
+
+  .page-toc a {
+    text-decoration: none;
+    color: #334155;
+  }
+
+  .page-toc a:hover {
+    text-decoration: underline;
+    color: #1e3a8a;
   }
 
   table.display {
@@ -185,18 +537,364 @@ toc: true
     margin-top: 10px;
   }
 
-  .phenotype-continuous {
-    white-space: nowrap;
-    letter-spacing: normal;
+  #gene-info-table {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
   }
 
-  .phenotype-continuous a {
+  #gene-info-table thead th {
+    background: #1e3a8a;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 12px;
+    text-align: left;
+    border: none;
+  }
+
+  #gene-info-table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+  }
+
+  #gene-info-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  #gene-info-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  #gene-info-table tbody tr:hover {
+    background: #eff6ff;
+  }
+
+  #gene-info-table a {
+    color: #1a5b9c;
     text-decoration: none;
-    color: inherit;
   }
 
-  .phenotype-continuous a:hover {
+  #gene-info-table a:hover {
     text-decoration: underline;
+  }
+
+  .phenotype-freq-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+
+  .phenotype-freq-table th {
+    background: #1e3a8a;
+    color: #fff;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+    vertical-align: top;
+    line-height: 1.3;
+    border: none;
+  }
+
+  .phenotype-freq-table th small {
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .phenotype-freq-table td {
+    vertical-align: top;
+    padding: 12px;
+    border-right: 1px solid #e2e8f0;
+    width: 25%;
+    background: #fff;
+  }
+
+  .phenotype-freq-table td:last-child {
+    border-right: none;
+  }
+
+  .phenotype-list {
+    margin: 0;
+    padding-left: 16px;
+    line-height: 1.6;
+  }
+
+  .phenotype-list li {
+    margin: 0;
+  }
+
+  .phenotype-list a {
+    text-decoration: none;
+    color: #1a5b9c;
+  }
+
+  .phenotype-list a:hover {
+    text-decoration: underline;
+  }
+
+  .phenotype-list.grouped {
+    padding-left: 16px;
+    margin-top: 4px;
+  }
+
+  .phenotype-group {
+    margin-bottom: 8px;
+  }
+
+  .phenotype-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .group-header {
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    padding: 2px 0;
+    font-size: 12px;
+  }
+
+  .group-header:hover {
+    color: #1e3a8a;
+  }
+
+  .group-header a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .group-header a:hover {
+    text-decoration: underline;
+  }
+
+  .group-count {
+    font-weight: 400;
+    color: #64748b;
+    font-size: 0.9em;
+  }
+
+  details summary {
+    list-style: none;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary::before {
+    content: '▸ ';
+    color: #64748b;
+  }
+
+  details[open] summary::before {
+    content: '▾ ';
+  }
+
+  .no-phenotypes {
+    color: #94a3b8;
+  }
+
+  /* Orphanet disorder cards */
+  .orphanet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .disorder-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    background: #fafbfc;
+  }
+
+  .disorder-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .orpha-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e3a8a;
+    text-decoration: none;
+  }
+
+  .orpha-link:hover {
+    text-decoration: underline;
+  }
+
+  .syndrome-type {
+    font-size: 14px;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .disorder-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .meta-label {
+    font-weight: 600;
+    color: #475569;
+    font-size: 13px;
+  }
+
+  .meta-value {
+    color: #1f2937;
+    font-size: 14px;
+  }
+
+  .meta-value a {
+    color: #1a5b9c;
+    text-decoration: none;
+  }
+
+  .meta-value a:hover {
+    text-decoration: underline;
+  }
+
+  .disorder-definition {
+    margin-bottom: 6px;
+  }
+
+  .disorder-definition p {
+    margin: 6px 0 0;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .disorder-definition .no-data,
+  .disorder-phenotypes .no-data {
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 13px;
+  }
+
+  .disorder-phenotypes {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .disorder-phenotypes > .meta-label {
+    margin-right: 4px;
+  }
+
+  .disorder-phenotypes .phenotype-freq-table {
+    margin-top: 10px;
+  }
+
+  .jbrowse-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .jbrowse-controls strong {
+    font-size: 14px;
+    color: #475569;
+  }
+
+  .jbrowse-switch {
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 4px;
+    border: 1px solid #93c5fd;
+    background: #eff6ff;
+    color: #1e3a8a;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .jbrowse-switch:hover {
+    background: #dbeafe;
+  }
+
+  .jbrowse-switch.is-active {
+    font-weight: 700;
+    background: #1e3a8a;
+    color: #fff;
+    border-color: #1e3a8a;
+  }
+
+  .jbrowse-coords {
+    font-family: monospace;
+    font-size: 14px;
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  #jbrowse-frame {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #fff;
+    margin-top: 12px;
+  }
+
+  /* WikiPathways section */
+  .pathway-container {
+    margin-top: 12px;
+  }
+
+  .pathway-container iframe {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+  }
+
+  .pathway-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background-color: #8f949f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+  }
+
+  .pathway-link:hover {
+    background-color: #1d4ed8;
+    color: white;
+  }
+
+  @media (max-width: 980px) {
+    .page-title-row,
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .page-title {
+      grid-column: auto;
+    }
+
+    .page-toc {
+      position: static;
+    }
   }
 
   @media print {
@@ -204,11 +902,69 @@ toc: true
       display: none;
     }
 
-    /* Scale the content to 60% to include thw gene table */
+    /* Scale the content to 60% to include the gene table */
     body {
-      transform: scale(0.6);   
-      transform-origin: top left; 
-      width: 166.66%; 
+      transform: scale(0.6);
+      transform-origin: top left;
+      width: 166.66%;
+    }
+
+    /* Expand all phenotype groups when printing */
+    details {
+      display: block !important;
+    }
+
+    details > summary {
+      display: block !important;
+    }
+
+    details > summary::before {
+      content: '' !important;
+    }
+
+    details > ul,
+    details > .phenotype-list {
+      display: block !important;
+    }
+
+    /* Remove link styling for print - show as plain text */
+    a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #1f2937 !important;
+      text-decoration: none !important;
+      border: none !important;
+      background: none !important;
+    }
+
+    /* Ensure all links in content areas appear as plain text */
+    .phenotype-list a,
+    .group-header a,
+    #gene-info-table a,
+    .table-container a,
+    .page-content a {
+      color: #1f2937 !important;
+      text-decoration: none !important;
+      font-weight: inherit !important;
+    }
+
+    /* Show full gene table when printing - hide DataTables controls */
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+      display: none !important;
+    }
+
+    /* Show all rows in the gene table */
+    #gene-info-table tbody tr {
+      display: table-row !important;
+    }
+
+    #gene-info-table {
+      page-break-inside: avoid;
     }
 
     /* @page {
