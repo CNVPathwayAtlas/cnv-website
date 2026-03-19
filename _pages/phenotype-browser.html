@@ -1,0 +1,146 @@
+---
+layout: default
+title: Phenotype-Genotype Browser
+permalink: /phenotype-browser/
+---
+
+<head>
+  <meta name="baseurl" content="{{ site.baseurl }}">
+</head>
+
+<div class="pheno-browser">
+
+  <!-- Header bar -->
+  <div class="pheno-topbar">
+    <h1 class="pheno-topbar-title">Phenotype Browser</h1>
+    <p class="pheno-topbar-subtitle">Phenotype-based data explorer for CNVPathwayAtlas.</p>
+    <div class="pheno-stats-inline">
+      <span class="stat-pill"><strong id="stat-locations">–</strong> Locations</span>
+      <span class="stat-pill"><strong id="stat-disorders">–</strong> Disorders</span>
+      <span class="stat-pill"><strong id="stat-phenotypes">–</strong> Phenotypes</span>
+      <span class="stat-pill"><strong id="stat-genes">–</strong> Genes</span>
+    </div>
+  </div>
+
+  <!-- Dashboard body -->
+  <div class="pheno-layout">
+
+    <!-- ═══ Sidebar: multi-tab data browser ═══ -->
+    <div class="pheno-sidebar">
+      <div class="sidebar-tabs">
+        <button class="sidebar-tab active" data-sidebar="phenotype">Phenotypes</button>
+        <button class="sidebar-tab" data-sidebar="gene">Genes</button>
+        <button class="sidebar-tab" data-sidebar="location">Locations</button>
+        <button class="sidebar-tab" data-sidebar="disorder">Disorders</button>
+        <button class="sidebar-tab" data-sidebar="pathway">Pathways</button>
+        <button class="sidebar-tab" data-sidebar="chromosome">Chromosomes</button>
+      </div>
+      <div class="sidebar-search">
+        <input type="text" id="sidebar-search-input" placeholder="Filter…" autocomplete="off">
+      </div>
+      <!-- tab contents -->
+      <div class="sidebar-panel active" id="sb-phenotype">
+        <div class="pheno-tree" id="pheno-tree"></div>
+      </div>
+      <div class="sidebar-panel" id="sb-gene">
+        <div class="sidebar-list" id="gene-list"></div>
+      </div>
+      <div class="sidebar-panel" id="sb-location">
+        <div class="sidebar-list" id="location-list"></div>
+      </div>
+      <div class="sidebar-panel" id="sb-disorder">
+        <div class="sidebar-list" id="disorder-list"></div>
+      </div>
+      <div class="sidebar-panel" id="sb-pathway">
+        <p class="sidebar-hint">The molecular pathways listed here are attributed to a genomic region where a CNV appears.</p>
+        <div class="sidebar-list" id="pathway-list"></div>
+      </div>
+      <div class="sidebar-panel" id="sb-chromosome">
+        <div class="sidebar-list" id="chr-list"></div>
+      </div>
+    </div>
+
+    <!-- ═══ Main content ═══ -->
+    <div class="pheno-main">
+
+      <div class="pheno-tabs">
+        <button class="pheno-tab active" data-target="tab-grid">Browser</button>
+        <button class="pheno-tab" data-target="tab-summary">Summary Export</button>
+      </div>
+
+      <!-- ═══ Browser tab ═══ -->
+      <div class="pheno-tab-content active" id="tab-grid">
+
+        <!-- Filter Builder -->
+        <div class="filter-builder">
+          <div class="filter-builder-header">
+          </div>
+          <div class="filter-row">
+            <select id="filter-field" title="Field">
+              <option value="gene">Gene</option>
+              <option value="phenotype">Phenotype</option>
+              <option value="disorder">Disorder (ORPHA)</option>
+              <option value="location">Location</option>
+              <option value="pathway">WikiPathways</option>
+              <option value="chromosome">Chromosome</option>
+              <option value="size">Location Size (bp)</option>
+            </select>
+            <select id="filter-op" title="Operator"></select>
+            <input type="text" id="filter-value"
+                   placeholder="e.g. TUBGCP5"
+                   class="filter-value-input" autocomplete="off">
+            <button class="btn-sm btn-primary" id="filter-add-btn">Add</button>
+            <button class="btn-sm btn-danger"  id="filter-clear-btn">Clear All</button>
+          </div>
+          <div class="active-filters" id="active-filters">
+            <span class="no-filters">No active filters</span>
+          </div>
+        </div>
+
+        <!-- Grid layout -->
+        <div class="browser-body">
+
+          <!-- Left: grid (CNVs as columns) -->
+          <div class="browser-grid-area">
+            <div class="olap-controls">
+              <div class="freq-legend">
+                <strong class="freq-legend-item">Frequency Legend | </strong>
+                <span class="freq-legend-item"><strong class="freq-text-obligate">Obligate</strong></span>
+                <span class="freq-legend-item"><strong class="freq-text-very_frequent">Very Frequent</strong></span>
+                <span class="freq-legend-item"><strong class="freq-text-frequent">Frequent</strong></span>
+                <span class="freq-legend-item"><strong class="freq-text-occasional">Occasional</strong></span>
+              </div>
+            </div>
+            <div class="olap-grid-wrap" id="olap-grid-container">
+              <p class="pheno-empty">Loading grid…</p>
+            </div>
+          </div>
+
+        </div><!-- /browser-body -->
+      </div><!-- /tab-grid -->
+
+      <!-- ═══ Summary tab ═══ -->
+      <div class="pheno-tab-content" id="tab-summary">
+        <div class="pub-summary-actions">
+          <span id="summary-count" class="summary-count-label"></span>
+          <button class="btn-export primary summary-export-btn"
+                  onclick="PhenotypeBrowser.exportCSV()">⬇ Export CSV</button>
+        </div>
+        <div class="olap-grid-wrap">
+          <table class="pub-summary-table">
+            <thead>
+              <tr>
+                <th>Disorder (ORPHA)</th><th>Location / Cause</th><th>Coordinates</th>
+                <th>Size</th><th>Genes</th><th>HPO Phenotypes</th>
+              </tr>
+            </thead>
+            <tbody id="pub-summary-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /pheno-main -->
+  </div><!-- /pheno-layout -->
+</div><!-- /pheno-browser -->
+
+<script src="{{ site.baseurl }}/assets/js/phenotype-browser.js"></script>
