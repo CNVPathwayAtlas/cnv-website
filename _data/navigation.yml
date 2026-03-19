@@ -4,6 +4,10 @@ main:
     url: /about/
   - title: "Documentation"
     url: /documentation/
+  - title: "Explore"
+    url: /cnvs-overview/
+  - title: "Phenotype Browser"
+    url: /phenotype-browser/
   - title: "Publications"
     url: /publications/
   - title: "Contact"
