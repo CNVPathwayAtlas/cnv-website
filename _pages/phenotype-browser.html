@@ -28,12 +28,12 @@ permalink: /phenotype-browser/
     <!-- ═══ Sidebar: multi-tab data browser ═══ -->
     <div class="pheno-sidebar">
       <div class="sidebar-tabs">
-        <button class="sidebar-tab active" data-sidebar="phenotype">Phen</button>
+        <button class="sidebar-tab active" data-sidebar="phenotype">Phenotypes</button>
         <button class="sidebar-tab" data-sidebar="gene">Genes</button>
-        <button class="sidebar-tab" data-sidebar="location">Loc</button>
-        <button class="sidebar-tab" data-sidebar="disorder">Dis</button>
-        <button class="sidebar-tab" data-sidebar="pathway">Path</button>
-        <button class="sidebar-tab" data-sidebar="chromosome">Chr</button>
+        <button class="sidebar-tab" data-sidebar="location">Locations</button>
+        <button class="sidebar-tab" data-sidebar="disorder">Disorders</button>
+        <button class="sidebar-tab" data-sidebar="pathway">Pathways</button>
+        <button class="sidebar-tab" data-sidebar="chromosome">Chromosomes</button>
       </div>
       <div class="sidebar-search">
         <input type="text" id="sidebar-search-input" placeholder="Filter…" autocomplete="off">
@@ -52,6 +52,7 @@ permalink: /phenotype-browser/
         <div class="sidebar-list" id="disorder-list"></div>
       </div>
       <div class="sidebar-panel" id="sb-pathway">
+        <p class="sidebar-hint">The molecular pathways listed here are attributed to a genomic region where a CNV appears.</p>
         <div class="sidebar-list" id="pathway-list"></div>
       </div>
       <div class="sidebar-panel" id="sb-chromosome">
