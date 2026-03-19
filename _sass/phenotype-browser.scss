@@ -652,7 +652,9 @@ body:has(.pheno-browser) .page__content {
     gap: 0.35rem;
     flex-wrap: wrap;
     margin-top: 0.3rem;
-    align-items: center;
+    align-items: flex-start;
+    max-height: 15vh;
+    overflow-y: auto;
 }
 
 .no-filters {
