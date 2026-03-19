@@ -171,11 +171,13 @@ var PhenotypeBrowser = (function () {
             var btn = e.target.closest(".sb-logic-btn");
             if (btn) {
                 var it = btn.closest(".sb-item"); if (!it) return;
+                if (it.classList.contains("sb-item-disabled")) return;
                 toggleSidebarFilter(field, it.dataset.id, btn.dataset.logic);
                 return;
             }
             var it2 = e.target.closest(".sb-item");
             if (it2 && !e.target.closest(".sb-logic-btns")) {
+                if (it2.classList.contains("sb-item-disabled")) return;
                 var existing = filters.findIndex(function (f) {
                     return f.field === field && f.op === "equals" && f.value === it2.dataset.id && f.source === "sidebar";
                 });
@@ -296,14 +298,30 @@ var PhenotypeBrowser = (function () {
     /* ══════════════ sidebar: disorders ══════════════ */
     function buildDisorderList() {
         var w = document.getElementById("disorder-list"); if (!w) return;
+
+        /* Build a set of disorder ids that have at least one phenotype */
+        var withPheno = {};
+        Object.keys(D.phenotypes).forEach(function (pid) {
+            var p = D.phenotypes[pid];
+            if (p && p.disorder_entries) {
+                p.disorder_entries.forEach(function (e) { withPheno[e.disorder_id] = true; });
+            }
+        });
+
         var dids = Object.keys(D.disorders).sort();
-        var h = "";
+        var withList = [], withoutList = [];
         dids.forEach(function (did) {
+            (withPheno[did] ? withList : withoutList).push(did);
+        });
+
+        function renderItem(did, disabled) {
             var d = D.disorders[did];
             var isLoc = d.no_orphacode;
-            h += '<div class="sb-item" data-type="disorder" data-id="' + esc(did) + '">';
-            h += logicBtns();
-            h += '<span class="sb-color-dot" style="background:' + (disorderColor[did] || "#64748b") + '"></span>';
+            var cls = "sb-item" + (disabled ? " sb-item-disabled" : "");
+            var title = disabled ? ' title="No phenotypes associated to this disorder"' : '';
+            var h = '<div class="' + cls + '" data-type="disorder" data-id="' + esc(did) + '"' + title + '>';
+            if (!disabled) h += logicBtns();
+            h += '<span class="sb-color-dot" style="background:' + (disorderColor[did] || "#cbd5e1") + '"></span>';
             h += '<span class="sb-item-label">';
             if (isLoc) {
                 h += '<em title="No ORPHA code">' + esc(d.name) + '</em>';
@@ -314,8 +332,37 @@ var PhenotypeBrowser = (function () {
             h += '</span>';
             h += '<span class="sb-item-badge">' + esc(d.location_id) + (d.cause ? ' · ' + esc(d.cause) : '') + '</span>';
             h += '</div>';
-        });
+            return h;
+        }
+
+        var h = "";
+        withList.forEach(function (did) { h += renderItem(did, false); });
+
+        if (withoutList.length) {
+            h += '<div class="sb-section-hdr" id="disorder-nopheno-hdr" aria-expanded="false">'
+               + '<span class="sb-section-arrow">&#9654;</span>'
+               + '<span>Disorders without phenotypes</span>'
+               + '<span class="sb-item-badge">' + withoutList.length + '</span>'
+               + '</div>';
+            h += '<div class="sb-section-body" id="disorder-nopheno-body" style="display:none">';
+            withoutList.forEach(function (did) { h += renderItem(did, true); });
+            h += '</div>';
+        }
+
         w.innerHTML = h;
+
+        /* Toggle the collapsible section */
+        var hdr = document.getElementById("disorder-nopheno-hdr");
+        if (hdr) {
+            hdr.addEventListener("click", function () {
+                var body = document.getElementById("disorder-nopheno-body");
+                var expanded = hdr.getAttribute("aria-expanded") === "true";
+                hdr.setAttribute("aria-expanded", String(!expanded));
+                hdr.querySelector(".sb-section-arrow").style.transform = expanded ? "" : "rotate(90deg)";
+                body.style.display = expanded ? "none" : "";
+            });
+        }
+
         wireSbList(w, "disorder");
     }
 
@@ -657,7 +704,6 @@ var PhenotypeBrowser = (function () {
                 var it = e.target.closest(".fac-item");
                 if (it) {
                     e.preventDefault(); e.stopPropagation();
-                    // suggestions for disorder/pathway include " – Name" suffix — strip it
                     var text = it.textContent;
                     var dashIdx = text.indexOf(" \u2013 ");
                     var fi = fld.value;
@@ -780,8 +826,14 @@ var PhenotypeBrowser = (function () {
 
     /* ══════════════ chips ══════════════ */
     function renderChips() {
-        var el = document.getElementById("active-filters"); if (!el) return;
-        if (!filters.length) { el.innerHTML = '<span class="no-filters">No active filters</span>'; return; }
+        var noFiltersMsg = '<span class="no-filters">No active filters</span>';
+
+        if (!filters.length) {
+            ["active-filters", "stats-active-filters"].forEach(function (id) {
+                var el = document.getElementById(id); if (el) el.innerHTML = noFiltersMsg;
+            });
+            return;
+        }
 
         var groups = {};
         filters.forEach(function (f, i) {
@@ -833,17 +885,17 @@ var PhenotypeBrowser = (function () {
             h += '</div>';
         });
 
-        el.innerHTML = h;
-        el.querySelectorAll(".chip-x").forEach(function (btn) {
-            btn.addEventListener("click", function () { rmF(parseInt(btn.dataset.i, 10)); });
-        });
-        el.querySelectorAll(".chip-logic-toggle").forEach(function (btn) {
-            btn.addEventListener("click", function () {
-                var oi = parseInt(btn.dataset.oidx, 10);
-                if (oi >= 0 && oi < filterOps.length) {
-                    filterOps[oi] = filterOps[oi] === "AND" ? "OR" : "AND";
-                    refresh();
-                }
+            el.innerHTML = h;
+            el.querySelectorAll(".chip-x").forEach(function (btn) {
+                btn.addEventListener("click", function () { rmF(parseInt(btn.dataset.i, 10)); });
+            });
+            el.querySelectorAll(".chip-logic-toggle").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var oi = parseInt(btn.dataset.oidx, 10);
+                    if (oi >= 0 && oi < filterOps.length) {
+                        filterOps[oi] = filterOps[oi] === "AND" ? "OR" : "AND";
+                        refresh();
+                    }
             });
         });
     }

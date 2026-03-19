@@ -427,6 +427,48 @@ body:has(.pheno-browser) .page__content {
     border-radius: 8px;
 }
 
+/* Disabled sidebar item (e.g. disorders with no phenotypes) */
+.sb-item-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none; /* blocks clicks entirely */
+}
+
+/* Override pointer-events so the native title tooltip still shows on hover */
+.sb-item-disabled * {
+    pointer-events: none;
+}
+
+/* Collapsible section header inside a sidebar list */
+.sb-section-hdr {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-top: 0.25rem;
+
+    &:hover {
+        background: #e2e8f0;
+    }
+}
+
+.sb-section-arrow {
+    font-size: 0.55rem;
+    transition: transform 0.15s;
+    flex-shrink: 0;
+    width: 11px;
+    text-align: center;
+}
+
 .sb-color-dot {
     display: inline-block;
     width: 8px;
