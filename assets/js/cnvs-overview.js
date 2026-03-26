@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const table = $('#cnvs-table').DataTable({
         order: [[2, 'asc'], [3, 'asc']],
+        language: {
+            lengthMenu: 'Show _MENU_'
+        }
     });
 
     // Toggle show more/less genes

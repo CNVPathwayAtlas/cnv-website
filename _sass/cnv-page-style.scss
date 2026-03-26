@@ -501,6 +501,34 @@ details {
   }
 }
 
+//  Evidence section 
+
+.evidence-label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.evidence-list {
+  margin: 0;
+  padding-left: 18px;
+
+  li {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  a {
+    color: #1a5b9c;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 //  CNVs overview page (cnvs-overview.html) 
 
 a.show-more,

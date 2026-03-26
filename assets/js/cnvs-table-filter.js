@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
         paging: true,
         searching: true,
         lengthChange: true, // use the build in search
+        language: {
+            lengthMenu: 'Show _MENU_'
+        },
         initComplete: function () {
             console.log("DataTable initialized successfully!");
         }

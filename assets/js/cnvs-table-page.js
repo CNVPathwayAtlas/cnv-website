@@ -1,6 +1,10 @@
 $(document).ready(function () {
     if ($('#gene-info-table').length) {
-        $('#gene-info-table').DataTable();
+        $('#gene-info-table').DataTable({
+            language: {
+                lengthMenu: 'Show _MENU_'
+            }
+        });
     }
 
     var controls = document.querySelector('.jbrowse-controls');
