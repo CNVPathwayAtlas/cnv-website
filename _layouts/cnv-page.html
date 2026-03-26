@@ -155,6 +155,7 @@ toc: true
                 {% if orphadata.phenotypes_very_frequent and orphadata.phenotypes_very_frequent.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
                 {% if orphadata.phenotypes_frequent and orphadata.phenotypes_frequent.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
                 {% if orphadata.phenotypes_occasional and orphadata.phenotypes_occasional.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata.phenotypes_very_rare and orphadata.phenotypes_very_rare.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
 
                 <div class="disorder-phenotypes">
                   <span class="meta-label">Phenotypic features:</span>
@@ -166,6 +167,7 @@ toc: true
                       <th>Very frequent<br><small>(99–80%)</small></th>
                       <th>Frequent<br><small>(79–30%)</small></th>
                       <th>Occasional<br><small>(29–5%)</small></th>
+                      <th>Very rare<br><small>(< 4%)</small></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -214,6 +216,17 @@ toc: true
                           <span class="no-phenotypes">—</span>
                         {% endif %}
                       </td>
+                      <td data-freq="very_rare">
+                        {% if orphadata.phenotypes_very_rare and orphadata.phenotypes_very_rare.size > 0 %}
+                          <ul class="phenotype-list">
+                            {% for phenotype in orphadata.phenotypes_very_rare %}
+                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <span class="no-phenotypes">—</span>
+                        {% endif %}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -222,7 +235,9 @@ toc: true
                   "obligate": {% if orphadata.phenotypes_obligate %}{{ orphadata.phenotypes_obligate | jsonify }}{% else %}[]{% endif %},
                   "very_frequent": {% if orphadata.phenotypes_very_frequent %}{{ orphadata.phenotypes_very_frequent | jsonify }}{% else %}[]{% endif %},
                   "frequent": {% if orphadata.phenotypes_frequent %}{{ orphadata.phenotypes_frequent | jsonify }}{% else %}[]{% endif %},
-                  "occasional": {% if orphadata.phenotypes_occasional %}{{ orphadata.phenotypes_occasional | jsonify }}{% else %}[]{% endif %}
+                  "occasional": {% if orphadata.phenotypes_occasional %}{{ orphadata.phenotypes_occasional | jsonify }}{% else %}[]{% endif %},
+                  "very_rare": {% if orphadata.phenotypes_very_rare %}{{ orphadata.phenotypes_very_rare | jsonify }}{% else %}[]{% endif %}
+
                 }
                 </script>
                 {% else %}
@@ -241,11 +256,11 @@ toc: true
         <h3 id="molecular-pathway">Molecular pathway</h3>
         <div class="pathway-container">
           <iframe src="https://pathway-viewer.toolforge.org/embed/{{ page.wikipathways_id }}" width="900px" height="400px" loading="lazy"></iframe>
-          <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html"
-             target="_blank"
-             class="pathway-link">
+            <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html"
+               target="_blank"
+               class="pathway-link">
             View on WikiPathways
-          </a>
+            </a>
         </div>
       {% endif %}
 
