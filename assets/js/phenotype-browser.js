@@ -206,7 +206,7 @@ var PhenotypeBrowser = (function () {
             h += '<div class="tree-cat-hdr" data-cat="' + cid + '">';
             h += '<span class="tree-arrow">&#9654;</span>';
             h += '<span class="tree-cat-label">' + esc(c.label) + '</span>';
-            h += '<span class="tree-cat-badge" title="' + nD + ' disorders / ' + nP + ' phenotypes">' + nD + '/' + nP + '</span>';
+            h += '<span class="tree-cat-badge" title="' + nD + ' disorders / ' + nP + ' phenotypes">' + nP + '  phenotypes' + '</span>';
             h += '</div>';
             h += '<ul class="tree-items" id="ti-' + cid + '">';
             var ps = c.phenotype_ids.slice().sort(function (a, b) {
@@ -885,6 +885,8 @@ var PhenotypeBrowser = (function () {
             h += '</div>';
         });
 
+        ["active-filters", "stats-active-filters"].forEach(function (id) {
+            var el = document.getElementById(id); if (!el) return;
             el.innerHTML = h;
             el.querySelectorAll(".chip-x").forEach(function (btn) {
                 btn.addEventListener("click", function () { rmF(parseInt(btn.dataset.i, 10)); });
@@ -896,6 +898,7 @@ var PhenotypeBrowser = (function () {
                         filterOps[oi] = filterOps[oi] === "AND" ? "OR" : "AND";
                         refresh();
                     }
+                });
             });
         });
     }
