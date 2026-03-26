@@ -17,6 +17,7 @@ ORPHADATA_DEFAULT = {
     "phenotypes_very_frequent": [],
     "phenotypes_frequent": [],
     "phenotypes_occasional": [],
+    "phenotypes_very_rare": [],
     "omim": [],
     "pubmed_ids": []
 }
@@ -26,7 +27,8 @@ def build_row(base, gene, orpha, phenotype=None, freq_category=None):
         "obligate": "orphadata_phenotypes_obligate",
         "very_frequent": "orphadata_phenotypes_very_frequent",
         "frequent": "orphadata_phenotypes_frequent",
-        "occasional": "orphadata_phenotypes_occasional"
+        "occasional": "orphadata_phenotypes_occasional",
+        "very_rare": "orphadata_phenotypes_very_rare"
     }
 
     row = {
@@ -45,9 +47,10 @@ def build_row(base, gene, orpha, phenotype=None, freq_category=None):
         "orphadata_phenotypes_very_frequent": "",
         "orphadata_phenotypes_frequent": "",
         "orphadata_phenotypes_occasional": "",
+        "orphadata_phenotypes_very_rare": "",
         "orphadata_hpo_id": "",
         "orphadata_omim_id": ";".join(get_list(orpha.get("omim"))),
-        "orphadata_pubmed_id": ";".join(get_list(orpha.get("pubmed_ids"))),
+        "orphadata_pubmed_ids": ";".join(get_list(orpha.get("pubmed_ids"))),
     }
 
     if phenotype and freq_category in freq_map:
@@ -73,7 +76,7 @@ def flatten_yaml_to_rows(yaml_path):
             "start": data.get("start", ""),
             "end": data.get("end", ""),
             "description": data.get("description", ""),
-            "pubmed_id": ";".join(get_list(data.get("pubmed_id"))),
+            "pubmed_ids": ";".join(get_list(data.get("pubmed_ids"))),
             "wikipathways_id": data.get("wikipathways_id", ""),
         }
 
@@ -89,6 +92,7 @@ def flatten_yaml_to_rows(yaml_path):
                     ("phenotypes_very_frequent", "very_frequent"),
                     ("phenotypes_frequent", "frequent"),
                     ("phenotypes_occasional", "occasional"),
+                    ("phenotypes_very_rare", "very_rare"),
                 ]:
                     phenotypes = get_list(orpha.get(freq_key))
                     if not phenotypes:
@@ -116,7 +120,7 @@ def main():
     df = pd.DataFrame(all_rows)
 
     column_order = [
-        "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_id",
+        "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_ids",
         "genes_hgnc_symbol", "genes_hgnc_name", "genes_hgnc_id", "genes_entrez_id",
         "genes_ensembl_id", "genes_uniprot_id", "wikipathways_id",
         "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
@@ -125,8 +129,9 @@ def main():
         "orphadata_phenotypes_very_frequent",
         "orphadata_phenotypes_frequent",
         "orphadata_phenotypes_occasional",
+        "orphadata_phenotypes_very_rare",
         "orphadata_hpo_id",
-        "orphadata_omim_id", "orphadata_pubmed_id"
+        "orphadata_omim_id", "orphadata_pubmed_ids"
     ]
 
     # Make sure all expected columns exist

@@ -36,6 +36,7 @@ toc: true
           <li><a href="#orphanet-disorder-information">Disorder Information from Orphanet</a></li>
           <li><a href="#molecular-pathway">Molecular pathway</a></li>
           <li><a href="#gene-information">Gene Information</a></li>
+          <li><a href="#evidence">Evidence</a></li>
         </ul>
       </nav>
 
@@ -57,12 +58,23 @@ toc: true
       {% assign jbrowse_app_url = page.jbrowse_app_url | default: "https://jbrowse.org/code/jb2/main/" %}
       {% assign hg19_config = page.jbrowse_hg19_config | default: "https://jbrowse.org/ucsc/hg19/config.json" %}
       {% assign hg38_config = page.jbrowse_hg38_config | default: "https://jbrowse.org/ucsc/hg38/config.json" %}
+      {% assign region_hg17 = page.region_hg17 | default: page.region | default: page.region_hg17 %}
+      {% assign region_hg38 = page.region_hg38 %}
       {% assign hg19_loc = page.jbrowse_hg19_loc %}
       {% if hg19_loc == nil or hg19_loc == "" %}
-        {% assign hg19_loc = "chr" | append: page.chromosome | append: ":" | append: page.start | append: "-" | append: page.end %}
+        {% if region_hg17 and region_hg17 != "" %}
+          {% assign hg19_loc = region_hg17 %}
+        {% else %}
+          {% assign hg19_loc = "chr" | append: page.chromosome | append: ":" | append: page.start | append: "-" | append: page.end %}
+        {% endif %}
       {% endif %}
-      {% assign hg38_loc = page.jbrowse_hg38_loc | default: hg19_loc %}
-      {% assign hg19_label = page.jbrowse_hg19_label | default: "Chr" | append: page.chromosome | append: ":" | append: page.start | append: "-" | append: page.end %}
+      {% assign hg19_loc = hg19_loc | replace: "Chr", "chr" | replace: "CHR", "chr" %}
+      {% assign hg38_loc = page.jbrowse_hg38_loc %}
+      {% if hg38_loc == nil or hg38_loc == "" %}
+        {% assign hg38_loc = region_hg38 %}
+      {% endif %}
+      {% assign hg38_loc = hg38_loc | replace: "Chr", "chr" | replace: "CHR", "chr" %}
+      {% assign hg19_label = page.jbrowse_hg19_label | default: hg19_loc %}
       {% assign hg38_label = page.jbrowse_hg38_label | default: hg38_loc %}
       {% assign hg19_tracks = page.jbrowse_hg19_tracks | default: "hg19-cytoBandIdeo,hg19-ncbiRefSeqCurated" %}
       {% assign hg38_tracks = page.jbrowse_hg38_tracks | default: "hg38-cytoBandIdeo,hg38-ncbiRefSeqCurated" %}
@@ -228,7 +240,7 @@ toc: true
       {% if page.wikipathways_id %}
         <h3 id="molecular-pathway">Molecular pathway</h3>
         <div class="pathway-container">
-          <iframe src="https://pathway-viewer.toolforge.org/?id={{ page.wikipathways_id }}" width="900px" height="400px" loading="lazy"></iframe>
+          <iframe src="https://pathway-viewer.toolforge.org/embed/{{ page.wikipathways_id }}" width="900px" height="400px" loading="lazy"></iframe>
           <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html"
              target="_blank"
              class="pathway-link">
@@ -262,7 +274,20 @@ toc: true
           </tbody>
         </table>
       {% endif %}
+
+      <h3 id="evidence">Evidence</h3>
+      {% if page.pubmed_ids and page.pubmed_ids.size > 0 %}
+        <p class="evidence-label">PubMed ID:</p>
+        <ul class="evidence-list">
+          {% for pubmed_id in page.pubmed_ids %}
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No PubMed IDs available.</p>
+      {% endif %}
       </div>
     </div>
   </div>
 </div>
+

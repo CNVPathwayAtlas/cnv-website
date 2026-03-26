@@ -52,6 +52,12 @@ def parse_phenotypes(phenotypes_str: Optional[str]) -> List[Dict[str, Optional[s
     return phenotype_list
 
 
+def parse_pubmed_ids(pubmed_str: Optional[str]) -> List[str]:
+    if not isinstance(pubmed_str, str) or not pubmed_str.strip():
+        return []
+    return [pubmed_id.strip() for pubmed_id in re.split(r"[;,]", pubmed_str) if pubmed_id.strip()]
+
+
 def build_hgnc_dict(df_hgnc: pd.DataFrame) -> Dict[str, Dict[str, Optional[str]]]:
     hgnc_dict = {}
     for _, row in df_hgnc.iterrows():
@@ -81,6 +87,7 @@ def build_orpha_dict(df_orpha: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
             "phenotypes_very_frequent": row.get("Phenotypes_Very_frequent"),
             "phenotypes_frequent": row.get("Phenotypes_Frequent"),
             "phenotypes_occasional": row.get("Phenotypes_Occasional"),
+            "phenotypes_very_rare": row.get("Phenotypes_Very_rare"),
             "prevalence": row.get("Prevalence"),
             "omim": omim_list,
             "pubmed_ids": [],  # TODO populate with actual PubMed IDs from orphadata
@@ -108,6 +115,7 @@ def parse_orphacodes(orphacodes_str: str, orpha_dict: Dict[str, Dict[str, Any]])
             "phenotypes_very_frequent": parse_phenotypes(orpha_info.get("phenotypes_very_frequent")),
             "phenotypes_frequent": parse_phenotypes(orpha_info.get("phenotypes_frequent")),
             "phenotypes_occasional": parse_phenotypes(orpha_info.get("phenotypes_occasional")),
+            "phenotypes_very_rare": parse_phenotypes(orpha_info.get("phenotypes_very_rare")),
             "omim": orpha_info.get("omim"),
             "pubmed_ids": orpha_info.get("pubmed_ids", []),
         })
@@ -122,9 +130,12 @@ def write_yaml_file(path: Path, yaml_dict: Dict[str, Any]) -> None:
 
 
 def main() -> None:
-    input_dir = Path("cnv-data/data/input")
-    latest_dir = Path("cnv-data/data/latest")
-    output_path = Path("_cnvs")
+    # input_dir = Path("cnv-data/data/input")
+    # latest_dir = Path("cnv-data/data/latest")
+    data_root = Path("/home/alexandra/chapter1/cnv-data/data")
+    input_dir = data_root / "input"
+    latest_dir = data_root / "latest"
+    output_path = Path(__file__).resolve().parent.parent / "_cnvs"
     output_path.mkdir(exist_ok=True)
 
     print(f"Looking for latest HGNC CSV in: {latest_dir}")
@@ -151,12 +162,17 @@ def main() -> None:
     for idx, row in df_cnv.iterrows():
         locus = row.get("locus") or f"cnv_{idx}"
         extra = str(row.get("extra") or "").strip()
-        region = row.get("region") or ""
-        chrom, start, end = parse_region(region)
+        region_hg17 = row.get("region_hg17") or ""
+        region_hg38 = row.get("region_hg38") or ""
+        chrom_hg17, start_hg17, end_hg17 = parse_region(region_hg17)
+        chrom_hg38, start_hg38, end_hg38 = parse_region(region_hg38)
+        chrom = chrom_hg17
+        start = start_hg17
+        end = end_hg17
         description = row.get("description")
         wikipathways_id = row.get("wikipathways_id")
         cnv_name = f"{locus}-{extra} Copy Number Variation" if extra else f"{locus} Copy Number Variation"
-        pubmed_id = row.get("pubmed_id")
+        pubmed_ids = parse_pubmed_ids(row.get("pubmed_id"))
         genes = clean_gene_list(row.get("genes"))
         genes_info = [
             {**{"symbol": g}, **hgnc_dict.get(g, {"name": None, "hgnc_id": None, "entrez_id": None, "ensembl_id": None, "uniprot_id": None})}
@@ -170,12 +186,16 @@ def main() -> None:
             "title": cnv_name,
             "cnv": f"{locus}-{extra}" if extra else locus,
             "locus": locus,
+            "region": region_hg17,
             "chromosome": chrom,
             "start": start,
             "end": end,
-            "cytoband": f"/assets/images/cytoband/{locus}-{extra}.png" if extra else f"/assets/images/cytoband/{locus}.png",
+            "region_hg38": region_hg38,
+            "chromosome_hg38": chrom_hg38,
+            "start_hg38": start_hg38,
+            "end_hg38": end_hg38,
             "description": description,
-            "pubmed_id": pubmed_id,
+            "pubmed_ids": pubmed_ids,
             "genes": genes_info,
             "wikipathways_id": wikipathways_id,
             "orphadata": orphacodes_list,
