@@ -122,13 +122,10 @@ function renderGroupedPhenotypes(groups) {
         }).join('');
 
         var parentLabel = group.parent.label;
-        var parentLink = group.parent.id
-            ? '<a href="https://hpo.jax.org/app/browse/term/' + group.parent.id + '" target="_blank">' + parentLabel + '</a>'
-            : parentLabel;
 
         return '<div class="phenotype-group">' +
             '<details>' +
-            '<summary class="group-header">' + parentLink + ' <span class="group-count">(' + group.phenotypes.length + ')</span></summary>' +
+            '<summary class="group-header">' + parentLabel + ' <span class="group-count">(' + group.phenotypes.length + ')</span></summary>' +
             '<ul class="phenotype-list grouped">' + items + '</ul>' +
             '</details>' +
             '</div>';
