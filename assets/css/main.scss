@@ -10,12 +10,42 @@ search: false
 @import "gene-info-table-style";
 @import "cnvs-table-style";
 @import "phenotype-browser";
+@import "cnv-page-style";
 
 .feature__item img {
     width: 150px;  
     height: 150px;
     object-fit: cover; 
     border-radius: 10px; /* Rounded corners */
+}
+
+// Make all feature row cards the same height so buttons align at the bottom
+.feature__wrapper {
+  display: flex;
+  align-items: stretch;
+
+  .feature__item {
+    float: none;
+    display: flex;
+    position: relative;
+
+    .archive__item {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .archive__item-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      // Push the button to the bottom regardless of length
+      > p:last-child {
+        margin-top: auto;
+      }
+    }
+  }
 }
 
 .page__footer-logos {
