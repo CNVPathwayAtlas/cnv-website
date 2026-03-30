@@ -4,6 +4,7 @@
 (function() {
   'use strict';
 
+  // Base URL for NCBI E-utilities API - used with specific endpoints
   const NCBI_API_BASE = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils';
 
   /**
@@ -61,21 +62,32 @@
     const formattedAuthors = formatAuthorsHarvard(authors);
     
     // Get publication date
-    const pubDate = article.Journal?.JournalIssue?.PubDate;
-    let year = 'n.d.';
-    if (pubDate) {
-      year = pubDate.Year || extractYear(pubDate.MedlineDate) || 'n.d.';
+    let year = article.Year || 'n.d.';
+    if (!year || year === 'n.d.') {
+      const pubDate = article.Journal?.JournalIssue?.PubDate;
+      if (pubDate) {
+        year = pubDate.Year || extractYear(pubDate.MedlineDate) || 'n.d.';
+      }
     }
 
     const title = article.ArticleTitle || 'Untitled';
     const journal = article.Journal?.Title || article.Journal?.ISOAbbreviation || '';
+    const bookTitle = article.BookTitle || '';
+    const publisher = article.Publisher || '';
+    const publisherLocation = article.PublisherLocation || '';
     const volume = article.Journal?.JournalIssue?.Volume || '';
     const issue = article.Journal?.JournalIssue?.Issue || '';
     const pagination = article.Pagination?.MedlinePgn || '';
 
     let citation = `${formattedAuthors} (${year}) '${title}'`;
     
-    if (journal) {
+    if (bookTitle) {
+      // Book chapter citation
+      citation += `, in <em>${bookTitle}</em>`;
+      if (publisher) {
+        citation += `. ${publisherLocation ? publisherLocation + ': ' : ''}${publisher}`;
+      }
+    } else if (journal) {
       citation += `, <em>${journal}</em>`;
       if (volume) {
         citation += `, ${volume}`;
@@ -108,20 +120,36 @@
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
 
-      const article = xmlDoc.querySelector('PubmedArticle MedlineCitation Article');
-      if (!article) {
-        throw new Error('Article not found');
-      }
+      let articleData;
 
-      // Parse XML to structured data
-      const articleData = {
-        ArticleTitle: article.querySelector('ArticleTitle')?.textContent || '',
-        AuthorList: parseAuthors(article.querySelector('AuthorList')),
-        Journal: parseJournal(article.querySelector('Journal')),
-        Pagination: {
-          MedlinePgn: article.querySelector('Pagination MedlinePgn')?.textContent || ''
+      // 1. Regular PubmedArticle (journal articles)
+      const article = xmlDoc.querySelector('PubmedArticle MedlineCitation Article');
+      if (article) {
+        articleData = parseJournalArticle(article);
+      }
+      // 2. PubmedBookArticle (e.g., GeneReviews, NCBI Bookshelf)
+      else {
+        const bookArticle = xmlDoc.querySelector('PubmedBookArticle');
+        const bookDoc = bookArticle?.querySelector('BookDocument');
+        if (bookDoc) {
+          articleData = parseBookArticle(bookDoc);
         }
-      };
+        // 3. DeletedPMID - article was removed from PubMed
+        else if (xmlDoc.querySelector('DeletedPMID')) {
+          return { success: false, error: 'Article has been deleted from PubMed' };
+        }
+        // 4. Error responses
+        else if (xmlDoc.querySelector('eFetchResult ERROR')) {
+          const errorMsg = xmlDoc.querySelector('eFetchResult ERROR')?.textContent || 'Unknown error';
+          return { success: false, error: errorMsg };
+        }
+        // 5. Unknown format - log XML for debugging
+        else {
+          console.warn(`Unknown XML format for PMID ${pmid}. Root elements:`, 
+            Array.from(xmlDoc.children).map(c => c.tagName));
+          throw new Error('Unrecognized article format');
+        }
+      }
 
       return {
         success: true,
@@ -134,6 +162,57 @@
         error: error.message
       };
     }
+  }
+
+  /**
+   * Parse a regular journal article
+   */
+  function parseJournalArticle(article) {
+    return {
+      ArticleTitle: article.querySelector('ArticleTitle')?.textContent || '',
+      AuthorList: parseAuthors(article.querySelector('AuthorList')),
+      Journal: parseJournal(article.querySelector('Journal')),
+      Pagination: {
+        MedlinePgn: article.querySelector('Pagination MedlinePgn')?.textContent || ''
+      },
+      ELocationID: article.querySelector('ELocationID[EIdType="doi"]')?.textContent || ''
+    };
+  }
+
+  /**
+   * Parse a PubMed Book Article (e.g., GeneReviews, NCBI Bookshelf)
+   */
+  function parseBookArticle(bookDoc) {
+    // Get authors (use "authors" type, not "editors")
+    const authorLists = bookDoc.querySelectorAll('AuthorList');
+    let authorList = null;
+    for (const al of authorLists) {
+      if (al.getAttribute('Type') === 'authors') {
+        authorList = al;
+        break;
+      }
+    }
+
+    // Get year from ContributionDate or DateRevised
+    const contribDate = bookDoc.querySelector('ContributionDate Year');
+    const revisedDate = bookDoc.querySelector('DateRevised Year');
+    const year = revisedDate?.textContent || contribDate?.textContent || 'n.d.';
+
+    // Get book info
+    const bookTitle = bookDoc.querySelector('Book BookTitle')?.textContent || '';
+    const publisher = bookDoc.querySelector('Book Publisher PublisherName')?.textContent || '';
+    const publisherLocation = bookDoc.querySelector('Book Publisher PublisherLocation')?.textContent || '';
+
+    return {
+      ArticleTitle: bookDoc.querySelector('ArticleTitle')?.textContent || '',
+      AuthorList: parseAuthors(authorList),
+      BookTitle: bookTitle,
+      Publisher: publisher,
+      PublisherLocation: publisherLocation,
+      Year: year,
+      Journal: null,
+      Pagination: { MedlinePgn: '' }
+    };
   }
 
   /**
