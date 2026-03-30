@@ -1,0 +1,53 @@
+{% comment %}
+  Calculate CNV statistics: counts of locations, genes, disorders, and phenotypes.
+  Sets: total_cnvs, unique_genes, unique_disorders, unique_phenotypes
+{% endcomment %}
+
+{% assign total_cnvs = site.cnvs | size %}
+{% assign all_genes = "" | split: "" %}
+{% assign all_disorders = "" | split: "" %}
+{% assign all_phenotypes = "" | split: "" %}
+
+{% for cnv in site.cnvs %}
+  {% if cnv.genes %}
+    {% for gene in cnv.genes %}
+      {% assign all_genes = all_genes | push: gene.symbol %}
+    {% endfor %}
+  {% endif %}
+  {% if cnv.orphadata %}
+    {% for orpha in cnv.orphadata %}
+      {% if orpha.orphacode %}
+        {% assign all_disorders = all_disorders | push: orpha.orphacode %}
+      {% endif %}
+      {% if orpha.phenotypes_obligate %}
+        {% for p in orpha.phenotypes_obligate %}
+          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
+        {% endfor %}
+      {% endif %}
+      {% if orpha.phenotypes_very_frequent %}
+        {% for p in orpha.phenotypes_very_frequent %}
+          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
+        {% endfor %}
+      {% endif %}
+      {% if orpha.phenotypes_frequent %}
+        {% for p in orpha.phenotypes_frequent %}
+          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
+        {% endfor %}
+      {% endif %}
+      {% if orpha.phenotypes_occasional %}
+        {% for p in orpha.phenotypes_occasional %}
+          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
+        {% endfor %}
+      {% endif %}
+      {% if orpha.phenotypes_very_rare %}
+        {% for p in orpha.phenotypes_very_rare %}
+          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% assign unique_genes = all_genes | uniq %}
+{% assign unique_disorders = all_disorders | uniq %}
+{% assign unique_phenotypes = all_phenotypes | uniq %}

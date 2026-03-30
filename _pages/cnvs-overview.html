@@ -7,13 +7,36 @@ permalink: /cnvs-overview/
 <head>
   <!-- DataTables CSS & JS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cnvs-overview.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer></script>
   <script src="{{ site.baseurl }}/assets/js/cnvs-overview.js" defer></script>
 </head>
 
+{% include cnv-statistics.html %}
+
 <div class="page-content">
   <h1>Copy Number Variants Overview</h1>
+
+  <!-- Statistics Cards -->
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-number">{{ total_cnvs }}</div>
+      <div class="stat-label">Genomic Locations</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ unique_disorders | size }}</div>
+      <div class="stat-label">Disorders</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ unique_phenotypes | size }}</div>
+      <div class="stat-label">Phenotypes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ unique_genes | size }}</div>
+      <div class="stat-label">Genes</div>
+    </div>
+  </div>
 
   <table id="cnvs-table" class="display" style="width:100%">
     <thead>
