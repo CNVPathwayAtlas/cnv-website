@@ -529,13 +529,50 @@ details {
   }
 }
 
-//  CNVs overview page (cnvs-overview.html) 
+// Citation styles
+.citation-list {
+  list-style: none;
+  padding-left: 0;
+}
 
-a.show-more,
-a.show-less {
-  cursor: pointer;
-  text-decoration: underline;
-  margin-left: 0.3em;
+.citation-item {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+.citation-loading {
+  color: #64748b;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.citation-text {
+  display: block;
+  margin-bottom: 4px;
+  color: #1f2937;
+
+  em {
+    font-style: italic;
+  }
+}
+
+.citation-error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.pubmed-link {
+  font-size: 12px;
+  color: #1a5b9c;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 //  Responsive 

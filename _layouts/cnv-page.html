@@ -11,6 +11,7 @@ toc: true
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="{{ site.baseurl }}/assets/js/phenotype-grouper.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/pubmed-citations.js" defer></script>
 </head>
 
 {% include head.html %}
@@ -292,10 +293,13 @@ toc: true
 
       <h3 id="evidence">Evidence</h3>
       {% if page.pubmed_ids and page.pubmed_ids.size > 0 %}
-        <p class="evidence-label">PubMed ID:</p>
-        <ul class="evidence-list">
+        <ul class="evidence-list citation-list">
           {% for pubmed_id in page.pubmed_ids %}
-            <li><a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a></li>
+            <li class="citation-item" data-pubmed-id="{{ pubmed_id }}">
+              <span class="citation-loading">Loading citation...</span>
+              <span class="citation-text" style="display: none;"></span>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank" class="pubmed-link">[PMID: {{ pubmed_id }}]</a>
+            </li>
           {% endfor %}
         </ul>
       {% else %}
