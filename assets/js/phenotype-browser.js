@@ -33,7 +33,7 @@ var PhenotypeBrowser = (function () {
         size: [{ v: "greater", l: ">" }, { v: "less", l: "<" }]
     };
     var FR = { obligate: 4, very_frequent: 3, frequent: 2, occasional: 1 };
-    var FR_LABEL = { obligate: "Obligate", very_frequent: "V.Freq", frequent: "Freq", occasional: "Occ" };
+    var FR_LABEL = { obligate: "Obligate", very_frequent: "Very Frequent", frequent: "Frequent", occasional: "Occasional"};
     var PAL = [
         "#3b82f6", "#ef4444", "#f59e0b", "#10b981", "#8b5cf6", "#ec4899",
         "#06b6d4", "#84cc16", "#f97316", "#6366f1", "#14b8a6", "#e11d48",

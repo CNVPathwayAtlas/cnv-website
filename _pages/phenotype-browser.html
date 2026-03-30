@@ -4,6 +4,8 @@ title: Phenotype-Genotype Browser
 permalink: /phenotype-browser/
 ---
 
+{% include cnv-statistics.html %}
+
 <head>
   <meta name="baseurl" content="{{ site.baseurl }}">
 </head>
@@ -12,13 +14,12 @@ permalink: /phenotype-browser/
 
   <!-- Header bar -->
   <div class="pheno-topbar">
-    <h1 class="pheno-topbar-title">Phenotype Browser</h1>
     <p class="pheno-topbar-subtitle">Phenotype-based data explorer for CNVPathwayAtlas.</p>
     <div class="pheno-stats-inline">
-      <span class="stat-pill"><strong id="stat-locations">–</strong> Locations</span>
-      <span class="stat-pill"><strong id="stat-disorders">–</strong> Disorders</span>
-      <span class="stat-pill"><strong id="stat-phenotypes">–</strong> Phenotypes</span>
-      <span class="stat-pill"><strong id="stat-genes">–</strong> Genes</span>
+      <span class="stat-pill"><strong>{{ total_cnvs }}</strong> Locations</span>
+      <span class="stat-pill"><strong>{{ unique_disorders | size }}</strong> Disorders (Deletion/Duplication)</span>
+      <span class="stat-pill"><strong>{{ unique_phenotypes | size }}</strong> Phenotypes</span>
+      <span class="stat-pill"><strong>{{ unique_genes | size }}</strong> Genes</span>
     </div>
   </div>
 
