@@ -4,7 +4,7 @@ main:
     url: /about/
   - title: "Documentation"
     url: /documentation/
-  - title: "Explore"
+  - title: "CNVs Explorer"
     url: /cnvs-overview/
   - title: "Phenotype Browser"
     url: /phenotype-browser/
