@@ -130,11 +130,11 @@ def write_yaml_file(path: Path, yaml_dict: Dict[str, Any]) -> None:
 
 
 def main() -> None:
-    # input_dir = Path("cnv-data/data/input")
-    # latest_dir = Path("cnv-data/data/latest")
-    data_root = Path("/home/alexandra/chapter1/cnv-data/data")
-    input_dir = data_root / "input"
-    latest_dir = data_root / "latest"
+    input_dir = Path("cnv-data/data/input")
+    latest_dir = Path("cnv-data/data/latest")
+    # data_root = Path("/home/alexandra/chapter1/cnv-data/data")
+    # input_dir = data_root / "input"
+    # latest_dir = data_root / "latest"
     output_path = Path(__file__).resolve().parent.parent / "_cnvs"
     output_path.mkdir(exist_ok=True)
 
