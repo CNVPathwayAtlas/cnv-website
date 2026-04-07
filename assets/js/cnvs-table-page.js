@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    linkifyMimReferences();
+
     if ($('#gene-info-table').length) {
         $('#gene-info-table').DataTable({
             language: {
@@ -81,6 +83,47 @@ $(document).ready(function () {
         }
     });
 });
+
+function linkifyMimReferences() {
+    var descriptions = document.querySelectorAll('.cnv-description');
+
+    descriptions.forEach(function (description) {
+        var text = description.textContent;
+        var regex = /MIM #\s*(\d+)/g;
+
+        if (!regex.test(text)) {
+            return;
+        }
+
+        regex.lastIndex = 0;
+
+        var fragment = document.createDocumentFragment();
+        var lastIndex = 0;
+        var match;
+
+        while ((match = regex.exec(text)) !== null) {
+            if (match.index > lastIndex) {
+                fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+            }
+
+            var link = document.createElement('a');
+            link.href = 'https://omim.org/entry/' + match[1];
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = match[0];
+            fragment.appendChild(link);
+
+            lastIndex = regex.lastIndex;
+        }
+
+        if (lastIndex < text.length) {
+            fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+        }
+
+        description.textContent = '';
+        description.appendChild(fragment);
+    });
+}
 
 async function initPhenotypeGrouping() {
     var jsonScripts = document.querySelectorAll('script[data-phenotypes-json]');
