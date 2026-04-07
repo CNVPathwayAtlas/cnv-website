@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-18T18:23:20.161060",
+  "generated": "2026-04-07T05:09:51.138133",
   "locations": [
     {
       "id": "10q11.21-q11.23",
@@ -7,7 +7,7 @@
       "chromosome": "10",
       "start": 49390199,
       "end": 51058796,
-      "description": "10q11.21q11.23 copy number variation (CNV) syndrome is a rare genetic disorder caused by a deletion or duplication of genetic material on chromosome 10. The exact genetic location chr10:49,390,199-51,058,796 (GRCh37) was taken from Kirov et al. 2014",
+      "description": "10q11.21q11.23 copy number variation (CNV) syndrome is a rare genetic disorder caused by a deletion or duplication affecting 16 protein coding genes. ",
       "url": "/cnv/10q11-21-q11-23/",
       "gene_symbols": [
         "FRMPD2",
@@ -40,7 +40,7 @@
       "chromosome": "10",
       "start": 82045472,
       "end": 88931651,
-      "description": "10q22q23 copy number variation syndrome is a rare genetic syndrome caused by a deletion or duplication in the region 10q22q23 of chromosome 10. The exact position (chr10:82,045,472-88,931,651, GRCh37) was taken from Kirov et al. 2014. Patients usually suffer from developmental delay and psychiatric disorders as well as facial dyspmorphisms, and cardiac abnormalities.",
+      "description": "10q22q23 copy number variation syndrome is a rare genetic syndrome caused by a deletion or duplication affecting 25 protein coding genes. Patients usually suffer from developmental delay and psychiatric disorders as well as facial dyspmorphisms, and cardiac abnormalities.",
       "url": "/cnv/10q23-1-q23-2/",
       "gene_symbols": [
         "MAT1A",
@@ -83,7 +83,7 @@
       "chromosome": "11",
       "start": 43940000,
       "end": 46020000,
-      "description": "A deletion in 11p11.2 can cause the Potocki-Shaffer syndrome (MIM # 601224) which is characterised by malformations in the heart, kidney and urinary tract.",
+      "description": "A deletion in 11p11.2 can cause the Potocki-Shaffer syndrome which is characterised by malformations in the heart, kidney and urinary tract.",
       "url": "/cnv/11p11-2/",
       "gene_symbols": [
         "ALKBH3",
@@ -118,7 +118,7 @@
       "chromosome": "13",
       "start": 20977806,
       "end": 21100012,
-      "description": "Deletion or duplication of the CRYL1 gene located at chromosome 13q12 (chr13:20977806-21100012 (GRCh37)) is a risk factor for psychiatric disorders (Kirov et al. 2014).",
+      "description": "Deletion or duplication of the CRYL1 gene located at chromosome 13q12 is a risk factor for psychiatric disorders as reported by (Kirov et al., 2014).",
       "url": "/cnv/13q12-11-CRYL1/",
       "gene_symbols": [
         "CRYL1"
@@ -136,7 +136,7 @@
       "chromosome": "13",
       "start": 23555358,
       "end": 24884622,
-      "description": "Copy number variations in the region 13q12.12 (exact position: chr13:23555358-24884622 (GRCh37), numbers from Kirov et al. 2014 10.1016/j.biopsych.2013.07.022 ) are rare, pathological mutations in the human genome. It is a risk variation for neuropsychiatric diseases like schizophrenia (Kirov et al. 2014, 10.1016/j.biopsych.2013.07.022) and with the presence of SACS it harbors a gene known for causing Spastic ataxia (MIM # 270550).",
+      "description": "Copy number variations in the region 13q12.12 are rare, pathological mutations in the human genome. It is a risk variation for neuropsychiatric diseases like schizophrenia (Kirov et al., 2014), and with the presence of SACS it harbors a gene known for causing Spastic ataxia (MIM # 270550).",
       "url": "/cnv/13q12-12/",
       "gene_symbols": [
         "SGCG",
@@ -187,7 +187,6 @@
       "disorder_ids": [
         "ORPHA:739",
         "ORPHA:72",
-        "ORPHA:261183",
         "ORPHA:238446",
         "ORPHA:3306"
       ],
@@ -200,7 +199,7 @@
       "chromosome": "15",
       "start": 22805313,
       "end": 23094530,
-      "description": "The 15q11.2 deletion or duplication syndromes, also known as Burnside-Butler syndrome (BBS). This region is relatively small compared to other CNVs but it contains NIPA1 and NIPA2, two important magnesium transporters, which are active in the central nervous system. CYFIP1 is an important interactor with FMR1, which is the causative gene for fragile X syndrome. The breakpoints (chr15:22,805,313-23,094,530 GRCh37/hg19) are defined as given in Kendall et al. 2017: https://doi.org/10.1016/j.biopsych.2016.08.014.",
+      "description": "The 15q11.2 deletion or duplication in htis region involve 4 genes. The deletion is also known as Burnside-Butler syndrome (BBS) (MIM # 615656). This region contains NIPA1 and NIPA2, two important magnesium transporters, which are active in the central nervous system. CYFIP1 is an important interactor with FMR1, which is the causative gene for fragile X syndrome (MIM # 300624).",
       "url": "/cnv/15q11-2/",
       "gene_symbols": [
         "TUBGCP5",
@@ -221,7 +220,7 @@
       "chromosome": "15",
       "start": 29161368,
       "end": 32462776,
-      "description": "Prader-Willi syndrome (PWS) and Angelman syndrome (AS) are diseases that are both caused by a deletion in the same region of chromosome 15, namely 15q11-q13 (exact position chr15:22805313-28390339 (GRCh37) taken from Kirov et al. 2014). Due to methylation patterns however, different genes are responsible for the two syndromes. For this chromosomal region, also duplications are known.  A detailed description of the syndromes in this region and the molecular pathway has been published by\u00a0Ehrhart et al. (https://doi.org/10.1080/15622975.2018.1439594). ",
+      "description": "This region is mainly know for its deletion that causes Prader-Willi syndrome (PWS) and Angelman syndrome (AS). Due to methylation patterns however, different genes are responsible for the two syndromes. For this chromosomal region, also duplications are known.  A detailed description of the syndromes in this region and the molecular pathway has been published by\u00a0Ehrhart et al., 2017 . ",
       "url": "/cnv/15q13-1-q13-3/",
       "gene_symbols": [
         "APBA2",
@@ -253,7 +252,7 @@
       "chromosome": "15",
       "start": 30500000,
       "end": 32500000,
-      "description": "The major genes in this region are OTUD7A and CHRNA7 which are known influencers of neuronal development and function. For several genes in this regio there are no exact functions known yet - e.g. the GOLGA gene group or the MTMR10 which is similar to phosphatidyl-inositol 3 phosphatases but without an active catalytic centre. The breakpoints 30,500,000-32,500,000 are from \u201c15q13.3 Microdeletion\u201d, Bregje WM van Bon et al. in Gene reviews PMID: 20301295.",
+      "description": "The major genes in this region are OTUD7A and CHRNA7 which are known influencers of neuronal development and function. For several genes in this region there are no exact functions known yet - e.g. the GOLGA gene group or the MTMR10 which is similar to phosphatidyl-inositol 3 phosphatases but without an active catalytic centre.",
       "url": "/cnv/15q13-2-q13-3/",
       "gene_symbols": [
         "CHRFAM7A",
@@ -281,7 +280,7 @@
       "chromosome": "15",
       "start": 83219735,
       "end": 85722039,
-      "description": "\u00a015q25 copy number variations are rare genetic disorders that cause neuropsychiatric disorders, developmental delay and cardiac abnormalities. The exact chromosomal position for this pathway (chr15:83219735-85722039, GRCh37) was taken from Kirov et al. 2014 10.1016/j.biopsych.2013.07.022.",
+      "description": "15q25 copy number variations are rare genetic disorders that cause neuropsychiatric disorders, developmental delay and cardiac abnormalities. ",
       "url": "/cnv/15q25-2-q25-3/",
       "gene_symbols": [
         "CPEB1",
@@ -320,7 +319,7 @@
       "chromosome": "16",
       "start": 28823196,
       "end": 29046783,
-      "description": "16p11.2 distal deletion syndrome is a rare genetic disorder (copy number variation) caused by a deletion on chromosome 16 in the range 28.74-28.95-Mb. The breakpoints in this pathway are chr16:28,823,196-29,046,783 (GHCh37) from Kendall et al. 2017 https://doi.org/10.1016/j.biopsych.2016.08.014.",
+      "description": "16p11.2 distal copy number variation includes 9 protein coding genes. An important gene hoever is SH2B1 (MIM # 608937) which is associated with obesity and developmental delay Bachmann-(Gagescu et al., 2010).",
       "url": "/cnv/16p11-2-distal/",
       "gene_symbols": [
         "ATXN2L",
@@ -346,7 +345,7 @@
       "chromosome": "16",
       "start": 29592751,
       "end": 30190593,
-      "description": "16p11.2 proximal deletion syndrome is a rare genetic disorder (copy number variation) caused by a deletion in the region of chromosome 16 from 29,592,751 to 30,190,593 bp (GRCh37). The breakpoints are from: Dell\u2019Edera 2018 PMID: 29609622.",
+      "description": "16p11.2 proximal copy number variation includes 26 protein coding genes. Deletion and duplications in this region confer susceptibility to autism spectrum disorder (ASD) in up to 1% of ASD patients, (Fernandez et al., 2010). The deletions in this region are also associated with severe early-onset obesity  (Bochukova et al., 2010).",
       "url": "/cnv/16p11-2-proximal/",
       "gene_symbols": [
         "SPN",
@@ -390,7 +389,7 @@
       "chromosome": "16",
       "start": 21950135,
       "end": 22431889,
-      "description": "Copy number variations in the region 16p12.2 are rare, pathological mutations in the human genome. It is a risk variation for neuropsychiatric diseases like schizophrenia (Kirov et al. 2014,\u00a010.1016/j.biopsych.2013.07.022)",
+      "description": "Copy number variations in the region 16p12.2 are rare, pathological mutations in the human genome. It is a risk variation for neuropsychiatric diseases like schizophrenia (Kirov et al., 2014)",
       "url": "/cnv/16p12-2/",
       "gene_symbols": [
         "UQCRC2",
@@ -415,7 +414,7 @@
       "chromosome": "16",
       "start": 15511655,
       "end": 16293689,
-      "description": "Copy number variations in the region 16p13.11 are risks for neuropsychiatric diseases like schizophrenia (Kirov et al. 2014, 10.1016/j.biopsych.2013.07.022).",
+      "description": "Copy number variations in the region 16p13.11 are risks for neuropsychiatric diseases like schizophrenia (Kirov et al., 2014).",
       "url": "/cnv/16p13-11/",
       "gene_symbols": [
         "BMERB1",
@@ -435,12 +434,31 @@
       "pathway_name": "16p13.11 copy number variation syndrome "
     },
     {
+      "id": "16p13.3",
+      "locus": "16p13.3",
+      "chromosome": "16",
+      "start": 3775056,
+      "end": 3930121,
+      "description": "A microdeletion in this region, affecting CREBBP gene, causes Rubinstein-Taybi syndrome. Duplications of CREBBP in this region have also been reported. ",
+      "url": "/cnv/16p13-3/",
+      "gene_symbols": [
+        "CREBBP"
+      ],
+      "gene_count": 1,
+      "disorder_ids": [
+        "ORPHA:96078",
+        "ORPHA:353281"
+      ],
+      "wikipathways_id": "WP5367",
+      "pathway_name": "Rubinstein-Taybi syndrome 1"
+    },
+    {
       "id": "17p11.2",
       "locus": "17p11.2",
       "chromosome": "17",
       "start": 16812771,
       "end": 20211017,
-      "description": "The Smith-Magenis syndrome, is the result from a deletion of chr17:chr17:16,82-18,28, while the Potocki-Lupski syndrome is the result of a duplication of this area.",
+      "description": "This region includes 24 protein coding genes. The deletion causes Smith-Magenis syndrome, while the the duplication causes Potocki-Lupski syndrome.",
       "url": "/cnv/17p11-2/",
       "gene_symbols": [
         "TNFRSF13B",
@@ -482,7 +500,7 @@
       "chromosome": "17",
       "start": 2496949,
       "end": 2588909,
-      "description": "PAFAH1B1 located on chromosome 17p13.3 (exact position chr17:2496923-2588909, GRCh37, position from Kirov et al. 2014 10.1016/j.biopsych.2013.07.022) is responsible for the rare genetic disorder Miller-Dieker syndrome (MIM # 247200). The most common symptom is lisencephaly causing severe intellectual disability, cardiac and facial dysmorphic features. The protein is part of the type I platelet-activating factor acetylhydrolase and involved in stabilising dynein binding to microtubules.",
+      "description": "The deletion or point mutation of PAFAH1B1 (LIS1, MIM # 601545) is responsible for the rare genetic disorder Miller-Dieker syndrome (MIM # 247200). The most common symptom is lisencephaly causing severe intellectual disability, cardiac and facial dysmorphic features. The protein is part of the type I platelet-activating factor acetylhydrolase and involved in stabilising dynein binding to microtubules.",
       "url": "/cnv/17p13-3-PAFAH1B1/",
       "gene_symbols": [
         "PAFAH1B1"
@@ -501,7 +519,7 @@
       "chromosome": "17",
       "start": 1247834,
       "end": 1303556,
-      "description": "The 17p13.3 deletion or duplication ranging from chr17:1250000 to chr17:1300000, affects YWHAE gene. The YWHAE gene plays a role in a lot of different processes and is closely related to many diseases.",
+      "description": "The 17p13.3 deletion or duplication affects YWHAE (MIM # 605066) gene. YWHAE plays a role in a lot of different processes and is closely related to many diseases.",
       "url": "/cnv/17p13-3-YWHAE/",
       "gene_symbols": [
         "YWHAE"
@@ -521,7 +539,7 @@
       "chromosome": "17",
       "start": 29100000,
       "end": 30280000,
-      "description": "The NF1 deletion and NF1 duplication, ranging from chr17: 29,100,000 to chr17: 30,280,000 can result in a loss of up to 14 protein coding genes, including NF1.",
+      "description": "The NF1 deletion and duplication can result in a loss of up to 14 protein coding genes, including NF1 (MIM # 613113).",
       "url": "/cnv/17q11-2/",
       "gene_symbols": [
         "CRLF3",
@@ -553,7 +571,7 @@
       "chromosome": "17",
       "start": 34815904,
       "end": 36217432,
-      "description": null,
+      "description": "This region contains HNF1B (TCF2, MIM # 189907) gene with early expressions in the kidney, liver, bile ducts, thymus, genital tract, pancreas, lung, and gut. The deletion in this region causes Renal Cysts and Diabetes (RCAD) syndrome (MIM # 137920). ",
       "url": "/cnv/17q12/",
       "gene_symbols": [
         "ZNHIT3",
@@ -586,7 +604,7 @@
       "chromosome": "1",
       "start": 0,
       "end": 2500000,
-      "description": "1p36.33-p36.32 deletion or duplication syndromes are a rare genetic disorders caused by a deletion or duplication of the most distal light band of the short arm of chromosome 1.",
+      "description": "1p36.33-p36.32 deletion or duplication syndromes are rare genetic disorders caused by a deletion or duplication of the most distal light band of the short arm of chromosome 1. It affects around 60 protein coding genes.",
       "url": "/cnv/1p36-33-p36-32/",
       "gene_symbols": [
         "OR4F5",
@@ -690,7 +708,7 @@
       "chromosome": "1",
       "start": 145394955,
       "end": 145807817,
-      "description": "The TAR syndrome (Thrombocytopenia with Absent Radius) is a rare genetic disorder caused by a deletion on the chromosome 1 (GRCh37: chr1:145,394,955-145,807,817 according to Kirov et al. 2014 10.1016/j.biopsych.2013.07.022). The most notable symptoms are the absence of the radius bone, reduced platelet count and cardiac defects. Additionally, patients have an increased susceptibility for psychiatric disorders.",
+      "description": "The deletion in this region is known as TAR syndrome (Thrombocytopenia with Absent Radius). A landmark gene for this region is RBM8A (MIM # 605313).",
       "url": "/cnv/1q21-1/",
       "gene_symbols": [
         "HJV",
@@ -716,6 +734,43 @@
       ],
       "wikipathways_id": "WP5362",
       "pathway_name": "TAR syndrome"
+    },
+    {
+      "id": "22q11.2-distal-type- I,D-E,D-F",
+      "locus": "22q11.2",
+      "chromosome": "22",
+      "start": 21920127,
+      "end": 23653646,
+      "description": null,
+      "url": "/cnv/22q11-2-distal-type-I,D-E,D-F/",
+      "gene_symbols": [
+        "UBE2L3",
+        "YDJC",
+        "CCDC116",
+        "SDF2L1",
+        "PPIL2",
+        "YPEL1",
+        "MAPK1",
+        "PPM1F",
+        "TOP3B",
+        "VPREB1",
+        "ZNF280B",
+        "ZNF280A",
+        "PRAME",
+        "GGTLC2",
+        "IGLL5",
+        "RSPH14",
+        "GNAZ",
+        "RAB36",
+        "BCR"
+      ],
+      "gene_count": 19,
+      "disorder_ids": [
+        "ORPHA:261330",
+        "ORPHA:261337"
+      ],
+      "wikipathways_id": "WP5546",
+      "pathway_name": "22q11.2 distal CNV"
     },
     {
       "id": "22q11.21",
@@ -782,6 +837,24 @@
       "pathway_name": "22q11.2 copy number variation syndrome"
     },
     {
+      "id": "22q13.33",
+      "locus": "22q13.33",
+      "chromosome": "22",
+      "start": 51113070,
+      "end": 51171640,
+      "description": "A deletion, or a point mutation of the SHANK3 gene causes Phelan-McDermid syndrome, while the duplications are more rare. ",
+      "url": "/cnv/22q13-33/",
+      "gene_symbols": [
+        "SHANK3"
+      ],
+      "gene_count": 1,
+      "disorder_ids": [
+        "ORPHA:48652"
+      ],
+      "wikipathways_id": "WP5566",
+      "pathway_name": "SHANK3 pathway involved in Phelan-McDermid syndrome"
+    },
+    {
       "id": "2q11.1-q11.2",
       "locus": "2q11.1-q11.2",
       "chromosome": "2",
@@ -840,18 +913,40 @@
       "id": "2q13",
       "locus": "2q13",
       "chromosome": "2",
-      "start": 111394040,
-      "end": 112012649,
-      "description": "The 2q13 copy number variation syndrome can result in the loss of up to 25 protein-coding genes. Patients with 2q13 deletions and duplications had abnormal head size and dysmorphic features (DOI: 10.1002/ajmg.a.37269). 2q13 duplications also caused developmental delay. The abnormal head size in 2q13 could be explained by the changes in FBLN7 gene (DOI: 10.1002/ajmg.a.37269). At the same time, neuropsychiatric impairment in 2q13 may be associated with BCL2L11, ANAPC1, SLC1A1 and MERTK alterations (DOI: 10.1002/ajmg.b.32236).",
+      "start": 111490116,
+      "end": 113966973,
+      "description": "The 2q13 copy number variation syndrome can result in the loss of up to 25 protein-coding genes. Patients with 2q13 deletions and duplications had abnormal head size and dysmorphic features. The abnormal head size in 2q13 could be explained by the changes in FBLN7 gene. At the same time, neuropsychiatric impairment in 2q13 may be associated with BCL2L11, ANAPC1, SLC1A1 and MERTK alterations.",
       "url": "/cnv/2q13/",
       "gene_symbols": [
-        "BUB1",
         "ACOXL",
-        "BCL2L11"
+        "BCL2L11",
+        "ANAPC1",
+        "MERTK",
+        "TMEM87B",
+        "FBLN7",
+        "ZC3H8",
+        "ZC3H6",
+        "RGPD8",
+        "TTL",
+        "POLR1B",
+        "CHCHD5",
+        "SLC20A1",
+        "NT5DC4",
+        "CKAP2L",
+        "IL1A",
+        "IL1B",
+        "IL36",
+        "IL36G",
+        "IL36A",
+        "IL36B",
+        "IL36RN",
+        "IL1F10",
+        "IL1RN",
+        "PSD4"
       ],
-      "gene_count": 3,
+      "gene_count": 25,
       "disorder_ids": [
-        "LOC:2q13"
+        "ORPHA:684742"
       ],
       "wikipathways_id": "WP5222",
       "pathway_name": "2q13 copy number variation syndrome"
@@ -862,7 +957,7 @@
       "chromosome": "2",
       "start": 131481308,
       "end": 131930677,
-      "description": "The 2q21.1 copy number variation syndrome can result in the loss of up to 9 protein-coding genes. Deletions and duplications in 2q21.1 were reported to be connected to intellectual disability, hyperactivity, and aggressive behavior (DOI: 10.1002/mgg3.1135,DOI: 10.1002/ajmg.a.36357). The clinical picture was explained by alterations in five genes important for neurological development, namely GPR148, FAM123C, ARHGEF4, FAM168B and PLEKHB2 (DOI: 10.1002/ajmg.a.36357,DOI: 10.1093/hmg/dds166). Analogically, changes in tubulin genes in 2q21.1 were linked to Motor Timing in ADHD (DOI: 10.1016/j.ajhg.2008.06.006). For this rare disorder, two different genomic locations are known according to Kirov et al. 2014, and Gimelli et al. 2014 with a larger deletion.",
+      "description": "The 2q21.1 copy number variation syndrome can result in the loss of up to 9 protein-coding genes. Deletions and duplications in 2q21.1 were reported to be connected to intellectual disability, hyperactivity, and aggressive behavior (Almuzzaini et al., 2020; Gimelli et al., 2014). The clinical picture was explained by alterations in five genes important for neurological development, namely GPR148, FAM123C, ARHGEF4, FAM168B and PLEKHB2 (Gimelli et al., 2014; Dharmadhikari et al., 2012). Analogically, changes in tubulin genes in 2q21.1 were linked to Motor Timing in ADHD (Rommelse et al., 2008). For this rare disorder, two different genomic locations are known according to Kirov et al. 2014, and Gimelli et al. 2014 with a larger deletion.",
       "url": "/cnv/2q21-1/",
       "gene_symbols": [
         "GPR148",
@@ -884,7 +979,7 @@
       "chromosome": "2",
       "start": 239716679,
       "end": 243199373,
-      "description": "The 2q37 copy number variation syndrome can result in the loss of up to 78 protein-coding genes. Patients with 2q37 CNV syndrome have intellectual disability, facial dysmorphism and skeletal and digit malformations (DOI: 10.1186/1755-8794-7-19, DOI: 10.1016/j.gene.2013.06.056). Research linked changes in HDAC4 gene with obesity of 2q37 patients (DOI: 10.1016/j.gene.2013.06.056). Chromosomal locations are from Kirov et al. 2014 (chr2:239,716,679-243,199,373) and the larger one from Sakai et al. 2014 (chr2:234,275,216-243,199,373).",
+      "description": "The 2q37 copy number variation syndrome can result in the loss of up to 78 protein-coding genes. Patients with 2q37 CNV syndrome have intellectual disability, facial dysmorphism and skeletal and digit malformations (Sakai et al., 2014; L\u00f3pez-Uriarte et al., 2013). Research linked changes in HDAC4 gene with obesity of 2q37 patients (L\u00f3pez-Uriarte et al., 2013). Chromosomal locations are from Kirov et al. 2014, and the larger one from Sakai et al. 2014.",
       "url": "/cnv/2q37-3/",
       "gene_symbols": [
         "TWIST2",
@@ -979,7 +1074,7 @@
       "chromosome": "4",
       "start": 1552030,
       "end": 2091303,
-      "description": "The Wolf-Hirschhorn syndrome is a rare genetic disorder caused by a microdeletion in the chromosomal region 4p16.3. Typical symptoms are a distinct facial morphology, intellectual disability, psychiatric disorders, seizures, and heart defects. The chromosomal position chr4:1,552,030-2,091,303 (GCRh37) was taken from Kirov et al. 2014 (10.1016/j.biopsych.2013.07.022).",
+      "description": "Microdeletion in this region causes Wolf-Hirschhorn syndrome. Typical symptoms are a distinct facial morphology, intellectual disability, psychiatric disorders, seizures, and heart defects.",
       "url": "/cnv/4p16-3/",
       "gene_symbols": [
         "FAM53A",
@@ -1061,7 +1156,7 @@
       "chromosome": "7",
       "start": 75138294,
       "end": 76064412,
-      "description": "Deletion or duplication of the region chr7:75,138,294-76,064,412, also known as 7q11.23 distal (OMIM # 613729), are rare genetic disorders and can cause different neurological and neuropsychiatric symptoms. Patients are often observed with epilepsy and neurodevelopmental delay.",
+      "description": "Deletion or duplication in this region are rare genetic disorders and can cause different neurological and neuropsychiatric symptoms. Patients are often observed with epilepsy and neurodevelopmental delay.",
       "url": "/cnv/7q11-23-distal/",
       "gene_symbols": [
         "RHBDD2",
@@ -1089,7 +1184,7 @@
       "chromosome": "7",
       "start": 72744454,
       "end": 74142513,
-      "description": "7q11.23 copy number variation syndrome (MIM 609757, also called Williams-Beuren region duplication syndrome, WBS duplication syndrome, Chromosome 7q11.23 duplication syndrome, or Somerville-van-der-Aa syndrome) is a copy number variation syndrome with a duplication in the region chr7:72,744,454-74,142,513 (GRCh37/hg19). The breakpoint is defined from Carolyn B Mervis 7q11.23 Duplication Syndrome in Gene Reviews PMID: 20301295.",
+      "description": "7q11.23 copy number variation syndrome (MIM 609757, also called Williams-Beuren region duplication syndrome, WBS duplication syndrome, Chromosome 7q11.23 duplication syndrome, or Somerville-van-der-Aa syndrome) is a duplication syndrome. The breakpoints are defined from Mervis et al., 2015.",
       "url": "/cnv/7q11-23/",
       "gene_symbols": [
         "FKBP6",
@@ -1130,7 +1225,7 @@
       "chromosome": "8",
       "start": 8098990,
       "end": 11872558,
-      "description": "Patients with a deletion often suffer from diaphragmatic hernia (CDH) and cardiac defects.",
+      "description": "Deletion and duplications in this region involve 23 protein coding genes. Patients with a deletion often suffer from diaphragmatic hernia (CDH) and cardiac defects.",
       "url": "/cnv/8p23-1/",
       "gene_symbols": [
         "CLDN23",
@@ -1171,7 +1266,7 @@
       "chromosome": "8",
       "start": 53535019,
       "end": 53626995,
-      "description": "RB1CC1, located on chromosome 8q11.23, is mainly involved in autophagy regulation. A loss of function or mutation in the gene can result in increased risk for schizophrenia (Degenhardt et al. 2013).",
+      "description": "RB1CC1, located on chromosome 8q11.23, is mainly involved in autophagy regulation (MIM # 606837). A loss of function or mutation in the gene can result in increased risk for schizophrenia (Degenhardt et al., 2013; Errichiello et al., 2020).",
       "url": "/cnv/8q11-23/",
       "gene_symbols": [
         "RB1CC1"
@@ -1262,17 +1357,7 @@
       "location_id": "15q11.2-q13.1",
       "cause": "deletion",
       "prevalence": "1-9 / 100 000",
-      "definition": "A neurogenetic disorder characterized by severe intellectual deficit and distinct facial dysmorphic features.",
-      "no_orphacode": false
-    },
-    "ORPHA:261183": {
-      "id": "ORPHA:261183",
-      "orphacode": "261183",
-      "name": "15q11.2 microdeletion syndrome (ORPHA:261183)",
-      "location_id": "15q11.2",
-      "cause": "microdeletion",
-      "prevalence": "Unknown",
-      "definition": "15q11.2 microdeletion syndrome is a rare partial autosomal monosomy with a variable phenotypic expression and reduced penetrance associated with an increased susceptibility to neuropsychiatric or neurodevelopmental disorders including delayed psychomotor development, speech delay, autism spectrum disorder, attention deficit-hyperactivity disorder, obsessive-compulsive disorder, epilepsy or seizures. It may also include mild non-specific dysmorphic features (such as dysplastic ears, broad forehead, hypertelorism), cleft palate, neurological and neuroimaging abnormalities (such as ataxia and muscular hypotonia).",
+      "definition": "A rare genetic neurodevelopmental disorder characterized by moderate to severe intellectual disability, microcephaly, seizures, ataxic gait and distinct abnormal facial shape.",
       "no_orphacode": false
     },
     "ORPHA:238446": {
@@ -1295,13 +1380,23 @@
       "definition": "A rare, complex chromosomal duplication/inversion in the region 15q11.2-q13.1 characterized by early central hypotonia, global developmental delay and intellectual deficit, autistic behavior, and seizures.",
       "no_orphacode": false
     },
+    "ORPHA:261183": {
+      "id": "ORPHA:261183",
+      "orphacode": "261183",
+      "name": "15q11.2 microdeletion syndrome (ORPHA:261183)",
+      "location_id": "15q11.2",
+      "cause": "microdeletion",
+      "prevalence": "<1 / 1 000 000",
+      "definition": "15q11.2 microdeletion syndrome is a rare partial autosomal monosomy with a variable phenotypic expression and reduced penetrance associated with an increased susceptibility to neuropsychiatric or neurodevelopmental disorders including delayed psychomotor development, speech delay, autism spectrum disorder, attention deficit-hyperactivity disorder, obsessive-compulsive disorder, epilepsy or seizures. It may also include mild non-specific dysmorphic features (such as dysplastic ears, broad forehead, hypertelorism), cleft palate, neurological and neuroimaging abnormalities (such as ataxia and muscular hypotonia).",
+      "no_orphacode": false
+    },
     "ORPHA:199318": {
       "id": "ORPHA:199318",
       "orphacode": "199318",
       "name": "15q13.2-q13.3 microdeletion syndrome (ORPHA:199318)",
       "location_id": "15q13.2-q13.3",
       "cause": "microdeletion",
-      "prevalence": "Unknown",
+      "prevalence": "1-9 / 100 000",
       "definition": "A rare chromosomal anomaly characterized by a high risk for the occurrence of a wide range of neurodevelopmental anomalies including global developmental delay (DD), intellectual disability (ID), and behavioral issues of varying severity. 15q13.3 microdeletion does not lead to a clinically specific phenotype.",
       "no_orphacode": false
     },
@@ -1331,7 +1426,7 @@
       "name": "16p11.2-proximal microduplication syndrome (ORPHA:370079)",
       "location_id": "16p11.2-proximal",
       "cause": "microduplication",
-      "prevalence": "Unknown",
+      "prevalence": "<1 / 1 000 000",
       "definition": "Proximal 16p11.2 microduplication syndrome is a rare chromosomal anomaly syndrome resulting from a partial duplication of the short arm of chromosome 16 characterized by developmental delay and intellectual disability of a highly variable degree, autism spectrum, obsessive-compulsive, attention deficit hyperactivity disorder, speech articulation abnormalities, muscular hypotonia, tremor, hyper- or hyporeflexia, seizures, microcephaly, neuroimaging abnormalities, decreased body mass index and schizophrenia or bipolar disorder later on in life.",
       "no_orphacode": false
     },
@@ -1362,7 +1457,7 @@
       "location_id": "16p13.11",
       "cause": "microdeletion",
       "prevalence": "1-9 / 100 000",
-      "definition": "16p13.11 microdeletion syndrome is a recently described syndrome characterized by developmental delay, microcephaly, epilepsy, short stature, facial dysmorphism and behavioral problems.",
+      "definition": "A rare partial deletion of the short arm of chromosome 16 syndrome characterized by global developmental, motor and language delay, epilepsy, neuropsychiatric and behavioral problems, microcephaly, short stature, dysmorphic features (that may include brachycephaly, hypertelorism, epicanthus, down-slanting palpebral fissures, short nose, low-set ears, cleft palate, wide mouth and thin upper lip) and congenital heart defects. Additional clinical features may include gastroesophageal reflux, pectus excavatum, torticollis, ligamentous hyperlaxity, obesity, body temperature instability, syndactyly, cryptorchidism, micropenis, and hypospadias.",
       "no_orphacode": false
     },
     "ORPHA:261243": {
@@ -1371,8 +1466,28 @@
       "name": "16p13.11 microduplication syndrome (ORPHA:261243)",
       "location_id": "16p13.11",
       "cause": "microduplication",
-      "prevalence": "Unknown",
+      "prevalence": "<1 / 1 000 000",
       "definition": "16p13.11 microduplication syndrome is a recently described syndrome associated with variable clinical features including behavioral abnormalities, developmental delay, congenital heart defects and skeletal anomalies.",
+      "no_orphacode": false
+    },
+    "ORPHA:96078": {
+      "id": "ORPHA:96078",
+      "orphacode": "96078",
+      "name": "16p13.3 microduplication syndrome (ORPHA:96078)",
+      "location_id": "16p13.3",
+      "cause": "microduplication",
+      "prevalence": "<1 / 1 000 000",
+      "definition": "16p13.3 microduplication syndrome is a rare chromosomal anomaly syndrome resulting from a partial duplication of the short arm of chromosome 16 and manifesting with a variable phenotype which is mostly characterized by: mild to moderate intellectual deficit and developmental delay (particularly speech), normal growth, short, proximally implanted thumbs and other hand and feet malformations (such as camptodactyly, syndactyly, club feet), mild arthrogryposis and characteristic facies (upslanting, narrow palpebral fissures, hypertelorism, mid face hypoplasia, bulbous nasal tip and low set ears). Other reported manifestations include cryptorchidism, inguinal hernia and behavioral problems.",
+      "no_orphacode": false
+    },
+    "ORPHA:353281": {
+      "id": "ORPHA:353281",
+      "orphacode": "353281",
+      "name": "16p13.3 microdeletion syndrome (ORPHA:353281)",
+      "location_id": "16p13.3",
+      "cause": "microdeletion",
+      "prevalence": "Unknown",
+      "definition": "",
       "no_orphacode": false
     },
     "ORPHA:819": {
@@ -1402,7 +1517,7 @@
       "location_id": "17p13.3-YWHAE",
       "cause": "deletion",
       "prevalence": "Unknown",
-      "definition": "Miller-Dieker Syndrome (MDS) is a contiguous gene deletion syndrome of chromosome 17p13.3, characterised by classical lissencephaly (lissencephaly type 1) and distinct facial features. Additional congenital malformations can be part of the condition.",
+      "definition": "A rare contiguous gene deletion syndrome of chromosome 17p13.3 characterized by classical lissencephaly, distinct facial dysmorphism, seizures and severe to profound intellectual disability. Additional congenital malformations can be part of the condition.",
       "no_orphacode": false
     },
     "ORPHA:217385": {
@@ -1525,6 +1640,26 @@
       "definition": "A rare congenital malformation syndrome characterized by bilateral absence/hypoplasia of the radii with presence of both thumbs, and thrombocytopenia. Additional manifestations can include cow's milk allergy, anomalies of the lower limbs, heart and genitourinary system.",
       "no_orphacode": false
     },
+    "ORPHA:261330": {
+      "id": "ORPHA:261330",
+      "orphacode": "261330",
+      "name": "22q11.2-distal-type- I,D-E,D-F microdeletion syndrome (ORPHA:261330)",
+      "location_id": "22q11.2-distal-type- I,D-E,D-F",
+      "cause": "microdeletion",
+      "prevalence": "Unknown",
+      "definition": "A rare chromosomal anomaly syndrome, resulting from the partial deletion of the long arm of chromosome 22, outside the DiGeorge critical region. The phenotype is characterized by prematurity, pre- and post-natal growth retardation, developmental delay (particularly speech), mild intellectual disability, variable cardiac defects, and minor skeletal anomalies (such as clinodactyly). Dysmorphic features present in half of the individuals include microcephaly, arched eyebrows, deep set eyes, narrow upslanting palpebral fissures, ear abnormalities (low-set ears, tags and pits), hypoplastic alae nasi, smooth philtrum, down-turned mouth, thin upper lip, retro/micrognatia and pointed chin. For certain very distal deletions including the <i>SMARCB1</i> gene, there is a risk of developing malignant rhabdoid tumours. Most deletions are <i>de novo </i>.",
+      "no_orphacode": false
+    },
+    "ORPHA:261337": {
+      "id": "ORPHA:261337",
+      "orphacode": "261337",
+      "name": "22q11.2-distal-type- I,D-E,D-F microduplication syndrome (ORPHA:261337)",
+      "location_id": "22q11.2-distal-type- I,D-E,D-F",
+      "cause": "microduplication",
+      "prevalence": "Unknown",
+      "definition": "A rare chromosomal anomaly syndrome, resulting from the partial duplication of the long arm of chromosome 22, with a highly variable phenotype principally characterized by developmental delay, intellectual disability, behavioral anomalies, and non-specific craniofacial dysmorphism. Congenital heart malformations, visual and hearing impairment, urogenital abnormalities, and seizures have also been reported. Penetrance is incomplete. In 70% of cases, the duplication is inherited from as asymptomatic parent.",
+      "no_orphacode": false
+    },
     "ORPHA:567": {
       "id": "ORPHA:567",
       "orphacode": "567",
@@ -1543,6 +1678,16 @@
       "cause": "duplication",
       "prevalence": "Unknown",
       "definition": "A rare chromosomal anomaly characterized by an extremely variable clinical phenotype and may include heart defects, urogenital abnormalities, velopharyngeal insufficiency with or without cleft palate, and ranging from multiple defects to mild learning difficulties with some individuals being essentially normal.",
+      "no_orphacode": false
+    },
+    "ORPHA:48652": {
+      "id": "ORPHA:48652",
+      "orphacode": "48652",
+      "name": "22q13.33 deletion syndrome (ORPHA:48652)",
+      "location_id": "22q13.33",
+      "cause": "deletion",
+      "prevalence": "Unknown",
+      "definition": "A rare genetic neurodevelopmental disorder characterized by neonatal hypotonia, global developmental delay, normal to accelerated growth, absent to severely delayed speech, and minor dysmorphic features.",
       "no_orphacode": false
     },
     "LOC:2q11.1-q11.2": {
@@ -1565,15 +1710,15 @@
       "definition": "",
       "no_orphacode": true
     },
-    "LOC:2q13": {
-      "id": "LOC:2q13",
-      "orphacode": "",
-      "name": "2q13 CNV (no ORPHA code)",
+    "ORPHA:684742": {
+      "id": "ORPHA:684742",
+      "orphacode": "684742",
+      "name": "2q13 microdeletion syndrome (ORPHA:684742)",
       "location_id": "2q13",
-      "cause": "",
-      "prevalence": "",
+      "cause": "microdeletion",
+      "prevalence": "Unknown",
       "definition": "",
-      "no_orphacode": true
+      "no_orphacode": false
     },
     "LOC:2q21.1": {
       "id": "LOC:2q21.1",
@@ -1671,7 +1816,7 @@
       "name": "7q11.23 microduplication syndrome (ORPHA:96121)",
       "location_id": "7q11.23",
       "cause": "microduplication",
-      "prevalence": "Unknown",
+      "prevalence": "1-9 / 100 000",
       "definition": "7q11.23 microduplication syndrome is a rare chromosomal anomaly syndrome resulting from the partial duplication of the long arm of chromosome 7 characterized by a highly variable phenotype that typically manifests with mild to moderate intellectual disability (patients could be in the normal range), speech disorders (particularly of expressive language), and distinctive craniofacial features (brachycephaly, broad forehead, straight eyebows, broad nasal tip, short philtrum, thin upper lip and facial asymmetry). Hypotonia, developmental coordination disorders, behavioral problems (such as anxiety, ADHD and oppositional disorders) and various congenital anomalies, such as heart defects, diaphragmatic hernia, renal malformations and cryptorchidism, are frequently presented. Neurological abnormalities (visible on MRI) have been reported.",
       "no_orphacode": false
     },
@@ -1751,6 +1896,16 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "occasional",
           "cause": "microdeletion"
@@ -1796,11 +1951,6 @@
           "cause": "deletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
           "disorder_id": "ORPHA:238446",
           "frequency": "very_frequent",
           "cause": "microduplication"
@@ -1839,6 +1989,11 @@
           "disorder_id": "ORPHA:261243",
           "frequency": "frequent",
           "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:819",
@@ -1881,6 +2036,16 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "occasional",
           "cause": "deletion"
@@ -1889,6 +2054,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "frequent",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:1001",
@@ -1944,11 +2114,6 @@
           "disorder_id": "ORPHA:52022",
           "frequency": "very_frequent",
           "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:238446",
@@ -2046,6 +2211,16 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "frequent",
           "cause": "deletion"
@@ -2054,6 +2229,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "frequent",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:1001",
@@ -2111,6 +2291,16 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:251076",
           "frequency": "frequent",
           "cause": "duplication"
@@ -2158,6 +2348,11 @@
         {
           "disorder_id": "ORPHA:250994",
           "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
           "cause": "microduplication"
         },
         {
@@ -2218,6 +2413,11 @@
         {
           "disorder_id": "ORPHA:217385",
           "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
           "cause": "microduplication"
         },
         {
@@ -2291,11 +2491,6 @@
           "cause": "deletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
           "disorder_id": "ORPHA:3306",
           "frequency": "occasional",
           "cause": "inverted duplication"
@@ -2344,6 +2539,16 @@
           "disorder_id": "ORPHA:250989",
           "frequency": "frequent",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:567",
@@ -2451,6 +2656,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -2459,6 +2669,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "frequent",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:1627",
@@ -2576,6 +2791,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "occasional",
           "cause": "deletion"
@@ -2621,6 +2841,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -2657,11 +2882,6 @@
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:276413",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
@@ -2781,6 +3001,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "frequent",
           "cause": "deletion"
@@ -2809,11 +3034,6 @@
           "disorder_id": "ORPHA:72",
           "frequency": "very_frequent",
           "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:238446",
@@ -2852,6 +3072,11 @@
         },
         {
           "disorder_id": "ORPHA:261197",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
@@ -2906,6 +3131,16 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "occasional",
           "cause": "deletion"
@@ -2914,6 +3149,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "occasional",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:1001",
@@ -2991,6 +3231,11 @@
           "cause": "triplication"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:1713",
           "frequency": "very_frequent",
           "cause": "microduplication"
@@ -3031,6 +3276,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:1606",
           "frequency": "occasional",
           "cause": "deletion"
@@ -3039,6 +3289,11 @@
           "disorder_id": "ORPHA:250989",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:567",
@@ -3084,6 +3339,11 @@
           "disorder_id": "ORPHA:276413",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         }
       ]
     },
@@ -3146,6 +3406,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -3161,6 +3426,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:254351",
           "frequency": "occasional",
           "cause": "distal microdeletion"
@@ -3169,56 +3439,6 @@
           "disorder_id": "ORPHA:261102",
           "frequency": "occasional",
           "cause": "distal microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0005692": {
-      "label": "Joint hyperflexibility",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:276413",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:238446",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:238446",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:261243",
-          "frequency": "frequent",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:250989",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:1001",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:65286",
-          "frequency": "occasional",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:904",
@@ -3254,11 +3474,6 @@
           "disorder_id": "ORPHA:739",
           "frequency": "frequent",
           "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:238446",
@@ -3322,6 +3537,16 @@
         },
         {
           "disorder_id": "ORPHA:250994",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
           "frequency": "occasional",
           "cause": "microduplication"
         },
@@ -3397,6 +3622,76 @@
         }
       ]
     },
+    "HP:0001382": {
+      "label": "Joint hypermobility",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:276413",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:238446",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:3306",
+          "frequency": "very_frequent",
+          "cause": "inverted duplication"
+        },
+        {
+          "disorder_id": "ORPHA:238446",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261243",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:250989",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:1001",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:65286",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
     "HP:0000490": {
       "label": "Deeply set eye",
       "disorder_entries": [
@@ -3441,6 +3736,21 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -3469,6 +3779,11 @@
           "disorder_id": "ORPHA:276422",
           "frequency": "frequent",
           "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:1606",
@@ -3566,6 +3881,11 @@
           "cause": "triplication"
         },
         {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:251071",
           "frequency": "occasional",
           "cause": "microdeletion"
@@ -3579,11 +3899,6 @@
           "disorder_id": "ORPHA:276422",
           "frequency": "frequent",
           "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:261183",
@@ -3614,6 +3929,11 @@
           "disorder_id": "ORPHA:3320",
           "frequency": "frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:96121",
@@ -3691,7 +4011,17 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
           "frequency": "occasional",
           "cause": "deletion"
         },
@@ -3946,6 +4276,11 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "occasional",
           "cause": "deletion"
@@ -3986,6 +4321,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -4009,6 +4349,11 @@
           "disorder_id": "ORPHA:52022",
           "frequency": "very_frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:1001",
@@ -4099,6 +4444,11 @@
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:567",
@@ -4286,6 +4636,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:261265",
           "frequency": "occasional",
           "cause": "microdeletion"
@@ -4302,6 +4657,11 @@
         },
         {
           "disorder_id": "ORPHA:250994",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
           "frequency": "occasional",
           "cause": "microduplication"
         },
@@ -4441,6 +4801,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "very_frequent",
           "cause": "microdeletion"
@@ -4472,6 +4837,11 @@
         },
         {
           "disorder_id": "ORPHA:250994",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
           "frequency": "occasional",
           "cause": "microduplication"
         },
@@ -4531,11 +4901,6 @@
           "cause": "microdeletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
           "disorder_id": "ORPHA:370079",
           "frequency": "very_frequent",
           "cause": "microduplication"
@@ -4571,6 +4936,11 @@
           "cause": "inverted duplication"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:531",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -4579,6 +4949,11 @@
           "disorder_id": "ORPHA:531",
           "frequency": "very_frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:1727",
@@ -4656,6 +5031,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -4688,6 +5068,11 @@
         {
           "disorder_id": "ORPHA:250989",
           "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
           "cause": "microdeletion"
         },
         {
@@ -4861,6 +5246,11 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "frequent",
           "cause": "deletion"
@@ -4894,6 +5284,11 @@
           "disorder_id": "ORPHA:739",
           "frequency": "frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
         }
       ]
     },
@@ -4923,6 +5318,11 @@
         {
           "disorder_id": "ORPHA:739",
           "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
           "cause": "deletion"
         }
       ]
@@ -4973,7 +5373,7 @@
       ]
     },
     "HP:0010829": {
-      "label": "Impaired temperature sensation",
+      "label": "Impaired temperature sensition",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:739",
@@ -5054,11 +5454,6 @@
           "disorder_id": "ORPHA:739",
           "frequency": "frequent",
           "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:261183",
@@ -5154,6 +5549,11 @@
           "disorder_id": "ORPHA:485405",
           "frequency": "occasional",
           "cause": "triplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         }
       ]
     },
@@ -5201,6 +5601,16 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:65286",
           "frequency": "occasional",
           "cause": "microdeletion"
@@ -5236,13 +5646,13 @@
           "cause": "microdeletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
+          "disorder_id": "ORPHA:261197",
+          "frequency": "very_frequent",
           "cause": "microdeletion"
         },
         {
-          "disorder_id": "ORPHA:261197",
-          "frequency": "very_frequent",
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
           "cause": "microdeletion"
         },
         {
@@ -5291,11 +5701,6 @@
           "cause": "deletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
           "disorder_id": "ORPHA:238446",
           "frequency": "very_frequent",
           "cause": "microduplication"
@@ -5331,6 +5736,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "very_frequent",
           "cause": "microdeletion"
@@ -5354,6 +5764,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "frequent",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:65286",
@@ -5636,11 +6051,6 @@
           "cause": "deletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
           "disorder_id": "ORPHA:3306",
           "frequency": "occasional",
           "cause": "inverted duplication"
@@ -5653,6 +6063,11 @@
         {
           "disorder_id": "ORPHA:261197",
           "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "very_frequent",
           "cause": "microdeletion"
         },
         {
@@ -5741,6 +6156,16 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "occasional",
           "cause": "deletion"
@@ -5796,11 +6221,6 @@
           "cause": "deletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
           "disorder_id": "ORPHA:3306",
           "frequency": "very_frequent",
           "cause": "inverted duplication"
@@ -5829,6 +6249,11 @@
           "disorder_id": "ORPHA:97685",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:261102",
@@ -5926,6 +6351,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -5947,6 +6377,11 @@
         },
         {
           "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
           "frequency": "occasional",
           "cause": "deletion"
         },
@@ -6126,6 +6561,16 @@
           "cause": "triplication"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:96121",
           "frequency": "frequent",
           "cause": "microduplication"
@@ -6139,11 +6584,6 @@
           "disorder_id": "ORPHA:72",
           "frequency": "very_frequent",
           "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:238446",
@@ -6281,6 +6721,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -6329,6 +6774,11 @@
           "disorder_id": "ORPHA:250989",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:1001",
@@ -6406,12 +6856,12 @@
           "cause": "microdeletion"
         },
         {
-          "disorder_id": "ORPHA:261183",
+          "disorder_id": "ORPHA:261236",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
         {
-          "disorder_id": "ORPHA:261236",
+          "disorder_id": "ORPHA:353281",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
@@ -6491,6 +6941,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "very_frequent",
           "cause": "microdeletion"
@@ -6502,6 +6957,11 @@
         },
         {
           "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
           "frequency": "occasional",
           "cause": "deletion"
         },
@@ -6539,6 +6999,11 @@
           "disorder_id": "ORPHA:72",
           "frequency": "frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:819",
@@ -6618,7 +7083,7 @@
       ]
     },
     "HP:0008947": {
-      "label": "Infantile muscular hypotonia",
+      "label": "Floppy infant",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:72",
@@ -6679,6 +7144,11 @@
           "disorder_id": "ORPHA:261265",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         }
       ]
     },
@@ -6704,6 +7174,11 @@
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         }
       ]
     },
@@ -6724,6 +7199,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "occasional",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         }
       ]
     },
@@ -6806,6 +7286,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:65286",
           "frequency": "occasional",
           "cause": "microdeletion"
@@ -6849,6 +7334,11 @@
           "disorder_id": "ORPHA:72",
           "frequency": "occasional",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:1606",
@@ -6997,228 +7487,8 @@
         }
       ]
     },
-    "HP:0000174": {
-      "label": "Abnormal palate morphology",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0000377": {
-      "label": "Abnormal pinna morphology",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0002354": {
-      "label": "Memory impairment",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:97685",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0006891": {
-      "label": "Thick cerebral cortex",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0010522": {
-      "label": "Dyslexia",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0000736": {
-      "label": "Short attention span",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:97685",
-          "frequency": "very_frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0001627": {
-      "label": "Abnormal heart morphology",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261197",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:485405",
-          "frequency": "frequent",
-          "cause": "triplication"
-        },
-        {
-          "disorder_id": "ORPHA:819",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:97685",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:1627",
-          "frequency": "very_frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0002172": {
-      "label": "Postural instability",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0002370": {
-      "label": "Poor coordination",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0100753": {
-      "label": "Schizophrenia",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261183",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:199318",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:370079",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:261236",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261243",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:250989",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:250994",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0000722": {
-      "label": "Obsessive-compulsive behavior",
+      "label": "Compulsive behaviors",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:238446",
@@ -7237,6 +7507,16 @@
         },
         {
           "disorder_id": "ORPHA:261236",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
@@ -7336,6 +7616,16 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -7412,21 +7702,6 @@
         }
       ]
     },
-    "HP:0001382": {
-      "label": "Joint hypermobility",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:3306",
-          "frequency": "very_frequent",
-          "cause": "inverted duplication"
-        },
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        }
-      ]
-    },
     "HP:0000733": {
       "label": "Abnormal repetitive mannerisms",
       "disorder_entries": [
@@ -7438,6 +7713,11 @@
         {
           "disorder_id": "ORPHA:261197",
           "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
           "cause": "microdeletion"
         },
         {
@@ -7527,53 +7807,8 @@
         }
       ]
     },
-    "HP:0000218": {
-      "label": "High palate",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:3306",
-          "frequency": "occasional",
-          "cause": "inverted duplication"
-        },
-        {
-          "disorder_id": "ORPHA:217385",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:217385",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:250989",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:65286",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:251038",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "frequent",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:251071",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0000368": {
-      "label": "Low-set, posteriorly rotated ears",
+    "HP:0000358": {
+      "label": "Posteriorly rotated ears",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:3306",
@@ -7604,6 +7839,56 @@
           "disorder_id": "ORPHA:904",
           "frequency": "very_frequent",
           "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000218": {
+      "label": "High palate",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:3306",
+          "frequency": "occasional",
+          "cause": "inverted duplication"
+        },
+        {
+          "disorder_id": "ORPHA:217385",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:217385",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:250989",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:65286",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:251038",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:251071",
+          "frequency": "frequent",
+          "cause": "microdeletion"
         }
       ]
     },
@@ -7682,6 +7967,186 @@
         }
       ]
     },
+    "HP:0000174": {
+      "label": "Abnormal palate morphology",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000377": {
+      "label": "Abnormal pinna morphology",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:251071",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002354": {
+      "label": "Memory impairment",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:97685",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0006891": {
+      "label": "Thick cerebral cortex",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0010522": {
+      "label": "Dyslexia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000736": {
+      "label": "Short attention span",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:97685",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0001627": {
+      "label": "Abnormal heart morphology",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261197",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:485405",
+          "frequency": "frequent",
+          "cause": "triplication"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:819",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:97685",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:1627",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0002172": {
+      "label": "Postural instability",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002370": {
+      "label": "Poor coordination",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0100753": {
+      "label": "Schizophrenia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261183",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:199318",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:370079",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261236",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261243",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:250989",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:250994",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
     "HP:0000400": {
       "label": "Macrotia",
       "disorder_entries": [
@@ -7689,6 +8154,11 @@
           "disorder_id": "ORPHA:199318",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:65286",
@@ -7709,6 +8179,11 @@
           "disorder_id": "ORPHA:199318",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:904",
@@ -7791,6 +8266,11 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "occasional",
           "cause": "deletion"
@@ -7844,6 +8324,11 @@
           "disorder_id": "ORPHA:261222",
           "frequency": "very_frequent",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
+          "cause": "deletion"
         }
       ]
     },
@@ -7856,12 +8341,22 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:250989",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
           "frequency": "occasional",
           "cause": "deletion"
         },
@@ -8041,6 +8536,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:96121",
           "frequency": "frequent",
           "cause": "microduplication"
@@ -8059,6 +8559,16 @@
           "disorder_id": "ORPHA:261236",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:1727",
@@ -8231,6 +8741,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -8266,6 +8781,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:1606",
           "frequency": "occasional",
           "cause": "deletion"
@@ -8281,29 +8801,14 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "frequent",
           "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000735": {
-      "label": "Impaired social interactions",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261197",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:97685",
-          "frequency": "very_frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "occasional",
-          "cause": "microduplication"
         }
       ]
     },
@@ -8351,9 +8856,19 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:261272",
           "frequency": "occasional",
           "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
         },
         {
           "disorder_id": "ORPHA:567",
@@ -8492,6 +9007,31 @@
         }
       ]
     },
+    "HP:0012760": {
+      "label": "Reduced social responsiveness",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261197",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:97685",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
     "HP:0100702": {
       "label": "Arachnoid cyst",
       "disorder_entries": [
@@ -8499,6 +9039,11 @@
           "disorder_id": "ORPHA:261197",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         }
       ]
     },
@@ -8546,7 +9091,17 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
           "frequency": "frequent",
           "cause": "deletion"
         }
@@ -8569,6 +9124,11 @@
           "disorder_id": "ORPHA:250989",
           "frequency": "frequent",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:567",
@@ -8601,8 +9161,18 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "very_frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
           "cause": "deletion"
         }
       ]
@@ -8614,6 +9184,11 @@
           "disorder_id": "ORPHA:485405",
           "frequency": "frequent",
           "cause": "triplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:65286",
@@ -8644,6 +9219,11 @@
           "disorder_id": "ORPHA:485405",
           "frequency": "frequent",
           "cause": "triplication"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
         }
       ]
     },
@@ -8721,6 +9301,11 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -8734,6 +9319,11 @@
           "disorder_id": "ORPHA:485405",
           "frequency": "occasional",
           "cause": "triplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         }
       ]
     },
@@ -8763,6 +9353,11 @@
         {
           "disorder_id": "ORPHA:250989",
           "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
           "cause": "microdeletion"
         },
         {
@@ -8951,6 +9546,11 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -9044,6 +9644,11 @@
           "disorder_id": "ORPHA:250989",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         }
       ]
     },
@@ -9082,6 +9687,21 @@
         },
         {
           "disorder_id": "ORPHA:261243",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
           "frequency": "occasional",
           "cause": "microduplication"
         },
@@ -9189,6 +9809,16 @@
           "disorder_id": "ORPHA:1606",
           "frequency": "very_frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         }
       ]
     },
@@ -9224,6 +9854,11 @@
           "disorder_id": "ORPHA:261243",
           "frequency": "occasional",
           "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:96121",
@@ -9301,12 +9936,532 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "frequent",
           "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:251071",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000079": {
+      "label": "Abnormality of the urinary system",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000189": {
+      "label": "Narrow palate",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000444": {
+      "label": "Convex nasal ridge",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000712": {
+      "label": "Emotional lability",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000756": {
+      "label": "Agoraphobia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002750": {
+      "label": "Delayed skeletal maturation",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:228415",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0005484": {
+      "label": "Secondary microcephaly",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0007086": {
+      "label": "Social and occupational deterioration",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0009765": {
+      "label": "Low hanging columella",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0009834": {
+      "label": "Abnormal proximal phalanx morphology of the hand",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0009836": {
+      "label": "Broad distal phalanx of finger",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0010055": {
+      "label": "Broad hallux",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0011087": {
+      "label": "Talon cusp",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0011304": {
+      "label": "Broad thumb",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:250989",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:3320",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:251071",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0025269": {
+      "label": "Panic attack",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0100710": {
+      "label": "Impulsivity",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:819",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0100852": {
+      "label": "Abnormal fear/anxiety-related behavior",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000010": {
+      "label": "Recurrent urinary tract infections",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000126": {
+      "label": "Hydronephrosis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:1606",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:250989",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:1727",
+          "frequency": "occasional",
+          "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:251076",
+          "frequency": "occasional",
+          "cause": "duplication"
+        }
+      ]
+    },
+    "HP:0000388": {
+      "label": "Otitis media",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000488": {
+      "label": "Retinopathy",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000501": {
+      "label": "Glaucoma",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:97685",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261272",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:250994",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000539": {
+      "label": "Abnormality of refraction",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000668": {
+      "label": "Hypodontia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000670": {
+      "label": "Carious teeth",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000689": {
+      "label": "Dental malocclusion",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000787": {
+      "label": "Nephrolithiasis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000932": {
+      "label": "Abnormality of the posterior cranial fossa",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002090": {
+      "label": "Pneumonia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002664": {
+      "label": "Neoplasm",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002999": {
+      "label": "Patellar dislocation",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:3320",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0003319": {
+      "label": "Abnormality of the cervical spine",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0005743": {
+      "label": "Avascular necrosis of the capital femoral epiphysis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0010562": {
+      "label": "Keloids",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0010674": {
+      "label": "Abnormality of the curvature of the vertebral column",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0011069": {
+      "label": "Supernumerary tooth",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0031546": {
+      "label": "Cardiac conduction abnormality",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:353281",
           "frequency": "occasional",
           "cause": "microdeletion"
         }
@@ -9343,6 +10498,11 @@
         {
           "disorder_id": "ORPHA:567",
           "frequency": "very_frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
           "cause": "deletion"
         },
         {
@@ -9551,6 +10711,16 @@
           "cause": "microdeletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -9604,6 +10774,11 @@
           "disorder_id": "ORPHA:819",
           "frequency": "frequent",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
+          "cause": "deletion"
         }
       ]
     },
@@ -9684,16 +10859,6 @@
     },
     "HP:0100543": {
       "label": "Cognitive impairment",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:819",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0100710": {
-      "label": "Impulsivity",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:819",
@@ -9881,6 +11046,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "occasional",
           "cause": "deletion"
@@ -9913,6 +11083,11 @@
         {
           "disorder_id": "ORPHA:1713",
           "frequency": "frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
           "cause": "microduplication"
         }
       ]
@@ -9984,6 +11159,11 @@
           "disorder_id": "ORPHA:1727",
           "frequency": "occasional",
           "cause": "duplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
         },
         {
           "disorder_id": "ORPHA:251038",
@@ -10216,6 +11396,16 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "frequent",
           "cause": "deletion"
@@ -10248,6 +11438,11 @@
         {
           "disorder_id": "ORPHA:217385",
           "frequency": "very_frequent",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
           "cause": "microduplication"
         },
         {
@@ -10317,6 +11512,11 @@
         },
         {
           "disorder_id": "ORPHA:250989",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
@@ -10522,36 +11722,6 @@
         }
       ]
     },
-    "HP:0000501": {
-      "label": "Glaucoma",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:97685",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:261272",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:250994",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0000520": {
       "label": "Proptosis",
       "disorder_entries": [
@@ -10619,6 +11789,11 @@
           "disorder_id": "ORPHA:97685",
           "frequency": "occasional",
           "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
         }
       ]
     },
@@ -11093,7 +12268,7 @@
       ]
     },
     "HP:0002910": {
-      "label": "Elevated hepatic transaminase",
+      "label": "Elevated circulating hepatic transaminase concentration",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:261265",
@@ -11186,6 +12361,16 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:904",
           "frequency": "very_frequent",
           "cause": "deletion"
@@ -11224,6 +12409,11 @@
           "disorder_id": "ORPHA:1606",
           "frequency": "frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
         },
         {
           "disorder_id": "ORPHA:1727",
@@ -11269,31 +12459,6 @@
           "disorder_id": "ORPHA:1606",
           "frequency": "occasional",
           "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000126": {
-      "label": "Hydronephrosis",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:1606",
-          "frequency": "occasional",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:250989",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:1727",
-          "frequency": "occasional",
-          "cause": "duplication"
-        },
-        {
-          "disorder_id": "ORPHA:251076",
-          "frequency": "occasional",
-          "cause": "duplication"
         }
       ]
     },
@@ -11536,6 +12701,11 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "occasional",
           "cause": "microdeletion"
@@ -11696,6 +12866,11 @@
           "cause": "microduplication"
         },
         {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
           "disorder_id": "ORPHA:567",
           "frequency": "occasional",
           "cause": "deletion"
@@ -11727,6 +12902,11 @@
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:250989",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
           "frequency": "occasional",
           "cause": "microdeletion"
         },
@@ -11769,24 +12949,9 @@
           "disorder_id": "ORPHA:250989",
           "frequency": "occasional",
           "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0011304": {
-      "label": "Broad thumb",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:250989",
-          "frequency": "occasional",
-          "cause": "microdeletion"
         },
         {
-          "disorder_id": "ORPHA:3320",
-          "frequency": "occasional",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:251071",
+          "disorder_id": "ORPHA:261330",
           "frequency": "occasional",
           "cause": "microdeletion"
         }
@@ -11884,6 +13049,11 @@
           "disorder_id": "ORPHA:3320",
           "frequency": "frequent",
           "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
         }
       ]
     },
@@ -11893,26 +13063,6 @@
         {
           "disorder_id": "ORPHA:3320",
           "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0002999": {
-      "label": "Patellar dislocation",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:3320",
-          "frequency": "frequent",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
           "cause": "deletion"
         }
       ]
@@ -12057,6 +13207,536 @@
         }
       ]
     },
+    "HP:0001622": {
+      "label": "Premature birth",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002553": {
+      "label": "Highly arched eyebrow",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "very_frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:1001",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:251076",
+          "frequency": "frequent",
+          "cause": "duplication"
+        }
+      ]
+    },
+    "HP:0000363": {
+      "label": "Abnormality of earlobe",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0001660": {
+      "label": "Truncus arteriosus",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0001802": {
+      "label": "Absent toenail",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0001817": {
+      "label": "Absent fingernail",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000276": {
+      "label": "Long face",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:65286",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000324": {
+      "label": "Facial asymmetry",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:65286",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000453": {
+      "label": "Choanal atresia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000581": {
+      "label": "Blepharophimosis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000657": {
+      "label": "Oculomotor apraxia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0001659": {
+      "label": "Aortic regurgitation",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0001852": {
+      "label": "Sandal gap",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:251038",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0002607": {
+      "label": "Bowel incontinence",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0002721": {
+      "label": "Immunodeficiency",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0003307": {
+      "label": "Hyperlordosis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0004279": {
+      "label": "Short palm",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:1001",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0004942": {
+      "label": "Aortic aneurysm",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261102",
+          "frequency": "very_frequent",
+          "cause": "distal microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0006487": {
+      "label": "Bowing of the long bones",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0009465": {
+      "label": "Ulnar deviation of finger",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0009795": {
+      "label": "Branchial fistula",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        },
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0009882": {
+      "label": "Short distal phalanx of finger",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0100033": {
+      "label": "Tics",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261330",
+          "frequency": "occasional",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000122": {
+      "label": "Unilateral renal agenesis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0000158": {
+      "label": "Macroglossia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000465": {
+      "label": "Webbed neck",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0000588": {
+      "label": "Optic disc coloboma",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0001618": {
+      "label": "Dysphonia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0001800": {
+      "label": "Hypoplastic toenails",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0001836": {
+      "label": "Camptodactyly of toe",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:251038",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0002023": {
+      "label": "Anal atresia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0002162": {
+      "label": "Low posterior hairline",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0004422": {
+      "label": "Biparietal narrowing",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:251038",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:251071",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0005180": {
+      "label": "Tricuspid regurgitation",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0009738": {
+      "label": "Abnormality of the antihelix",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0011039": {
+      "label": "Abnormality of the helix",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0012471": {
+      "label": "Thick vermilion border",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:251076",
+          "frequency": "occasional",
+          "cause": "duplication"
+        }
+      ]
+    },
+    "HP:0100022": {
+      "label": "Abnormality of movement",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0100540": {
+      "label": "Palpebral edema",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:261337",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        },
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
     "HP:0000506": {
       "label": "Telecanthus",
       "disorder_entries": [
@@ -12107,26 +13787,6 @@
         }
       ]
     },
-    "HP:0001660": {
-      "label": "Truncus arteriosus",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "very_frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0002721": {
-      "label": "Immunodeficiency",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "very_frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0012303": {
       "label": "Abnormal aortic arch morphology",
       "disorder_entries": [
@@ -12137,8 +13797,18 @@
         }
       ]
     },
-    "HP:0000627": {
-      "label": "Posterior embryotoxon",
+    "HP:0011840": {
+      "label": "Abnormality of T cell physiology",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000089": {
+      "label": "Renal hypoplasia",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:567",
@@ -12152,8 +13822,43 @@
         }
       ]
     },
-    "HP:0000670": {
-      "label": "Carious teeth",
+    "HP:0000385": {
+      "label": "Small earlobe",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000396": {
+      "label": "Overfolded helix",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "occasional",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0000492": {
+      "label": "Abnormal eyelid morphology",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:567",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000627": {
+      "label": "Posterior embryotoxon",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:567",
@@ -12247,16 +13952,6 @@
         }
       ]
     },
-    "HP:0005435": {
-      "label": "Impaired T cell function",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0011496": {
       "label": "Corneal neovascularization",
       "disorder_entries": [
@@ -12287,71 +13982,6 @@
         }
       ]
     },
-    "HP:0000089": {
-      "label": "Renal hypoplasia",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "frequent",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000276": {
-      "label": "Long face",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "frequent",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:65286",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0000385": {
-      "label": "Small earlobe",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000396": {
-      "label": "Overfolded helix",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "frequent",
-          "cause": "deletion"
-        },
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        }
-      ]
-    },
-    "HP:0000492": {
-      "label": "Abnormal eyelid morphology",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0000113": {
       "label": "Polycystic kidney dysplasia",
       "disorder_entries": [
@@ -12374,16 +14004,6 @@
     },
     "HP:0000262": {
       "label": "Turricephaly",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000453": {
-      "label": "Choanal atresia",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:567",
@@ -12491,6 +14111,11 @@
           "cause": "deletion"
         },
         {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
           "disorder_id": "ORPHA:1001",
           "frequency": "frequent",
           "cause": "microdeletion"
@@ -12529,16 +14154,6 @@
     },
     "HP:0001872": {
       "label": "Abnormality of thrombocytes",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0002023": {
-      "label": "Anal atresia",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:567",
@@ -12599,16 +14214,6 @@
     },
     "HP:0002566": {
       "label": "Intestinal malrotation",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:567",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0002607": {
-      "label": "Bowel incontinence",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:567",
@@ -12792,12 +14397,152 @@
         }
       ]
     },
+    "HP:0003763": {
+      "label": "Bruxism",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "very_frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000527": {
+      "label": "Long eyelashes",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:96121",
+          "frequency": "frequent",
+          "cause": "microduplication"
+        }
+      ]
+    },
+    "HP:0000966": {
+      "label": "Hypohidrosis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0000110": {
+      "label": "Renal dysplasia",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0001004": {
+      "label": "Lymphedema",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0001581": {
+      "label": "Recurrent skin infections",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0002017": {
+      "label": "Nausea and vomiting",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        },
+        {
+          "disorder_id": "ORPHA:904",
+          "frequency": "frequent",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0008278": {
+      "label": "Cerebellar cortical atrophy",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0012167": {
+      "label": "Hair-pulling",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
+    "HP:0012787": {
+      "label": "Recurrent pyelonephritis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:48652",
+          "frequency": "occasional",
+          "cause": "deletion"
+        }
+      ]
+    },
     "HP:0000311": {
       "label": "Round face",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:1001",
           "frequency": "very_frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0000964": {
+      "label": "Eczematoid dermatitis",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:1001",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002209": {
+      "label": "Sparse scalp hair",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:1001",
+          "frequency": "frequent",
+          "cause": "microdeletion"
+        }
+      ]
+    },
+    "HP:0002558": {
+      "label": "Supernumerary nipple",
+      "disorder_entries": [
+        {
+          "disorder_id": "ORPHA:1001",
+          "frequency": "frequent",
           "cause": "microdeletion"
         }
       ]
@@ -12839,61 +14584,6 @@
     },
     "HP:0010761": {
       "label": "Broad columella",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:1001",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0000964": {
-      "label": "Eczematoid dermatitis",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:1001",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0002209": {
-      "label": "Sparse scalp hair",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:1001",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0002553": {
-      "label": "Highly arched eyebrow",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:1001",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        },
-        {
-          "disorder_id": "ORPHA:251076",
-          "frequency": "frequent",
-          "cause": "duplication"
-        }
-      ]
-    },
-    "HP:0002558": {
-      "label": "Supernumerary nipple",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:1001",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0004279": {
-      "label": "Short palm",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:1001",
@@ -12944,16 +14634,6 @@
     },
     "HP:0000202": {
       "label": "Orofacial cleft",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:65286",
-          "frequency": "occasional",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0000324": {
-      "label": "Facial asymmetry",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:65286",
@@ -13027,26 +14707,6 @@
         }
       ]
     },
-    "HP:0001836": {
-      "label": "Camptodactyly of toe",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:251038",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        }
-      ]
-    },
-    "HP:0001852": {
-      "label": "Sandal gap",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:251038",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        }
-      ]
-    },
     "HP:0002002": {
       "label": "Deep philtrum",
       "disorder_entries": [
@@ -13064,21 +14724,6 @@
           "disorder_id": "ORPHA:251038",
           "frequency": "occasional",
           "cause": "microduplication"
-        }
-      ]
-    },
-    "HP:0004422": {
-      "label": "Biparietal narrowing",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:251038",
-          "frequency": "occasional",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:251071",
-          "frequency": "frequent",
-          "cause": "microdeletion"
         }
       ]
     },
@@ -13127,21 +14772,6 @@
         }
       ]
     },
-    "HP:0002750": {
-      "label": "Delayed skeletal maturation",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:228415",
-          "frequency": "frequent",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0002132": {
       "label": "Porencephaly",
       "disorder_entries": [
@@ -13152,18 +14782,8 @@
         }
       ]
     },
-    "HP:0004942": {
-      "label": "Aortic aneurysm",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:261102",
-          "frequency": "very_frequent",
-          "cause": "distal microduplication"
-        }
-      ]
-    },
     "HP:0007330": {
-      "label": "Frontal encephalocele",
+      "label": "Frontoethmoidal encephalocele",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:261102",
@@ -13179,41 +14799,6 @@
           "disorder_id": "ORPHA:261102",
           "frequency": "occasional",
           "cause": "distal microduplication"
-        }
-      ]
-    },
-    "HP:0000363": {
-      "label": "Abnormality of earlobe",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "frequent",
-          "cause": "microduplication"
-        }
-      ]
-    },
-    "HP:0000527": {
-      "label": "Long eyelashes",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "frequent",
-          "cause": "microduplication"
-        }
-      ]
-    },
-    "HP:0000689": {
-      "label": "Dental malocclusion",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "frequent",
-          "cause": "microduplication"
-        },
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "frequent",
-          "cause": "deletion"
         }
       ]
     },
@@ -13249,16 +14834,6 @@
           "disorder_id": "ORPHA:904",
           "frequency": "very_frequent",
           "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0001724": {
-      "label": "Aortic dilatation",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:96121",
-          "frequency": "frequent",
-          "cause": "microduplication"
         }
       ]
     },
@@ -13382,28 +14957,8 @@
         }
       ]
     },
-    "HP:0000158": {
-      "label": "Macroglossia",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "very_frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0000179": {
       "label": "Thick lower lip vermilion",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "very_frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000581": {
-      "label": "Blepharophimosis",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:904",
@@ -13582,16 +15137,6 @@
         }
       ]
     },
-    "HP:0000668": {
-      "label": "Hypodontia",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0000691": {
       "label": "Microdontia",
       "disorder_entries": [
@@ -13662,26 +15207,6 @@
         }
       ]
     },
-    "HP:0001800": {
-      "label": "Hypoplastic toenails",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0002017": {
-      "label": "Nausea and vomiting",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0002150": {
       "label": "Hypercalciuria",
       "disorder_entries": [
@@ -13734,16 +15259,6 @@
     },
     "HP:0003236": {
       "label": "Elevated circulating creatine kinase concentration",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0003307": {
-      "label": "Hyperlordosis",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:904",
@@ -13818,16 +15333,6 @@
         {
           "disorder_id": "ORPHA:904",
           "frequency": "frequent",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0000010": {
-      "label": "Recurrent urinary tract infections",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
           "cause": "deletion"
         }
       ]
@@ -13932,38 +15437,8 @@
         }
       ]
     },
-    "HP:0000787": {
-      "label": "Nephrolithiasis",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
     "HP:0001052": {
       "label": "Nevus flammeus",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0001388": {
-      "label": "Joint laxity",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:904",
-          "frequency": "occasional",
-          "cause": "deletion"
-        }
-      ]
-    },
-    "HP:0001618": {
-      "label": "Dysphonia",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:904",
@@ -14282,16 +15757,6 @@
         }
       ]
     },
-    "HP:0012471": {
-      "label": "Thick vermilion border",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:251076",
-          "frequency": "occasional",
-          "cause": "duplication"
-        }
-      ]
-    },
     "HP:0001824": {
       "label": "Weight loss",
       "disorder_entries": [
@@ -14304,16 +15769,6 @@
     },
     "HP:0004415": {
       "label": "Pulmonary artery stenosis",
-      "disorder_entries": [
-        {
-          "disorder_id": "ORPHA:251071",
-          "frequency": "frequent",
-          "cause": "microdeletion"
-        }
-      ]
-    },
-    "HP:0008572": {
-      "label": "External ear malformation",
       "disorder_entries": [
         {
           "disorder_id": "ORPHA:251071",
@@ -14368,16 +15823,19 @@
         "HP:0000075",
         "HP:0000076",
         "HP:0000077",
+        "HP:0000079",
         "HP:0000083",
         "HP:0000085",
         "HP:0000089",
         "HP:0000093",
         "HP:0000104",
         "HP:0000107",
+        "HP:0000110",
         "HP:0000112",
         "HP:0000113",
         "HP:0000119",
         "HP:0000121",
+        "HP:0000122",
         "HP:0000125",
         "HP:0000126",
         "HP:0000130",
@@ -14455,6 +15913,7 @@
         "HP:0000902",
         "HP:0000925",
         "HP:0000929",
+        "HP:0000932",
         "HP:0000935",
         "HP:0000938",
         "HP:0000939",
@@ -14491,6 +15950,7 @@
         "HP:0003198",
         "HP:0003307",
         "HP:0003312",
+        "HP:0003319",
         "HP:0003416",
         "HP:0003422",
         "HP:0003468",
@@ -14498,11 +15958,16 @@
         "HP:0004422",
         "HP:0004562",
         "HP:0005469",
+        "HP:0005484",
         "HP:0005616",
+        "HP:0005743",
+        "HP:0006487",
         "HP:0008416",
         "HP:0008947",
         "HP:0009829",
+        "HP:0010562",
         "HP:0010669",
+        "HP:0010674",
         "HP:0011001",
         "HP:0011324",
         "HP:0032458",
@@ -14542,6 +16007,7 @@
         "HP:0000175",
         "HP:0000177",
         "HP:0000179",
+        "HP:0000189",
         "HP:0000194",
         "HP:0000200",
         "HP:0000202",
@@ -14579,6 +16045,7 @@
         "HP:0000430",
         "HP:0000431",
         "HP:0000437",
+        "HP:0000444",
         "HP:0000445",
         "HP:0000446",
         "HP:0000453",
@@ -14586,6 +16053,7 @@
         "HP:0000457",
         "HP:0000463",
         "HP:0000464",
+        "HP:0000465",
         "HP:0000470",
         "HP:0000492",
         "HP:0000494",
@@ -14605,6 +16073,7 @@
         "HP:0000699",
         "HP:0001999",
         "HP:0002002",
+        "HP:0002162",
         "HP:0002209",
         "HP:0002263",
         "HP:0002307",
@@ -14621,6 +16090,8 @@
         "HP:0006482",
         "HP:0007874",
         "HP:0009553",
+        "HP:0009765",
+        "HP:0009795",
         "HP:0009891",
         "HP:0009928",
         "HP:0009929",
@@ -14629,6 +16100,8 @@
         "HP:0010804",
         "HP:0010807",
         "HP:0010808",
+        "HP:0011069",
+        "HP:0011087",
         "HP:0011228",
         "HP:0011333",
         "HP:0011800",
@@ -14638,6 +16111,7 @@
         "HP:0012745",
         "HP:0045075",
         "HP:0100539",
+        "HP:0100540",
         "HP:0100729"
       ]
     },
@@ -14645,21 +16119,23 @@
       "label": "Abnormality of the nervous system",
       "phenotype_ids": [
         "HP:0000238",
+        "HP:0000657",
         "HP:0000708",
         "HP:0000709",
+        "HP:0000712",
         "HP:0000716",
         "HP:0000717",
         "HP:0000718",
         "HP:0000722",
         "HP:0000729",
         "HP:0000733",
-        "HP:0000736",
         "HP:0000738",
         "HP:0000739",
         "HP:0000748",
         "HP:0000750",
         "HP:0000752",
         "HP:0000753",
+        "HP:0000756",
         "HP:0000817",
         "HP:0001249",
         "HP:0001250",
@@ -14729,6 +16205,7 @@
         "HP:0002870",
         "HP:0003006",
         "HP:0003298",
+        "HP:0003763",
         "HP:0004305",
         "HP:0004374",
         "HP:0006824",
@@ -14738,6 +16215,7 @@
         "HP:0006979",
         "HP:0007010",
         "HP:0007018",
+        "HP:0007086",
         "HP:0007099",
         "HP:0007166",
         "HP:0007236",
@@ -14750,6 +16228,7 @@
         "HP:0007370",
         "HP:0007372",
         "HP:0007524",
+        "HP:0008278",
         "HP:0009088",
         "HP:0009732",
         "HP:0009733",
@@ -14778,6 +16257,7 @@
         "HP:0011748",
         "HP:0012157",
         "HP:0012166",
+        "HP:0012167",
         "HP:0012169",
         "HP:0012170",
         "HP:0012433",
@@ -14787,7 +16267,9 @@
         "HP:0012650",
         "HP:0012751",
         "HP:0012758",
+        "HP:0012760",
         "HP:0025160",
+        "HP:0025269",
         "HP:0030051",
         "HP:0030692",
         "HP:0031023",
@@ -14795,8 +16277,10 @@
         "HP:0032509",
         "HP:0040082",
         "HP:0100008",
+        "HP:0100022",
         "HP:0100023",
         "HP:0100025",
+        "HP:0100033",
         "HP:0100543",
         "HP:0100702",
         "HP:0100703",
@@ -14805,6 +16289,7 @@
         "HP:0100753",
         "HP:0100785",
         "HP:0100835",
+        "HP:0100852",
         "HP:0410263",
         "HP:5200360"
       ]
@@ -14817,6 +16302,7 @@
         "HP:0000483",
         "HP:0000485",
         "HP:0000486",
+        "HP:0000488",
         "HP:0000490",
         "HP:0000501",
         "HP:0000504",
@@ -14827,6 +16313,7 @@
         "HP:0000520",
         "HP:0000526",
         "HP:0000529",
+        "HP:0000539",
         "HP:0000540",
         "HP:0000541",
         "HP:0000543",
@@ -14835,6 +16322,7 @@
         "HP:0000563",
         "HP:0000565",
         "HP:0000568",
+        "HP:0000588",
         "HP:0000601",
         "HP:0000610",
         "HP:0000612",
@@ -14865,6 +16353,7 @@
     "HP:0000598": {
       "label": "Abnormality of the ear",
       "phenotype_ids": [
+        "HP:0000358",
         "HP:0000363",
         "HP:0000365",
         "HP:0000369",
@@ -14877,8 +16366,38 @@
         "HP:0000411",
         "HP:0000413",
         "HP:0008551",
+        "HP:0009738",
         "HP:0009748",
-        "HP:0009908"
+        "HP:0009908",
+        "HP:0011039"
+      ]
+    },
+    "HP:0002715": {
+      "label": "Abnormality of the immune system",
+      "phenotype_ids": [
+        "HP:0000388",
+        "HP:0000389",
+        "HP:0000403",
+        "HP:0000704",
+        "HP:0000778",
+        "HP:0000964",
+        "HP:0001051",
+        "HP:0001055",
+        "HP:0001061",
+        "HP:0001581",
+        "HP:0001743",
+        "HP:0001744",
+        "HP:0002090",
+        "HP:0002099",
+        "HP:0002715",
+        "HP:0002720",
+        "HP:0002721",
+        "HP:0002960",
+        "HP:0010515",
+        "HP:0010978",
+        "HP:0011840",
+        "HP:0012787",
+        "HP:0100765"
       ]
     },
     "HP:0001574": {
@@ -14890,6 +16409,7 @@
         "HP:0000664",
         "HP:0000960",
         "HP:0000965",
+        "HP:0000966",
         "HP:0000979",
         "HP:0000995",
         "HP:0001000",
@@ -14904,6 +16424,8 @@
         "HP:0001480",
         "HP:0001582",
         "HP:0001800",
+        "HP:0001802",
+        "HP:0001817",
         "HP:0002230",
         "HP:0002286",
         "HP:0005599",
@@ -14916,29 +16438,6 @@
         "HP:0025105",
         "HP:0100585",
         "HP:0200034"
-      ]
-    },
-    "HP:0002715": {
-      "label": "Abnormality of the immune system",
-      "phenotype_ids": [
-        "HP:0000389",
-        "HP:0000403",
-        "HP:0000704",
-        "HP:0000778",
-        "HP:0000964",
-        "HP:0001051",
-        "HP:0001055",
-        "HP:0001061",
-        "HP:0001743",
-        "HP:0001744",
-        "HP:0002099",
-        "HP:0002715",
-        "HP:0002720",
-        "HP:0002721",
-        "HP:0002960",
-        "HP:0010515",
-        "HP:0010978",
-        "HP:0100765"
       ]
     },
     "HP:0002086": {
@@ -14963,6 +16462,7 @@
       "phenotype_ids": [
         "HP:0000819",
         "HP:0000969",
+        "HP:0001004",
         "HP:0002149",
         "HP:0002155",
         "HP:0002901",
@@ -15000,6 +16500,7 @@
         "HP:0001653",
         "HP:0001654",
         "HP:0001658",
+        "HP:0001659",
         "HP:0001660",
         "HP:0001669",
         "HP:0001671",
@@ -15021,6 +16522,7 @@
         "HP:0004944",
         "HP:0004969",
         "HP:0005113",
+        "HP:0005180",
         "HP:0005344",
         "HP:0006695",
         "HP:0011611",
@@ -15029,6 +16531,7 @@
         "HP:0012303",
         "HP:0012492",
         "HP:0030680",
+        "HP:0031546",
         "HP:0100545",
         "HP:0100659",
         "HP:0100735",
@@ -15071,8 +16574,13 @@
         "HP:0007598",
         "HP:0008081",
         "HP:0009237",
+        "HP:0009465",
         "HP:0009623",
+        "HP:0009834",
+        "HP:0009836",
+        "HP:0009882",
         "HP:0010049",
+        "HP:0010055",
         "HP:0010059",
         "HP:0010508",
         "HP:0011304",
@@ -15141,6 +16649,7 @@
         "HP:0001558",
         "HP:0001561",
         "HP:0001562",
+        "HP:0001622",
         "HP:0010880"
       ]
     },
@@ -15162,6 +16671,13 @@
         "HP:0100783"
       ]
     },
+    "HP:0002664": {
+      "label": "Phenotypic abnormality",
+      "phenotype_ids": [
+        "HP:0002664",
+        "HP:0100697"
+      ]
+    },
     "HP:0025142": {
       "label": "Constitutional symptom",
       "phenotype_ids": [
@@ -15174,12 +16690,6 @@
       "label": "Abnormal cellular phenotype",
       "phenotype_ids": [
         "HP:0002916"
-      ]
-    },
-    "HP:0002664": {
-      "label": "Neoplasm",
-      "phenotype_ids": [
-        "HP:0100697"
       ]
     }
   },
@@ -16110,7 +17620,7 @@
       ]
     },
     "C16orf92": {
-      "name": "chromosome 16 open reading frame 92",
+      "name": null,
       "location_ids": [
         "16p11.2-proximal"
       ]
@@ -16245,6 +17755,12 @@
       "name": "ATP binding cassette subfamily C member 6",
       "location_ids": [
         "16p13.11"
+      ]
+    },
+    "CREBBP": {
+      "name": "CREB binding lysine acetyltransferase ",
+      "location_ids": [
+        "16p13.3"
       ]
     },
     "TNFRSF13B": {
@@ -17070,9 +18586,123 @@
       ]
     },
     "GPR89A": {
-      "name": "G protein-coupled receptor 89A",
+      "name": null,
       "location_ids": [
         "1q21.1"
+      ]
+    },
+    "UBE2L3": {
+      "name": "ubiquitin conjugating enzyme E2 L3",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "YDJC": {
+      "name": "YdjC chitooligosaccharide deacetylase homolog",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "CCDC116": {
+      "name": "coiled-coil domain containing 116",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "SDF2L1": {
+      "name": "stromal cell derived factor 2 like 1",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "PPIL2": {
+      "name": "peptidylprolyl isomerase like 2",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "YPEL1": {
+      "name": "yippee like 1",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "MAPK1": {
+      "name": "mitogen-activated protein kinase 1",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "PPM1F": {
+      "name": "protein phosphatase, Mg2+/Mn2+ dependent 1F",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "TOP3B": {
+      "name": "DNA topoisomerase III beta",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "VPREB1": {
+      "name": "V-set pre-B cell surrogate light chain 1",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "ZNF280B": {
+      "name": "zinc finger protein 280B",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "ZNF280A": {
+      "name": "zinc finger protein 280A",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "PRAME": {
+      "name": "PRAME nuclear receptor transcriptional regulator",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "GGTLC2": {
+      "name": "gamma-glutamyltransferase light chain 2",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "IGLL5": {
+      "name": "immunoglobulin lambda like polypeptide 5",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "RSPH14": {
+      "name": "radial spoke head 14 homolog",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "GNAZ": {
+      "name": "G protein subunit alpha z",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "RAB36": {
+      "name": "RAB36, member RAS oncogene family",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
+      ]
+    },
+    "BCR": {
+      "name": "BCR activator of RhoGEF and GTPase",
+      "location_ids": [
+        "22q11.2-distal-type- I,D-E,D-F"
       ]
     },
     "PRODH": {
@@ -17351,6 +18981,12 @@
         "22q11.21"
       ]
     },
+    "SHANK3": {
+      "name": "SH3 and multiple ankyrin repeat domains 3",
+      "location_ids": [
+        "22q13.33"
+      ]
+    },
     "ADRA2B": {
       "name": "adrenoceptor alpha 2B",
       "location_ids": [
@@ -17477,12 +19113,6 @@
         "2q13-NPHP1"
       ]
     },
-    "BUB1": {
-      "name": "BUB1 mitotic checkpoint serine/threonine kinase",
-      "location_ids": [
-        "2q13"
-      ]
-    },
     "ACOXL": {
       "name": "acyl-CoA oxidase like",
       "location_ids": [
@@ -17491,6 +19121,144 @@
     },
     "BCL2L11": {
       "name": "BCL2 like 11",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "ANAPC1": {
+      "name": "anaphase promoting complex subunit 1",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "MERTK": {
+      "name": "MER proto-oncogene, tyrosine kinase",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "TMEM87B": {
+      "name": "transmembrane protein 87B",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "FBLN7": {
+      "name": "fibulin 7",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "ZC3H8": {
+      "name": "zinc finger CCCH-type containing 8",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "ZC3H6": {
+      "name": "zinc finger CCCH-type containing 6",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "RGPD8": {
+      "name": "RANBP2 like and GRIP domain containing 8",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "TTL": {
+      "name": "tubulin tyrosine ligase",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "POLR1B": {
+      "name": "RNA polymerase I subunit B",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "CHCHD5": {
+      "name": "coiled-coil-helix-coiled-coil-helix domain containing 5",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "SLC20A1": {
+      "name": "solute carrier family 20 member 1",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "NT5DC4": {
+      "name": "5'-nucleotidase domain containing 4",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "CKAP2L": {
+      "name": "cytoskeleton associated protein 2 like",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL1A": {
+      "name": "interleukin 1 alpha",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL1B": {
+      "name": "interleukin 1 beta",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL36": {
+      "name": null,
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL36G": {
+      "name": "interleukin 36 gamma",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL36A": {
+      "name": "interleukin 36 alpha",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL36B": {
+      "name": "interleukin 36 beta",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL36RN": {
+      "name": "interleukin 36 receptor antagonist",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL1F10": {
+      "name": "interleukin 1 family member 10",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "IL1RN": {
+      "name": "interleukin 1 receptor antagonist",
+      "location_ids": [
+        "2q13"
+      ]
+    },
+    "PSD4": {
+      "name": "pleckstrin and Sec7 domain containing 4",
       "location_ids": [
         "2q13"
       ]
@@ -18511,10 +20279,10 @@
     }
   },
   "stats": {
-    "total_locations": 35,
-    "total_disorders": 53,
-    "total_phenotypes": 738,
-    "total_genes": 552,
+    "total_locations": 38,
+    "total_disorders": 58,
+    "total_phenotypes": 787,
+    "total_genes": 595,
     "total_categories": 22
   }
 }
