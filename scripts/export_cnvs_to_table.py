@@ -19,7 +19,6 @@ ORPHADATA_DEFAULT = {
     "phenotypes_occasional": [],
     "phenotypes_very_rare": [],
     "omim": [],
-    "pubmed_ids": []
 }
 
 def build_row(base, gene, orpha, phenotype=None, freq_category=None):
@@ -50,7 +49,6 @@ def build_row(base, gene, orpha, phenotype=None, freq_category=None):
         "orphadata_phenotypes_very_rare": "",
         "orphadata_hpo_id": "",
         "orphadata_omim_id": ";".join(get_list(orpha.get("omim"))),
-        "orphadata_pubmed_ids": ";".join(get_list(orpha.get("pubmed_ids"))),
     }
 
     if phenotype and freq_category in freq_map:
@@ -87,6 +85,7 @@ def flatten_yaml_to_rows(yaml_path):
 
         for gene in genes:
             for orpha in orphadata_list:
+                has_phenotypes = False
                 for freq_key, freq_cat in [
                     ("phenotypes_obligate", "obligate"),
                     ("phenotypes_very_frequent", "very_frequent"),
@@ -97,9 +96,15 @@ def flatten_yaml_to_rows(yaml_path):
                     phenotypes = get_list(orpha.get(freq_key))
                     if not phenotypes:
                         continue
+                    has_phenotypes = True
                     for pheno in phenotypes:
                         row = build_row(base, gene, orpha, pheno, freq_cat)
                         rows.append(row)
+                
+                # If no phenotypes, still generate a row for this gene/orpha combo
+                if not has_phenotypes:
+                    row = build_row(base, gene, orpha)
+                    rows.append(row)
 
     return rows
 
@@ -131,7 +136,7 @@ def main():
         "orphadata_phenotypes_occasional",
         "orphadata_phenotypes_very_rare",
         "orphadata_hpo_id",
-        "orphadata_omim_id", "orphadata_pubmed_ids"
+        "orphadata_omim_id", 
     ]
 
     # Make sure all expected columns exist
