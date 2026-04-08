@@ -89,7 +89,7 @@ function linkifyMimReferences() {
 
     descriptions.forEach(function (description) {
         var text = description.textContent;
-        var regex = /MIM #\s*(\d+)/g;
+        var regex = /MIM#\s*(\d+)/g;
 
         if (!regex.test(text)) {
             return;
