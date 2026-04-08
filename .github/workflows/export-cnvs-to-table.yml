@@ -16,15 +16,19 @@ jobs:
         with:
           token: ${{ secrets.CNV_RELEASE_AUTOMATION }}
 
+      - name: Clone cnv-data
+        run: |
+          git clone https://github.com/CNVPathwayAtlas/cnv-data.git
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install pandas openpyxl pyyaml
+        run: pip install pandas openpyxl pyyaml requests pyarrow
 
-      - name: Run additional script
+      - name: Run export script
         run: python scripts/export_cnvs_to_table.py
 
       - name: Commit and push exported tables
@@ -32,7 +36,6 @@ jobs:
           git config --global user.name "alexandra-valeanu"
           git config --global user.email "valeanualexandra17@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.CNV_RELEASE_AUTOMATION }}@github.com/CNVPathwayAtlas/cnv-website.git
-          git add assets/data/all_cnvs_table.xlsx assets/data/all_cnvs_table.csv 
+          git add assets/data/CNVPathwayAtlas-data.xlsx assets/data/CNVPathwayAtlas-data.parquet
           git diff --cached --quiet || git commit -m "Export CNVs to table"
           git push origin HEAD:main
-

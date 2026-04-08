@@ -15,4 +15,4 @@ This data is licensed under a [Creative Commons Attribution 4.0 International Li
 For complete citation details of our work or the data resources we used, please refer to the [Documentation](https://cnvpathwayatlas.github.io/cnv-website/documentation/#how-to-cite).
 
 ## Download
-You can download the CNV data from [here](https://github.com/CNVPathwayAtlas/cnv-website/blob/main/assets/data/all_cnvs_table.xlsx).
+You can download the CNV data from [here](https://github.com/CNVPathwayAtlas/cnv-website/blob/main/assets/data/CNVPathwayAtlas-data.xlsx).
