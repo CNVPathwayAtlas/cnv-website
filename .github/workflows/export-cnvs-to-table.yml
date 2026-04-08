@@ -36,6 +36,6 @@ jobs:
           git config --global user.name "alexandra-valeanu"
           git config --global user.email "valeanualexandra17@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.CNV_RELEASE_AUTOMATION }}@github.com/CNVPathwayAtlas/cnv-website.git
-          git add assets/data/CNVPathwayAtlas-data.xlsx assets/data/CNVPathwayAtlas-data.parquet
+          git add assets/data/CNVPathwayAtlas-data.xlsx assets/data/CNVPathwayAtlas-data.parquet assets/data/CNVPathwayAtlas-data.json
           git diff --cached --quiet || git commit -m "Export CNVs to table"
           git push origin HEAD:main

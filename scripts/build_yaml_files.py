@@ -37,8 +37,9 @@ def nan_to_none(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def parse_phenotypes(phenotypes_str: Optional[str]) -> List[Dict[str, Optional[str]]]:
-    if not phenotypes_str:
+    if not phenotypes_str or (isinstance(phenotypes_str, float) and pd.isna(phenotypes_str)):
         return []
+    phenotypes_str = str(phenotypes_str)
     phenotype_list = []
     for part in phenotypes_str.split(";"):
         part = part.strip()
@@ -79,7 +80,8 @@ def build_orpha_dict(df_orpha: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
         code = str(row.get("OrphaCode", "")).strip()
         if not code:
             continue
-        omim_raw = row.get("OMIM") or ""
+        omim_raw = row.get("OMIM")
+        omim_raw = str(omim_raw) if pd.notna(omim_raw) else ""
         omim_list = [o.strip() for o in omim_raw.split(";") if o.strip()] if omim_raw else []
         orpha_dict[code] = {
             "definition": row.get("Definition"),
@@ -161,7 +163,8 @@ def main() -> None:
 
     for idx, row in df_cnv.iterrows():
         locus = row.get("locus") or f"cnv_{idx}"
-        extra = str(row.get("extra") or "").strip()
+        extra_val = row.get("extra")
+        extra = str(extra_val).strip() if pd.notna(extra_val) and extra_val else ""
         region_hg17 = row.get("region_hg17") or ""
         region_hg38 = row.get("region_hg38") or ""
         chrom_hg17, start_hg17, end_hg17 = parse_region(region_hg17)

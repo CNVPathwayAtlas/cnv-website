@@ -214,6 +214,8 @@ def flatten_yaml_to_rows(yaml_path):
             "chromosome": data.get("chromosome", ""),
             "start": data.get("start", ""),
             "end": data.get("end", ""),
+            "region_GRCh37": data.get("region", ""),
+            "region_GRCh38": data.get("region_hg38", ""),
             "description": data.get("description", ""),
             "pubmed_ids": ";".join(get_list(data.get("pubmed_ids"))),
             "wikipathways_id": data.get("wikipathways_id", ""),
@@ -285,7 +287,9 @@ def main():
         df["pathway_genes"] = ""
 
     column_order = [
-        "cnv", "locus", "chromosome", "start", "end", "description", "pubmed_ids",
+        "cnv", "locus", "chromosome", "start", "end", 
+        "region_GRCh37", "region_GRCh38",
+        "description", "pubmed_ids",
         "genes_hgnc_symbol", "genes_hgnc_name", "genes_hgnc_id", "genes_entrez_id",
         "genes_ensembl_id", "genes_uniprot_id", "wikipathways_id", "pathway_genes",
         "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
@@ -308,7 +312,106 @@ def main():
 
     df.to_excel(output_dir / "CNVPathwayAtlas-data.xlsx", index=False)
     df.to_parquet(output_dir / "CNVPathwayAtlas-data.parquet", index=False)
-    print("Exported: CNVPathwayAtlas-data.xlsx and CNVPathwayAtlas-data.parquet")
+    
+    # Build JSON
+    cnv_json = {}
+    for _, row in df.iterrows():
+        cnv_name = row["cnv"]
+        if cnv_name not in cnv_json:
+            cnv_json[cnv_name] = {
+                "cnv": cnv_name,
+                "locus": row["locus"],
+                "chromosome": row["chromosome"],
+                "start": row["start"],
+                "end": row["end"],
+                "region_GRCh37": row["region_GRCh37"],
+                "region_GRCh38": row["region_GRCh38"],
+                "description": row["description"],
+                "pubmed_ids": row["pubmed_ids"].split(";") if row["pubmed_ids"] else [],
+                "wikipathways_id": row["wikipathways_id"],
+                "pathway_genes": row["pathway_genes"].split(";") if row["pathway_genes"] else [],
+                "region_genes": [],
+                "orphadata": {}
+            }
+        
+        # Add gene
+        gene_symbol = row["genes_hgnc_symbol"]
+        if gene_symbol:
+            gene_entry = {
+                "symbol": gene_symbol,
+                "name": row["genes_hgnc_name"],
+                "hgnc_id": row["genes_hgnc_id"],
+                "entrez_id": row["genes_entrez_id"],
+                "ensembl_id": row["genes_ensembl_id"],
+                "uniprot_id": row["genes_uniprot_id"]
+            }
+            if gene_entry not in cnv_json[cnv_name]["region_genes"]:
+                cnv_json[cnv_name]["region_genes"].append(gene_entry)
+        
+        # Add orphadata
+        orphacode = row["orphadata_orphacode"]
+        if orphacode and orphacode != "NA":
+            if orphacode not in cnv_json[cnv_name]["orphadata"]:
+                cnv_json[cnv_name]["orphadata"][orphacode] = {
+                    "orphacode": orphacode,
+                    "cause": row["orphadata_cause"],
+                    "definition": row["orphadata_definition"],
+                    "prevalence": row["orphadata_prevalence"],
+                    "omim_ids": row["orphadata_omim_id"].split(";") if row["orphadata_omim_id"] else [],
+                    "phenotypes": {
+                        "obligate": [],
+                        "very_frequent": [],
+                        "frequent": [],
+                        "occasional": [],
+                        "very_rare": []
+                    }
+                }
+            
+            # Add phenotypes to frequency category
+            orpha = cnv_json[cnv_name]["orphadata"][orphacode]
+            hpo_id = row["orphadata_hpo_id"] or None
+            for cat, col in [
+                ("obligate", "orphadata_phenotypes_obligate"),
+                ("very_frequent", "orphadata_phenotypes_very_frequent"),
+                ("frequent", "orphadata_phenotypes_frequent"),
+                ("occasional", "orphadata_phenotypes_occasional"),
+                ("very_rare", "orphadata_phenotypes_very_rare")
+            ]:
+                pheno_name = row[col]
+                if pheno_name:
+                    pheno_entry = {"name": pheno_name, "hpo_id": hpo_id}
+                    if pheno_entry not in orpha["phenotypes"][cat]:
+                        orpha["phenotypes"][cat].append(pheno_entry)
+    
+    # Convert orphadata dict to list for each CNV
+    for cnv_name in cnv_json:
+        cnv_json[cnv_name]["orphadata"] = list(cnv_json[cnv_name]["orphadata"].values())
+    
+    import json
+    
+    def format_json_compact_arrays(data):
+        """Format JSON with compact arrays for pathway_genes."""
+        lines = []
+        json_str = json.dumps(data, indent=2, default=str)
+        
+        import re
+        def compact_array(match):
+            arr_content = match.group(1)
+            # Remove newlines and extra spaces
+            items = re.findall(r'"([^"]*)"', arr_content)
+            return '"pathway_genes": [' + ', '.join(f'"{item}"' for item in items) + ']'
+        
+        json_str = re.sub(
+            r'"pathway_genes": \[\s*((?:"[^"]*",?\s*)+)\]',
+            compact_array,
+            json_str
+        )
+        return json_str
+    
+    with open(output_dir / "CNVPathwayAtlas-data.json", "w") as f:
+        f.write(format_json_compact_arrays(list(cnv_json.values())))
+    
+    print("Exported: CNVPathwayAtlas-data.xlsx, .parquet, and .json")
 
 if __name__ == "__main__":
     main()
