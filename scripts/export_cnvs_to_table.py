@@ -4,6 +4,7 @@ import requests
 from pathlib import Path
 from glob import glob
 
+from _site.scripts.build_yaml_files import parse_phenotypes
 
 def get_latest_csv(directory: Path, pattern: str) -> Path:
     """Get the most recent CSV file matching pattern."""
@@ -154,21 +155,23 @@ ORPHADATA_DEFAULT = {
     "cause": "NA",
     "definition": "NA",
     "prevalence": "NA",
-    "phenotypes_obligate": [],
-    "phenotypes_very_frequent": [],
-    "phenotypes_frequent": [],
-    "phenotypes_occasional": [],
-    "phenotypes_very_rare": [],
+    "phenotypes_obligate(100%)": [],
+    "phenotypes_very_frequent(99-80%)": [],
+    "phenotypes_frequent(79-30%)": [],
+    "phenotypes_occasional(29-5%)": [],
+    "phenotypes_very_rare(<4-1%)": [],
+    "phenotypes_excluded(0%)": [],
     "omim": [],
 }
 
 def build_row(base, gene, orpha, phenotype=None, freq_category=None):
     freq_map = {
-        "obligate": "orphadata_phenotypes_obligate",
-        "very_frequent": "orphadata_phenotypes_very_frequent",
-        "frequent": "orphadata_phenotypes_frequent",
-        "occasional": "orphadata_phenotypes_occasional",
-        "very_rare": "orphadata_phenotypes_very_rare"
+        "obligate(100%)": "orphadata_phenotypes_obligate(100%)",
+        "very_frequent(99-80%)": "orphadata_phenotypes_very_frequent(99-80%)",
+        "frequent(79-30%)": "orphadata_phenotypes_frequent(79-30%)",
+        "occasional(29-5%)": "orphadata_phenotypes_occasional(29-5%)",
+        "very_rare(<4-1%)": "orphadata_phenotypes_very_rare(<4-1%)",
+        "excluded(0%)": "orphadata_phenotypes_excluded(0%)"
     }
 
     row = {
@@ -183,11 +186,12 @@ def build_row(base, gene, orpha, phenotype=None, freq_category=None):
         "orphadata_cause": safe_get(orpha, "cause"),
         "orphadata_definition": safe_get(orpha, "definition"),
         "orphadata_prevalence": safe_get(orpha, "prevalence"),
-        "orphadata_phenotypes_obligate": "",
-        "orphadata_phenotypes_very_frequent": "",
-        "orphadata_phenotypes_frequent": "",
-        "orphadata_phenotypes_occasional": "",
-        "orphadata_phenotypes_very_rare": "",
+        "orphadata_phenotypes_obligate(100%)": "",
+        "orphadata_phenotypes_very_frequent(99-80%)": "",
+        "orphadata_phenotypes_frequent(79-30%)": "",
+        "orphadata_phenotypes_occasional(29-5%)": "",
+        "orphadata_phenotypes_very_rare(<4-1%)": "",
+        "orphadata_phenotypes_excluded(0%)": "",
         "orphadata_hpo_id": "",
         "orphadata_omim_id": ";".join(get_list(orpha.get("omim"))),
     }
@@ -230,11 +234,12 @@ def flatten_yaml_to_rows(yaml_path):
             for orpha in orphadata_list:
                 has_phenotypes = False
                 for freq_key, freq_cat in [
-                    ("phenotypes_obligate", "obligate"),
-                    ("phenotypes_very_frequent", "very_frequent"),
-                    ("phenotypes_frequent", "frequent"),
-                    ("phenotypes_occasional", "occasional"),
-                    ("phenotypes_very_rare", "very_rare"),
+                    ("phenotypes_obligate(100%)", "obligate(100%)"),
+                    ("phenotypes_very_frequent(99-80%)", "very_frequent(99-80%)"),
+                    ("phenotypes_frequent(79-30%)", "frequent(79-30%)"),
+                    ("phenotypes_occasional(29-5%)", "occasional(29-5%)"),
+                    ("phenotypes_very_rare(<4-1%)", "very_rare(<4-1%)"),
+                    ("phenotypes_excluded(0%)", "excluded(0%)")
                 ]:
                     phenotypes = get_list(orpha.get(freq_key))
                     if not phenotypes:
@@ -250,6 +255,7 @@ def flatten_yaml_to_rows(yaml_path):
                     rows.append(row)
 
     return rows
+
 
 def main():
     cnvs_dir = Path("_cnvs")
@@ -294,11 +300,12 @@ def main():
         "genes_ensembl_id", "genes_uniprot_id", "wikipathways_id", "pathway_genes",
         "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
         "orphadata_prevalence",
-        "orphadata_phenotypes_obligate",
-        "orphadata_phenotypes_very_frequent",
-        "orphadata_phenotypes_frequent",
-        "orphadata_phenotypes_occasional",
-        "orphadata_phenotypes_very_rare",
+        "orphadata_phenotypes_obligate(100%)",
+        "orphadata_phenotypes_very_frequent(99-80%)",
+        "orphadata_phenotypes_frequent(79-30%)",
+        "orphadata_phenotypes_occasional(29-5%)",
+        "orphadata_phenotypes_very_rare(<4-1%)",
+        "orphadata_phenotypes_excluded(0%)",
         "orphadata_hpo_id",
         "orphadata_omim_id", 
     ]
@@ -311,7 +318,7 @@ def main():
     df = df[column_order]
 
     df.to_excel(output_dir / "CNVPathwayAtlas-data.xlsx", index=False)
-    df.to_parquet(output_dir / "CNVPathwayAtlas-data.parquet", index=False)
+    # df.to_parquet(output_dir / "CNVPathwayAtlas-data.parquet", index=False)
     
     # Build JSON
     cnv_json = {}
@@ -359,11 +366,12 @@ def main():
                     "prevalence": row["orphadata_prevalence"],
                     "omim_ids": row["orphadata_omim_id"].split(";") if row["orphadata_omim_id"] else [],
                     "phenotypes": {
-                        "obligate": [],
-                        "very_frequent": [],
-                        "frequent": [],
-                        "occasional": [],
-                        "very_rare": []
+                        "obligate(100%)": [],
+                        "very_frequent(99-80%)": [],
+                        "frequent(79-30%)": [],
+                        "occasional(29-5%)": [],
+                        "very_rare(<4-1%)": [],
+                        "excluded(0%)": []
                     }
                 }
             
@@ -371,11 +379,12 @@ def main():
             orpha = cnv_json[cnv_name]["orphadata"][orphacode]
             hpo_id = row["orphadata_hpo_id"] or None
             for cat, col in [
-                ("obligate", "orphadata_phenotypes_obligate"),
-                ("very_frequent", "orphadata_phenotypes_very_frequent"),
-                ("frequent", "orphadata_phenotypes_frequent"),
-                ("occasional", "orphadata_phenotypes_occasional"),
-                ("very_rare", "orphadata_phenotypes_very_rare")
+                ("obligate(100%)", "orphadata_phenotypes_obligate(100%)"),
+                ("very_frequent(99-80%)", "orphadata_phenotypes_very_frequent(99-80%)"),
+                ("frequent(79-30%)", "orphadata_phenotypes_frequent(79-30%)"),
+                ("occasional(29-5%)", "orphadata_phenotypes_occasional(29-5%)"),
+                ("very_rare(<4-1%)", "orphadata_phenotypes_very_rare(<4-1%)"),
+                ("excluded(0%)", "orphadata_phenotypes_excluded(0%)")
             ]:
                 pheno_name = row[col]
                 if pheno_name:
@@ -411,7 +420,7 @@ def main():
     with open(output_dir / "CNVPathwayAtlas-data.json", "w") as f:
         f.write(format_json_compact_arrays(list(cnv_json.values())))
     
-    print("Exported: CNVPathwayAtlas-data.xlsx, .parquet, and .json")
+    print("Exported: CNVPathwayAtlas-data.xlsx, and .json")
 
 if __name__ == "__main__":
     main()

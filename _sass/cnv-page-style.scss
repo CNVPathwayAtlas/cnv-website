@@ -191,6 +191,7 @@ table.display {
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
+  table-layout: auto;
 
   th {
     background: #1e3a8a;
@@ -212,8 +213,20 @@ table.display {
     vertical-align: top;
     padding: 12px;
     border-right: 1px solid #e2e8f0;
-    width: 25%;
     background: #fff;
+    // Base width for cells with only empty state
+    width: auto;
+
+    // Columns with actual phenotype lists get equal distribution
+    &:has(.phenotype-list) {
+      min-width: 150px;
+    }
+
+    // Empty columns are narrower
+    &:has(.no-phenotypes) {
+      min-width: 60px;
+      text-align: center;
+    }
 
     &:last-child {
       border-right: none;

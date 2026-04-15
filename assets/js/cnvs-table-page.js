@@ -135,7 +135,7 @@ async function initPhenotypeGrouping() {
 
         try {
             var data = JSON.parse(script.textContent);
-            var freqColumns = ['obligate', 'very_frequent', 'frequent', 'occasional'];
+            var freqColumns = ['obligate', 'very_frequent', 'frequent', 'occasional', 'very_rare', 'excluded'];
 
             for (var freq of freqColumns) {
                 var phenotypes = data[freq];

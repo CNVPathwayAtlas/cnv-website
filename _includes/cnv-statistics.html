@@ -19,28 +19,33 @@
       {% if orpha.orphacode %}
         {% assign all_disorders = all_disorders | push: orpha.orphacode %}
       {% endif %}
-      {% if orpha.phenotypes_obligate %}
-        {% for p in orpha.phenotypes_obligate %}
+      {% if orpha["phenotypes_obligate(100%)"] %}
+        {% for p in orpha["phenotypes_obligate(100%)"] %}
           {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
         {% endfor %}
       {% endif %}
-      {% if orpha.phenotypes_very_frequent %}
-        {% for p in orpha.phenotypes_very_frequent %}
+      {% if orpha["phenotypes_very_frequent(99-80%)"] %}
+        {% for p in orpha["phenotypes_very_frequent(99-80%)"] %}
           {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
         {% endfor %}
       {% endif %}
-      {% if orpha.phenotypes_frequent %}
-        {% for p in orpha.phenotypes_frequent %}
+      {% if orpha["phenotypes_frequent(79-30%)"] %}
+        {% for p in orpha["phenotypes_frequent(79-30%)"] %}
           {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
         {% endfor %}
       {% endif %}
-      {% if orpha.phenotypes_occasional %}
-        {% for p in orpha.phenotypes_occasional %}
+      {% if orpha["phenotypes_occasional(29-5%)"] %}
+        {% for p in orpha["phenotypes_occasional(29-5%)"] %}
           {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
         {% endfor %}
       {% endif %}
-      {% if orpha.phenotypes_very_rare %}
-        {% for p in orpha.phenotypes_very_rare %}
+      {% if orpha["phenotypes_very_rare(<4-1%)"] %}
+        {% for p in orpha["phenotypes_very_rare(<4-1%)"] %}
+          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
+        {% endfor %}
+      {% endif %}
+      {% if orpha["phenotypes_excluded(0%)"] %}
+        {% for p in orpha["phenotypes_excluded(0%)"] %}
           {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
         {% endfor %}
       {% endif %}

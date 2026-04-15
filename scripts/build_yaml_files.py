@@ -85,14 +85,15 @@ def build_orpha_dict(df_orpha: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
         omim_list = [o.strip() for o in omim_raw.split(";") if o.strip()] if omim_raw else []
         orpha_dict[code] = {
             "definition": row.get("Definition"),
-            "phenotypes_obligate": row.get("Phenotypes_Obligate"),
-            "phenotypes_very_frequent": row.get("Phenotypes_Very_frequent"),
-            "phenotypes_frequent": row.get("Phenotypes_Frequent"),
-            "phenotypes_occasional": row.get("Phenotypes_Occasional"),
-            "phenotypes_very_rare": row.get("Phenotypes_Very_rare"),
+            "phenotypes_obligate(100%)": row.get("Phenotypes_Obligate(100%)"),
+            "phenotypes_very_frequent(99-80%)": row.get("Phenotypes_Very_frequent(99-80%)"),
+            "phenotypes_frequent(79-30%)": row.get("Phenotypes_Frequent(79-30%)"),
+            "phenotypes_occasional(29-5%)": row.get("Phenotypes_Occasional(29-5%)"),
+            "phenotypes_very_rare(<4-1%)": row.get("Phenotypes_Very_rare(<4-1%)"),
+            "phenotypes_excluded(0%)": row.get("Phenotypes_Excluded(0%)"),
             "prevalence": row.get("Prevalence"),
             "omim": omim_list,
-            "pubmed_ids": [],  # TODO populate with actual PubMed IDs from orphadata
+            # "pubmed_ids": [],
         }
     return orpha_dict
 
@@ -113,13 +114,14 @@ def parse_orphacodes(orphacodes_str: str, orpha_dict: Dict[str, Dict[str, Any]])
             "cause": cause,
             "definition": orpha_info.get("definition"),
             "prevalence": orpha_info.get("prevalence"),
-            "phenotypes_obligate": parse_phenotypes(orpha_info.get("phenotypes_obligate")),
-            "phenotypes_very_frequent": parse_phenotypes(orpha_info.get("phenotypes_very_frequent")),
-            "phenotypes_frequent": parse_phenotypes(orpha_info.get("phenotypes_frequent")),
-            "phenotypes_occasional": parse_phenotypes(orpha_info.get("phenotypes_occasional")),
-            "phenotypes_very_rare": parse_phenotypes(orpha_info.get("phenotypes_very_rare")),
+            "phenotypes_obligate(100%)": parse_phenotypes(orpha_info.get("phenotypes_obligate(100%)")),
+            "phenotypes_very_frequent(99-80%)": parse_phenotypes(orpha_info.get("phenotypes_very_frequent(99-80%)")),
+            "phenotypes_frequent(79-30%)": parse_phenotypes(orpha_info.get("phenotypes_frequent(79-30%)")),
+            "phenotypes_occasional(29-5%)": parse_phenotypes(orpha_info.get("phenotypes_occasional(29-5%)")),
+            "phenotypes_very_rare(<4-1%)": parse_phenotypes(orpha_info.get("phenotypes_very_rare(<4-1%)")),
+            "phenotypes_excluded(0%)": parse_phenotypes(orpha_info.get("phenotypes_excluded(0%)")),
             "omim": orpha_info.get("omim"),
-            "pubmed_ids": orpha_info.get("pubmed_ids", []),
+            # "pubmed_ids": orpha_info.get("pubmed_ids", []),
         })
     return orphacodes_list
 
@@ -134,7 +136,6 @@ def write_yaml_file(path: Path, yaml_dict: Dict[str, Any]) -> None:
 def main() -> None:
     input_dir = Path("cnv-data/data/input")
     latest_dir = Path("cnv-data/data/latest")
-    # data_root = Path("/home/alexandra/chapter1/cnv-data/data")
     # input_dir = data_root / "input"
     # latest_dir = data_root / "latest"
     output_path = Path(__file__).resolve().parent.parent / "_cnvs"

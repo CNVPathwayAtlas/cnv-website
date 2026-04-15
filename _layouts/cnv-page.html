@@ -152,11 +152,12 @@ toc: true
                 </div>
 
                 {% assign has_phenotypes = false %}
-                {% if orphadata.phenotypes_obligate and orphadata.phenotypes_obligate.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata.phenotypes_very_frequent and orphadata.phenotypes_very_frequent.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata.phenotypes_frequent and orphadata.phenotypes_frequent.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata.phenotypes_occasional and orphadata.phenotypes_occasional.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata.phenotypes_very_rare and orphadata.phenotypes_very_rare.size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata["phenotypes_obligate(100%)"] and orphadata["phenotypes_obligate(100%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata["phenotypes_very_frequent(99-80%)"] and orphadata["phenotypes_very_frequent(99-80%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata["phenotypes_frequent(79-30%)"] and orphadata["phenotypes_frequent(79-30%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata["phenotypes_occasional(29-5%)"] and orphadata["phenotypes_occasional(29-5%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata["phenotypes_very_rare(<4-1%)"] and orphadata["phenotypes_very_rare(<4-1%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+                {% if orphadata["phenotypes_excluded(0%)"] and orphadata["phenotypes_excluded(0%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
 
                 <div class="disorder-phenotypes">
                   <span class="meta-label">Phenotypic features:</span>
@@ -168,77 +169,89 @@ toc: true
                       <th>Very frequent<br><small>(99–80%)</small></th>
                       <th>Frequent<br><small>(79–30%)</small></th>
                       <th>Occasional<br><small>(29–5%)</small></th>
-                      <th>Very rare<br><small>(< 4%)</small></th>
+                      <th>Very rare<br><small>(<4-1%)</small></th>
+                       <th>Excluded<br><small>(0%)</small>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td data-freq="obligate">
-                        {% if orphadata.phenotypes_obligate and orphadata.phenotypes_obligate.size > 0 %}
+                        {% if orphadata["phenotypes_obligate(100%)"] and orphadata["phenotypes_obligate(100%)"].size > 0 %}
                           <ul class="phenotype-list">
-                            {% for phenotype in orphadata.phenotypes_obligate %}
+                            {% for phenotype in orphadata["phenotypes_obligate(100%)"] %}
                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
                             {% endfor %}
                           </ul>
                         {% else %}
-                          <span class="no-phenotypes">—</span>
+                          <span class="no-phenotypes">-</span>
                         {% endif %}
                       </td>
                       <td data-freq="very_frequent">
-                        {% if orphadata.phenotypes_very_frequent and orphadata.phenotypes_very_frequent.size > 0 %}
+                        {% if orphadata["phenotypes_very_frequent(99-80%)"] and orphadata["phenotypes_very_frequent(99-80%)"].size > 0 %}
                           <ul class="phenotype-list">
-                            {% for phenotype in orphadata.phenotypes_very_frequent %}
+                            {% for phenotype in orphadata["phenotypes_very_frequent(99-80%)"] %}
                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
                             {% endfor %}
                           </ul>
                         {% else %}
-                          <span class="no-phenotypes">—</span>
+                          <span class="no-phenotypes">-</span>
                         {% endif %}
                       </td>
                       <td data-freq="frequent">
-                        {% if orphadata.phenotypes_frequent and orphadata.phenotypes_frequent.size > 0 %}
+                        {% if orphadata["phenotypes_frequent(79-30%)"] and orphadata["phenotypes_frequent(79-30%)"].size > 0 %}
                           <ul class="phenotype-list">
-                            {% for phenotype in orphadata.phenotypes_frequent %}
+                            {% for phenotype in orphadata["phenotypes_frequent(79-30%)"] %}
                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
                             {% endfor %}
                           </ul>
                         {% else %}
-                          <span class="no-phenotypes">—</span>
+                          <span class="no-phenotypes">-</span>
                         {% endif %}
                       </td>
                       <td data-freq="occasional">
-                        {% if orphadata.phenotypes_occasional and orphadata.phenotypes_occasional.size > 0 %}
+                        {% if orphadata["phenotypes_occasional(29-5%)"] and orphadata["phenotypes_occasional(29-5%)"].size > 0 %}
                           <ul class="phenotype-list">
-                            {% for phenotype in orphadata.phenotypes_occasional %}
+                            {% for phenotype in orphadata["phenotypes_occasional(29-5%)"] %}
                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
                             {% endfor %}
                           </ul>
                         {% else %}
-                          <span class="no-phenotypes">—</span>
+                          <span class="no-phenotypes">-</span>
                         {% endif %}
                       </td>
                       <td data-freq="very_rare">
-                        {% if orphadata.phenotypes_very_rare and orphadata.phenotypes_very_rare.size > 0 %}
+                        {% if orphadata["phenotypes_very_rare(<4-1%)"] and orphadata["phenotypes_very_rare(<4-1%)"].size > 0 %}
                           <ul class="phenotype-list">
-                            {% for phenotype in orphadata.phenotypes_very_rare %}
+                            {% for phenotype in orphadata["phenotypes_very_rare(<4-1%)"] %}
                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
                             {% endfor %}
                           </ul>
                         {% else %}
-                          <span class="no-phenotypes">—</span>
+                          <span class="no-phenotypes">-</span>
                         {% endif %}
                       </td>
+                       <td data-freq="excluded">
+                         {% if orphadata["phenotypes_excluded(0%)"] and orphadata["phenotypes_excluded(0%)"].size > 0 %}
+                           <ul class="phenotype-list">
+                             {% for phenotype in orphadata["phenotypes_excluded(0%)"] %}
+                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                             {% endfor %}
+                           </ul>
+                         {% else %}
+                           <span class="no-phenotypes">-</span>
+                         {% endif %}
+                       </td>
                     </tr>
                   </tbody>
                 </table>
                 <script type="application/json" data-phenotypes-json data-orpha-index="{{ forloop.index0 }}">
                 {
-                  "obligate": {% if orphadata.phenotypes_obligate %}{{ orphadata.phenotypes_obligate | jsonify }}{% else %}[]{% endif %},
-                  "very_frequent": {% if orphadata.phenotypes_very_frequent %}{{ orphadata.phenotypes_very_frequent | jsonify }}{% else %}[]{% endif %},
-                  "frequent": {% if orphadata.phenotypes_frequent %}{{ orphadata.phenotypes_frequent | jsonify }}{% else %}[]{% endif %},
-                  "occasional": {% if orphadata.phenotypes_occasional %}{{ orphadata.phenotypes_occasional | jsonify }}{% else %}[]{% endif %},
-                  "very_rare": {% if orphadata.phenotypes_very_rare %}{{ orphadata.phenotypes_very_rare | jsonify }}{% else %}[]{% endif %}
-
+                  "obligate": {% if orphadata["phenotypes_obligate(100%)"] %}{{ orphadata["phenotypes_obligate(100%)"] | jsonify }}{% else %}[]{% endif %},
+                  "very_frequent": {% if orphadata["phenotypes_very_frequent(99-80%)"] %}{{ orphadata["phenotypes_very_frequent(99-80%)"] | jsonify }}{% else %}[]{% endif %},
+                  "frequent": {% if orphadata["phenotypes_frequent(79-30%)"] %}{{ orphadata["phenotypes_frequent(79-30%)"] | jsonify }}{% else %}[]{% endif %},
+                  "occasional": {% if orphadata["phenotypes_occasional(29-5%)"] %}{{ orphadata["phenotypes_occasional(29-5%)"] | jsonify }}{% else %}[]{% endif %},
+                  "very_rare": {% if orphadata["phenotypes_very_rare(<4-1%)"] %}{{ orphadata["phenotypes_very_rare(<4-1%)"] | jsonify }}{% else %}[]{% endif %},
+                  "excluded": {% if orphadata["phenotypes_excluded(0%)"] %}{{ orphadata["phenotypes_excluded(0%)"] | jsonify }}{% else %}[]{% endif %}
                 }
                 </script>
                 {% else %}
