@@ -317,9 +317,8 @@ def main():
 
     df = df[column_order]
 
-    df.to_excel(output_dir / "CNVPathwayAtlas-data.xlsx", index=False)
-    # df.to_parquet(output_dir / "CNVPathwayAtlas-data.parquet", index=False)
-    
+    df.to_excel(output_dir / "CNVPathwayAtlas-data.xlsx", index=False) 
+       
     # Build JSON
     cnv_json = {}
     for _, row in df.iterrows():
