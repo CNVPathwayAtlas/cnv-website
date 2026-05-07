@@ -14,12 +14,12 @@ This documentation provides detailed information on how we collected data and co
 Copy number variants (CNVs) are structural genomic alterations involving DNA segments typically larger than 1 kilobase (kb). They contribute to human genetic diversity and have been implicated in various neurodevelopmental and neuropsychiatric disorders, including intellectual disability (ID), autism spectrum disorder (ASD), bipolar disorder (BD), and schizophrenia (SCZ). (<a href="https://pubmed.ncbi.nlm.nih.gov/16418744/" target="_blank">Feuk et al., 2006</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/17122850/" target="_blank">Redon et al., 2006</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/34504065/" target="_blank">Rees et al., 2021</a>)
 
 <figure id="fig:cnv">
-  <img src="{{ site.baseurl }}/assets/images/cnv.png" alt="CNV representation" style="max-width:70%; height:auto;" />
+  <img src="{{ site.baseurl }}/assets/images/cnv.png" alt="CNV representation" style="max-width:50%; height:auto;" />
   <figcaption><strong>Figure 1:</strong> Types of copy number variants (CNVs). Modified figure from: <a href="https://pubmed.ncbi.nlm.nih.gov/36737482/" target="_blank">Mollon et al., 2023</a>.</figcaption>
 </figure>
 
 # CNV selection criteria
-We selected CNVs based on the availability of curated molecular pathways in the <a href="https://www.wikipathways.org/communities/rarediseases.html" target="_blank">WikiPathways Rare Diseases community</a>. In total, this resource includes 35 unique molecular pathways.
+We selected CNVs based on the availability of curated molecular pathways in the <a href="https://www.wikipathways.org/communities/rarediseases.html" target="_blank">WikiPathways Rare Diseases community</a>. In total, this resource includes 38 unique molecular pathways.
 
 Most CNVs represented here are recurrent (i.e., involve the same genomic breakpoints) and are known to have a high prevalence among individuals with psychiatric disorders such as schizophrenia, as reported by <a href="https://pubmed.ncbi.nlm.nih.gov/27869829/" target="_blank">Marshall et al., 2017</a>. However, this resource is not limited to schizophrenia associated CNVs.
 
@@ -33,9 +33,9 @@ From OrphaData we retrieved:
 - Disease descriptions  
 - Prevalence   
 - Associated OMIM IDs  
-- Phenotypic features labeled as obligate (100%), very frequent (99%-80%), frequent (79%-30%), occasional (29%-5%)
+- Phenotypic features labeled as obligate (100%), very frequent (99%-80%), frequent (79%-30%), occasional (29%-5%), very rare (<4-1%), and excluded (0%).
 
-These phenotypic features were mapped to the <a href="https://hpo.jax.org/" target="_blank">Human Phenotype Ontology (HPO)</a>, providing structured and computable clinical data.
+These phenotypic features were mapped to the <a href="https://hpo.jax.org/" target="_blank">Human Phenotype Ontology (HPO)</a>, providing structured clinical data.
 
 ## Genes associated information
 For gene level information, we queried the <a href="https://www.genenames.org/" target="_blank">HGNC</a> database to extract:
@@ -71,13 +71,13 @@ https://github.com/CNVPathwayAtlas/cnv-data
 # Further analysis with Cytoscape
 You can download the entire copy number variants table from the <a href="https://cnvpathwayatlas.github.io/cnv-website/" target="_blank">main page</a>.
 
-| cnv | locus | chromosome | start | end | description | pubmed_id | genes_hgnc_symbol | genes_hgnc_name | genes_hgnc_id | genes_entrez_id | genes_ensembl_id | genes_uniprot_id | wikipathways_id | orphadata_orphacode | orphadata_cause | orphadata_definition | orphadata_prevalence | orphadata_phenotypes | orphadata_hpo_id | orphadata_omim_id |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1p36.33-p36.32 | 1p36.33-p36.32 | 1 | 0 | 2500000 | 1p36.33-p36.32 deletion or duplication... | - | OR4F5 | olfactory receptor... | HGNC:14825  | 79501 | ENSG00000186092 | Q8NH21 | WP5345 | 1606 | deletion | A rare chromosomal anomaly... | 15.0 (1–5 / 10 000)... | Pointed chin | HP:0000307 | 616975;607872 |
+| cnv | locus | chromosome | start | end | region_GRCh37 | region_GRCh38 | description | pubmed_ids | genes_hgnc_symbol | genes_hgnc_name | genes_hgnc_id | genes_entrez_id | genes_ensembl_id | genes_uniprot_id | wikipathways_id | pathway_genes | orphadata_orphacode | orphadata_cause | orphadata_definition | orphadata_prevalence | orphadata_phenotypes_obligate(100%) | orphadata_phenotypes_very_frequent(99-80%) | orphadata_phenotypes_frequent(79-30%) | orphadata_phenotypes_occasional(29-5%) | orphadata_phenotypes_very_rare(<4-1%) | orphadata_phenotypes_excluded(0%) | orphadata_hpo_id | orphadata_omim_id |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2q37.3 | 2q37.3 | 2 | 239716679 | 243199373 | Chr2:239716679-243199373 | Chr2:238808038-241873823 | The 2q37 copy number variation syndrome can result in the loss of up to 78 protein-coding genes. Patients with 2q37 CNV syndrome have intellectual disability, facial dysmorphism and skeletal and digit malformations. ... | 20691407;19752160;... | TWIST2 | twist family bHLH transcription factor 2 | HGNC:20670 | 117581 | ENSG00000233608 | Q8WVJ9 | WP5224 | ABCA1;ACKR3;...;USP40 | 1001 | microdeletion | A rare chromosomal anomaly involving deletion of chromosome band 2q37 and characterized by a broad spectrum of clinical findings including developmental delay, obesity, facial dysmorphism, and skeletal findings. ... | <1 / 1 000 000 |  | Round face |  |  |  |  | HP:0000311 | 600430 |
 
 1. Open Cytoscape or download it from <a href="https://cytoscape.org/" target="_blank">cytoscape.org</a>
 2. Go to **File → Import → Network from File**
-3. Select your **CNV table** (e.g. all_cnvs_table.xlsx or a filtered version)
+3. Select your **CNV table** (e.g. CNVPathwayAtlas-data.xlsx or a filtered version)
 4. In the import dialog, set the appropriate columns:
    - one column as **Source Node** (e.g. `cnv`)
    - another as **Target Node** (e.g. `genes_hgnc_symbol`)
@@ -92,7 +92,7 @@ This content is licensed under the <a href="https://creativecommons.org/licenses
 # How to cite
 ## How to cite our work
 ### CNVPathwayAtlas website
-*CNVPathwayAtlas*: A comprehensive resource of Rare Copy Number Variants. Available on https://cnvpathwayatlas.github.io/cnv-website/ (accessed on date). 
+Valeanu, A., Duan, Y., Acosta, J.M., de Kok, T.M., van Amelsvoort, T. and Ehrhart, F., 2026. A dataset of rare copy number variants associated with neurodevelopmental and neuropsychiatric disorders. Scientific Data.
 
 ### Data version 
 You can cite the latest release from Zenodo:
