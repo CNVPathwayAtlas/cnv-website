@@ -48,12 +48,23 @@ search: false
   }
 }
 
+/* Footer: text on the left, logos on the right, centred vertically */
+.footer-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+
+.footer-text {
+  flex: 1 1 420px;
+}
+
 .page__footer-logos {
   display: flex;
-  justify-content: flex-end;     /* aligns logos to the right */
   align-items: center;
-  gap: 15px;                      /* space between logos */
-  margin-top: 10px;
+  gap: 15px;
 }
 
 .page__footer-logos img {
