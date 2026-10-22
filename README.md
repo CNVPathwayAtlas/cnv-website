@@ -22,10 +22,9 @@ The workflow [update-data.yml](.github/workflows/update-data.yml) runs when cnv-
 
 | Script | Output |
 |---|---|
-| `scripts/build_yaml_files.py` | `_cnvs/*.md` (one page per CNV), `_data/data_version.yml`, `assets/pathways/*.svg`, `*.gpml` |
+| `scripts/build_yaml_files.py` | `_cnvs/*.md` (one page per CNV), `_data/data_version.yml`, `assets/pathways/*.svg`, `*.gpml`, `assets/data/hpo_categories.json` (copied from cnv-data) |
 | `scripts/export_cnvs_to_table.py` | `assets/data/CNVPathwayAtlas-data.xlsx`, `.json`, `assets/data/tsv/*.tsv` |
 | `scripts/export_jsonld.py` | `assets/data/CNVPathwayAtlas.jsonld`, `_data/jsonld/*.json` (schema.org/Bioschemas markup in each CNV page) |
-| `scripts/generate-hpo-groups.py` | `assets/data/hpo_categories.json` |
 | `scripts/generate_browser_data.py` | `assets/data/phenotype_browser_data.json` |
 
 ## Local build
