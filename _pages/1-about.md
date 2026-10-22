@@ -12,22 +12,22 @@ Ultimately, this structured data (**CNV → Diseases → Genes → Pathways**) w
 
 ### Contributors
 - **Alexandra Valeanu**, PhD Candidate  
-  <a href="https://www.maastrichtuniversity.nl/valeanu" target="_blank">Maastricht University Profile</a>
+  <a href="https://www.maastrichtuniversity.nl/valeanu" target="_blank" rel="noopener noreferrer">Maastricht University Profile</a>
 
 - **Yuanyuan Duan**, PhD Candidate  
-  <a href="https://www.maastrichtuniversity.nl/dy-duan" target="_blank">Maastricht University Profile</a>
+  <a href="https://www.maastrichtuniversity.nl/dy-duan" target="_blank" rel="noopener noreferrer">Maastricht University Profile</a>
 
 - **Javier Millán Acosta**, PhD Candidate  
-  <a href="https://www.maastrichtuniversity.nl/j-millán-acosta" target="_blank">Maastricht University Profile</a>
+  <a href="https://www.maastrichtuniversity.nl/j-millán-acosta" target="_blank" rel="noopener noreferrer">Maastricht University Profile</a>
 
 - **Dr. Friederike Ehrhart**, Assistant Professor  
-  <a href="https://www.maastrichtuniversity.nl/f-ehrhart" target="_blank">Maastricht University Profile</a>
+  <a href="https://www.maastrichtuniversity.nl/f-ehrhart" target="_blank" rel="noopener noreferrer">Maastricht University Profile</a>
 
 - **Prof. Dr. Theo de Kok**  
-  <a href="https://www.maastrichtuniversity.nl/tmcm-de-kok" target="_blank">Maastricht University Profile</a>
+  <a href="https://www.maastrichtuniversity.nl/tmcm-de-kok" target="_blank" rel="noopener noreferrer">Maastricht University Profile</a>
 
 - **Prof. Dr. Therese van Amelsvoort**  
-  <a href="https://www.maastrichtuniversity.nl/tamj-van-amelsvoort" target="_blank">Maastricht University Profile</a>
+  <a href="https://www.maastrichtuniversity.nl/tamj-van-amelsvoort" target="_blank" rel="noopener noreferrer">Maastricht University Profile</a>
 
 ### Funding
-This research is supported by <a href="https://erdera.org/" target="_blank">ERDERA (European Rare Disease Research Alliance)</a> and the European Union under grant agreement <a href="https://cordis.europa.eu/project/id/101156595" target="_blank">101156595</a>.
+This research is supported by <a href="https://erdera.org/" target="_blank" rel="noopener noreferrer">ERDERA (European Rare Disease Research Alliance)</a> and the European Union under grant agreement <a href="https://cordis.europa.eu/project/id/101156595" target="_blank" rel="noopener noreferrer">101156595</a>.
