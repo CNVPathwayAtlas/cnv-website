@@ -16,10 +16,6 @@ extra_js:
 
 <div class="page-content">
   <div class="content-wrapper">
-    <div class="page-actions">
-      <button onclick="window.print()" class="download-button" type="button">Download as PDF</button>
-    </div>
-
     <div class="page-title-row">
       <h1 class="page-title">{{ page.title }}</h1>
     </div>
@@ -55,7 +51,7 @@ extra_js:
         <dt>Genes in region</dt>
         <dd>{{ page.gene_count }} ({{ page.protein_coding_count }} protein-coding)</dd>
         <dt>Data version</dt>
-        <dd>{{ page.data_version }}</dd>
+        <dd><a href="{{ '/documentation/#data-sources-and-versions' | relative_url }}">{{ page.data_version }}</a></dd>
       </dl>
 
       {% assign hg19_loc = page.region_hg19 | replace: "Chr", "chr" %}
@@ -184,6 +180,7 @@ extra_js:
             <a href="{{ '/assets/pathways/' | append: wp | append: '.svg' | relative_url }}" target="_blank" rel="noopener noreferrer">Open SVG</a> &middot;
             <a href="{{ '/assets/pathways/' | append: wp | append: '.gpml' | relative_url }}" download>Download GPML</a> &middot;
             <a href="https://www.wikipathways.org/pathways/{{ wp }}.html" target="_blank" rel="noopener noreferrer">View on WikiPathways</a>
+            {% if page.pathway_revision %}&middot; Revision {{ page.pathway_revision | split: "_r" | last }}{% endif %}
           </p>
         </div>
       {% endif %}
