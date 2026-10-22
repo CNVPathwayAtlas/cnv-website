@@ -1,27 +1,23 @@
 ---
 layout: default
-toc: true
+datatables: true
+extra_js:
+  - /assets/js/phenotype-grouper.js
+  - /assets/js/cnvs-table-page.js
+  - /assets/js/pathway-viewer.js
+  - /assets/js/pubmed-citations.js
 ---
 
-<head>
-  <meta name="baseurl" content="{{ site.baseurl }}">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/cnvs-table-page.js"></script>
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-  <script defer src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/phenotype-grouper.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/pubmed-citations.js" defer></script>
-</head>
-
-{% include head.html %}
+{% assign frequencies = "obligate|phenotypes_obligate(100%)|Obligate|100%;very_frequent|phenotypes_very_frequent(99-80%)|Very frequent|99–80%;frequent|phenotypes_frequent(79-30%)|Frequent|79–30%;occasional|phenotypes_occasional(29-5%)|Occasional|29–5%;very_rare|phenotypes_very_rare(<4-1%)|Very rare|<4–1%;excluded|phenotypes_excluded(0%)|Excluded|0%" | split: ";" %}
+{% assign jsonld_key = page.url | split: "/" | last %}
+{% if site.data.jsonld[jsonld_key] %}
+<script type="application/ld+json">{{ site.data.jsonld[jsonld_key] | jsonify }}</script>
+{% endif %}
 
 <div class="page-content">
   <div class="content-wrapper">
     <div class="page-actions">
-      <button onclick="window.print()" class="download-button" type="button">
-          Download as PDF
-      </button>
+      <button onclick="window.print()" class="download-button" type="button">Download as PDF</button>
     </div>
 
     <div class="page-title-row">
@@ -34,270 +30,193 @@ toc: true
         <ul>
           <li><a href="#description">Description</a></li>
           <li><a href="#genomic-location">Genomic location</a></li>
-          <li><a href="#orphanet-disorder-information">Disorder Information from Orphanet</a></li>
+          <li><a href="#orphanet-disorder-information">Disorder information from Orphanet</a></li>
           <li><a href="#molecular-pathway">Molecular pathway</a></li>
-          <li><a href="#gene-information">Gene Information</a></li>
+          <li><a href="#gene-information">Gene information</a></li>
           <li><a href="#evidence">Evidence</a></li>
         </ul>
       </nav>
 
       <div class="table-container">
       <h3 id="description">Description</h3>
+      {% assign cnv_types = page.orphadata | map: "cnv_type" | compact | uniq %}
+      {% if cnv_types.size > 0 %}
+        <p class="cnv-type-labels">
+          {% for type in cnv_types %}<span class="cnv-type cnv-type--{{ type }}">{{ type | capitalize }}</span>{% endfor %}
+        </p>
+      {% endif %}
       <p class="cnv-description">{{ page.description }}</p>
 
-      <!-- <h3>PubMed IDs</h3>
-      {% if page.pubmed_ids %}
-        <p>
-          {% for pubmed_id in page.pubmed_ids %}
-            <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank">{{ pubmed_id }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
-        </p>
-      {% else %}
-        <p>No PubMed IDs available.</p>
-      {% endif %} -->
-
-      {% assign jbrowse_app_url = page.jbrowse_app_url | default: "https://jbrowse.org/code/jb2/main/" %}
-      {% assign hg19_config = page.jbrowse_hg19_config | default: "https://jbrowse.org/ucsc/hg19/config.json" %}
-      {% assign hg38_config = page.jbrowse_hg38_config | default: "https://jbrowse.org/ucsc/hg38/config.json" %}
-      {% assign region_hg17 = page.region_hg17 | default: page.region | default: page.region_hg17 %}
-      {% assign region_hg38 = page.region_hg38 %}
-      {% assign hg19_loc = page.jbrowse_hg19_loc %}
-      {% if hg19_loc == nil or hg19_loc == "" %}
-        {% if region_hg17 and region_hg17 != "" %}
-          {% assign hg19_loc = region_hg17 %}
-        {% else %}
-          {% assign hg19_loc = "chr" | append: page.chromosome | append: ":" | append: page.start | append: "-" | append: page.end %}
+      <dl class="cnv-summary">
+        {% if page.size %}
+          <dt>Region size (GRCh37)</dt>
+          <dd>{{ page.size | divided_by: 1000000.0 | round: 2 }} Mb{% if page.size_hg38 %} (GRCh38: {{ page.size_hg38 | divided_by: 1000000.0 | round: 2 }} Mb){% endif %}</dd>
         {% endif %}
-      {% endif %}
-      {% assign hg19_loc = hg19_loc | replace: "Chr", "chr" | replace: "CHR", "chr" %}
-      {% assign hg38_loc = page.jbrowse_hg38_loc %}
-      {% if hg38_loc == nil or hg38_loc == "" %}
-        {% assign hg38_loc = region_hg38 %}
-      {% endif %}
-      {% assign hg38_loc = hg38_loc | replace: "Chr", "chr" | replace: "CHR", "chr" %}
-      {% assign hg19_label = page.jbrowse_hg19_label | default: hg19_loc %}
-      {% assign hg38_label = page.jbrowse_hg38_label | default: hg38_loc %}
-      {% assign hg19_tracks = page.jbrowse_hg19_tracks | default: "hg19-cytoBandIdeo,hg19-ncbiRefSeqCurated" %}
-      {% assign hg38_tracks = page.jbrowse_hg38_tracks | default: "hg38-cytoBandIdeo,hg38-ncbiRefSeqCurated" %}
-      {% assign session_name = hg19_label %}
+        <dt>Genes in region</dt>
+        <dd>{{ page.gene_count }} ({{ page.protein_coding_count }} protein-coding)</dd>
+        <dt>Data version</dt>
+        <dd>{{ page.data_version }}</dd>
+      </dl>
+
+      {% assign hg19_loc = page.region_hg19 | replace: "Chr", "chr" %}
+      {% assign hg38_loc = page.region_hg38 | replace: "Chr", "chr" %}
+      {% assign jbrowse_app_url = "https://jbrowse.org/code/jb2/main/" %}
+      {% capture hg19_url %}{{ jbrowse_app_url }}?config={{ "https://jbrowse.org/ucsc/hg19/config.json" | url_encode }}&assembly=hg19&loc={{ hg19_loc | url_encode }}&tracks={{ "hg19-cytoBandIdeo,hg19-ncbiRefSeqCurated" | url_encode }}&sessionName={{ hg19_loc | url_encode }}{% endcapture %}
+      {% capture hg38_url %}{{ jbrowse_app_url }}?config={{ "https://jbrowse.org/ucsc/hg38/config.json" | url_encode }}&assembly=hg38&loc={{ hg38_loc | url_encode }}&tracks={{ "hg38-cytoBandIdeo,hg38-ncbiRefSeqCurated" | url_encode }}&sessionName={{ hg38_loc | url_encode }}{% endcapture %}
 
       <h3 id="genomic-location">Genomic location</h3>
-      {% if hg19_config or hg38_config %}
-        {% capture hg19_url %}{{ jbrowse_app_url }}?config={{ hg19_config | url_encode }}&assembly=hg19&loc={{ hg19_loc | url_encode }}&tracks={{ hg19_tracks | url_encode }}&sessionName={{ session_name | url_encode }}{% endcapture %}
-        {% capture hg38_url %}{{ jbrowse_app_url }}?config={{ hg38_config | url_encode }}&assembly=hg38&loc={{ hg38_loc | url_encode }}&tracks={{ hg38_tracks | url_encode }}&sessionName={{ hg38_label | url_encode }}{% endcapture %}
+      <div class="jbrowse-controls" data-hg19-url="{{ hg19_url | strip }}" data-hg38-url="{{ hg38_url | strip }}" data-default-assembly="hg19">
+        <strong>Assembly:</strong>
+        <button type="button" class="jbrowse-switch" data-target-assembly="hg19">GRCh37 / hg19</button>
+        <button type="button" class="jbrowse-switch" data-target-assembly="hg38">GRCh38 / hg38</button>
+      </div>
+      <p class="jbrowse-coords-row">
+        <strong>Coordinates:</strong>
+        <span class="jbrowse-coords" data-hg19-loc="{{ hg19_loc }}" data-hg38-loc="{{ hg38_loc }}"></span>
+      </p>
+      <iframe id="jbrowse-frame" title="JBrowse 2 genome browser" width="100%" height="280" loading="lazy"></iframe>
 
-        <div class="jbrowse-controls" data-hg19-url="{{ hg19_url | strip }}" data-hg38-url="{{ hg38_url | strip }}" data-default-assembly="{{ page.jbrowse_default_assembly | default: 'hg19' }}">
-          <strong>Assembly:</strong>
-          {% if hg19_config %}
-            <button type="button" class="jbrowse-switch" data-target-assembly="hg19">GRCh37 / hg19</button>
-          {% endif %}
-          {% if hg38_config %}
-            <button type="button" class="jbrowse-switch" data-target-assembly="hg38">GRCh38 / hg38</button>
-          {% endif %}
-        </div>
-
-        <p style="margin: 0 0 8px;">
-          <strong style="font-size: 14px; color: #475569;">Coordinates:</strong>
-          <span class="jbrowse-coords" data-hg19-loc="{{ hg19_label }}" data-hg38-loc="{{ hg38_label }}"></span>
-        </p>
-
-        <iframe id="jbrowse-frame" title="JBrowse 2 genome browser" width="100%" height="280" loading="lazy"></iframe>
-      {% endif %}
-
-      <!-- {% if page.cytoband %}
-        <img src="{{ site.baseurl }}{{ page.cytoband }}" width="1200" height="40" alt="Cytoband Image">
-      {% endif %} -->
-
-      <h3 id="orphanet-disorder-information">Disorder Information from Orphanet</h3>
+      <h3 id="orphanet-disorder-information">Disorder information from Orphanet</h3>
       {% if page.orphadata and page.orphadata.size > 0 %}
         <div class="orphanet-list">
           {% for orphadata in page.orphadata %}
-            {% if orphadata.orphacode %}
-              <div class="disorder-card">
-                <div class="disorder-header">
-                  <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank" class="orpha-link">
-                    ORPHA:{{ orphadata.orphacode }}
-                  </a>
-                  {% if orphadata.cause %}<span class="syndrome-type">{{ orphadata.cause | capitalize }} syndrome</span>{% endif %}
+            <div class="disorder-card">
+              <div class="disorder-header">
+                <a href="https://www.orpha.net/en/disease/detail/{{ orphadata.orphacode }}" target="_blank" rel="noopener noreferrer" class="orpha-link">ORPHA:{{ orphadata.orphacode }}</a>
+                {% if orphadata.name %}<span class="disorder-name">{{ orphadata.name }}</span>{% endif %}
+                {% if orphadata.cnv_type %}<span class="cnv-type cnv-type--{{ orphadata.cnv_type }}">{{ orphadata.cause | capitalize }}</span>{% endif %}
+              </div>
+
+              {% if orphadata.in_orphadata == false %}
+                <p class="no-data">This ORPHAcode is not in the Orphadata release {{ site.data.data_version.orphadata_release }}.</p>
+              {% else %}
+              <div class="disorder-meta">
+                <div class="meta-row">
+                  <span class="meta-label">OMIM:</span>
+                  <span class="meta-value">
+                    {% if orphadata.omim and orphadata.omim.size > 0 %}
+                      {% for omim in orphadata.omim %}<a href="https://omim.org/entry/{{ omim }}" target="_blank" rel="noopener noreferrer">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+                    {% else %}
+                      Not in Orphadata
+                    {% endif %}
+                  </span>
                 </div>
-
-                <div class="disorder-meta">
-                  <div class="meta-row">
-                    <span class="meta-label">OMIM:</span>
-                    <span class="meta-value">
-                      {% if orphadata.omim %}
-                        {% for omim in orphadata.omim %}
-                          <a href="https://omim.org/entry/{{ omim }}" target="_blank">{{ omim }}</a>{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                      {% else %}
-                        NA
-                      {% endif %}
-                    </span>
-                  </div>
-                  {% if orphadata.prevalence %}
-                  <div class="meta-row">
-                    <span class="meta-label">Prevalence:</span>
-                    <span class="meta-value">{{ orphadata.prevalence }}</span>
-                  </div>
-                  {% endif %}
-                </div>
-
-                <div class="disorder-definition">
-                  <span class="meta-label">Definition:</span>
-                  {% if orphadata.definition %}
-                    <p>{{ orphadata.definition }}</p>
-                  {% else %}
-                    <span class="no-data">No definition available.</span>
-                  {% endif %}
-                </div>
-
-                {% assign has_phenotypes = false %}
-                {% if orphadata["phenotypes_obligate(100%)"] and orphadata["phenotypes_obligate(100%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata["phenotypes_very_frequent(99-80%)"] and orphadata["phenotypes_very_frequent(99-80%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata["phenotypes_frequent(79-30%)"] and orphadata["phenotypes_frequent(79-30%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata["phenotypes_occasional(29-5%)"] and orphadata["phenotypes_occasional(29-5%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata["phenotypes_very_rare(<4-1%)"] and orphadata["phenotypes_very_rare(<4-1%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-                {% if orphadata["phenotypes_excluded(0%)"] and orphadata["phenotypes_excluded(0%)"].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
-
-                <div class="disorder-phenotypes">
-                  <span class="meta-label">Phenotypic features:</span>
-                {% if has_phenotypes %}
-                <table class="phenotype-freq-table" data-phenotype-table data-orpha-index="{{ forloop.index0 }}">
-                  <thead>
-                    <tr>
-                      <th>Obligate<br><small>(100%)</small></th>
-                      <th>Very frequent<br><small>(99–80%)</small></th>
-                      <th>Frequent<br><small>(79–30%)</small></th>
-                      <th>Occasional<br><small>(29–5%)</small></th>
-                      <th>Very rare<br><small>(<4-1%)</small></th>
-                       <th>Excluded<br><small>(0%)</small>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-freq="obligate">
-                        {% if orphadata["phenotypes_obligate(100%)"] and orphadata["phenotypes_obligate(100%)"].size > 0 %}
-                          <ul class="phenotype-list">
-                            {% for phenotype in orphadata["phenotypes_obligate(100%)"] %}
-                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
-                            {% endfor %}
-                          </ul>
-                        {% else %}
-                          <span class="no-phenotypes">-</span>
-                        {% endif %}
-                      </td>
-                      <td data-freq="very_frequent">
-                        {% if orphadata["phenotypes_very_frequent(99-80%)"] and orphadata["phenotypes_very_frequent(99-80%)"].size > 0 %}
-                          <ul class="phenotype-list">
-                            {% for phenotype in orphadata["phenotypes_very_frequent(99-80%)"] %}
-                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
-                            {% endfor %}
-                          </ul>
-                        {% else %}
-                          <span class="no-phenotypes">-</span>
-                        {% endif %}
-                      </td>
-                      <td data-freq="frequent">
-                        {% if orphadata["phenotypes_frequent(79-30%)"] and orphadata["phenotypes_frequent(79-30%)"].size > 0 %}
-                          <ul class="phenotype-list">
-                            {% for phenotype in orphadata["phenotypes_frequent(79-30%)"] %}
-                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
-                            {% endfor %}
-                          </ul>
-                        {% else %}
-                          <span class="no-phenotypes">-</span>
-                        {% endif %}
-                      </td>
-                      <td data-freq="occasional">
-                        {% if orphadata["phenotypes_occasional(29-5%)"] and orphadata["phenotypes_occasional(29-5%)"].size > 0 %}
-                          <ul class="phenotype-list">
-                            {% for phenotype in orphadata["phenotypes_occasional(29-5%)"] %}
-                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
-                            {% endfor %}
-                          </ul>
-                        {% else %}
-                          <span class="no-phenotypes">-</span>
-                        {% endif %}
-                      </td>
-                      <td data-freq="very_rare">
-                        {% if orphadata["phenotypes_very_rare(<4-1%)"] and orphadata["phenotypes_very_rare(<4-1%)"].size > 0 %}
-                          <ul class="phenotype-list">
-                            {% for phenotype in orphadata["phenotypes_very_rare(<4-1%)"] %}
-                              <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
-                            {% endfor %}
-                          </ul>
-                        {% else %}
-                          <span class="no-phenotypes">-</span>
-                        {% endif %}
-                      </td>
-                       <td data-freq="excluded">
-                         {% if orphadata["phenotypes_excluded(0%)"] and orphadata["phenotypes_excluded(0%)"].size > 0 %}
-                           <ul class="phenotype-list">
-                             {% for phenotype in orphadata["phenotypes_excluded(0%)"] %}
-                               <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/app/browse/term/{{ phenotype.hpo_id }}" target="_blank">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
-                             {% endfor %}
-                           </ul>
-                         {% else %}
-                           <span class="no-phenotypes">-</span>
-                         {% endif %}
-                       </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <script type="application/json" data-phenotypes-json data-orpha-index="{{ forloop.index0 }}">
-                {
-                  "obligate": {% if orphadata["phenotypes_obligate(100%)"] %}{{ orphadata["phenotypes_obligate(100%)"] | jsonify }}{% else %}[]{% endif %},
-                  "very_frequent": {% if orphadata["phenotypes_very_frequent(99-80%)"] %}{{ orphadata["phenotypes_very_frequent(99-80%)"] | jsonify }}{% else %}[]{% endif %},
-                  "frequent": {% if orphadata["phenotypes_frequent(79-30%)"] %}{{ orphadata["phenotypes_frequent(79-30%)"] | jsonify }}{% else %}[]{% endif %},
-                  "occasional": {% if orphadata["phenotypes_occasional(29-5%)"] %}{{ orphadata["phenotypes_occasional(29-5%)"] | jsonify }}{% else %}[]{% endif %},
-                  "very_rare": {% if orphadata["phenotypes_very_rare(<4-1%)"] %}{{ orphadata["phenotypes_very_rare(<4-1%)"] | jsonify }}{% else %}[]{% endif %},
-                  "excluded": {% if orphadata["phenotypes_excluded(0%)"] %}{{ orphadata["phenotypes_excluded(0%)"] | jsonify }}{% else %}[]{% endif %}
-                }
-                </script>
-                {% else %}
-                <span class="no-data">No phenotypes available for now</span>
-                {% endif %}
+                <div class="meta-row">
+                  <span class="meta-label">Prevalence:</span>
+                  <span class="meta-value">{{ orphadata.prevalence | default: "Unknown" }}</span>
                 </div>
               </div>
-            {% endif %}
+
+              <div class="disorder-definition">
+                <span class="meta-label">Definition:</span>
+                {% if orphadata.definition %}
+                  <p>{{ orphadata.definition }}</p>
+                {% else %}
+                  <span class="no-data">No definition in Orphadata.</span>
+                {% endif %}
+              </div>
+
+              {% assign has_phenotypes = false %}
+              {% for freq in frequencies %}
+                {% assign f = freq | split: "|" %}{% assign key = f[1] %}
+                {% if orphadata[key].size > 0 %}{% assign has_phenotypes = true %}{% endif %}
+              {% endfor %}
+
+              <div class="disorder-phenotypes">
+                <span class="meta-label">Phenotypic features:</span>
+                {% if has_phenotypes %}
+                  <table class="phenotype-freq-table" data-phenotype-table data-orpha-index="{{ forloop.index0 }}">
+                    <thead>
+                      <tr>
+                        {% for freq in frequencies %}{% assign f = freq | split: "|" %}<th>{{ f[2] }}<br><small>({{ f[3] }})</small></th>{% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {% for freq in frequencies %}
+                          {% assign f = freq | split: "|" %}{% assign key = f[1] %}
+                          <td data-freq="{{ f[0] }}">
+                            {% if orphadata[key].size > 0 %}
+                              <ul class="phenotype-list">
+                                {% for phenotype in orphadata[key] %}
+                                  <li>{% if phenotype.hpo_id %}<a href="https://hpo.jax.org/browse/term/{{ phenotype.hpo_id }}" target="_blank" rel="noopener noreferrer">{{ phenotype.name | strip }}</a>{% else %}{{ phenotype.name | strip }}{% endif %}</li>
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              <span class="no-phenotypes">-</span>
+                            {% endif %}
+                          </td>
+                        {% endfor %}
+                      </tr>
+                    </tbody>
+                  </table>
+                  <script type="application/json" data-phenotypes-json data-orpha-index="{{ forloop.index0 }}">
+                  { {% for freq in frequencies %}{% assign f = freq | split: "|" %}{% assign key = f[1] %}"{{ f[0] }}": {{ orphadata[key] | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %} }
+                  </script>
+                {% else %}
+                  <span class="no-data">No phenotypes in Orphadata.</span>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
           {% endfor %}
         </div>
       {% else %}
-        <p><em>This CNV is not yet linked to an OrphaCode.</em></p>
+        <p><em>This CNV is not yet linked to an ORPHAcode.</em></p>
       {% endif %}
 
       {% if page.wikipathways_id %}
+        {% assign wp = page.wikipathways_id %}
         <h3 id="molecular-pathway">Molecular pathway</h3>
-        <div class="pathway-container">
-          <iframe src="https://pathway-viewer.toolforge.org/embed/{{ page.wikipathways_id }}" width="900px" height="400px" loading="lazy"></iframe>
-            <a href="https://www.wikipathways.org/pathways/{{ page.wikipathways_id }}.html"
-               target="_blank"
-               class="pathway-link">
-            View on WikiPathways
-            </a>
+        <div class="pathway-container" data-pathway-svg="{{ '/assets/pathways/' | append: wp | append: '.svg' | relative_url }}">
+          <div class="pathway-toolbar">
+            <strong>{{ page.pathway_name }} ({{ wp }})</strong>
+            <span class="pathway-zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+            </span>
+          </div>
+          <div class="pathway-canvas">
+            <img src="{{ '/assets/pathways/' | append: wp | append: '.svg' | relative_url }}" alt="WikiPathways {{ wp }}: {{ page.pathway_name }}" loading="lazy">
+          </div>
+          <p class="pathway-links">
+            <a href="{{ '/assets/pathways/' | append: wp | append: '.svg' | relative_url }}" target="_blank" rel="noopener noreferrer">Open SVG</a> &middot;
+            <a href="{{ '/assets/pathways/' | append: wp | append: '.gpml' | relative_url }}" download>Download GPML</a> &middot;
+            <a href="https://www.wikipathways.org/pathways/{{ wp }}.html" target="_blank" rel="noopener noreferrer">View on WikiPathways</a>
+          </p>
         </div>
       {% endif %}
 
       {% if page.genes %}
-        <h3 id="gene-information">Gene Information</h3>
+        <h3 id="gene-information">Gene information</h3>
+        <p class="gene-table-note">Genes marked <span class="in-pathway-mark" title="In pathway">&#9679;</span> are also in the molecular pathway.</p>
         <table id="gene-info-table" class="display">
           <thead>
             <tr>
               <th>HGNC</th>
-              <th>Gene Name</th>
+              <th>Gene name</th>
+              <th>Locus group</th>
               <th>NCBI</th>
               <th>Ensembl</th>
               <th>UniProt</th>
+              <th>OMIM</th>
             </tr>
           </thead>
           <tbody>
             {% for gene in page.genes %}
               <tr>
-                <td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/{{ gene.hgnc_id }}" target="_blank">{{ gene.symbol }}</a></td>
-                <td>{{ gene.name }}</td>
-                <td><a href="https://www.ncbi.nlm.nih.gov/gene/{{ gene.entrez_id }}" target="_blank">{{ gene.entrez_id }}</a></td>
-                <td><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ gene.ensembl_id }}" target="_blank">{{ gene.ensembl_id }}</a></td>
-                <td><a href="https://www.uniprot.org/uniprotkb/{{ gene.uniprot_id }}" target="_blank">{{ gene.uniprot_id }}</a></td>
+                <td>
+                  {% if gene.hgnc_id %}<a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/{{ gene.hgnc_id }}" target="_blank" rel="noopener noreferrer">{{ gene.symbol }}</a>{% else %}{{ gene.symbol }}{% endif %}
+                  {% if gene.in_pathway %}<span class="in-pathway-mark" title="In pathway">&#9679;</span>{% endif %}
+                  {% if gene.input_symbol %}<br><small title="Symbol in the curated input">was {{ gene.input_symbol }}</small>{% endif %}
+                </td>
+                <td>{{ gene.name | default: "Not found in HGNC" }}</td>
+                <td>{{ gene.locus_group }}</td>
+                <td>{% if gene.entrez_id %}<a href="https://www.ncbi.nlm.nih.gov/gene/{{ gene.entrez_id }}" target="_blank" rel="noopener noreferrer">{{ gene.entrez_id }}</a>{% endif %}</td>
+                <td>{% if gene.ensembl_id %}<a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ gene.ensembl_id }}" target="_blank" rel="noopener noreferrer">{{ gene.ensembl_id }}</a>{% endif %}</td>
+                <td>{% if gene.uniprot_id %}<a href="https://www.uniprot.org/uniprotkb/{{ gene.uniprot_id }}" target="_blank" rel="noopener noreferrer">{{ gene.uniprot_id }}</a>{% endif %}</td>
+                <td>{% if gene.omim_id %}<a href="https://omim.org/entry/{{ gene.omim_id }}" target="_blank" rel="noopener noreferrer">{{ gene.omim_id }}</a>{% endif %}</td>
               </tr>
             {% endfor %}
           </tbody>
@@ -311,7 +230,7 @@ toc: true
             <li class="citation-item" data-pubmed-id="{{ pubmed_id }}">
               <span class="citation-loading">Loading citation...</span>
               <span class="citation-text" style="display: none;"></span>
-              <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank" class="pubmed-link">[PMID: {{ pubmed_id }}]</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pubmed_id }}" target="_blank" rel="noopener noreferrer" class="pubmed-link">[PMID: {{ pubmed_id }}]</a>
             </li>
           {% endfor %}
         </ul>
@@ -322,4 +241,3 @@ toc: true
     </div>
   </div>
 </div>
-

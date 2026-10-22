@@ -488,30 +488,121 @@ details {
 
 .pathway-container {
   margin-top: 12px;
+}
 
-  iframe {
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+.pathway-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  font-size: 14px;
+
+  button {
+    min-width: 36px;
+    padding: 4px 8px;
+    font-size: 13px;
+    border: 1px solid #93c5fd;
+    border-radius: 4px;
+    background: #eff6ff;
+    color: #1e3a8a;
+    cursor: pointer;
+
+    &:hover {
+      background: #dbeafe;
+    }
   }
 }
 
-.pathway-link {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 20px;
-  background-color: #8f949f;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.15s ease;
+.pathway-canvas {
+  max-height: 600px;
+  overflow: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
 
-  &:hover {
-    background-color: #1d4ed8;
-    color: white;
+  img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
   }
+}
+
+.pathway-links {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+//  CNV summary, type labels and external links
+
+.cnv-type-labels {
+  margin: 0 0 8px;
+}
+
+.cnv-type {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #e2e8f0;
+  color: #334155;
+
+  &--deletion {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  &--duplication,
+  &--triplication {
+    background: #dbeafe;
+    color: #1e3a8a;
+  }
+}
+
+.disorder-name {
+  font-weight: 600;
+  margin: 0 8px;
+}
+
+.cnv-summary {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+  font-size: 14px;
+
+  dt {
+    font-weight: 600;
+    color: #475569;
+    margin: 0;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.jbrowse-coords-row {
+  margin: 0 0 8px;
+
+  strong {
+    font-size: 14px;
+    color: #475569;
+  }
+}
+
+.gene-table-note {
+  font-size: 13px;
+  color: #475569;
+}
+
+.in-pathway-mark {
+  color: #16a34a;
+  font-size: 12px;
+  margin-left: 4px;
 }
 
 //  Evidence section 

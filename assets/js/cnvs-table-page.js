@@ -160,8 +160,8 @@ function renderGroupedPhenotypes(groups) {
 
     return groups.map(function (group) {
         var items = group.phenotypes.map(function (p) {
-            var link = 'https://hpo.jax.org/app/browse/term/' + p.hpo_id;
-            return '<li><a href="' + link + '" target="_blank">' + p.name + '</a></li>';
+            var link = 'https://hpo.jax.org/browse/term/' + p.hpo_id;
+            return '<li><a href="' + link + '" target="_blank" rel="noopener noreferrer">' + p.name + '</a></li>';
         }).join('');
 
         var parentLabel = group.parent.label;
