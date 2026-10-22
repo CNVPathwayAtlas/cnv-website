@@ -37,6 +37,8 @@ From OrphaData we retrieved:
 
 These phenotypic features were mapped to the <a href="https://hpo.jax.org/" target="_blank" rel="noopener noreferrer">Human Phenotype Ontology (HPO)</a>, providing structured clinical data.
 
+On the website, each phenotype is grouped under one top-level HPO category (a direct child of "Phenotypic abnormality", HP:0000118). A phenotype can have more than one top-level category in HPO. We use the category with the shortest path in HPO. "Constitutional symptom" and "Neoplasm" are used only when the phenotype has no other category. When two categories have the same path length, we use the category with the lowest HPO ID. For example, microcephaly (HP:0000252) is in "Abnormality of head or neck", "Abnormality of the nervous system" and "Abnormality of the musculoskeletal system" in HPO, and is grouped under "Abnormality of head or neck". All categories of each phenotype are in `hpo_categories.json` (field `terms`).
+
 ## Genes associated information
 For gene level information, we queried the <a href="https://www.genenames.org/" target="_blank" rel="noopener noreferrer">HGNC</a> database to extract:
 - Approved gene symbols  
@@ -63,11 +65,62 @@ After creating your pathway, you can upload it to <a href="https://www.wikipathw
 Each CNV has a region in two genome builds: GRCh37 (hg19) and GRCh38 (hg38). GRCh37 is the main build: the CNVs Explorer, the genome overview, the Phenotype Browser and the region size use GRCh37. The GRCh38 region is given as additional information. The genome browser on each CNV page opens in GRCh37 and can show GRCh38.
 
 # Data updates
-The data is kept in the <a href="https://github.com/CNVPathwayAtlas/cnv-data" target="_blank" rel="noopener noreferrer">cnv-data</a> repository. Every week an automatic job checks Orphadata, HGNC and WikiPathways for new releases. When a source release or the curated input changes the processed data, a new data version (`v_<date>`) is released and this website is updated. The current data version and the source release dates are shown at the bottom of each page.
+The data is kept in the <a href="https://github.com/CNVPathwayAtlas/cnv-data" target="_blank" rel="noopener noreferrer">cnv-data</a> repository. On the first day of each month an automatic job checks Orphadata, HGNC, WikiPathways and HPO for new releases. When a source release or the curated input changes the processed data, a new data version (`v_<date>`) is released and this website is updated. The release of each source is listed in <a href="#data-sources-and-versions">Data sources and versions</a>.
 
 Gene symbols in the curated input are mapped to the approved HGNC symbol. When HGNC changed a symbol, the CNV page shows the approved symbol and the earlier symbol (for example "FIMP1, was C16orf92").
 
 The molecular pathway on each CNV page is the WikiPathways SVG of the pathway revision in the data version. The GPML file can be downloaded from the same section. Genes in the CNV region that are also in the pathway are marked in the gene table.
+
+# Data sources and versions
+{% assign dv = site.data.data_version %}
+Data version <a href="https://github.com/{{ site.data_repository }}/releases/tag/{{ dv.version }}" target="_blank" rel="noopener noreferrer">{{ dv.version }}</a>, sources retrieved on {{ dv.retrieved }}.
+
+<table class="sources-table">
+  <thead><tr><th>Source</th><th>Data used</th><th>Release</th></tr></thead>
+  <tbody>
+    {% assign orpha_labels = "definitions|Disorder names, definitions and OMIM IDs (product 1);phenotypes|HPO phenotypes with frequency (product 4);prevalence|Prevalence (product 9)" | split: ";" %}
+    {% for item in orpha_labels %}{% assign pair = item | split: "|" %}{% assign key = pair[0] %}{% assign product = dv.orphadata[key] %}
+    <tr>
+      <td>{% if forloop.first %}<a href="https://www.orphadata.com/" target="_blank" rel="noopener noreferrer">Orphadata</a>{% endif %}</td>
+      <td>{% if product.url %}<a href="{{ product.url }}" target="_blank" rel="noopener noreferrer">{{ pair[1] }}</a>{% else %}{{ pair[1] }}{% endif %}</td>
+      <td>{{ product.release }}{% if product.version %} (version {{ product.version }}){% endif %}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td><a href="https://www.genenames.org/" target="_blank" rel="noopener noreferrer">HGNC</a></td>
+      <td>{% if dv.hgnc_url %}<a href="{{ dv.hgnc_url }}" target="_blank" rel="noopener noreferrer">Approved gene symbols and gene IDs</a>{% else %}Approved gene symbols and gene IDs{% endif %}</td>
+      <td>{{ dv.hgnc_release }}</td>
+    </tr>
+    <tr>
+      <td><a href="https://hpo.jax.org/" target="_blank" rel="noopener noreferrer">HPO</a></td>
+      <td>{% if dv.hpo_url %}<a href="{{ dv.hpo_url }}" target="_blank" rel="noopener noreferrer">Top-level phenotype categories</a>{% else %}Top-level phenotype categories{% endif %}</td>
+      <td>{{ dv.hpo_release | default: "Not recorded" }}</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.wikipathways.org/" target="_blank" rel="noopener noreferrer">WikiPathways</a></td>
+      <td>One molecular pathway for each CNV</td>
+      <td>{{ dv.wikipathways | size }} pathways, revision of each pathway below</td>
+    </tr>
+  </tbody>
+</table>
+
+<details>
+  <summary>WikiPathways revisions</summary>
+  <table class="sources-table">
+    <thead><tr><th>Pathway</th><th>Revision</th><th>Last modified</th></tr></thead>
+    <tbody>
+      {% for wp in dv.wikipathways %}
+      <tr>
+        <td><a href="https://www.wikipathways.org/pathways/{{ wp[0] }}.html" target="_blank" rel="noopener noreferrer">{{ wp[0] }}</a></td>
+        <td>{{ wp[1].revision | split: "_r" | last }}</td>
+        <td>{{ wp[1].last_modified | slice: 0, 4 }}-{{ wp[1].last_modified | slice: 4, 2 }}-{{ wp[1].last_modified | slice: 6, 2 }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</details>
+
+The checksum (SHA-256) and the URL of each downloaded file are in `data/latest/sources.json` in <a href="https://github.com/CNVPathwayAtlas/cnv-data" target="_blank" rel="noopener noreferrer">cnv-data</a>.
 
 # Uploading a new CNV
 You can use our <a href="{{ '/contact/' | relative_url }}">contact forms</a> if you want to request a new CNV or you want to report an error.
