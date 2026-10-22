@@ -1,0 +1,609 @@
+cnv	symbol	input_symbol	name	hgnc_id	entrez_id	ensembl_id	uniprot_id	omim_id	locus_group	in_pathway
+10q11.21-q11.23	FRMPD2		FERM and PDZ domain containing 2	HGNC:28572	143162	ENSG00000170324	Q68DX3	613323	protein-coding gene	True
+10q11.21-q11.23	MAPK8		mitogen-activated protein kinase 8	HGNC:6881	5599	ENSG00000107643	P45983	601158	protein-coding gene	True
+10q11.21-q11.23	ARHGAP22		Rho GTPase activating protein 22	HGNC:30320	58504	ENSG00000128805	Q7Z5H3	610585	protein-coding gene	True
+10q11.21-q11.23	WDFY4		WDFY family member 4	HGNC:29323	57705	ENSG00000128815	Q6ZS81	613316	protein-coding gene	True
+10q11.21-q11.23	LRRC18		leucine rich repeat containing 18	HGNC:23199	474354	ENSG00000165383	Q8N456	619002	protein-coding gene	True
+10q11.21-q11.23	VSTM4		V-set and transmembrane domain containing 4	HGNC:26470	196740	ENSG00000165633	Q8IW00		protein-coding gene	True
+10q11.21-q11.23	FAM170B		family with sequence similarity 170 member B	HGNC:19736	170370	ENSG00000172538	A6NMN3		protein-coding gene	True
+10q11.21-q11.23	TMEM273		transmembrane protein 273	HGNC:27274	170371	ENSG00000204161	Q5T292		protein-coding gene	True
+10q11.21-q11.23	C10orf71		chromosome 10 open reading frame 71	HGNC:26973	118461	ENSG00000177354	Q711Q0	621202	protein-coding gene	True
+10q11.21-q11.23	DRGX		dorsal root ganglia homeobox	HGNC:21536	644168	ENSG00000165606	A6NNA5	606701	protein-coding gene	True
+10q11.21-q11.23	ERCC6		ERCC excision repair 6, chromatin remodeling factor	HGNC:3438	2074	ENSG00000225830	P0DP91	609413	protein-coding gene	True
+10q11.21-q11.23	CHAT		choline O-acetyltransferase	HGNC:1912	1103	ENSG00000070748	P28329	118490	protein-coding gene	True
+10q11.21-q11.23	SLC18A3		solute carrier family 18 member A3	HGNC:10936	6572	ENSG00000187714	Q16572	600336	protein-coding gene	True
+10q11.21-q11.23	C10orf53		chromosome 10 open reading frame 53	HGNC:27421	282966	ENSG00000178645	Q8N6V4		protein-coding gene	True
+10q11.21-q11.23	OGDHL		oxoglutarate dehydrogenase L	HGNC:25590	55753	ENSG00000197444	Q9ULD0	617513	protein-coding gene	True
+10q11.21-q11.23	PARG		poly(ADP-ribose) glycohydrolase	HGNC:8605	8505	ENSG00000227345	Q86W56	603501	protein-coding gene	True
+10q23.1-q23.2	MAT1A		methionine adenosyltransferase 1A	HGNC:6903	4143	ENSG00000151224	Q00266	610550	protein-coding gene	True
+10q23.1-q23.2	DYDC1		DPY30 domain containing 1	HGNC:23460	143241	ENSG00000170788	Q8WWB3	615154	protein-coding gene	True
+10q23.1-q23.2	DYDC2		DPY30 domain containing 2	HGNC:23468	84332	ENSG00000133665	Q96IM9		protein-coding gene	True
+10q23.1-q23.2	PRXL2A		peroxiredoxin like 2A	HGNC:28651	84293	ENSG00000122378	Q9BRX8	617165	protein-coding gene	True
+10q23.1-q23.2	TSPAN14		tetraspanin 14	HGNC:23303	81619	ENSG00000108219	Q8NG11		protein-coding gene	True
+10q23.1-q23.2	SH2D4B		SH2 domain containing 4B	HGNC:31440	387694	ENSG00000178217	Q5SQS7		protein-coding gene	True
+10q23.1-q23.2	NRG3		neuregulin 3	HGNC:7999	10718	ENSG00000185737	P56975	605533	protein-coding gene	True
+10q23.1-q23.2	GHITM		growth hormone inducible transmembrane protein	HGNC:17281	27069	ENSG00000165678	Q9H3K2	619205	protein-coding gene	True
+10q23.1-q23.2	GPR15LG		G protein-coupled receptor 15 ligand	HGNC:31428	387695	ENSG00000188373	Q6UWK7	617775	protein-coding gene	True
+10q23.1-q23.2	CDHR1		cadherin related family member 1	HGNC:14550	92211	ENSG00000148600	Q96JP9	609502	protein-coding gene	True
+10q23.1-q23.2	LRIT2		leucine rich repeat, Ig-like and transmembrane domains 2	HGNC:23443	340745	ENSG00000204033	A6NDA9		protein-coding gene	True
+10q23.1-q23.2	LRIT1		leucine rich repeat, Ig-like and transmembrane domains 1	HGNC:23404	26103	ENSG00000148602	Q9P2V4	616103	protein-coding gene	True
+10q23.1-q23.2	RGR		retinal G protein coupled receptor	HGNC:9990	5995	ENSG00000148604	P47804	600342	protein-coding gene	True
+10q23.1-q23.2	CCSER2		coiled-coil serine rich protein 2	HGNC:29197	54462	ENSG00000107771	Q9H7U1	619944	protein-coding gene	True
+10q23.1-q23.2	GRID1		glutamate ionotropic receptor delta type subunit 1	HGNC:4575	2894	ENSG00000182771	Q9ULK0	610659	protein-coding gene	True
+10q23.1-q23.2	WAPL		WAPL cohesin release factor	HGNC:23293	23063	ENSG00000062650	Q7Z5K2	610754	protein-coding gene	True
+10q23.1-q23.2	OPN4		opsin 4	HGNC:14449	94233	ENSG00000122375	Q9UHM6	606665	protein-coding gene	True
+10q23.1-q23.2	LDB3		LIM domain binding 3	HGNC:15710	11155	ENSG00000122367	O75112	605906	protein-coding gene	True
+10q23.1-q23.2	BMPR1A		bone morphogenetic protein receptor type 1A	HGNC:1076	657	ENSG00000107779	P36894	601299	protein-coding gene	True
+10q23.1-q23.2	MMRN2		multimerin 2	HGNC:19888	79812	ENSG00000173269	Q9H8L6	608925	protein-coding gene	True
+10q23.1-q23.2	SNCG		synuclein gamma	HGNC:11141	6623	ENSG00000173267	O76070	602998	protein-coding gene	True
+10q23.1-q23.2	ADIRF		adipogenesis regulatory factor	HGNC:24043	10974	ENSG00000148671	Q15847	621163	protein-coding gene	True
+10q23.1-q23.2	FAM25A		family with sequence similarity 25 member A	HGNC:23436	643161	ENSG00000188100	B3EWG3		protein-coding gene	True
+10q23.1-q23.2	GLUD1		glutamate dehydrogenase 1	HGNC:4335	2746	ENSG00000148672	P00367	138130	protein-coding gene	True
+10q23.1-q23.2	SHLD2		shieldin complex subunit 2	HGNC:28773	54537	ENSG00000122376	Q86V20	618029	protein-coding gene	True
+11p11.2	ALKBH3		alkB homolog 3, alpha-ketoglutarate dependent dioxygenase	HGNC:30141	221120	ENSG00000166199	Q96Q83	610603	protein-coding gene	True
+11p11.2	C11orf96		chromosome 11 open reading frame 96	HGNC:38675	387763	ENSG00000187479	Q7Z7L8		protein-coding gene	True
+11p11.2	ACCS		1-aminocyclopropane-1-carboxylate synthase homolog (inactive)	HGNC:23989	84680	ENSG00000110455	Q96QU6	608405	protein-coding gene	True
+11p11.2	EXT2		exostosin glycosyltransferase 2	HGNC:3513	2132	ENSG00000151348	Q93063	608210	protein-coding gene	True
+11p11.2	ALX4		ALX homeobox 4	HGNC:450	60529	ENSG00000052850	Q9H161	605420	protein-coding gene	True
+11p11.2	CD82		CD82 molecule	HGNC:6210	3732	ENSG00000085117	P27701	600623	protein-coding gene	True
+11p11.2	TSPAN18		tetraspanin 18	HGNC:20660	90139	ENSG00000157570	Q96SJ8	619399	protein-coding gene	True
+11p11.2	TP53I11		tumor protein p53 inducible protein 11	HGNC:16842	9537	ENSG00000175274	O14683	617867	protein-coding gene	True
+11p11.2	PRDM11		PR/SET domain 11	HGNC:13996	56981	ENSG00000019485	Q9NQV5	616347	protein-coding gene	True
+11p11.2	SYT13		synaptotagmin 13	HGNC:14962	57586	ENSG00000019505	Q7L8C5	607716	protein-coding gene	True
+11p11.2	CHST1		carbohydrate sulfotransferase 1	HGNC:1969	8534	ENSG00000175264	O43916	603797	protein-coding gene	True
+11p11.2	SLC35C1		solute carrier family 35 member C1	HGNC:20197	55343	ENSG00000181830	Q96A29	605881	protein-coding gene	True
+11p11.2	CRY2		cryptochrome circadian regulator 2	HGNC:2385	1408	ENSG00000121671	Q49AN0	603732	protein-coding gene	True
+11p11.2	MAPK8IP1		mitogen-activated protein kinase 8 interacting protein 1	HGNC:6882	9479	ENSG00000121653	Q9UQF2	604641	protein-coding gene	True
+11p11.2	FREY1		Frey regulator of sperm-oocyte fusion 1	HGNC:37213	143678	ENSG00000234776	C9JXX5		protein-coding gene	True
+11p11.2	PEX16		peroxisomal biogenesis factor 16	HGNC:8857	9409	ENSG00000121680	Q9Y5Y5	603360	protein-coding gene	True
+11p11.2	LARGE2		LARGE xylosyl- and glucuronyltransferase 2	HGNC:16522	120071	ENSG00000165905	Q8N3Y3	609709	protein-coding gene	True
+11p11.2	PHF21A		PHD finger protein 21A	HGNC:24156	51317	ENSG00000135365	Q96BD5	608325	protein-coding gene	True
+13q12.11-CRYL1	CRYL1		crystallin lambda 1	HGNC:18246	51084	ENSG00000165475	Q9Y2S2	609877	protein-coding gene	True
+13q12.12	SGCG		sarcoglycan gamma	HGNC:10809	6445	ENSG00000102683	Q13326	608896	protein-coding gene	True
+13q12.12	SACS		sacsin molecular chaperone	HGNC:10519	26278	ENSG00000151835	Q9NZJ4	604490	protein-coding gene	True
+13q12.12	TNFRSF19		TNF receptor superfamily member 19	HGNC:11915	55504	ENSG00000127863	Q9NS68	606122	protein-coding gene	True
+13q12.12	MIPEP		mitochondrial intermediate peptidase	HGNC:7104	4285	ENSG00000027001	Q99797	602241	protein-coding gene	True
+13q12.12	C1QTNF9B		C1q and TNF related 9B	HGNC:34072	387911	ENSG00000205863	B2RNN3	614148	protein-coding gene	True
+13q12.12	SPATA13		spermatogenesis associated 13	HGNC:23222	221178	ENSG00000182957	Q96N96	613324	protein-coding gene	True
+13q12.12	C1QTNF9		C1q and TNF related 9	HGNC:28732	338872	ENSG00000240654	P0C862	614285	protein-coding gene	True
+15q11.2-q13.1	TUBGCP5		tubulin gamma complex component 5	HGNC:18600	114791	ENSG00000275835	Q96RT8	608147	protein-coding gene	True
+15q11.2-q13.1	CYFIP1		cytoplasmic FMR1 interacting protein 1	HGNC:13759	23191	ENSG00000273749	Q7L576	606322	protein-coding gene	True
+15q11.2-q13.1	NIPA2		NIPA magnesium transporter 2	HGNC:17044	81614	ENSG00000140157	Q8N8Q9	608146	protein-coding gene	True
+15q11.2-q13.1	NIPA1		NIPA magnesium transporter 1	HGNC:17043	123606	ENSG00000170113	Q7RTP0	608145	protein-coding gene	True
+15q11.2-q13.1	GOLGA8S		golgin A8 family member S	HGNC:44409	653061	ENSG00000261739	H3BPF8		protein-coding gene	True
+15q11.2-q13.1	GOLGA6L2		golgin A6 family like 2	HGNC:26695	283685	ENSG00000174450	Q8N9W4		protein-coding gene	True
+15q11.2-q13.1	MKRN3		makorin ring finger protein 3	HGNC:7114	7681	ENSG00000179455	Q13064	603856	protein-coding gene	True
+15q11.2-q13.1	MAGEL2		MAGE family member L2	HGNC:6814	54551	ENSG00000254585	Q9UJ55	605283	protein-coding gene	True
+15q11.2-q13.1	NDN		necdin, MAGE family member	HGNC:7675	4692	ENSG00000182636	Q99608	602117	protein-coding gene	True
+15q11.2-q13.1	NPAP1		nuclear pore associated protein 1	HGNC:1190	23742	ENSG00000185823	Q9NZP6	610922	protein-coding gene	True
+15q11.2-q13.1	SNRPN		small nuclear ribonucleoprotein polypeptide N	HGNC:11164	6638	ENSG00000128739	P63162	182279	protein-coding gene	True
+15q11.2-q13.1	SNURF		SNRPN upstream open reading frame	HGNC:11171	8926	ENSG00000273173	Q9Y675		protein-coding gene	True
+15q11.2-q13.1	UBE3A		ubiquitin protein ligase E3A	HGNC:12496	7337	ENSG00000114062	Q05086	601623	protein-coding gene	True
+15q11.2-q13.1	ATP10A		ATPase phospholipid transporting 10A (putative)	HGNC:13542	57194	ENSG00000206190	O60312	605855	protein-coding gene	True
+15q11.2-q13.1	GABRB3		gamma-aminobutyric acid type A receptor subunit beta3	HGNC:4083	2562	ENSG00000166206	P28472	137192	protein-coding gene	True
+15q11.2-q13.1	GABRA5		gamma-aminobutyric acid type A receptor subunit alpha5	HGNC:4079	2558	ENSG00000186297	P31644	137142	protein-coding gene	True
+15q11.2-q13.1	GABRG3		gamma-aminobutyric acid type A receptor subunit gamma3	HGNC:4088	2567	ENSG00000182256	Q99928	600233	protein-coding gene	True
+15q11.2-q13.1	OCA2		OCA2 melanosomal transmembrane protein	HGNC:8101	4948	ENSG00000104044	Q04671	611409	protein-coding gene	True
+15q11.2-q13.1	HERC2		HECT and RLD domain containing E3 ubiquitin protein ligase 2	HGNC:4868	8924	ENSG00000128731	O95714	605837	protein-coding gene	True
+15q11.2	TUBGCP5		tubulin gamma complex component 5	HGNC:18600	114791	ENSG00000275835	Q96RT8	608147	protein-coding gene	True
+15q11.2	CYFIP1		cytoplasmic FMR1 interacting protein 1	HGNC:13759	23191	ENSG00000273749	Q7L576	606322	protein-coding gene	True
+15q11.2	NIPA2		NIPA magnesium transporter 2	HGNC:17044	81614	ENSG00000140157	Q8N8Q9	608146	protein-coding gene	True
+15q11.2	NIPA1		NIPA magnesium transporter 1	HGNC:17043	123606	ENSG00000170113	Q7RTP0	608145	protein-coding gene	True
+15q13.1-q13.3	APBA2		amyloid beta precursor protein binding family A member 2	HGNC:579	321	ENSG00000034053	Q99767	602712	protein-coding gene	True
+15q13.1-q13.3	ENTREP2		endosomal transmembrane epsin interactor 2	HGNC:29075	23359	ENSG00000104059	O60320	620052	protein-coding gene	True
+15q13.1-q13.3	NSMCE3		NSE3 component of SMC5/6 complex	HGNC:7677	56160	ENSG00000185115	Q96MG7	608243	protein-coding gene	True
+15q13.1-q13.3	TJP1		tight junction protein 1	HGNC:11827	7082	ENSG00000104067	Q07157	601009	protein-coding gene	True
+15q13.1-q13.3	GOLGA8J		golgin A8 family member J	HGNC:38650	653073	ENSG00000179938	A6NMD2		protein-coding gene	True
+15q13.1-q13.3	GOLGA8T		golgin A8 family member T	HGNC:44410	653075	ENSG00000261247	H3BQL2		protein-coding gene	True
+15q13.1-q13.3	GOLGA8R		golgin A8 family member R	HGNC:44407	101059918	ENSG00000186399	I6L899		protein-coding gene	True
+15q13.1-q13.3	GOLGA8Q		golgin A8 family member Q	HGNC:44408	727909	ENSG00000178115	H3BV12		protein-coding gene	True
+15q13.1-q13.3	GOLGA8H		golgin A8 family member H	HGNC:37443	728498	ENSG00000261794	P0CJ92		protein-coding gene	True
+15q13.1-q13.3	FAN1		FANCD2 and FANCI associated nuclease 1	HGNC:29170	22909	ENSG00000198690	Q9Y2M0	613534	protein-coding gene	True
+15q13.1-q13.3	MTMR10		myotubularin related protein 10	HGNC:25999	54893	ENSG00000166912	Q9NXD2		protein-coding gene	True
+15q13.1-q13.3	TRPM1		transient receptor potential cation channel subfamily M member 1	HGNC:7146	4308	ENSG00000134160	Q7Z4N2	603576	protein-coding gene	True
+15q13.1-q13.3	KLF13		KLF transcription factor 13	HGNC:13672	51621	ENSG00000169926	Q9Y2Y9	605328	protein-coding gene	True
+15q13.1-q13.3	OTUD7A		OTU deubiquitinase 7A	HGNC:20718	161725	ENSG00000169918	Q8TE49	612024	protein-coding gene	True
+15q13.1-q13.3	CHRNA7		cholinergic receptor nicotinic alpha 7 subunit	HGNC:1960	1139	ENSG00000175344	P36544	118511	protein-coding gene	True
+15q13.2-q13.3	CHRFAM7A		CHRNA7 (exons 5-10) and FAM7A (exons A-E) fusion	HGNC:15781	89832	ENSG00000166664	Q494W8	609756	protein-coding gene	True
+15q13.2-q13.3	GOLGA8R		golgin A8 family member R	HGNC:44407	101059918	ENSG00000186399	I6L899		protein-coding gene	True
+15q13.2-q13.3	GOLGA8Q		golgin A8 family member Q	HGNC:44408	727909	ENSG00000178115	H3BV12		protein-coding gene	True
+15q13.2-q13.3	GOLGA8H		golgin A8 family member H	HGNC:37443	728498	ENSG00000261794	P0CJ92		protein-coding gene	True
+15q13.2-q13.3	ARHGAP11B		Rho GTPase activating protein 11B	HGNC:15782	89839	ENSG00000285077	Q3KRB8	616310	protein-coding gene	True
+15q13.2-q13.3	FAN1		FANCD2 and FANCI associated nuclease 1	HGNC:29170	22909	ENSG00000198690	Q9Y2M0	613534	protein-coding gene	True
+15q13.2-q13.3	MTMR10		myotubularin related protein 10	HGNC:25999	54893	ENSG00000166912	Q9NXD2		protein-coding gene	True
+15q13.2-q13.3	TRPM1		transient receptor potential cation channel subfamily M member 1	HGNC:7146	4308	ENSG00000134160	Q7Z4N2	603576	protein-coding gene	True
+15q13.2-q13.3	KLF13		KLF transcription factor 13	HGNC:13672	51621	ENSG00000169926	Q9Y2Y9	605328	protein-coding gene	True
+15q13.2-q13.3	OTUD7A		OTU deubiquitinase 7A	HGNC:20718	161725	ENSG00000169918	Q8TE49	612024	protein-coding gene	True
+15q13.2-q13.3	CHRNA7		cholinergic receptor nicotinic alpha 7 subunit	HGNC:1960	1139	ENSG00000175344	P36544	118511	protein-coding gene	True
+15q25.2-q25.3	CPEB1		cytoplasmic polyadenylation element binding protein 1	HGNC:21744	64506	ENSG00000214575	Q9BZB8	607342	protein-coding gene	True
+15q25.2-q25.3	AP3B2		adaptor related protein complex 3 subunit beta 2	HGNC:567	8120	ENSG00000103723	Q13367	602166	protein-coding gene	True
+15q25.2-q25.3	FSD2		fibronectin type III and SPRY domain containing 2	HGNC:18024	123722	ENSG00000186628	A1L4K1		protein-coding gene	True
+15q25.2-q25.3	WHAMM		WASP homolog associated with actin, golgi membranes and microtubules	HGNC:30493	123720	ENSG00000156232	Q8TF30	612393	protein-coding gene	True
+15q25.2-q25.3	HOMER2		homer scaffold protein 2	HGNC:17513	9455	ENSG00000103942	Q9NSB8	604799	protein-coding gene	True
+15q25.2-q25.3	RAMAC		RNA guanine-7 methyltransferase activating subunit	HGNC:31022	83640	ENSG00000169612	Q9BTL3	614547	protein-coding gene	True
+15q25.2-q25.3	C15orf40		chromosome 15 open reading frame 40	HGNC:28443	123207	ENSG00000169609	Q8WUR7		protein-coding gene	True
+15q25.2-q25.3	BTBD1		BTB domain containing 1	HGNC:1120	53339	ENSG00000064726	Q9H0C5	608530	protein-coding gene	True
+15q25.2-q25.3	TM6SF1		transmembrane 6 superfamily member 1	HGNC:11860	53346	ENSG00000136404	Q9BZW5	606562	protein-coding gene	True
+15q25.2-q25.3	HDGFL3		HDGF like 3	HGNC:24937	50810	ENSG00000166503	Q9Y3E1	616643	protein-coding gene	False
+15q25.2-q25.3	BNC1		basonuclin zinc finger protein 1	HGNC:1081	646	ENSG00000169594	Q01954	601930	protein-coding gene	True
+15q25.2-q25.3	SH3GL3		SH3 domain containing GRB2 like 3, endophilin A3	HGNC:10832	6457	ENSG00000140600	Q99963	603362	protein-coding gene	True
+15q25.2-q25.3	ADAMTSL3		ADAMTS like 3	HGNC:14633	57188	ENSG00000156218	P82987	609199	protein-coding gene	True
+15q25.2-q25.3	GOLGA6L4		golgin A6 family like 4	HGNC:27256	643707	ENSG00000184206	A6NEF3		protein-coding gene	True
+15q25.2-q25.3	ZSCAN2		zinc finger and SCAN domain containing 2	HGNC:20994	54993	ENSG00000176371	Q7Z7L9		protein-coding gene	True
+15q25.2-q25.3	WDR73		WD repeat domain 73	HGNC:25928	84942	ENSG00000177082	Q6P4I2	616144	protein-coding gene	True
+15q25.2-q25.3	NMB		neuromedin B	HGNC:7842	4828	ENSG00000197696	P08949	162340	protein-coding gene	True
+15q25.2-q25.3	SEC11A		SEC11 homolog A, signal peptidase complex subunit	HGNC:17718	23478	ENSG00000140612	P67812	618258	protein-coding gene	True
+15q25.2-q25.3	ZNF592		zinc finger protein 592	HGNC:28986	9640	ENSG00000166716	Q92610	613624	protein-coding gene	True
+15q25.2-q25.3	ALPK3		alpha kinase 3	HGNC:17574	57538	ENSG00000136383	Q96L96	617608	protein-coding gene	True
+15q25.2-q25.3	SLC28A1		solute carrier family 28 member 1	HGNC:11001	9154	ENSG00000156222	O00337	606207	protein-coding gene	True
+15q25.2-q25.3	PDE8A		phosphodiesterase 8A	HGNC:8793	5151	ENSG00000073417	O60658	602972	protein-coding gene	True
+16p11.2-distal	ATXN2L		ataxin 2 like	HGNC:31326	11273	ENSG00000168488	Q8WWM7	607931	protein-coding gene	True
+16p11.2-distal	TUFM		Tu translation elongation factor, mitochondrial	HGNC:12420	7284	ENSG00000178952	P49411	602389	protein-coding gene	True
+16p11.2-distal	SH2B1		SH2B adaptor protein 1	HGNC:30417	25970	ENSG00000178188	Q9NRF2	608937	protein-coding gene	True
+16p11.2-distal	ATP2A1		ATPase sarcoplasmic/endoplasmic reticulum Ca2+ transporting 1	HGNC:811	487	ENSG00000196296	O14983	108730	protein-coding gene	True
+16p11.2-distal	RABEP2		rabaptin, RAB GTPase binding effector protein 2	HGNC:24817	79874	ENSG00000177548	Q9H5N1	611869	protein-coding gene	True
+16p11.2-distal	CD19		CD19 molecule	HGNC:1633	930	ENSG00000177455	P15391	107265	protein-coding gene	True
+16p11.2-distal	NFATC2IP		nuclear factor of activated T cells 2 interacting protein	HGNC:25906	84901	ENSG00000176953	Q8NCF5	614525	protein-coding gene	True
+16p11.2-distal	SPNS1		SPNS lysolipid transporter 1, lysophospholipid	HGNC:30621	83985	ENSG00000169682	Q9H2V7	612583	protein-coding gene	True
+16p11.2-distal	LAT		linker for activation of T cells	HGNC:18874	27040	ENSG00000213658	O43561	602354	protein-coding gene	True
+16p11.2-proximal	SPN		sialophorin	HGNC:11249	6693	ENSG00000197471	P16150	182160	protein-coding gene	True
+16p11.2-proximal	QPRT		quinolinate phosphoribosyltransferase	HGNC:9755	23475	ENSG00000103485	Q15274	606248	protein-coding gene	True
+16p11.2-proximal	C16orf54		chromosome 16 open reading frame 54	HGNC:26649	283897	ENSG00000185905	Q6UWD8		protein-coding gene	True
+16p11.2-proximal	ZG16		zymogen granule protein 16	HGNC:30961	653808	ENSG00000174992	O60844	617311	protein-coding gene	True
+16p11.2-proximal	KIF22		kinesin family member 22	HGNC:6391	3835	ENSG00000079616	Q14807	603213	protein-coding gene	True
+16p11.2-proximal	MAZ		MYC associated zinc finger protein	HGNC:6914	4150	ENSG00000103495	P56270	600999	protein-coding gene	True
+16p11.2-proximal	PRRT2		proline rich transmembrane protein 2	HGNC:30500	112476	ENSG00000167371	Q7Z6L0	614386	protein-coding gene	True
+16p11.2-proximal	PAGR1		PAXIP1 associated glutamate rich protein 1	HGNC:28707	79447	ENSG00000280789	Q9BTK6	612033	protein-coding gene	True
+16p11.2-proximal	MVP		major vault protein	HGNC:7531	9961	ENSG00000013364	Q14764	605088	protein-coding gene	True
+16p11.2-proximal	CDIPT		CDP-diacylglycerol--inositol 3-phosphatidyltransferase	HGNC:1769	10423	ENSG00000103502	O14735	605893	protein-coding gene	True
+16p11.2-proximal	SEZ6L2		seizure related 6 homolog like 2	HGNC:30844	26470	ENSG00000174938	Q6UXD5	616667	protein-coding gene	True
+16p11.2-proximal	ASPHD1		aspartate beta-hydroxylase domain containing 1	HGNC:27380	253982	ENSG00000174939	Q5U4P2		protein-coding gene	True
+16p11.2-proximal	KCTD13		potassium channel tetramerization domain containing 13	HGNC:22234	253980	ENSG00000174943	Q8WZ19	608947	protein-coding gene	True
+16p11.2-proximal	TMEM219		transmembrane protein 219	HGNC:25201	124446	ENSG00000149932	Q86XT9	620290	protein-coding gene	True
+16p11.2-proximal	TAOK2		TAO kinase 2	HGNC:16835	9344	ENSG00000149930	Q9UL54	613199	protein-coding gene	True
+16p11.2-proximal	HIRIP3		HIRA interacting protein 3	HGNC:4917	8479	ENSG00000149929	Q9BW71	603365	protein-coding gene	True
+16p11.2-proximal	INO80E		INO80 complex subunit E	HGNC:26905	283899	ENSG00000169592	Q8NBZ0		protein-coding gene	True
+16p11.2-proximal	DOC2A		double C2 domain alpha	HGNC:2985	8448	ENSG00000149927	Q14183	604567	protein-coding gene	True
+16p11.2-proximal	FIMP1	C16orf92	fertilization-influencing membrane protein 1	HGNC:26346	146378	ENSG00000167194	Q96LL3	618911	protein-coding gene	True
+16p11.2-proximal	TLCD3B		TLC domain containing 3B	HGNC:25295	83723	ENSG00000149926	Q71RH2	615175	protein-coding gene	True
+16p11.2-proximal	ALDOA		aldolase, fructose-bisphosphate A	HGNC:414	226	ENSG00000149925	P04075	103850	protein-coding gene	True
+16p11.2-proximal	PPP4C		protein phosphatase 4 catalytic subunit	HGNC:9319	5531	ENSG00000149923	P60510	602035	protein-coding gene	True
+16p11.2-proximal	TBX6		T-box transcription factor 6	HGNC:11605	6911	ENSG00000149922	O95947	602427	protein-coding gene	True
+16p11.2-proximal	YPEL3		yippee like 3	HGNC:18327	83719	ENSG00000090238	P61236	609724	protein-coding gene	True
+16p11.2-proximal	GDPD3		glycerophosphodiester phosphodiesterase domain containing 3	HGNC:28638	79153	ENSG00000102886	Q7L5L3	616318	protein-coding gene	True
+16p11.2-proximal	MAPK3		mitogen-activated protein kinase 3	HGNC:6877	5595	ENSG00000102882	P27361	601795	protein-coding gene	True
+16p12.2	UQCRC2		ubiquinol-cytochrome c reductase core protein 2	HGNC:12586	7385	ENSG00000140740	P22695	191329	protein-coding gene	True
+16p12.2	PDZD9		PDZ domain containing 9	HGNC:28740	255762	ENSG00000155714	Q8IXQ8		protein-coding gene	True
+16p12.2	MOSMO		modulator of smoothened	HGNC:27087	730094	ENSG00000185716	Q8NHV5		protein-coding gene	True
+16p12.2	VWA3A		von Willebrand factor A domain containing 3A	HGNC:27088	146177	ENSG00000175267	A6NCI4	621113	protein-coding gene	True
+16p12.2	SDR42E2		short chain dehydrogenase/reductase family 42E, member 2	HGNC:35414	100288072	ENSG00000183921	A6NKP2		protein-coding gene	True
+16p12.2	EEF2K		eukaryotic elongation factor 2 kinase	HGNC:24615	29904	ENSG00000103319	O00418	606968	protein-coding gene	True
+16p12.2	POLR3E		RNA polymerase III subunit E	HGNC:30347	55718	ENSG00000058600	Q9NVU0	617815	protein-coding gene	True
+16p12.2	CDR2		cerebellar degeneration related protein 2	HGNC:1799	1039	ENSG00000140743	Q01850	117340	protein-coding gene	True
+16p13.11	BMERB1		bMERB domain containing 1	HGNC:19213	89927	ENSG00000166780	Q96MC5		protein-coding gene	True
+16p13.11	MARF1		meiosis regulator and mRNA stability factor 1	HGNC:29562	9665	ENSG00000166783	Q9Y4F3	614593	protein-coding gene	True
+16p13.11	NDE1		nudE neurodevelopment protein 1	HGNC:17619	54820	ENSG00000072864	Q9NXR1	609449	protein-coding gene	True
+16p13.11	MYH11		myosin heavy chain 11	HGNC:7569	4629	ENSG00000133392	P35749	160745	protein-coding gene	True
+16p13.11	CEP20		centrosomal protein 20	HGNC:26435	123811	ENSG00000133393	Q96NB1	617149	protein-coding gene	True
+16p13.11	ABCC1		ATP binding cassette subfamily C member 1 (ABCC1 blood group)	HGNC:51	4363	ENSG00000103222	P33527	158343	protein-coding gene	True
+16p13.11	ABCC6		ATP binding cassette subfamily C member 6	HGNC:57	368	ENSG00000091262	O95255	603234	protein-coding gene	True
+16p13.3	CREBBP		CREB binding lysine acetyltransferase 	HGNC:2348	1387	ENSG00000005339	Q92793	600140	protein-coding gene	True
+17p11.2	TNFRSF13B		TNF receptor superfamily member 13B	HGNC:18153	23495	ENSG00000240505	O14836	604907	protein-coding gene	True
+17p11.2	MPRIP		myosin phosphatase Rho interacting protein	HGNC:30321	23164	ENSG00000133030	Q6WCQ1	612935	protein-coding gene	True
+17p11.2	PLD6		phospholipase D family member 6	HGNC:30447	201164	ENSG00000179598	Q8N2A8	614960	protein-coding gene	True
+17p11.2	FLCN		folliculin	HGNC:27310	201163	ENSG00000154803	Q8NFG4	607273	protein-coding gene	True
+17p11.2	COPS3		COP9 signalosome subunit 3	HGNC:2239	8533	ENSG00000141030	Q9UNS2	604665	protein-coding gene	True
+17p11.2	NT5M		5',3'-nucleotidase, mitochondrial	HGNC:15769	56953	ENSG00000205309	Q9NPB1	605292	protein-coding gene	True
+17p11.2	MED9		mediator complex subunit 9	HGNC:25487	55090	ENSG00000141026	Q9NWA0	609878	protein-coding gene	True
+17p11.2	RASD1		ras related dexamethasone induced 1	HGNC:15828	51655	ENSG00000108551	Q9Y272	605550	protein-coding gene	True
+17p11.2	PEMT		phosphatidylethanolamine N-methyltransferase	HGNC:8830	10400	ENSG00000133027	Q9UBM1	602391	protein-coding gene	True
+17p11.2	RAI1		retinoic acid induced 1	HGNC:9834	10743	ENSG00000108557	Q7Z5J4	607642	protein-coding gene	True
+17p11.2	SREBF1		sterol regulatory element binding transcription factor 1	HGNC:11289	6720	ENSG00000072310	P36956	184756	protein-coding gene	True
+17p11.2	TOM1L2		target of myb1 like 2 membrane trafficking protein	HGNC:11984	146691	ENSG00000175662	Q6ZVM7	615519	protein-coding gene	True
+17p11.2	DRC3		dynein regulatory complex subunit 3	HGNC:25384	83450	ENSG00000171962	Q9H069	618758	protein-coding gene	True
+17p11.2	ATPAF2		ATP synthase mitochondrial F1 complex assembly factor 2	HGNC:18802	91647	ENSG00000171953	Q8N5M1	608918	protein-coding gene	True
+17p11.2	GID4		GID complex subunit 4 homolog	HGNC:28453	79018	ENSG00000141034	Q8IVV7	617699	protein-coding gene	True
+17p11.2	DRG2		developmentally regulated GTP binding protein 2	HGNC:3030	1819	ENSG00000108591	P55039	602986	protein-coding gene	True
+17p11.2	MYO15A		myosin XVA	HGNC:7594	51168	ENSG00000091536	Q9UKN7	602666	protein-coding gene	True
+17p11.2	ALKBH5		alkB homolog 5, RNA demethylase	HGNC:25996	54890	ENSG00000091542	Q6P6C2	613303	protein-coding gene	True
+17p11.2	LLGL1		LLGL scribble cell polarity complex component 1	HGNC:6628	3996	ENSG00000131899	Q15334	600966	protein-coding gene	True
+17p11.2	FLII		FLII actin remodeling protein	HGNC:3750	2314	ENSG00000177731	Q13045	600362	protein-coding gene	True
+17p11.2	MIEF2		mitochondrial elongation factor 2	HGNC:17920	125170	ENSG00000177427	Q96C03	615498	protein-coding gene	True
+17p11.2	TOP3A		DNA topoisomerase III alpha	HGNC:11992	7156	ENSG00000177302	Q13472	601243	protein-coding gene	True
+17p11.2	SMCR8		SMCR8-C9orf72 complex subunit	HGNC:17921	140775	ENSG00000176994	Q8TEV9	617074	protein-coding gene	True
+17p11.2	SHMT1		serine hydroxymethyltransferase 1	HGNC:10850	6470	ENSG00000176974	P34896	182144	protein-coding gene	True
+17p13.3-PAFAH1B1	PAFAH1B1		platelet activating factor acetylhydrolase 1b regulatory subunit 1	HGNC:8574	5048	ENSG00000007168	P43034	601545	protein-coding gene	True
+17p13.3-YWHAE	YWHAE		tyrosine 3-monooxygenase/tryptophan 5-monooxygenase activation protein epsilon	HGNC:12851	7531	ENSG00000108953	P62258	605066	protein-coding gene	True
+17q11.2	CRLF3		cytokine receptor like factor 3	HGNC:17177	51379	ENSG00000176390	Q8IUI8	614853	protein-coding gene	True
+17q11.2	ATAD5		ATPase family AAA domain containing 5	HGNC:25752	79915	ENSG00000176208	Q96QE3	609534	protein-coding gene	True
+17q11.2	TEFM		transcription elongation factor, mitochondrial	HGNC:26223	79736	ENSG00000172171	Q96QE5	616422	protein-coding gene	True
+17q11.2	ADAP2		ArfGAP with dual PH domains 2	HGNC:16487	55803	ENSG00000184060	Q9NPF8	608635	protein-coding gene	True
+17q11.2	RNF135		ring finger protein 135	HGNC:21158	84282	ENSG00000181481	Q8IUD6	611358	protein-coding gene	True
+17q11.2	NF1		neurofibromin 1	HGNC:7765	4763	ENSG00000196712	P21359	613113	protein-coding gene	True
+17q11.2	OMG		oligodendrocyte myelin glycoprotein	HGNC:8135	4974	ENSG00000126861	P23515	164345	protein-coding gene	True
+17q11.2	EVI2B		ecotropic viral integration site 2B	HGNC:3500	2124	ENSG00000185862	P34910	158381	protein-coding gene	True
+17q11.2	EVI2A		ecotropic viral integration site 2A	HGNC:3499	2123	ENSG00000126860	P22794	158380	protein-coding gene	True
+17q11.2	RAB11FIP4		RAB11 family interacting protein 4	HGNC:30267	84440	ENSG00000131242	Q86YS3	611999	protein-coding gene	True
+17q11.2	MIR365BHG		MIR365B and MIR4725 host gene	HGNC:55941	123464515	ENSG00000228768			non-coding RNA	True
+17q11.2	COPRS		coordinator of PRMT5 and differentiation stimulator	HGNC:28848	55352	ENSG00000172301	Q9NQ92		protein-coding gene	True
+17q11.2	UTP6		UTP6 small subunit processome component	HGNC:18279	55813	ENSG00000108651	Q9NYH9	620948	protein-coding gene	True
+17q11.2	SUZ12		SUZ12 polycomb repressive complex 2 subunit	HGNC:17101	23512	ENSG00000178691	Q15022	606245	protein-coding gene	True
+17q12	ZNHIT3		zinc finger HIT-type containing 3	HGNC:12309	9326	ENSG00000273611	Q15649	604500	protein-coding gene	True
+17q12	MYO19		myosin XIX	HGNC:26234	80179	ENSG00000278259	Q96H55	617379	protein-coding gene	True
+17q12	PIGW		phosphatidylinositol glycan anchor biosynthesis class W	HGNC:23213	284098	ENSG00000277161	Q7Z7B1	610275	protein-coding gene	True
+17q12	GGNBP2		gametogenetin binding protein 2	HGNC:19357	79893	ENSG00000278311	Q9H3C7	612275	protein-coding gene	True
+17q12	DHRS11		dehydrogenase/reductase 11	HGNC:28639	79154	ENSG00000278535	Q6UWP2	616159	protein-coding gene	True
+17q12	MRM1		mitochondrial rRNA methyltransferase 1	HGNC:26202	79922	ENSG00000278619	Q6IN84	618099	protein-coding gene	True
+17q12	LHX1		LIM homeobox 1	HGNC:6593	3975	ENSG00000273706	P48742	601999	protein-coding gene	True
+17q12	AATF		apoptosis antagonizing transcription factor	HGNC:19235	26574	ENSG00000275700	Q9NY61	608463	protein-coding gene	True
+17q12	ACACA		acetyl-CoA carboxylase alpha	HGNC:84	31	ENSG00000278540	Q13085	200350	protein-coding gene	True
+17q12	C17orf78		chromosome 17 open reading frame 78	HGNC:26831	284099	ENSG00000278505	Q8N4C9		protein-coding gene	True
+17q12	TADA2A		transcriptional adaptor 2A	HGNC:11531	6871	ENSG00000276234	O75478	602276	protein-coding gene	True
+17q12	DUSP14		dual specificity phosphatase 14	HGNC:17007	11072	ENSG00000276023	O95147	606618	protein-coding gene	True
+17q12	SYNRG		synergin gamma	HGNC:557	11276	ENSG00000275066	Q9UMZ2	607291	protein-coding gene	True
+17q12	DDX52		DExD-box helicase 52	HGNC:20038	11056	ENSG00000278053	Q9Y2R4	612500	protein-coding gene	True
+17q12	HNF1B		HNF1 homeobox B	HGNC:11630	6928	ENSG00000275410	P35680	189907	protein-coding gene	True
+1p36.33-p36.32	OR4F5		olfactory receptor family 4 subfamily F member 5	HGNC:14825	79501	ENSG00000186092	Q8NH21		protein-coding gene	True
+1p36.33-p36.32	OR4F29		olfactory receptor family 4 subfamily F member 29	HGNC:31275	729759	ENSG00000284733	Q6IEY1		protein-coding gene	True
+1p36.33-p36.32	OR4F16		olfactory receptor family 4 subfamily F member 16	HGNC:15079	81399	ENSG00000284662	Q6IEY1		protein-coding gene	True
+1p36.33-p36.32	SAMD11		sterile alpha motif domain containing 11	HGNC:28706	148398	ENSG00000187634	Q96NU1	616765	protein-coding gene	True
+1p36.33-p36.32	NOC2L		NOC2 like nucleolar associated transcriptional repressor	HGNC:24517	26155	ENSG00000188976	Q9Y3T9	610770	protein-coding gene	True
+1p36.33-p36.32	KLHL17		kelch like family member 17	HGNC:24023	339451	ENSG00000187961	Q6TDP4	619262	protein-coding gene	True
+1p36.33-p36.32	PLEKHN1		pleckstrin homology domain containing N1	HGNC:25284	84069	ENSG00000187583	Q494U1	621052	protein-coding gene	True
+1p36.33-p36.32	PERM1		PPARGC1 and ESRR induced regulator, muscle 1	HGNC:28208	84808	ENSG00000187642	Q5SV97	615921	protein-coding gene	True
+1p36.33-p36.32	HES4		hes family bHLH transcription factor 4	HGNC:24149	57801	ENSG00000188290	Q9HCC6	608060	protein-coding gene	True
+1p36.33-p36.32	ISG15		ISG15 ubiquitin like modifier	HGNC:4053	9636	ENSG00000187608	P05161	147571	protein-coding gene	True
+1p36.33-p36.32	AGRN		agrin	HGNC:329	375790	ENSG00000188157	O00468	103320	protein-coding gene	True
+1p36.33-p36.32	RNF223		ring finger protein 223	HGNC:40020	401934	ENSG00000237330	E7ERA6		protein-coding gene	True
+1p36.33-p36.32	C1orf159		chromosome 1 open reading frame 159	HGNC:26062	54991	ENSG00000131591	Q96HA4		protein-coding gene	True
+1p36.33-p36.32	TNFRSF18		TNF receptor superfamily member 18	HGNC:11914	8784	ENSG00000186891	Q9Y5U5	603905	protein-coding gene	True
+1p36.33-p36.32	TNFRSF4		TNF receptor superfamily member 4	HGNC:11918	7293	ENSG00000186827	P43489	600315	protein-coding gene	True
+1p36.33-p36.32	SDF4		stromal cell derived factor 4	HGNC:24188	51150	ENSG00000078808	Q9BRK5	614282	protein-coding gene	True
+1p36.33-p36.32	B3GALT6		beta-1,3-galactosyltransferase 6	HGNC:17978	126792	ENSG00000176022	Q96L58	615291	protein-coding gene	True
+1p36.33-p36.32	C1QTNF12		C1q and TNF related 12	HGNC:32308	388581	ENSG00000184163	Q5T7M4	616593	protein-coding gene	True
+1p36.33-p36.32	UBE2J2		ubiquitin conjugating enzyme E2 J2	HGNC:19268	118424	ENSG00000160087	Q8N2K1	619756	protein-coding gene	True
+1p36.33-p36.32	SCNN1D		sodium channel epithelial 1 subunit delta	HGNC:10601	6339	ENSG00000162572	P51172	601328	protein-coding gene	True
+1p36.33-p36.32	ACAP3		ArfGAP with coiled-coil, ankyrin repeat and PH domains 3	HGNC:16754	116983	ENSG00000131584	Q96P50		protein-coding gene	True
+1p36.33-p36.32	PUSL1		pseudouridine synthase like 1	HGNC:26914	126789	ENSG00000169972	Q8N0Z8		protein-coding gene	True
+1p36.33-p36.32	INTS11		integrator complex subunit 11	HGNC:26052	54973	ENSG00000127054	Q5TA45	611354	protein-coding gene	True
+1p36.33-p36.32	CPTP		ceramide-1-phosphate transfer protein	HGNC:28116	80772	ENSG00000224051	Q5TA50	615467	protein-coding gene	True
+1p36.33-p36.32	TAS1R3		taste 1 receptor member 3	HGNC:15661	83756	ENSG00000169962	Q7RTX0	605865	protein-coding gene	True
+1p36.33-p36.32	DVL1		dishevelled segment polarity protein 1	HGNC:3084	1855	ENSG00000107404	O14640	601365	protein-coding gene	True
+1p36.33-p36.32	MXRA8		matrix remodeling associated 8	HGNC:7542	54587	ENSG00000162576	Q9BRK3	617293	protein-coding gene	True
+1p36.33-p36.32	AURKAIP1		aurora kinase A interacting protein 1	HGNC:24114	54998	ENSG00000175756	Q9NWT8	609183	protein-coding gene	True
+1p36.33-p36.32	CCNL2		cyclin L2	HGNC:20570	81669	ENSG00000221978	Q96S94	613482	protein-coding gene	True
+1p36.33-p36.32	MRPL20		mitochondrial ribosomal protein L20	HGNC:14478	55052	ENSG00000242485	Q9BYC9	611833	protein-coding gene	True
+1p36.33-p36.32	ANKRD65		ankyrin repeat domain 65	HGNC:42950	441869	ENSG00000235098	E5RJM6		protein-coding gene	True
+1p36.33-p36.32	TMEM278		transmembrane protein 278	HGNC:37099	643965	ENSG00000205116	A6NKF7		protein-coding gene	True
+1p36.33-p36.32	VWA1		von Willebrand factor A domain containing 1	HGNC:30910	64856	ENSG00000179403	Q6PCB0	611901	protein-coding gene	True
+1p36.33-p36.32	ATAD3C		ATPase family AAA domain containing 3C	HGNC:32151	219293	ENSG00000215915	Q5T2N8	617227	protein-coding gene	True
+1p36.33-p36.32	ATAD3B		ATPase family AAA domain containing 3B	HGNC:24007	83858	ENSG00000160072	Q5T9A4	612317	protein-coding gene	True
+1p36.33-p36.32	ATAD3A		ATPase family AAA domain containing 3A	HGNC:25567	55210	ENSG00000197785	Q9NVI7	612316	protein-coding gene	True
+1p36.33-p36.32	TMEM240		transmembrane protein 240	HGNC:25186	339453	ENSG00000205090	Q5SV17	616101	protein-coding gene	False
+1p36.33-p36.32	SSU72		SSU72 homolog, RNA polymerase II CTD phosphatase	HGNC:25016	29101	ENSG00000160075	Q9NP77	617680	protein-coding gene	True
+1p36.33-p36.32	FNDC10		fibronectin type III domain containing 10	HGNC:42951	643988	ENSG00000228594	F2Z333		protein-coding gene	True
+1p36.33-p36.32	MIB2		MIB E3 ubiquitin protein ligase 2	HGNC:30577	142678	ENSG00000197530	Q96AX9	611141	protein-coding gene	True
+1p36.33-p36.32	MMP23B		matrix metallopeptidase 23B	HGNC:7171	8510	ENSG00000189409	O75900	603321	protein-coding gene	True
+1p36.33-p36.32	CDK11B		cyclin dependent kinase 11B	HGNC:1729	984	ENSG00000248333	P21127	176873	protein-coding gene	True
+1p36.33-p36.32	SLC35E2B		solute carrier family 35 member E2B	HGNC:33941	728661	ENSG00000189339	P0CK96	619315	protein-coding gene	True
+1p36.33-p36.32	CDK11A		cyclin dependent kinase 11A	HGNC:1730	728642	ENSG00000008128	Q9UQ88	116951	protein-coding gene	True
+1p36.33-p36.32	NADK		NAD kinase	HGNC:29831	65220	ENSG00000008130	O95544	611616	protein-coding gene	True
+1p36.33-p36.32	GNB1		G protein subunit beta 1	HGNC:4396	2782	ENSG00000078369	P62873	139380	protein-coding gene	True
+1p36.33-p36.32	CALML6		calmodulin like 6	HGNC:24193	163688	ENSG00000169885	Q8TD86	610171	protein-coding gene	True
+1p36.33-p36.32	TMEM52		transmembrane protein 52	HGNC:27916	339456	ENSG00000178821	Q8NDY8		protein-coding gene	True
+1p36.33-p36.32	CFAP74		cilia and flagella associated protein 74	HGNC:29368	85452	ENSG00000142609	Q9C0B2	620187	protein-coding gene	True
+1p36.33-p36.32	GABRD		gamma-aminobutyric acid type A receptor subunit delta	HGNC:4084	2563	ENSG00000187730	O14764	137163	protein-coding gene	True
+1p36.33-p36.32	PRKCZ		protein kinase C zeta	HGNC:9412	5590	ENSG00000067606	Q05513	176982	protein-coding gene	True
+1p36.33-p36.32	FAAP20		FA core complex associated protein 20	HGNC:26428	199990	ENSG00000162585	Q6NZ36	615183	protein-coding gene	True
+1p36.33-p36.32	SKI		SKI proto-oncogene	HGNC:10896	6497	ENSG00000157933	P12755	164780	protein-coding gene	True
+1p36.33-p36.32	MORN1		MORN repeat containing 1	HGNC:25852	79906	ENSG00000116151	Q5T089		protein-coding gene	True
+1p36.33-p36.32	RER1		retention in endoplasmic reticulum sorting receptor 1	HGNC:30309	11079	ENSG00000157916	O15258	620048	protein-coding gene	True
+1p36.33-p36.32	PEX10		peroxisomal biogenesis factor 10	HGNC:8851	5192	ENSG00000157911	O60683	602859	protein-coding gene	True
+1p36.33-p36.32	PLCH2		phospholipase C eta 2	HGNC:29037	9651	ENSG00000149527	O75038	612836	protein-coding gene	True
+1p36.33-p36.32	PANK4		pantothenate kinase 4 (inactive)	HGNC:19366	55229	ENSG00000157881	Q9NVE7	606162	protein-coding gene	True
+1p36.33-p36.32	HES5		hes family bHLH transcription factor 5	HGNC:19764	388585	ENSG00000197921	Q5TA89	607348	protein-coding gene	True
+1p36.33-p36.32	TNFRSF14		TNF receptor superfamily member 14	HGNC:11912	8764	ENSG00000157873	Q92956	602746	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	HJV		hemojuvelin BMP co-receptor	HGNC:4887	148738	ENSG00000168509	Q6ZVN8	608374	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	TXNIP		thioredoxin interacting protein	HGNC:16952	10628	ENSG00000265972	Q9H3M7	606599	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	POLR3GL		RNA polymerase III subunit GL	HGNC:28466	84265	ENSG00000121851	Q9BT43	617457	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	ANKRD34A		ankyrin repeat domain 34A	HGNC:27639	284615	ENSG00000272031	Q69YU3		protein-coding gene	True
+1q21.1-proximal,BP2-BP3	LIX1L		limb and CNS expressed 1 like	HGNC:28715	128077	ENSG00000271601	Q8IVB5		protein-coding gene	True
+1q21.1-proximal,BP2-BP3	RBM8A		RNA binding motif protein 8A	HGNC:9905	9939	ENSG00000265241	Q9Y5S9	605313	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	PEX11B		peroxisomal biogenesis factor 11 beta	HGNC:8853	8799	ENSG00000131779	O96011	603867	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	ITGA10		integrin subunit alpha 10	HGNC:6135	8515	ENSG00000143127	O75578	604042	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	ANKRD35		ankyrin repeat domain 35	HGNC:26323	148741	ENSG00000198483	Q8N283		protein-coding gene	True
+1q21.1-proximal,BP2-BP3	PIAS3		protein inhibitor of activated STAT 3	HGNC:16861	10401	ENSG00000131788	Q9Y6X2	605987	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	NUDT17		nudix hydrolase 17	HGNC:26618	200035	ENSG00000186364	P0C025		protein-coding gene	True
+1q21.1-proximal,BP2-BP3	POLR3C		RNA polymerase III subunit C	HGNC:30076	10623	ENSG00000186141	Q9BUI4	617454	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	RNF115		ring finger protein 115	HGNC:18154	27246	ENSG00000265491	Q9Y4L5	619535	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	CD160		CD160 molecule	HGNC:17013	11126	ENSG00000117281	O95971	604463	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	PDZK1		PDZ domain containing 1	HGNC:8821	5174	ENSG00000174827	Q5T2W1	603831	protein-coding gene	True
+1q21.1-proximal,BP2-BP3	GPHRA	GPR89A	golgi pH regulator A	HGNC:31984	653519	ENSG00000117262	B7ZAQ6	612821	protein-coding gene	True
+1q21.1-q21.2-distal	PRKAB2		protein kinase AMP-activated non-catalytic subunit beta 2	HGNC:9379	5565	ENSG00000131791	O43741	602741	protein-coding gene	True
+1q21.1-q21.2-distal	FMO5		flavin containing dimethylaniline monoxygenase 5	HGNC:3773	2330	ENSG00000131781	P49326	603957	protein-coding gene	True
+1q21.1-q21.2-distal	CHD1L		chromodomain helicase DNA binding protein 1 like	HGNC:1916	9557	ENSG00000131778	Q86WJ1	613039	protein-coding gene	True
+1q21.1-q21.2-distal	BCL9		BCL9 transcription coactivator	HGNC:1008	607	ENSG00000116128	O00512	602597	protein-coding gene	True
+1q21.1-q21.2-distal	ACP6		acid phosphatase 6, lysophosphatidic	HGNC:29609	51205	ENSG00000162836	Q9NPH0	611471	protein-coding gene	True
+1q21.1-q21.2-distal	GJA5		gap junction protein alpha 5	HGNC:4279	2702	ENSG00000265107	P36382	121013	protein-coding gene	True
+1q21.1-q21.2-distal	GJA8		gap junction protein alpha 8	HGNC:4281	2703	ENSG00000121634	P48165	600897	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	UBE2L3		ubiquitin conjugating enzyme E2 L3	HGNC:12488	7332	ENSG00000185651	P68036	603721	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	YDJC		YdjC chitooligosaccharide deacetylase homolog	HGNC:27158	150223	ENSG00000161179	A8MPS7	619770	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	CCDC116		coiled-coil domain containing 116	HGNC:26688	164592	ENSG00000161180	Q8IYX3		protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	SDF2L1		stromal cell derived factor 2 like 1	HGNC:10676	23753	ENSG00000128228	Q9HCN8	607551	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	PPIL2		peptidylprolyl isomerase like 2	HGNC:9261	23759	ENSG00000100023	Q13356	607588	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	YPEL1		yippee like 1	HGNC:12845	29799	ENSG00000100027	O60688	608082	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	MAPK1		mitogen-activated protein kinase 1	HGNC:6871	5594	ENSG00000100030	P28482	176948	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	PPM1F		protein phosphatase, Mg2+/Mn2+ dependent 1F	HGNC:19388	9647	ENSG00000100034	P49593	619309	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	TOP3B		DNA topoisomerase III beta	HGNC:11993	8940	ENSG00000100038	O95985	603582	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	VPREB1		V-set pre-B cell surrogate light chain 1	HGNC:12709	7441	ENSG00000169575	P12018	605141	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	ZNF280B		zinc finger protein 280B	HGNC:23022	140883	ENSG00000275004	Q86YH2		protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	ZNF280A		zinc finger protein 280A	HGNC:18597	129025	ENSG00000169548	P59817		protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	PRAME		PRAME nuclear receptor transcriptional regulator	HGNC:9336	23532	ENSG00000185686	P78395	606021	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	GGTLC2		gamma-glutamyltransferase light chain 2	HGNC:18596	91227	ENSG00000100121	Q14390	612339	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	IGLL5		immunoglobulin lambda like polypeptide 5	HGNC:38476	100423062	ENSG00000254709	B9A064		protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	RSPH14		radial spoke head 14 homolog	HGNC:13437	27156	ENSG00000100218	Q9UHP6	605663	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	GNAZ		G protein subunit alpha z	HGNC:4395	2781	ENSG00000128266	P19086	139160	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	RAB36		RAB36, member RAS oncogene family	HGNC:9775	9609	ENSG00000100228	O95755	605662	protein-coding gene	True
+22q11.2-distal,type-I,D-E,D-F	BCR		BCR activator of RhoGEF and GTPase	HGNC:1014	613	ENSG00000186716	P11274	151410	protein-coding gene	True
+22q11.21	PRODH		proline dehydrogenase 1	HGNC:9453	5625	ENSG00000100033	O43272	606810	protein-coding gene	True
+22q11.21	DGCR5		DiGeorge syndrome critical region gene 5	HGNC:16757	26220	ENSG00000273032		618040	non-coding RNA	True
+22q11.21	DGCR2		DiGeorge syndrome critical region gene 2	HGNC:2845	9993	ENSG00000070413	P98153	600594	protein-coding gene	True
+22q11.21	ESS2		ess-2 spliceosome associated protein	HGNC:16817	8220	ENSG00000100056	Q96DF8	601755	protein-coding gene	True
+22q11.21	TSSK2		testis specific serine kinase 2	HGNC:11401	23617	ENSG00000206203	Q96PF2	610710	protein-coding gene	True
+22q11.21	GSC2		goosecoid homeobox 2	HGNC:4613	2928	ENSG00000063515	O15499	601845	protein-coding gene	True
+22q11.21	SLC25A1		solute carrier family 25 member 1	HGNC:10979	6576	ENSG00000100075	P53007	190315	protein-coding gene	True
+22q11.21	CLTCL1		clathrin heavy chain like 1	HGNC:2093	8218	ENSG00000070371	P53675	601273	protein-coding gene	True
+22q11.21	HIRA		histone cell cycle regulator	HGNC:4916	7290	ENSG00000100084	P54198	600237	protein-coding gene	True
+22q11.21	C22orf39		chromosome 22 open reading frame 39	HGNC:27012	128977	ENSG00000242259	Q6P5X5		protein-coding gene	True
+22q11.21	MRPL40		mitochondrial ribosomal protein L40	HGNC:14491	64976	ENSG00000185608	Q9NQ50	605089	protein-coding gene	True
+22q11.21	UFD1		ubiquitin recognition factor in ER associated degradation 1	HGNC:12520	7353	ENSG00000070010	Q92890	601754	protein-coding gene	True
+22q11.21	CDC45		cell division cycle 45	HGNC:1739	8318	ENSG00000093009	O75419	603465	protein-coding gene	True
+22q11.21	CLDN5		claudin 5	HGNC:2047	7122	ENSG00000184113	O00501	602101	protein-coding gene	True
+22q11.21	SEPTIN5		septin 5	HGNC:9164	5413	ENSG00000184702	Q99719	602724	protein-coding gene	True
+22q11.21	GP1BB		glycoprotein Ib platelet subunit beta	HGNC:4440	2812	ENSG00000203618	P13224	138720	protein-coding gene	True
+22q11.21	TBX1		T-box transcription factor 1	HGNC:11592	6899	ENSG00000184058	O43435	602054	protein-coding gene	True
+22q11.21	GNB1L		G protein subunit beta 1 like	HGNC:4397	54584	ENSG00000185838	Q9BYB4	610778	protein-coding gene	True
+22q11.21	RTL10		retrotransposon Gag like 10	HGNC:26112	79680	ENSG00000215012	Q7L3V2	620751	protein-coding gene	True
+22q11.21	TXNRD2		thioredoxin reductase 2	HGNC:18155	10587	ENSG00000184470	Q9NNW7	606448	protein-coding gene	True
+22q11.21	COMT		catechol-O-methyltransferase	HGNC:2228	1312	ENSG00000093010	P21964	116790	protein-coding gene	True
+22q11.21	ARVCF		ARVCF delta catenin family member	HGNC:728	421	ENSG00000099889	O00192	602269	protein-coding gene	True
+22q11.21	TANGO2		transport and golgi organization 2 homolog	HGNC:25439	128989	ENSG00000183597	Q6ICL3	616830	protein-coding gene	True
+22q11.21	DGCR8		DGCR8 microprocessor complex subunit	HGNC:2847	54487	ENSG00000128191	Q8WYQ5	609030	protein-coding gene	True
+22q11.21	TRMT2A		tRNA methyltransferase 2A	HGNC:24974	27037	ENSG00000099899	Q8IZ69	611151	protein-coding gene	True
+22q11.21	RANBP1		RAN binding protein 1	HGNC:9847	5902	ENSG00000099901	P43487	601180	protein-coding gene	True
+22q11.21	ZDHHC8		zDHHC palmitoyltransferase 8	HGNC:18474	29801	ENSG00000099904	Q9ULC8	608784	protein-coding gene	True
+22q11.21	CCDC188		coiled-coil domain containing 188	HGNC:51899	388849	ENSG00000234409	H7C350		protein-coding gene	True
+22q11.21	RTN4R		reticulon 4 receptor	HGNC:18601	65078	ENSG00000040608	Q9BZR6	605566	protein-coding gene	True
+22q11.21	DGCR6L		DiGeorge syndrome critical region gene 6 like	HGNC:18551	85359	ENSG00000128185	Q9BY27	609459	protein-coding gene	True
+22q11.21	FAM230G		family with sequence similarity 230 member G	HGNC:52423	101927859	ENSG00000188280			non-coding RNA	True
+22q11.21	USP41P		ubiquitin specific peptidase 41, pseudogene	HGNC:20070	373856	ENSG00000161133			pseudogene	True
+22q11.21	ZNF74		zinc finger protein 74	HGNC:13144	7625	ENSG00000185252	Q16587	194548	protein-coding gene	True
+22q11.21	SCARF2		scavenger receptor class F member 2	HGNC:19869	91179	ENSG00000244486	Q96GP6	613619	protein-coding gene	True
+22q11.21	KLHL22		kelch like family member 22	HGNC:25888	84861	ENSG00000099910	Q53GT1	618020	protein-coding gene	True
+22q11.21	MED15		mediator complex subunit 15	HGNC:14248	51586	ENSG00000099917	Q96RN5	607372	protein-coding gene	True
+22q11.21	PI4KA		phosphatidylinositol 4-kinase alpha	HGNC:8983	5297	ENSG00000241973	P42356	600286	protein-coding gene	True
+22q11.21	SERPIND1		serpin family D member 1	HGNC:4838	3053	ENSG00000099937	P05546	142360	protein-coding gene	True
+22q11.21	SNAP29		synaptosome associated protein 29	HGNC:11133	9342	ENSG00000099940	O95721	604202	protein-coding gene	True
+22q11.21	CRKL		CRK like proto-oncogene, adaptor protein	HGNC:2363	1399	ENSG00000099942	P46109	602007	protein-coding gene	True
+22q11.21	AIFM3		AIF family member 3	HGNC:26398	150209	ENSG00000183773	Q96NN9	617298	protein-coding gene	True
+22q11.21	LZTR1		leucine zipper like post translational regulator 1	HGNC:6742	8216	ENSG00000099949	Q8N653	600574	protein-coding gene	True
+22q11.21	THAP7		THAP domain containing 7	HGNC:23190	80764	ENSG00000184436	Q9BT49	609518	protein-coding gene	True
+22q11.21	P2RX6		purinergic receptor P2X 6	HGNC:8538	9127	ENSG00000099957	O15547	608077	protein-coding gene	True
+22q11.21	SLC7A4		solute carrier family 7 member 4	HGNC:11062	6545	ENSG00000099960	O43246	603752	protein-coding gene	True
+22q11.21	LRRC74B		leucine rich repeat containing 74B	HGNC:34301	400891	ENSG00000187905	Q6ZQY2		protein-coding gene	True
+22q13.33	SHANK3		SH3 and multiple ankyrin repeat domains 3	HGNC:14294	85358	ENSG00000251322	Q9BYB0	606230	protein-coding gene	True
+2q11.1-q11.2	ADRA2B		adrenoceptor alpha 2B	HGNC:282	151	ENSG00000274286	P18089	104260	protein-coding gene	True
+2q11.1-q11.2	ASTL		astacin like metalloendopeptidase	HGNC:31704	431705	ENSG00000188886	Q6HA08	608860	protein-coding gene	True
+2q11.1-q11.2	DUSP2		dual specificity phosphatase 2	HGNC:3068	1844	ENSG00000158050	Q05923	603068	protein-coding gene	True
+2q11.1-q11.2	STARD7		StAR related lipid transfer domain containing 7	HGNC:18063	56910	ENSG00000084090	Q9NQZ5	616712	protein-coding gene	True
+2q11.1-q11.2	TMEM127		transmembrane protein 127	HGNC:26038	55654	ENSG00000135956	O75204	613403	protein-coding gene	True
+2q11.1-q11.2	CIAO1		cytosolic iron-sulfur assembly component 1	HGNC:14280	9391	ENSG00000144021	O76071	604333	protein-coding gene	True
+2q11.1-q11.2	SNRNP200		small nuclear ribonucleoprotein U5 subunit 200	HGNC:30859	23020	ENSG00000144028	O75643	601664	protein-coding gene	True
+2q11.1-q11.2	ITPRIPL1		ITPRIP like 1	HGNC:29371	150771	ENSG00000198885	Q6GPH6	620821	protein-coding gene	True
+2q11.1-q11.2	NCAPH		non-SMC condensin I complex subunit H	HGNC:1112	23397	ENSG00000121152	Q15003	602332	protein-coding gene	True
+2q11.1-q11.2	NEURL3		neuralized E3 ubiquitin protein ligase 3	HGNC:25162	93082	ENSG00000163121	Q96EH8	617206	protein-coding gene	True
+2q11.1-q11.2	ARID5A		AT-rich interaction domain 5A	HGNC:17361	10865	ENSG00000196843	Q03989	611583	protein-coding gene	True
+2q11.1-q11.2	KANSL3		KAT8 regulatory NSL complex subunit 3	HGNC:25473	55683	ENSG00000114982	Q9P2N6	617742	protein-coding gene	True
+2q11.1-q11.2	FER1L5		fer-1 like family member 5	HGNC:19044	90342	ENSG00000249715	A0AVI2	620883	protein-coding gene	True
+2q11.1-q11.2	LMAN2L		lectin, mannose binding 2 like	HGNC:19263	81562	ENSG00000114988	Q9H0V9	609552	protein-coding gene	True
+2q11.1-q11.2	CNNM4		cyclin and CBS domain divalent metal cation transport mediator 4	HGNC:105	26504	ENSG00000158158	Q6P4Q7	607805	protein-coding gene	True
+2q11.1-q11.2	CNNM3		cyclin and CBS domain divalent metal cation transport mediator 3	HGNC:104	26505	ENSG00000168763	Q8NE01	607804	protein-coding gene	True
+2q11.1-q11.2	ANKRD23		ankyrin repeat domain 23	HGNC:24470	200539	ENSG00000163126	Q86SG2	610736	protein-coding gene	True
+2q11.1-q11.2	ANKRD39		ankyrin repeat domain 39	HGNC:28640	51239	ENSG00000213337	Q53RE8		protein-coding gene	True
+2q11.1-q11.2	SEMA4C		semaphorin 4C	HGNC:10731	54910	ENSG00000168758	Q9C0C4	604462	protein-coding gene	True
+2q11.1-q11.2	FAM178B		family with sequence similarity 178 member B	HGNC:28036	51252	ENSG00000168754	Q8IXR5		protein-coding gene	True
+2q13-NPHP1	NPHP1		nephrocystin 1	HGNC:7905	4867	ENSG00000144061	O15259	607100	protein-coding gene	True
+2q13	ACOXL		acyl-CoA oxidase like	HGNC:25621	55289	ENSG00000153093	Q9NUZ1		protein-coding gene	True
+2q13	BCL2L11		BCL2 like 11	HGNC:994	10018	ENSG00000153094	O43521	603827	protein-coding gene	True
+2q13	ANAPC1		anaphase promoting complex subunit 1	HGNC:19988	64682	ENSG00000153107	Q9H1A4	608473	protein-coding gene	True
+2q13	MERTK		MER proto-oncogene, tyrosine kinase	HGNC:7027	10461	ENSG00000153208	Q12866	604705	protein-coding gene	True
+2q13	TMEM87B		transmembrane protein 87B	HGNC:25913	84910	ENSG00000153214	Q96K49	617203	protein-coding gene	True
+2q13	FBLN7		fibulin 7	HGNC:26740	129804	ENSG00000144152	Q53RD9	611551	protein-coding gene	True
+2q13	ZC3H8		zinc finger CCCH-type containing 8	HGNC:30941	84524	ENSG00000144161	Q8N5P1	621273	protein-coding gene	True
+2q13	ZC3H6		zinc finger CCCH-type containing 6	HGNC:24762	376940	ENSG00000188177	P61129		protein-coding gene	True
+2q13	RGPD8		RANBP2 like and GRIP domain containing 8	HGNC:9849	727851	ENSG00000169629	O14715	602752	protein-coding gene	True
+2q13	TTL		tubulin tyrosine ligase	HGNC:21586	150465	ENSG00000114999	Q8NG68	608291	protein-coding gene	True
+2q13	POLR1B		RNA polymerase I subunit B	HGNC:20454	84172	ENSG00000125630	Q9H9Y6	602000	protein-coding gene	True
+2q13	CHCHD5		coiled-coil-helix-coiled-coil-helix domain containing 5	HGNC:17840	84269	ENSG00000125611	Q9BSY4	616978	protein-coding gene	True
+2q13	SLC20A1		solute carrier family 20 member 1	HGNC:10946	6574	ENSG00000144136	Q8WUM9	137570	protein-coding gene	True
+2q13	NT5DC4		5'-nucleotidase domain containing 4	HGNC:27678	284958	ENSG00000144130	Q86YG4		protein-coding gene	True
+2q13	CKAP2L		cytoskeleton associated protein 2L	HGNC:26877	150468	ENSG00000169607	Q8IYA6	616174	protein-coding gene	True
+2q13	IL1A		interleukin 1 alpha	HGNC:5991	3552	ENSG00000115008	P01583	147760	protein-coding gene	True
+2q13	IL1B		interleukin 1 beta	HGNC:5992	3553	ENSG00000125538	P01584	147720	protein-coding gene	True
+2q13	IL36	IL36								False
+2q13	IL36G		interleukin 36 gamma	HGNC:15741	56300	ENSG00000136688	Q9NZH8	605542	protein-coding gene	True
+2q13	IL36A		interleukin 36 alpha	HGNC:15562	27179	ENSG00000136694	Q9UHA7	605509	protein-coding gene	True
+2q13	IL36B		interleukin 36 beta	HGNC:15564	27177	ENSG00000136696	Q9NZH7	605508	protein-coding gene	True
+2q13	IL36RN		interleukin 36 receptor antagonist	HGNC:15561	26525	ENSG00000136695	Q9UBH0	605507	protein-coding gene	True
+2q13	IL38	IL1F10	interleukin 38	HGNC:15552	84639	ENSG00000136697	Q8WWZ1	615296	protein-coding gene	True
+2q13	IL1RN		interleukin 1 receptor antagonist	HGNC:6000	3557	ENSG00000136689	P18510	147679	protein-coding gene	True
+2q13	PSD4		pleckstrin and Sec7 domain containing 4	HGNC:19096	23550	ENSG00000125637	Q8NDX1	614442	protein-coding gene	True
+2q21.1	GPR148		G protein-coupled receptor 148	HGNC:23623	344561	ENSG00000173302	Q8TDV2		protein-coding gene	True
+2q21.1	AMER3		APC membrane recruitment protein 3	HGNC:26771	205147	ENSG00000178171	Q8N944		protein-coding gene	True
+2q21.1	ARHGEF4		Rho guanine nucleotide exchange factor 4	HGNC:684	50649	ENSG00000136002	Q9NR80	605216	protein-coding gene	True
+2q21.1	FAM168B		family with sequence similarity 168 member B	HGNC:27016	130074	ENSG00000152102	A1KXE4	620078	protein-coding gene	True
+2q21.1	PLEKHB2		pleckstrin homology domain containing B2	HGNC:19236	55041	ENSG00000115762	Q96CS7	618452	protein-coding gene	True
+2q37.3	TWIST2		twist family bHLH transcription factor 2	HGNC:20670	117581	ENSG00000233608	Q8WVJ9	607556	protein-coding gene	True
+2q37.3	HDAC4		histone deacetylase 4	HGNC:14063	9759	ENSG00000068024	P56524	605314	protein-coding gene	True
+2q37.3	NDUFA10		NADH:ubiquinone oxidoreductase subunit A10	HGNC:7684	4705	ENSG00000130414	O95299	603835	protein-coding gene	True
+2q37.3	OR6B2		olfactory receptor family 6 subfamily B member 2	HGNC:15041	389090	ENSG00000182083	Q6IFH4		protein-coding gene	True
+2q37.3	PRR21		proline rich 21	HGNC:33866	643905				other	True
+2q37.3	OR6B3		olfactory receptor family 6 subfamily B member 3	HGNC:15042	150681	ENSG00000178586	Q8NGW1		protein-coding gene	True
+2q37.3	COPS9		COP9 signalosome subunit 9	HGNC:21314	150678	ENSG00000172428	Q8WXC6	619349	protein-coding gene	True
+2q37.3	OTOS		otospiralin	HGNC:22644	150677	ENSG00000178602	Q8NHW6	607877	protein-coding gene	True
+2q37.3	GPC1		glypican 1	HGNC:4449	2817	ENSG00000063660	P35052	600395	protein-coding gene	True
+2q37.3	GPC1-AS1		GPC1 antisense RNA 1	HGNC:56102	100130449	ENSG00000218416			non-coding RNA	False
+2q37.3	ANKMY1		ankyrin repeat and MYND domain containing 1	HGNC:20987	51281	ENSG00000144504	Q9P2S6	620842	protein-coding gene	True
+2q37.3	DUSP28		dual specificity phosphatase 28	HGNC:33237	285193	ENSG00000188542	Q4G0W2		protein-coding gene	True
+2q37.3	RNPEPL1		arginyl aminopeptidase like 1	HGNC:10079	57140	ENSG00000142327	Q9HAU8	605287	protein-coding gene	True
+2q37.3	CAPN10		calpain 10	HGNC:1477	11132	ENSG00000142330	Q9HC96	605286	protein-coding gene	True
+2q37.3	GPR35		G protein-coupled receptor 35	HGNC:4492	2859	ENSG00000178623	Q9HC97	602646	protein-coding gene	True
+2q37.3	AQP12B		aquaporin 12B	HGNC:6096	653437	ENSG00000185176	A6NM10		protein-coding gene	True
+2q37.3	AQP12A		aquaporin 12A	HGNC:19941	375318	ENSG00000184945	Q8IXF9	609789	protein-coding gene	True
+2q37.3	KIF1A		kinesin family member 1A	HGNC:888	547	ENSG00000130294	Q12756	601255	protein-coding gene	True
+2q37.3	AGXT		alanine--glyoxylate aminotransferase	HGNC:341	189	ENSG00000172482	P21549	604285	protein-coding gene	True
+2q37.3	MAB21L4		mab-21 like 4	HGNC:26216	79919	ENSG00000172478	Q08AI8		protein-coding gene	True
+2q37.3	CROCC2		ciliary rootlet coiled-coil, rootletin family member 2	HGNC:51677	728763	ENSG00000226321	H7BZ55	621300	protein-coding gene	False
+2q37.3	SNED1		sushi, nidogen and EGF like domains 1	HGNC:24696	25992	ENSG00000162804	Q8TER0	616634	protein-coding gene	True
+2q37.3	MTERF4		mitochondrial transcription termination factor 4	HGNC:28785	130916	ENSG00000122085	Q7Z6M4	615393	protein-coding gene	True
+2q37.3	PASK		PAS domain containing serine/threonine kinase	HGNC:17270	23178	ENSG00000115687	Q96RG2	607505	protein-coding gene	True
+2q37.3	PPP1R7		protein phosphatase 1 regulatory subunit 7	HGNC:9295	5510	ENSG00000115685	Q15435	602877	protein-coding gene	True
+2q37.3	ANO7		anoctamin 7	HGNC:31677	50636	ENSG00000146205	Q6IWH7	605096	protein-coding gene	True
+2q37.3	HDLBP		high density lipoprotein binding protein	HGNC:4857	3069	ENSG00000115677	Q00341	142695	protein-coding gene	True
+2q37.3	SEPTIN2		septin 2	HGNC:7729	4735	ENSG00000168385	Q15019	601506	protein-coding gene	True
+2q37.3	FARP2		FERM, ARH/RhoGEF and pleckstrin domain protein 2	HGNC:16460	9855	ENSG00000006607	O94887	617586	protein-coding gene	True
+2q37.3	STK25		serine/threonine kinase 25	HGNC:11404	10494	ENSG00000115694	O00506	602255	protein-coding gene	True
+2q37.3	BOK		BCL2 family apoptosis regulator BOK	HGNC:1087	666	ENSG00000176720	Q9UMX3	605404	protein-coding gene	True
+2q37.3	THAP4		THAP domain containing 4	HGNC:23187	51078	ENSG00000176946	Q8WY91	612533	protein-coding gene	True
+2q37.3	ATG4B		autophagy related 4B cysteine peptidase	HGNC:20790	23192	ENSG00000168397	Q9Y4P1	611338	protein-coding gene	True
+2q37.3	DTYMK		deoxythymidylate kinase	HGNC:3061	1841	ENSG00000168393	P23919	188345	protein-coding gene	True
+2q37.3	ING5		inhibitor of growth family member 5	HGNC:19421	84289	ENSG00000168395	Q8WYH8	608525	protein-coding gene	True
+2q37.3	D2HGDH		D-2-hydroxyglutarate dehydrogenase	HGNC:28358	728294	ENSG00000180902	Q8N465	609186	protein-coding gene	True
+2q37.3	GAL3ST2		galactose-3-O-sulfotransferase 2	HGNC:24869	64090	ENSG00000154252	Q9H3Q3	608237	protein-coding gene	True
+2q37.3	NEU4		neuraminidase 4	HGNC:21328	129807	ENSG00000204099	Q8WWR8	608527	protein-coding gene	True
+2q37.3	PDCD1		programmed cell death 1	HGNC:8760	5133	ENSG00000188389	Q15116	600244	protein-coding gene	True
+2q37.3	RTP5		receptor transporter protein 5 (putative)	HGNC:26585	285093	ENSG00000188011	Q14D33		protein-coding gene	True
+3q29	TFRC		transferrin receptor	HGNC:11763	7037	ENSG00000072274	P02786	190010	protein-coding gene	True
+3q29	ZDHHC19		zDHHC palmitoyltransferase 19	HGNC:20713	131540	ENSG00000163958	Q8WVZ1	618671	protein-coding gene	True
+3q29	SLC51A		solute carrier family 51 member A	HGNC:29955	200931	ENSG00000163959	Q86UW1	612084	protein-coding gene	True
+3q29	PCYT1A		phosphate cytidylyltransferase 1A, choline	HGNC:8754	5130	ENSG00000161217	P49585	123695	protein-coding gene	True
+3q29	DYNLT2B		dynein light chain Tctex-type 2B	HGNC:28482	255758	ENSG00000213123	Q8WW35	617353	protein-coding gene	True
+3q29	TM4SF19		transmembrane 4 L six family member 19	HGNC:25167	116211	ENSG00000145107	Q96DZ7	620845	protein-coding gene	True
+3q29	UBXN7		UBX domain protein 7	HGNC:29119	26043	ENSG00000163960	O94888	616379	protein-coding gene	True
+3q29	RNF168		ring finger protein 168	HGNC:26661	165918	ENSG00000163961	Q8IYW5	612688	protein-coding gene	True
+3q29	SMCO1		single-pass membrane protein with coiled-coil domains 1	HGNC:27407	255798	ENSG00000214097	Q147U7		protein-coding gene	True
+3q29	WDR53		WD repeat domain 53	HGNC:28786	348793	ENSG00000185798	Q7Z5U6	615110	protein-coding gene	True
+3q29	FBXO45		F-box protein 45	HGNC:29148	200933	ENSG00000174013	P0C2W1	609112	protein-coding gene	True
+3q29	NRROS		negative regulator of reactive oxygen species	HGNC:24613	375387	ENSG00000174004	Q86YC3	615322	protein-coding gene	True
+3q29	PIGX		phosphatidylinositol glycan anchor biosynthesis class X	HGNC:26046	54965	ENSG00000163964	Q8TBF5	610276	protein-coding gene	True
+3q29	CEP19		centrosomal protein 19	HGNC:28209	84984	ENSG00000174007	Q96LK0	615586	protein-coding gene	True
+3q29	PAK2		p21 (RAC1) activated kinase 2	HGNC:8591	5062	ENSG00000180370	Q13177	605022	protein-coding gene	True
+3q29	SENP5		SUMO specific peptidase 5	HGNC:28407	205564	ENSG00000119231	Q96HI0	612845	protein-coding gene	True
+3q29	NCBP2		nuclear cap binding protein subunit 2	HGNC:7659	22916	ENSG00000114503	P52298	605133	protein-coding gene	True
+3q29	PIGZ		phosphatidylinositol glycan anchor biosynthesis class Z (Gwada blood group)	HGNC:30596	80235	ENSG00000119227	Q86VD9	611671	protein-coding gene	True
+3q29	MELTF		melanotransferrin	HGNC:7037	4241	ENSG00000163975	P08582	155750	protein-coding gene	True
+3q29	DLG1		discs large MAGUK scaffold protein 1	HGNC:2900	1739	ENSG00000075711	Q12959	601014	protein-coding gene	True
+4p16.3	FAM53A		family with sequence similarity 53 member A	HGNC:31860	152877	ENSG00000174137	Q6NSI3	617229	protein-coding gene	True
+4p16.3	SLBP		stem-loop histone mRNA binding protein	HGNC:10904	7884	ENSG00000163950	Q14493	602422	protein-coding gene	True
+4p16.3	TMEM129		transmembrane protein 129, E3 ubiquitin ligase	HGNC:25137	92305	ENSG00000168936	A0AVI4	615975	protein-coding gene	True
+4p16.3	TACC3		transforming acidic coiled-coil containing protein 3	HGNC:11524	10460	ENSG00000013810	Q9Y6A5	605303	protein-coding gene	True
+4p16.3	FGFR3		fibroblast growth factor receptor 3	HGNC:3690	2261	ENSG00000068078	P22607	134934	protein-coding gene	True
+4p16.3	LETM1		leucine zipper and EF-hand containing transmembrane protein 1	HGNC:6556	3954	ENSG00000168924	O95202	604407	protein-coding gene	True
+4p16.3	NSD2		nuclear receptor binding SET domain protein 2	HGNC:12766	7468	ENSG00000109685	O96028	602952	protein-coding gene	True
+4p16.3	NELFA		negative elongation factor complex member A	HGNC:12768	7469	ENSG00000185049	Q9H3P2	606026	protein-coding gene	True
+4p16.3	NICOL1		NELL2 interacting cell ontogeny regulator 1	HGNC:34437	401115	ENSG00000243449	Q5BLP8	614690	protein-coding gene	True
+4p16.3	ASPNAT	NAT8L	aspartate N-acetyltransferase	HGNC:26742	339983	ENSG00000185818	Q8N9F0	610647	protein-coding gene	True
+4p16.3	POLN		DNA polymerase nu	HGNC:18870	353497	ENSG00000130997	Q7Z5Q5	610887	protein-coding gene	True
+5q35.2-q35.3	SIMC1		SUMO interacting motifs containing 1	HGNC:24779	375484	ENSG00000170085	Q8NDZ2	618102	protein-coding gene	True
+5q35.2-q35.3	KIAA1191		KIAA1191	HGNC:29209	57179	ENSG00000122203	Q96A73		protein-coding gene	True
+5q35.2-q35.3	ARL10		ARF like GTPase 10	HGNC:22042	285598	ENSG00000175414	Q8N8L6		protein-coding gene	True
+5q35.2-q35.3	NOP16		NOP16 nucleolar protein	HGNC:26934	51491	ENSG00000048162	Q9Y3C1	612861	protein-coding gene	True
+5q35.2-q35.3	HIGD2A		HIG1 hypoxia inducible domain family member 2A	HGNC:28311	192286	ENSG00000146066	Q9BW72	620788	protein-coding gene	True
+5q35.2-q35.3	CLTB		clathrin light chain B	HGNC:2091	1212	ENSG00000175416	P09497	118970	protein-coding gene	True
+5q35.2-q35.3	FAF2		Fas associated factor family member 2	HGNC:24666	23197	ENSG00000113194	Q96CS3	616935	protein-coding gene	True
+5q35.2-q35.3	RNF44		ring finger protein 44	HGNC:19180	22838	ENSG00000146083	Q7L0R7	619283	protein-coding gene	True
+5q35.2-q35.3	CDHR2		cadherin related family member 2	HGNC:18231	54825	ENSG00000074276	Q9BYE9	619713	protein-coding gene	True
+5q35.2-q35.3	GPRIN1		G protein regulated inducer of neurite outgrowth 1	HGNC:24835	114787	ENSG00000169258	Q7Z2K8	611239	protein-coding gene	True
+5q35.2-q35.3	SNCB		synuclein beta	HGNC:11140	6620	ENSG00000074317	Q16143	602569	protein-coding gene	True
+5q35.2-q35.3	EIF4E1B		eukaryotic translation initiation factor 4E family member 1B	HGNC:33179	253314	ENSG00000175766	A6NMX2		protein-coding gene	True
+5q35.2-q35.3	TSPAN17		tetraspanin 17	HGNC:13594	26262	ENSG00000048140	Q96FV3	620446	protein-coding gene	True
+5q35.2-q35.3	UNC5A		unc-5 netrin receptor A	HGNC:12567	90249	ENSG00000113763	Q6ZN44	607869	protein-coding gene	True
+5q35.2-q35.3	HK3		hexokinase 3	HGNC:4925	3101	ENSG00000160883	P52790	142570	protein-coding gene	True
+5q35.2-q35.3	UIMC1		ubiquitin interaction motif containing 1	HGNC:30298	51720	ENSG00000087206	Q96RL1	609433	protein-coding gene	True
+5q35.2-q35.3	ZNF346		zinc finger protein 346	HGNC:16403	23567	ENSG00000113761	Q9UL40	605308	protein-coding gene	True
+5q35.2-q35.3	FGFR4		fibroblast growth factor receptor 4	HGNC:3691	2264	ENSG00000160867	P22455	134935	protein-coding gene	True
+5q35.2-q35.3	NSD1		nuclear receptor binding SET domain protein 1	HGNC:14234	64324	ENSG00000165671	Q96L73	606681	protein-coding gene	True
+5q35.2-q35.3	RAB24		RAB24, member RAS oncogene family	HGNC:9765	53917	ENSG00000169228	Q969Q5	612415	protein-coding gene	True
+5q35.2-q35.3	MXD3		MAX dimerization protein 3	HGNC:14008	83463	ENSG00000213347	Q9BW11	609450	protein-coding gene	True
+5q35.2-q35.3	PRELID1		PRELI domain containing 1	HGNC:30255	27166	ENSG00000169230	Q9Y255	605733	protein-coding gene	True
+5q35.2-q35.3	LMAN2		lectin, mannose binding 2	HGNC:16986	10960	ENSG00000169223	Q12907	609551	protein-coding gene	True
+5q35.2-q35.3	RGS14		regulator of G protein signaling 14	HGNC:9996	10636	ENSG00000169220	O43566	602513	protein-coding gene	True
+5q35.2-q35.3	SLC34A1		solute carrier family 34 member 1	HGNC:11019	6569	ENSG00000131183	Q06495	182309	protein-coding gene	True
+5q35.2-q35.3	PFN3		profilin 3	HGNC:18627	345456	ENSG00000196570	P60673	612812	protein-coding gene	True
+5q35.2-q35.3	F12		coagulation factor XII	HGNC:3530	2161	ENSG00000131187	P00748	610619	protein-coding gene	True
+5q35.2-q35.3	GRK6		G protein-coupled receptor kinase 6	HGNC:4545	2870	ENSG00000198055	P43250	600869	protein-coding gene	True
+5q35.2-q35.3	PRR7		proline rich 7, synaptic	HGNC:28130	80758	ENSG00000131188	Q8TB68	618306	protein-coding gene	True
+5q35.2-q35.3	DBN1		drebrin 1	HGNC:2695	1627	ENSG00000113758	Q16643	126660	protein-coding gene	True
+5q35.2-q35.3	PDLIM7		PDZ and LIM domain 7	HGNC:22958	9260	ENSG00000196923	Q9NR12	605903	protein-coding gene	True
+5q35.2-q35.3	DOK3		docking protein 3	HGNC:24583	79930	ENSG00000146094	Q7L591	611435	protein-coding gene	True
+5q35.2-q35.3	DDX41		DEAD-box helicase 41	HGNC:18674	51428	ENSG00000183258	Q9UJV9	608170	protein-coding gene	True
+5q35.2-q35.3	FAM193B		family with sequence similarity 193 member B	HGNC:25524	54540	ENSG00000146067	Q96PV7	615813	protein-coding gene	True
+5q35.2-q35.3	TMED9		transmembrane p24 trafficking protein 9	HGNC:24878	54732	ENSG00000184840	Q9BVK6	620436	protein-coding gene	True
+5q35.2-q35.3	B4GALT7		beta-1,4-galactosyltransferase 7	HGNC:930	11285	ENSG00000027847	Q9UBV7	604327	protein-coding gene	True
+7q11.23-distal	RHBDD2		rhomboid domain containing 2	HGNC:23082	57414	ENSG00000005486	Q6NTF9	615203	protein-coding gene	True
+7q11.23-distal	POR		cytochrome p450 oxidoreductase	HGNC:9208	5447	ENSG00000127948	P16435	124015	protein-coding gene	True
+7q11.23-distal	TMEM120A		transmembrane protein 120A	HGNC:21697	83862	ENSG00000189077	Q9BXJ8	616550	protein-coding gene	True
+7q11.23-distal	STYXL1		serine/threonine/tyrosine interacting like 1	HGNC:18165	51657	ENSG00000127952	Q9Y6J8	616695	protein-coding gene	True
+7q11.23-distal	MDH2		malate dehydrogenase 2	HGNC:6971	4191	ENSG00000146701	P40926	154100	protein-coding gene	True
+7q11.23-distal	SRRM3		serine/arginine repetitive matrix 3	HGNC:26729	222183	ENSG00000177679	A6NNA2		protein-coding gene	True
+7q11.23-distal	HSPB1		heat shock protein family B (small) member 1	HGNC:5246	3315	ENSG00000106211	P04792	602195	protein-coding gene	True
+7q11.23-distal	YWHAG		tyrosine 3-monooxygenase/tryptophan 5-monooxygenase activation protein gamma	HGNC:12852	7532	ENSG00000170027	P61981	605356	protein-coding gene	True
+7q11.23-distal	SSC4D		scavenger receptor cysteine rich family member with 4 domains	HGNC:14461	136853	ENSG00000146700	Q8WTU2	607639	protein-coding gene	True
+7q11.23-distal	ZP3		zona pellucida glycoprotein 3	HGNC:13189	7784	ENSG00000188372	P21754	182889	protein-coding gene	True
+7q11.23	FKBP6		FKBP prolyl isomerase family member 6 (inactive)	HGNC:3722	8468	ENSG00000077800	O75344	604839	protein-coding gene	True
+7q11.23	FZD9		frizzled class receptor 9	HGNC:4047	8326	ENSG00000188763	O00144	601766	protein-coding gene	True
+7q11.23	BAZ1B		bromodomain adjacent to zinc finger domain 1B	HGNC:961	9031	ENSG00000009954	Q9UIG0	605681	protein-coding gene	True
+7q11.23	BCL7B		BAF chromatin remodeling complex subunit BCL7B	HGNC:1005	9275	ENSG00000106635	Q9BQE9	605846	protein-coding gene	True
+7q11.23	TBL2		transducin beta like 2	HGNC:11586	26608	ENSG00000106638	Q9Y4P3	605842	protein-coding gene	True
+7q11.23	MLXIPL		MLX interacting protein like	HGNC:12744	51085	ENSG00000009950	Q9NP71	605678	protein-coding gene	True
+7q11.23	VPS37D		VPS37D subunit of ESCRT-I	HGNC:18287	155382	ENSG00000176428	Q86XT2	610039	protein-coding gene	True
+7q11.23	DNAJC30		DnaJ heat shock protein family (Hsp40) member C30	HGNC:16410	84277	ENSG00000176410	Q96LL9	618202	protein-coding gene	True
+7q11.23	BUD23		BUD23 rRNA methyltransferase and ribosome maturation factor	HGNC:16405	114049	ENSG00000071462	O43709	615733	protein-coding gene	True
+7q11.23	STX1A		syntaxin 1A	HGNC:11433	6804	ENSG00000106089	Q16623	186590	protein-coding gene	True
+7q11.23	ABHD11		abhydrolase domain containing 11	HGNC:16407	83451	ENSG00000106077	Q8NFV4	621050	protein-coding gene	True
+7q11.23	CLDN3		claudin 3	HGNC:2045	1365	ENSG00000165215	O15551	602910	protein-coding gene	True
+7q11.23	CLDN4		claudin 4	HGNC:2046	1364	ENSG00000189143	O14493	602909	protein-coding gene	True
+7q11.23	METTL27		methyltransferase like 27	HGNC:19068	155368	ENSG00000165171	Q8N6F8	612546	protein-coding gene	True
+7q11.23	TMEM270		transmembrane protein 270	HGNC:23018	135886	ENSG00000175877	Q6UE05	612547	protein-coding gene	True
+7q11.23	ELN		elastin	HGNC:3327	2006	ENSG00000049540	P15502	130160	protein-coding gene	True
+7q11.23	LIMK1		LIM domain kinase 1	HGNC:6613	3984	ENSG00000106683	P53667	601329	protein-coding gene	True
+7q11.23	EIF4H		eukaryotic translation initiation factor 4H	HGNC:12741	7458	ENSG00000106682	Q15056	603431	protein-coding gene	True
+7q11.23	LAT2		linker for activation of T cells family member 2	HGNC:12749	7462	ENSG00000086730	Q9GZY6	605719	protein-coding gene	True
+7q11.23	RFC2		replication factor C subunit 2	HGNC:9970	5982	ENSG00000049541	P35250	600404	protein-coding gene	True
+7q11.23	CLIP2		CAP-Gly domain containing linker protein 2	HGNC:2586	7461	ENSG00000106665	Q9UDT6	603432	protein-coding gene	True
+7q11.23	GTF2IRD1		GTF2I repeat domain containing 1	HGNC:4661	9569	ENSG00000006704	Q9UHL9	604318	protein-coding gene	True
+7q11.23	GTF2I		general transcription factor IIi	HGNC:4659	2969	ENSG00000263001	P78347	601679	protein-coding gene	True
+8p23.1	CLDN23		claudin 23	HGNC:17591	137075	ENSG00000253958	Q96B33	609203	protein-coding gene	True
+8p23.1	MFHAS1		multifunctional ROCO family signaling regulator 1	HGNC:16982	9258	ENSG00000147324	Q9Y4C4	605352	protein-coding gene	True
+8p23.1	ERI1		exoribonuclease 1	HGNC:23994	90459	ENSG00000104626	Q8IV48	608739	protein-coding gene	True
+8p23.1	PPP1R3B		protein phosphatase 1 regulatory subunit 3B	HGNC:14942	79660	ENSG00000173281	Q86XI6	610541	protein-coding gene	True
+8p23.1	TNKS		tankyrase	HGNC:11941	8658	ENSG00000173273	O95271	603303	protein-coding gene	True
+8p23.1	MSRA		methionine sulfoxide reductase A	HGNC:7377	4482	ENSG00000175806	Q9UJ68	601250	protein-coding gene	True
+8p23.1	PRSS55		serine protease 55	HGNC:30824	203074	ENSG00000184647	Q6UWB4	615144	protein-coding gene	True
+8p23.1	RP1L1		RP1 like 1	HGNC:15946	94137	ENSG00000183638	Q8IWN7	608581	protein-coding gene	True
+8p23.1	C8orf74		chromosome 8 open reading frame 74	HGNC:32296	203076	ENSG00000171060	Q6P047		protein-coding gene	True
+8p23.1	SOX7		SRY-box transcription factor 7	HGNC:18196	83595	ENSG00000171056	Q9BT81	612202	protein-coding gene	True
+8p23.1	PINX1		PIN2 (TERF1) interacting telomerase inhibitor 1	HGNC:30046	54984	ENSG00000254093	Q96BK5	606505	protein-coding gene	True
+8p23.1	XKR6		XK related 6	HGNC:27806	286046	ENSG00000171044	Q5GH73		protein-coding gene	True
+8p23.1	MTMR9		myotubularin related protein 9	HGNC:14596	66036	ENSG00000104643	Q96QG7	606260	protein-coding gene	True
+8p23.1	SLC35G5		solute carrier family 35 member G5	HGNC:15546	83650	ENSG00000177710	Q96KT7	615199	protein-coding gene	True
+8p23.1	FAM167A		family with sequence similarity 167 member A	HGNC:15549	83648	ENSG00000154319	Q96KS9	610085	protein-coding gene	True
+8p23.1	BLK		BLK proto-oncogene, Src family tyrosine kinase	HGNC:1057	640	ENSG00000136573	P51451	191305	protein-coding gene	True
+8p23.1	GATA4		GATA binding protein 4	HGNC:4173	2626	ENSG00000136574	P43694	600576	protein-coding gene	True
+8p23.1	NEIL2		nei like DNA glycosylase 2	HGNC:18956	252969	ENSG00000154328	Q969S2	608933	protein-coding gene	True
+8p23.1	FDFT1		farnesyl-diphosphate farnesyltransferase 1	HGNC:3629	2222	ENSG00000079459	P37268	184420	protein-coding gene	True
+8p23.1	CTSB		cathepsin B	HGNC:2527	1508	ENSG00000164733	P07858	116810	protein-coding gene	True
+8p23.1	DEFB136		defensin beta 136	HGNC:34433	613210	ENSG00000205884	Q30KP8		protein-coding gene	True
+8p23.1	DEFB135		defensin beta 135	HGNC:32400	613209	ENSG00000205883	Q30KP9		protein-coding gene	True
+8p23.1	DEFB134		defensin beta 134	HGNC:32399	613211	ENSG00000205882	Q4QY38		protein-coding gene	True
+8q11.23	RB1CC1		RB1 inducible coiled-coil 1	HGNC:15574	9821	ENSG00000023287	Q8TDY2	606837	protein-coding gene	True
