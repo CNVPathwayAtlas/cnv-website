@@ -9,9 +9,18 @@
 </div>
 
 <div class="page__footer-copyright">
-  &copy; {{ site.time | date: '%Y' }} 
-  <a href="{{ site.url }}">{{ site.title }}</a>. <a href="https://www.maastrichtuniversity.nl/research/translational-genomics" traget="_blank">Translational Genomics, Maastricht University, The Netherlands</a>.
+  &copy; {{ site.time | date: '%Y' }}
+  <a href="{{ '/' | relative_url }}">{{ site.title }}</a>. <a href="https://www.maastrichtuniversity.nl/research/translational-genomics" target="_blank" rel="noopener noreferrer">Translational Genomics, Maastricht University, The Netherlands</a>.
+  Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.
 </div>
+
+{% if site.data.data_version %}
+<div class="page__footer-copyright data-version">
+  Data <a href="https://github.com/{{ site.data_repository }}/releases/tag/{{ site.data.data_version.version }}" target="_blank" rel="noopener noreferrer">{{ site.data.data_version.version }}</a>
+  &middot; Orphadata release {{ site.data.data_version.orphadata_release }}
+  &middot; HGNC {{ site.data.data_version.hgnc_release }}
+</div>
+{% endif %}
 
 <div class="page__footer-logos"> 
   <a href="https://cordis.europa.eu/project/id/101156595" target="_blank" rel="noopener noreferrer">

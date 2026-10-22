@@ -3,56 +3,24 @@
   Sets: total_cnvs, unique_genes, unique_disorders, unique_phenotypes
 {% endcomment %}
 
+{% assign frequency_keys = "phenotypes_obligate(100%)|phenotypes_very_frequent(99-80%)|phenotypes_frequent(79-30%)|phenotypes_occasional(29-5%)|phenotypes_very_rare(<4-1%)|phenotypes_excluded(0%)" | split: "|" %}
 {% assign total_cnvs = site.cnvs | size %}
 {% assign all_genes = "" | split: "" %}
 {% assign all_disorders = "" | split: "" %}
 {% assign all_phenotypes = "" | split: "" %}
 
 {% for cnv in site.cnvs %}
-  {% if cnv.genes %}
-    {% for gene in cnv.genes %}
-      {% assign all_genes = all_genes | push: gene.symbol %}
+  {% assign symbols = cnv.genes | map: "symbol" %}
+  {% assign all_genes = all_genes | concat: symbols %}
+  {% for orpha in cnv.orphadata %}
+    {% assign all_disorders = all_disorders | push: orpha.orphacode %}
+    {% for key in frequency_keys %}
+      {% assign ids = orpha[key] | map: "hpo_id" %}
+      {% assign all_phenotypes = all_phenotypes | concat: ids %}
     {% endfor %}
-  {% endif %}
-  {% if cnv.orphadata %}
-    {% for orpha in cnv.orphadata %}
-      {% if orpha.orphacode %}
-        {% assign all_disorders = all_disorders | push: orpha.orphacode %}
-      {% endif %}
-      {% if orpha["phenotypes_obligate(100%)"] %}
-        {% for p in orpha["phenotypes_obligate(100%)"] %}
-          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
-        {% endfor %}
-      {% endif %}
-      {% if orpha["phenotypes_very_frequent(99-80%)"] %}
-        {% for p in orpha["phenotypes_very_frequent(99-80%)"] %}
-          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
-        {% endfor %}
-      {% endif %}
-      {% if orpha["phenotypes_frequent(79-30%)"] %}
-        {% for p in orpha["phenotypes_frequent(79-30%)"] %}
-          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
-        {% endfor %}
-      {% endif %}
-      {% if orpha["phenotypes_occasional(29-5%)"] %}
-        {% for p in orpha["phenotypes_occasional(29-5%)"] %}
-          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
-        {% endfor %}
-      {% endif %}
-      {% if orpha["phenotypes_very_rare(<4-1%)"] %}
-        {% for p in orpha["phenotypes_very_rare(<4-1%)"] %}
-          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
-        {% endfor %}
-      {% endif %}
-      {% if orpha["phenotypes_excluded(0%)"] %}
-        {% for p in orpha["phenotypes_excluded(0%)"] %}
-          {% assign all_phenotypes = all_phenotypes | push: p.hpo_id %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+  {% endfor %}
 {% endfor %}
 
 {% assign unique_genes = all_genes | uniq %}
 {% assign unique_disorders = all_disorders | uniq %}
-{% assign unique_phenotypes = all_phenotypes | uniq %}
+{% assign unique_phenotypes = all_phenotypes | compact | uniq %}

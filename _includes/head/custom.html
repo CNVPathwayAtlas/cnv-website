@@ -1,6 +1,45 @@
-<!-- start custom head snippets -->
-
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
 <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+<meta name="baseurl" content="{{ site.baseurl }}">
 
-<!-- end custom head snippets -->
+{% comment %} Page-specific CSS and JS, set in the front matter of a page or layout {% endcomment %}
+{% assign extra_css = page.extra_css | default: layout.extra_css %}
+{% assign extra_js = page.extra_js | default: layout.extra_js %}
+{% if page.datatables or layout.datatables %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script defer src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+{% endif %}
+{% for href in extra_css %}<link rel="stylesheet" href="{{ href | relative_url }}">
+{% endfor %}
+{% for src in extra_js %}<script defer src="{{ src | relative_url }}"></script>
+{% endfor %}
+
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "{{ site.title }}",
+  "description": "{{ site.description }}",
+  "url": "{{ '/' | absolute_url }}",
+  "version": "{{ site.data.data_version.version }}",
+  "dateModified": "{{ site.data.data_version.retrieved }}",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "keywords": ["copy number variation", "rare diseases", "Orphanet", "Human Phenotype Ontology", "WikiPathways", "HGNC"],
+  "creator": {"@type": "Organization", "name": "Translational Genomics, Maastricht University"},
+  "funder": {"@type": "Organization", "name": "European Union, ERDERA grant agreement 101156595"},
+  "isBasedOn": [
+    "https://www.orphadata.com/",
+    "https://www.genenames.org/",
+    "https://www.wikipathways.org/"
+  ],
+  "distribution": [
+    {"@type": "DataDownload", "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "contentUrl": "{{ '/assets/data/CNVPathwayAtlas-data.xlsx' | absolute_url }}"},
+    {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "{{ '/assets/data/CNVPathwayAtlas-data.json' | absolute_url }}"},
+    {"@type": "DataDownload", "encodingFormat": "application/ld+json", "contentUrl": "{{ '/assets/data/CNVPathwayAtlas.jsonld' | absolute_url }}"},
+    {"@type": "DataDownload", "encodingFormat": "text/tab-separated-values", "contentUrl": "{{ '/assets/data/tsv/cnvs.tsv' | absolute_url }}"}
+  ]
+}
+</script>
+{% endif %}
