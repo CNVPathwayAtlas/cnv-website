@@ -2,23 +2,18 @@
 layout: default
 title: CNVs Overview
 permalink: /cnvs-overview/
+datatables: true
+extra_css:
+  - /assets/css/cnvs-overview.css
+extra_js:
+  - /assets/js/cnvs-overview.js
 ---
-
-<head>
-  <!-- DataTables CSS & JS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cnvs-overview.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer></script>
-  <script src="{{ site.baseurl }}/assets/js/cnvs-overview.js" defer></script>
-</head>
 
 {% include cnv-statistics.html %}
 
 <div class="page-content">
   <h1>Copy Number Variants Overview</h1>
 
-  <!-- Statistics Cards -->
   <div class="stats-container">
     <div class="stat-card">
       <div class="stat-number">{{ total_cnvs }}</div>
@@ -38,85 +33,97 @@ permalink: /cnvs-overview/
     </div>
   </div>
 
+  <h2 class="overview-heading">Genome overview (GRCh37)</h2>
+  <div id="genome-overview" class="genome-overview" aria-label="Positions of the CNVs on the chromosomes"></div>
+  <p class="genome-legend">
+    <span class="legend-item legend-deletion"></span> Deletion
+    <span class="legend-item legend-duplication"></span> Duplication or triplication
+    <span class="legend-item legend-both"></span> Both
+  </p>
+
+  <div class="table-filters">
+    <label>Chromosome
+      <select id="filter-chromosome"><option value="">All</option></select>
+    </label>
+    <label>CNV type
+      <select id="filter-type">
+        <option value="">All</option>
+        <option value="deletion">Deletion</option>
+        <option value="duplication">Duplication</option>
+        <option value="triplication">Triplication</option>
+      </select>
+    </label>
+    <label>ORPHAcode
+      <select id="filter-orpha">
+        <option value="">All</option>
+        <option value="yes">With ORPHAcode</option>
+        <option value="no">Without ORPHAcode</option>
+      </select>
+    </label>
+    <button type="button" id="filter-reset">Reset</button>
+  </div>
+
   <table id="cnvs-table" class="display" style="width:100%">
     <thead>
       <tr>
         <th>CNV</th>
         <th>Locus</th>
         <th>Chr</th>
-        <th>Start</th>
-        <th>End</th>
+        <th>Start (GRCh37)</th>
+        <th>End (GRCh37)</th>
+        <th>Size (Mb)</th>
+        <th>CNV type</th>
         <th>WikiPathways</th>
         <th>ORPHAcode</th>
         <th>OMIM</th>
-        <th>Genes</th>
+        <th class="genes-column">Genes</th>
       </tr>
     </thead>
     <tbody>
       {% for cnv in site.cnvs %}
         {% assign gene_symbols = cnv.genes | map: "symbol" %}
-        <tr>
-          <td><a href="{{ site.baseurl }}{{ cnv.url }}" target="_blank">{{ cnv.cnv | default: cnv.locus | default: cnv.title }}</a></td>
+        {% assign types = cnv.orphadata | map: "cnv_type" | compact | uniq %}
+        {% assign chr_order = cnv.chromosome | replace: "X", "23" | replace: "Y", "24" | plus: 0 %}
+        <tr data-chromosome="{{ cnv.chromosome }}" data-start="{{ cnv.start }}" data-end="{{ cnv.end }}"
+            data-types="{{ types | join: ' ' }}" data-has-orpha="{% if cnv.orphadata.size > 0 %}yes{% else %}no{% endif %}"
+            data-name="{{ cnv.cnv }}" data-url="{{ cnv.url | relative_url }}">
+          <td><a href="{{ cnv.url | relative_url }}">{{ cnv.cnv | default: cnv.locus }}</a></td>
           <td>{{ cnv.locus | default: "NA" }}</td>
-          <td data-order="{{ cnv.chromosome | remove: 'X' | remove: 'Y' | plus: 0 }}">{{ cnv.chromosome | default: "NA" }}</td>
-          <td data-order="{{ cnv.start | plus: 0 }}">{{ cnv.start | default: "NA" }}</td>
-          <td data-order="{{ cnv.end | plus: 0 }}">{{ cnv.end | default: "NA" }}</td>
+          <td data-order="{{ chr_order }}">{{ cnv.chromosome | default: "NA" }}</td>
+          <td data-order="{{ cnv.start }}">{{ cnv.start | default: "NA" }}</td>
+          <td data-order="{{ cnv.end }}">{{ cnv.end | default: "NA" }}</td>
+          <td data-order="{{ cnv.size }}">{% if cnv.size %}{{ cnv.size | divided_by: 1000000.0 | round: 2 }}{% else %}NA{% endif %}</td>
+          <td>{% if types.size > 0 %}{{ types | join: ", " }}{% else %}NA{% endif %}</td>
           <td>
             {% if cnv.wikipathways_id %}
-              <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html" target="_blank">{{ cnv.wikipathways_id }}</a>
-            {% else %}
-              NA
-            {% endif %}
+              <a href="https://www.wikipathways.org/pathways/{{ cnv.wikipathways_id }}.html" target="_blank" rel="noopener noreferrer">{{ cnv.wikipathways_id }}</a>
+            {% else %}NA{% endif %}
           </td>
           <td>
-            {% assign has_orphacode = false %}
-            {% if cnv.orphadata %}
+            {% if cnv.orphadata.size > 0 %}
               {% for orpha in cnv.orphadata %}
-                {% if orpha.orphacode %}
-                  {% assign has_orphacode = true %}
-                  <a href="https://www.orpha.net/consor/cgi-bin/OC_Exp.php?lng=EN&Expert={{ orpha.orphacode }}" target="_blank">{{ orpha.orphacode }}</a>{% if orpha.cause %} ({{ orpha.cause }}){% endif %}{% unless forloop.last %}, {% endunless %}
-                {% endif %}
+                <a href="https://www.orpha.net/en/disease/detail/{{ orpha.orphacode }}" target="_blank" rel="noopener noreferrer">{{ orpha.orphacode }}</a>{% if orpha.cause %} ({{ orpha.cause }}){% endif %}{% unless forloop.last %}, {% endunless %}
               {% endfor %}
-            {% endif %}
-            {% unless has_orphacode %}
-              NA
-            {% endunless %}
+            {% else %}NA{% endif %}
           </td>
           <td>
             {% assign all_omim_ids = "" | split: "" %}
-            {% if cnv.orphadata %}
-              {% for orpha in cnv.orphadata %}
-                {% if orpha.omim %}
-                  {% assign all_omim_ids = all_omim_ids | concat: orpha.omim %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-
+            {% for orpha in cnv.orphadata %}
+              {% if orpha.omim %}{% assign all_omim_ids = all_omim_ids | concat: orpha.omim %}{% endif %}
+            {% endfor %}
             {% assign unique_omim_ids = all_omim_ids | uniq %}
             {% if unique_omim_ids.size > 0 %}
-              {% for id in unique_omim_ids %}
-                <a href="https://omim.org/entry/{{ id }}" target="_blank">{{ id }}</a>{% unless forloop.last %}, {% endunless %}
-              {% endfor %}
-            {% else %}
-              NA
-            {% endif %}
-          </td>        
+              {% for id in unique_omim_ids %}<a href="https://omim.org/entry/{{ id }}" target="_blank" rel="noopener noreferrer">{{ id }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+            {% else %}NA{% endif %}
+          </td>
           <td>
             <span id="gene-container-{{ forloop.index }}">
-              {% if gene_symbols %}
-                {{ gene_symbols | slice: 0, 3 | join: ", " }}
-              {% else %}
-                NA
-              {% endif %}
+              {% if gene_symbols.size > 0 %}{{ gene_symbols | slice: 0, 3 | join: ", " }}{% else %}NA{% endif %}
             </span>
             {% if gene_symbols.size > 3 %}
               <a href="#" class="show-more" data-index="{{ forloop.index }}" data-genes='{{ gene_symbols | jsonify }}'>more</a>
             {% endif %}
-            {% if gene_symbols %}
-              <span class="gene-search-hidden" style="display:none;">
-                {{ gene_symbols | join: ", " }}
-              </span>
-            {% endif %}
+            <span class="gene-search-hidden" style="display:none;">{{ gene_symbols | join: ", " }}</span>
           </td>
         </tr>
       {% endfor %}
