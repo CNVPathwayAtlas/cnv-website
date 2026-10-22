@@ -50,9 +50,6 @@ jobs:
       - name: Export JSON-LD
         run: python scripts/export_jsonld.py
 
-      - name: Generate HPO groups
-        run: python scripts/generate-hpo-groups.py
-
       - name: Generate phenotype browser data
         run: python scripts/generate_browser_data.py
 

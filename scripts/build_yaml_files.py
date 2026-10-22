@@ -1,4 +1,4 @@
-"""Build the CNV pages (_cnvs/*.md) and the data version file from the cnv-data repository.
+"""Build the CNV pages (_cnvs/*.md), the data version file and the HPO categories from the cnv-data repository.
 
 Usage: python scripts/build_yaml_files.py [path to cnv-data]   (default: ./cnv-data)
 """
@@ -22,6 +22,7 @@ LATEST_DIR = DATA_DIR / "data" / "latest"
 CNVS_DIR = SITE_DIR / "_cnvs"
 PATHWAYS_OUT = SITE_DIR / "assets" / "pathways"
 VERSION_OUT = SITE_DIR / "_data" / "data_version.yml"
+HPO_CATEGORIES_OUT = SITE_DIR / "assets" / "data" / "hpo_categories.json"
 
 FREQUENCIES = {
     "phenotypes_obligate(100%)": "Phenotypes_Obligate(100%)",
@@ -116,12 +117,21 @@ def copy_pathways(wp_ids):
 
 
 def write_data_version(sources):
+    """Write the data version and the release of each source to _data/data_version.yml."""
     version = (DATA_DIR / "version.txt").read_text().strip()
+    orphadata = sources.get("orphadata", {})
     data = {
         "version": version,
         "retrieved": sources.get("retrieved", "")[:10],
-        "orphadata_release": sources.get("orphadata", {}).get("definitions", {}).get("release_date", "")[:10],
+        "orphadata_release": orphadata.get("definitions", {}).get("release_date", "")[:10],
+        "orphadata": {name: {"release": info.get("release_date", "")[:10], "version": info.get("version", ""),
+                             "url": info.get("url", "")} for name, info in orphadata.items()},
         "hgnc_release": parsedate_to_datetime(sources["hgnc"]["last_modified"]).date().isoformat(),
+        "hgnc_url": sources["hgnc"].get("url", ""),
+        "hpo_release": sources.get("hpo", {}).get("release", ""),
+        "hpo_url": sources.get("hpo", {}).get("url", ""),
+        "wikipathways": {wp: {"revision": info.get("revision", ""), "last_modified": info.get("last_modified", "")[:8]}
+                         for wp, info in sources.get("wikipathways", {}).items()},
     }
     VERSION_OUT.parent.mkdir(exist_ok=True)
     VERSION_OUT.write_text(yaml.dump(data, sort_keys=False))
@@ -140,6 +150,7 @@ def main():
     sources = json.loads((LATEST_DIR / "sources.json").read_text())
 
     version = write_data_version(sources)
+    shutil.copy(latest("hpo_categories_*.json"), HPO_CATEGORIES_OUT)
     copy_pathways(sorted({wp for wp in df_input["wikipathways_id"] if wp}))
 
     CNVS_DIR.mkdir(exist_ok=True)
@@ -172,6 +183,7 @@ def main():
             "genes": genes,
             "wikipathways_id": row["wikipathways_id"] or None,
             "pathway_name": row["pathway_name"] or None,
+            "pathway_revision": sources.get("wikipathways", {}).get(row["wikipathways_id"], {}).get("revision"),
             "orphadata": build_orphadata(row["orphacodes"], orpha),
             "data_version": version,
         }
