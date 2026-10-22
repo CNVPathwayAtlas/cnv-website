@@ -74,7 +74,8 @@ You can use our <a href="{{ '/contact/' | relative_url }}">contact forms</a> if 
 
 If you are already part of the CNVPathwayAtlas team and want to add a new CNV:
 - make your CNV pathway and upload it to WikiPathways
-- add the CNV to `data/input/cnv_data.tsv` in <a href="https://github.com/CNVPathwayAtlas/cnv-data" target="_blank" rel="noopener noreferrer">cnv-data</a> (see its README for the columns)
+- submit the <a href="https://github.com/CNVPathwayAtlas/cnv-data/issues/new?template=new-cnv.yml" target="_blank" rel="noopener noreferrer">Add a CNV</a> form, or add the CNV to `data/input/cnv_data.tsv` in <a href="https://github.com/CNVPathwayAtlas/cnv-data" target="_blank" rel="noopener noreferrer">cnv-data</a> (see its README for the columns)
+- a maintainer checks and merges the pull request; the website is then updated automatically
 
 # Data files
 All files are licensed under CC BY 4.0.

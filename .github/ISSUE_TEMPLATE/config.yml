@@ -1,2 +1,8 @@
 blank_issues_enabled: false
-contact_links: []
+contact_links:
+  - name: Add a CNV
+    url: https://github.com/CNVPathwayAtlas/cnv-data/issues/new?template=new-cnv.yml
+    about: Submit a new CNV to the data repository. A maintainer checks it before it is added.
+  - name: Edit a CNV
+    url: https://github.com/CNVPathwayAtlas/cnv-data/issues/new?template=edit-cnv.yml
+    about: Correct the data of a CNV in the data repository. A maintainer checks it before it is changed.
