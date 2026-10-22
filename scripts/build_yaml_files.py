@@ -1,219 +1,190 @@
-import pandas as pd
-from pathlib import Path
-import yaml
+"""Build the CNV pages (_cnvs/*.md) and the data version file from the cnv-data repository.
+
+Usage: python scripts/build_yaml_files.py [path to cnv-data]   (default: ./cnv-data)
+"""
+import json
 import re
-from typing import Optional, Tuple, List, Dict, Any
+import shutil
+import sys
+from email.utils import parsedate_to_datetime
+from pathlib import Path
+
+import pandas as pd
+import yaml
+
+SITE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = Path(sys.argv[1] if len(sys.argv) > 1 else "cnv-data").resolve()
+sys.path.insert(0, str(DATA_DIR / "scripts"))
+
+from cnv_input import cnv_key, load_input, parse_orphacodes, parse_region, split_list  # noqa: E402
+
+LATEST_DIR = DATA_DIR / "data" / "latest"
+CNVS_DIR = SITE_DIR / "_cnvs"
+PATHWAYS_OUT = SITE_DIR / "assets" / "pathways"
+VERSION_OUT = SITE_DIR / "_data" / "data_version.yml"
+
+FREQUENCIES = {
+    "phenotypes_obligate(100%)": "Phenotypes_Obligate(100%)",
+    "phenotypes_very_frequent(99-80%)": "Phenotypes_Very_frequent(99-80%)",
+    "phenotypes_frequent(79-30%)": "Phenotypes_Frequent(79-30%)",
+    "phenotypes_occasional(29-5%)": "Phenotypes_Occasional(29-5%)",
+    "phenotypes_very_rare(<4-1%)": "Phenotypes_Very_rare(<4-1%)",
+    "phenotypes_excluded(0%)": "Phenotypes_Excluded(0%)",
+}
 
 
-def get_latest_csv(dir_path: Path, pattern: str) -> Path:
-    files = sorted(dir_path.glob(pattern), reverse=True)
+def latest(pattern):
+    files = sorted(LATEST_DIR.glob(pattern))
     if not files:
-        raise FileNotFoundError(f"No files matching {pattern} found in {dir_path}")
-    return files[0]
+        raise FileNotFoundError(f"No file matches {pattern} in {LATEST_DIR}")
+    return files[-1]
 
 
-def parse_region(region_str: Optional[str]) -> Tuple[Optional[str], Optional[int], Optional[int]]:
-    if not region_str:
-        return None, None, None
-    m = re.match(r"[cC]hr(\d+|[XYxy]):(\d+)-(\d+)", region_str)
-    if not m:
-        return None, None, None
-    chrom = m.group(1).upper()
-    start, end = int(m.group(2)), int(m.group(3))
-    return chrom, start, end
+def read_table(pattern, sep="\t"):
+    return pd.read_csv(latest(pattern), sep=sep, dtype=str, keep_default_na=False)
 
 
-def clean_gene_list(genes_str: Optional[str]) -> List[str]:
-    if not isinstance(genes_str, str) or not genes_str.strip():
-        return []
-    clean_str = re.sub(r"<.*?>", "", genes_str)
-    # split on ; or , or whitespace
-    genes = [g.strip() for g in re.split(r"[;,]\s*|\s+", clean_str) if g.strip()]
+def parse_phenotypes(value):
+    """Return [{name, hpo_id}] from 'term (HP:0000001); term (HP:0000002)'."""
+    result = []
+    for part in filter(None, (p.strip() for p in value.split(";"))):
+        match = re.match(r"(.+?)\s*\(?(HP:\d{7})\)?$", part)
+        result.append({"name": match.group(1), "hpo_id": match.group(2)} if match else {"name": part, "hpo_id": None})
+    return result
+
+
+def cnv_type(cause):
+    """Return the CNV type word found in the cause label, e.g. 'distal microdeletion' -> 'deletion'."""
+    for word in ("deletion", "duplication", "triplication"):
+        if word in (cause or ""):
+            return word
+    return None
+
+
+def build_orphadata(value, orpha):
+    entries = []
+    for code, cause in parse_orphacodes(value):
+        info = orpha.get(code)
+        entry = {"orphacode": code, "cause": cause, "cnv_type": cnv_type(cause),
+                 "in_orphadata": info is not None,
+                 "name": info["Name"] if info else None,
+                 "definition": (info["Definition"] or None) if info else None,
+                 "prevalence": info["Prevalence"] if info else None}
+        for key, column in FREQUENCIES.items():
+            entry[key] = parse_phenotypes(info[column]) if info else []
+        entry["omim"] = split_list(info["OMIM"]) if info else []
+        entries.append(entry)
+    return entries
+
+
+def build_genes(key, mapping, hgnc, pathway_hgnc_ids):
+    genes = []
+    for _, row in mapping[mapping["cnv"] == key].iterrows():
+        info = hgnc.get(row["hgnc_id"], {})
+        genes.append({
+            "symbol": row["symbol"] or row["input_symbol"],
+            "input_symbol": row["input_symbol"] if row["input_symbol"] != row["symbol"] else None,
+            "name": info.get("name") or None,
+            "hgnc_id": info.get("hgnc_id") or None,
+            "entrez_id": info.get("entrez_id") or None,
+            "ensembl_id": info.get("ensembl_gene_id") or None,
+            "uniprot_id": info.get("uniprot_ids", "").split("|")[0] or None,
+            "omim_id": info.get("omim_id", "").split("|")[0] or None,
+            "locus_group": info.get("locus_group") or None,
+            "in_pathway": row["hgnc_id"] in pathway_hgnc_ids if row["hgnc_id"] else False,
+        })
     return genes
 
 
-def nan_to_none(df: pd.DataFrame) -> pd.DataFrame:
-    return df.where(pd.notnull(df), None)
-
-
-def parse_phenotypes(phenotypes_str: Optional[str]) -> List[Dict[str, Optional[str]]]:
-    if not phenotypes_str or (isinstance(phenotypes_str, float) and pd.isna(phenotypes_str)):
-        return []
-    phenotypes_str = str(phenotypes_str)
-    phenotype_list = []
-    for part in phenotypes_str.split(";"):
-        part = part.strip()
-        if not part:
-            continue
-        m = re.match(r"(.+?)\s*\(?HP:(\d{7})\)?", part)
-        if m:
-            phenotype_list.append({"name": m.group(1).strip(), "hpo_id": f"HP:{m.group(2)}"})
-        else:
-            phenotype_list.append({"name": part, "hpo_id": None})
-    return phenotype_list
-
-
-def parse_pubmed_ids(pubmed_str: Optional[str]) -> List[str]:
-    if not isinstance(pubmed_str, str) or not pubmed_str.strip():
-        return []
-    return [pubmed_id.strip() for pubmed_id in re.split(r"[;,]", pubmed_str) if pubmed_id.strip()]
-
-
-def build_hgnc_dict(df_hgnc: pd.DataFrame) -> Dict[str, Dict[str, Optional[str]]]:
-    hgnc_dict = {}
-    for _, row in df_hgnc.iterrows():
-        sym = row.get("symbol") or row.get("hgnc_symbol")
-        if sym:
-            hgnc_dict[sym] = {
-                "name": row.get("name"),
-                "hgnc_id": row.get("hgnc_id"),
-                "entrez_id": row.get("entrez_id"),
-                "ensembl_id": row.get("ensembl_gene_id"),
-                "uniprot_id": row.get("uniprot_ids"),
-            }
-    return hgnc_dict
-
-
-def build_orpha_dict(df_orpha: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
-    orpha_dict = {}
-    for _, row in df_orpha.iterrows():
-        code = str(row.get("OrphaCode", "")).strip()
-        if not code:
-            continue
-        omim_raw = row.get("OMIM")
-        omim_raw = str(omim_raw) if pd.notna(omim_raw) else ""
-        omim_list = [o.strip() for o in omim_raw.split(";") if o.strip()] if omim_raw else []
-        orpha_dict[code] = {
-            "definition": row.get("Definition"),
-            "phenotypes_obligate(100%)": row.get("Phenotypes_Obligate(100%)"),
-            "phenotypes_very_frequent(99-80%)": row.get("Phenotypes_Very_frequent(99-80%)"),
-            "phenotypes_frequent(79-30%)": row.get("Phenotypes_Frequent(79-30%)"),
-            "phenotypes_occasional(29-5%)": row.get("Phenotypes_Occasional(29-5%)"),
-            "phenotypes_very_rare(<4-1%)": row.get("Phenotypes_Very_rare(<4-1%)"),
-            "phenotypes_excluded(0%)": row.get("Phenotypes_Excluded(0%)"),
-            "prevalence": row.get("Prevalence"),
-            "omim": omim_list,
-            # "pubmed_ids": [],
-        }
-    return orpha_dict
-
-
-def parse_orphacodes(orphacodes_str: str, orpha_dict: Dict[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
-    if not orphacodes_str.strip():
-        return []
-    orphacodes_list = []
-    entries = [e.strip() for e in re.split(r"[;,]", orphacodes_str) if e.strip()]
-    for entry in entries:
-        m = re.match(r"(\d+)(?:\(([^)]+)\))?", entry)
-        if not m:
-            continue
-        code, cause = m.group(1), m.group(2) if m.group(2) else None
-        orpha_info = orpha_dict.get(code, {})
-        orphacodes_list.append({
-            "orphacode": code,
-            "cause": cause,
-            "definition": orpha_info.get("definition"),
-            "prevalence": orpha_info.get("prevalence"),
-            "phenotypes_obligate(100%)": parse_phenotypes(orpha_info.get("phenotypes_obligate(100%)")),
-            "phenotypes_very_frequent(99-80%)": parse_phenotypes(orpha_info.get("phenotypes_very_frequent(99-80%)")),
-            "phenotypes_frequent(79-30%)": parse_phenotypes(orpha_info.get("phenotypes_frequent(79-30%)")),
-            "phenotypes_occasional(29-5%)": parse_phenotypes(orpha_info.get("phenotypes_occasional(29-5%)")),
-            "phenotypes_very_rare(<4-1%)": parse_phenotypes(orpha_info.get("phenotypes_very_rare(<4-1%)")),
-            "phenotypes_excluded(0%)": parse_phenotypes(orpha_info.get("phenotypes_excluded(0%)")),
-            "omim": orpha_info.get("omim"),
-            # "pubmed_ids": orpha_info.get("pubmed_ids", []),
-        })
-    return orphacodes_list
-
-
-def write_yaml_file(path: Path, yaml_dict: Dict[str, Any]) -> None:
+def write_page(path, front_matter):
     with open(path, "w", encoding="utf-8") as f:
         f.write("---\n")
-        yaml.dump(yaml_dict, f, sort_keys=False, allow_unicode=True)
+        yaml.dump(front_matter, f, sort_keys=False, allow_unicode=True)
         f.write("---\n")
 
 
-def main() -> None:
-    input_dir = Path("cnv-data/data/input")
-    latest_dir = Path("cnv-data/data/latest")
-    # input_dir = data_root / "input"
-    # latest_dir = data_root / "latest"
-    output_path = Path(__file__).resolve().parent.parent / "_cnvs"
-    output_path.mkdir(exist_ok=True)
+def copy_pathways(wp_ids):
+    shutil.rmtree(PATHWAYS_OUT, ignore_errors=True)
+    PATHWAYS_OUT.mkdir(parents=True)
+    for wp in wp_ids:
+        for ext in ("svg", "gpml"):
+            source = DATA_DIR / "data" / "pathways" / f"{wp}.{ext}"
+            if source.exists():
+                shutil.copy(source, PATHWAYS_OUT / source.name)
+            else:
+                print(f"[WARN] No {ext.upper()} file for {wp}")
 
-    print(f"Looking for latest HGNC CSV in: {latest_dir}")
-    hgnc_csv = get_latest_csv(latest_dir, "hgnc_filtered_*.csv")
-    print(f"Found HGNC CSV: {hgnc_csv}")
 
-    print(f"Looking for latest Orphadata CSV in: {latest_dir}")
-    orpha_csv = get_latest_csv(latest_dir, "orphadata_filtered_*.csv")
-    print(f"Found Orphadata CSV: {orpha_csv}")
+def write_data_version(sources):
+    version = (DATA_DIR / "version.txt").read_text().strip()
+    data = {
+        "version": version,
+        "retrieved": sources.get("retrieved", "")[:10],
+        "orphadata_release": sources.get("orphadata", {}).get("definitions", {}).get("release_date", "")[:10],
+        "hgnc_release": parsedate_to_datetime(sources["hgnc"]["last_modified"]).date().isoformat(),
+    }
+    VERSION_OUT.parent.mkdir(exist_ok=True)
+    VERSION_OUT.write_text(yaml.dump(data, sort_keys=False))
+    return version
 
-    cnv_input = input_dir / "cnv_data.xlsx"
 
-    print("Loading data...")
-    df_cnv = nan_to_none(pd.read_excel(cnv_input))
-    df_hgnc = nan_to_none(pd.read_csv(hgnc_csv, sep="\t", dtype=str))
-    df_orpha = nan_to_none(pd.read_csv(orpha_csv, dtype=str, encoding="utf-8", quotechar='"'))
+def main():
+    df_input = load_input()
+    orpha = read_table("orphadata_filtered_*.csv", sep=",").set_index("OrphaCode").to_dict("index")
+    for code, info in orpha.items():
+        info["OrphaCode"] = code
+    hgnc = read_table("hgnc_filtered_*.tsv").set_index("hgnc_id", drop=False).to_dict("index")
+    mapping = read_table("gene_mapping_*.tsv")
+    pathway_genes = read_table("pathway_genes_*.tsv")
+    pathway_ids = pathway_genes[pathway_genes["hgnc_id"] != ""].groupby("wikipathways_id")["hgnc_id"].apply(set).to_dict()
+    sources = json.loads((LATEST_DIR / "sources.json").read_text())
 
-    print("Building lookup dictionaries...")
-    hgnc_dict = build_hgnc_dict(df_hgnc)
-    orpha_dict = build_orpha_dict(df_orpha)
+    version = write_data_version(sources)
+    copy_pathways(sorted({wp for wp in df_input["wikipathways_id"] if wp}))
 
-    cnv_nr = 0
+    CNVS_DIR.mkdir(exist_ok=True)
+    written = set()
+    for _, row in df_input.iterrows():
+        key = cnv_key(row)
+        chrom19, start19, end19 = parse_region(row["region_hg19"])
+        chrom38, start38, end38 = parse_region(row["region_hg38"])
+        genes = build_genes(key, mapping, hgnc, pathway_ids.get(row["wikipathways_id"], set()))
 
-    for idx, row in df_cnv.iterrows():
-        locus = row.get("locus") or f"cnv_{idx}"
-        extra_val = row.get("extra")
-        extra = str(extra_val).strip() if pd.notna(extra_val) and extra_val else ""
-        region_hg17 = row.get("region_hg17") or ""
-        region_hg38 = row.get("region_hg38") or ""
-        chrom_hg17, start_hg17, end_hg17 = parse_region(region_hg17)
-        chrom_hg38, start_hg38, end_hg38 = parse_region(region_hg38)
-        chrom = chrom_hg17
-        start = start_hg17
-        end = end_hg17
-        description = row.get("description")
-        wikipathways_id = row.get("wikipathways_id")
-        cnv_name = f"{locus}-{extra} Copy Number Variation" if extra else f"{locus} Copy Number Variation"
-        pubmed_ids = parse_pubmed_ids(row.get("pubmed_id"))
-        genes = clean_gene_list(row.get("genes"))
-        genes_info = [
-            {**{"symbol": g}, **hgnc_dict.get(g, {"name": None, "hgnc_id": None, "entrez_id": None, "ensembl_id": None, "uniprot_id": None})}
-            for g in genes
-        ]
-
-        orphacodes_list = parse_orphacodes(str(row.get("orphacodes") or ""), orpha_dict)
-
-        yaml_dict = {
+        front_matter = {
             "layout": "cnv-page",
-            "title": cnv_name,
-            "cnv": f"{locus}-{extra}" if extra else locus,
-            "locus": locus,
-            "region": region_hg17,
-            "chromosome": chrom,
-            "start": start,
-            "end": end,
-            "region_hg38": region_hg38,
-            "chromosome_hg38": chrom_hg38,
-            "start_hg38": start_hg38,
-            "end_hg38": end_hg38,
-            "description": description,
-            "pubmed_ids": pubmed_ids,
-            "genes": genes_info,
-            "wikipathways_id": wikipathways_id,
-            "orphadata": orphacodes_list,
+            "title": f"{key} Copy Number Variation",
+            "cnv": key,
+            "locus": row["locus"],
+            "region_hg19": row["region_hg19"],
+            "chromosome": chrom19,
+            "start": start19,
+            "end": end19,
+            "size": end19 - start19 if start19 is not None else None,
+            "region_hg38": row["region_hg38"],
+            "chromosome_hg38": chrom38,
+            "start_hg38": start38,
+            "end_hg38": end38,
+            "size_hg38": end38 - start38 if start38 is not None else None,
+            "description": row["description"] or None,
+            "pubmed_ids": split_list(row["pubmed_id"]),
+            "gene_count": len(genes),
+            "protein_coding_count": sum(g["locus_group"] == "protein-coding gene" for g in genes),
+            "genes": genes,
+            "wikipathways_id": row["wikipathways_id"] or None,
+            "pathway_name": row["pathway_name"] or None,
+            "orphadata": build_orphadata(row["orphacodes"], orpha),
+            "data_version": version,
         }
+        filename = re.sub(r"[:\s]", "", key) + ".md"
+        write_page(CNVS_DIR / filename, front_matter)
+        written.add(filename)
 
-        raw_name = f"{locus}-{extra}" if extra else locus
-        filename = re.sub(r"[:\s]", "", raw_name)
-        yaml_filename = output_path / f"{filename}.md"
+    for stale in CNVS_DIR.glob("*.md"):
+        if stale.name not in written:
+            print(f"Removing {stale.name}: CNV is not in the input")
+            stale.unlink()
 
-        write_yaml_file(yaml_filename, yaml_dict)
-        cnv_nr += 1
-        print(f"Written {yaml_filename.name}")
-
-    print(f"{cnv_nr} YAML files created in {output_path}")
+    print(f"{len(written)} CNV pages written to {CNVS_DIR} (data {version})")
 
 
 if __name__ == "__main__":

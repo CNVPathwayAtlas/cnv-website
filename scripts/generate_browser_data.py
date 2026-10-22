@@ -64,9 +64,10 @@ def parse_front_matter(filepath):
 
 
 def disorder_name(orpha, location_id):
-    """Derive a human-readable name for a disorder from its orpha entry."""
+    """Return the Orphanet disorder name, or a name made from the location and cause."""
+    if orpha.get('name'):
+        return f"{orpha['name']} (ORPHA:{orpha.get('orphacode','')})"
     cause = orpha.get('cause', '')
-    # Fall back to "location cause syndrome"
     if cause:
         return f"{location_id} {cause} syndrome (ORPHA:{orpha.get('orphacode','')})"
     return f"{location_id} CNV disorder (ORPHA:{orpha.get('orphacode','')})"
@@ -114,7 +115,8 @@ def main():
             'start': fm.get('start', 0),
             'end': fm.get('end', 0),
             'description': fm.get('description', ''),
-            'url': f'/cnv/{cnv_name.replace(".", "-")}/',
+            # Same slug as the Jekyll permalink /cnv/:name/
+            'url': '/cnv/' + re.sub(r'[^a-z0-9]+', '-', cnv_name.lower()).strip('-') + '/',
             'gene_symbols': [],
             'gene_count': 0,
             'disorder_ids': [],   # list of ORPHA:xxx ids linked to this location
@@ -201,12 +203,12 @@ def main():
             orpha_cause = orpha.get('cause', '')
 
             freq_tiers = {
-                'obligate(100%)':      orpha.get('phenotypes_obligate(100%)', []) or [],
-                'very_frequent(99-80%)': orpha.get('phenotypes_very_frequent(99-80%)', []) or [],
-                'frequent(79-30%)':      orpha.get('phenotypes_frequent(79-30%)', []) or [],
-                'occasional(29-5%)':    orpha.get('phenotypes_occasional(29-5%)', []) or [],
-                'very_rare(<4-1%)':     orpha.get('phenotypes_very_rare(<4-1%)', []) or [],
-                'excluded(0%)':      orpha.get('phenotypes_excluded(0%)', []) or [],
+                'obligate':      orpha.get('phenotypes_obligate(100%)', []) or [],
+                'very_frequent': orpha.get('phenotypes_very_frequent(99-80%)', []) or [],
+                'frequent':      orpha.get('phenotypes_frequent(79-30%)', []) or [],
+                'occasional':    orpha.get('phenotypes_occasional(29-5%)', []) or [],
+                'very_rare':     orpha.get('phenotypes_very_rare(<4-1%)', []) or [],
+                'excluded':      orpha.get('phenotypes_excluded(0%)', []) or [],
             }
 
             for frequency, pheno_list in freq_tiers.items():

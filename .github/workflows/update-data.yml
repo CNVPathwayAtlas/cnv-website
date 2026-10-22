@@ -1,0 +1,67 @@
+name: Update website data
+
+# Started by cnv-data when a new data version is released, or by hand.
+# Builds the CNV pages, the download files and the phenotype browser data, then pushes them.
+on:
+  repository_dispatch:
+    types: [cnv-data-updated]
+  workflow_dispatch:
+    inputs:
+      cnv_data_ref:
+        description: "cnv-data branch, tag or commit"
+        default: main
+
+concurrency:
+  group: update-website-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout cnv-website
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CNV_RELEASE_AUTOMATION }}
+
+      - name: Checkout cnv-data
+        uses: actions/checkout@v4
+        with:
+          repository: CNVPathwayAtlas/cnv-data
+          ref: ${{ github.event.client_payload.sha || inputs.cnv_data_ref || 'main' }}
+          path: cnv-data
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pandas pyyaml openpyxl requests
+
+      - name: Build CNV pages
+        run: python scripts/build_yaml_files.py cnv-data
+
+      - name: Export download files
+        run: python scripts/export_cnvs_to_table.py cnv-data
+
+      - name: Export JSON-LD
+        run: python scripts/export_jsonld.py
+
+      - name: Generate HPO groups
+        run: python scripts/generate-hpo-groups.py
+
+      - name: Generate phenotype browser data
+        run: python scripts/generate_browser_data.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _cnvs _data/data_version.yml _data/jsonld assets/data assets/pathways
+          git diff --cached --quiet && exit 0
+          git commit -m "Update website data to cnv-data $(cat cnv-data/version.txt)"
+          git pull --rebase origin main
+          git push origin HEAD:main

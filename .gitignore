@@ -30,3 +30,6 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# Local clone of the data repository used by the build scripts
+cnv-data

@@ -1,425 +1,158 @@
-import yaml
-import pandas as pd
-import requests
+"""Export the CNV pages (_cnvs/*.md) to the download files in assets/data.
+
+Writes:
+- CNVPathwayAtlas-data.xlsx: one row per CNV, gene, disorder and phenotype
+- CNVPathwayAtlas-data.json: one record per CNV
+- tsv/*.tsv: one table per entity (CNVs, genes, disorders, phenotypes, pathway genes)
+
+Usage: python scripts/export_cnvs_to_table.py [path to cnv-data]   (default: ./cnv-data)
+"""
+import json
+import sys
 from pathlib import Path
-from glob import glob
 
-from _site.scripts.build_yaml_files import parse_phenotypes
+import pandas as pd
+import yaml
 
-def get_latest_csv(directory: Path, pattern: str) -> Path:
-    """Get the most recent CSV file matching pattern."""
-    files = list(directory.glob(pattern))
-    if not files:
-        raise FileNotFoundError(f"No files matching {pattern} in {directory}")
-    return max(files, key=lambda f: f.stat().st_mtime)
+SITE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = Path(sys.argv[1] if len(sys.argv) > 1 else "cnv-data").resolve()
+CNVS_DIR = SITE_DIR / "_cnvs"
+OUTPUT_DIR = SITE_DIR / "assets" / "data"
 
+FREQUENCIES = ["obligate(100%)", "very_frequent(99-80%)", "frequent(79-30%)",
+               "occasional(29-5%)", "very_rare(<4-1%)", "excluded(0%)"]
 
-def load_protein_coding_genes(latest_dir: Path) -> set:
-    """Load protein-coding gene symbols from HGNC dataset."""
-    print(f"Looking for latest HGNC CSV in: {latest_dir}")
-    hgnc_csv = get_latest_csv(latest_dir, "hgnc_filtered_*.csv")
-    print(f"Found HGNC CSV: {hgnc_csv}")
-    
-    df = pd.read_csv(hgnc_csv, sep="\t", usecols=["symbol", "locus_group"], low_memory=False)
-    protein_coding = df[df["locus_group"] == "protein-coding gene"]["symbol"].tolist()
-    print(f"  -> Found {len(protein_coding)} protein-coding genes")
-    return set(protein_coding)
-
-
-def fetch_wikipathways_json():
-    """Fetch pathway info from WikiPathways."""
-    url = "https://www.wikipathways.org/json/findPathwaysByXref.json"
-    response = requests.get(url, timeout=60)
-    response.raise_for_status()
-    return response.json().get("pathwayInfo", [])
+XLSX_COLUMNS = [
+    "cnv", "locus", "chromosome", "start", "end", "region_GRCh37", "region_GRCh38",
+    "description", "pubmed_ids",
+    "genes_hgnc_symbol", "genes_hgnc_name", "genes_hgnc_id", "genes_entrez_id",
+    "genes_ensembl_id", "genes_uniprot_id", "wikipathways_id", "pathway_genes",
+    "orphadata_orphacode", "orphadata_cause", "orphadata_definition", "orphadata_prevalence",
+    *[f"orphadata_phenotypes_{f}" for f in FREQUENCIES],
+    "orphadata_hpo_id", "orphadata_omim_id",
+]
 
 
-def map_ids_to_hgnc_bridgedb(ids: list, source_code: str) -> dict:
-    """
-    Use BridgeDb web service to map gene IDs to HGNC symbols.
-    
-    Args:
-        ids: List of gene identifiers
-        source_code: BridgeDb source code (L=NCBI/Entrez, En=Ensembl)
-    
-    Returns a dict: {id: hgnc_symbol}
-    """
-    if not ids:
-        return {}
-    
-    mapping = {}
-    # BridgeDb batch mapping endpoint for Human genes
-    base_url = f"https://webservice.bridgedb.org/Human/xrefsBatch/{source_code}"
-    
-    # Process in batches of 100 to avoid URL length limits
-    batch_size = 100
-    for i in range(0, len(ids), batch_size):
-        batch = ids[i:i + batch_size]
-        try:
-            response = requests.post(
-                base_url,
-                data="\n".join(batch),
-                headers={"Content-Type": "text/plain"},
-                timeout=30
-            )
-            if response.status_code == 200:
-                # Parse response: each line is "query_id\tSource Name\ttarget1,target2,..."
-                for line in response.text.strip().split("\n"):
-                    if not line.strip():
-                        continue
-                    parts = line.split("\t")
-                    if len(parts) >= 3:
-                        query_id = parts[0]
-                        # Find HGNC symbol in mappings (format: H:SYMBOL)
-                        for target in parts[2].split(","):
-                            target = target.strip()
-                            if target.startswith("H:"):
-                                hgnc_symbol = target[2:]  # Remove "H:" prefix
-                                mapping[query_id] = hgnc_symbol
-                                break
-        except requests.RequestException as e:
-            print(f"[WARN] BridgeDb batch request failed for {source_code}: {e}")
-    
-    return mapping
+def load_pages():
+    pages = []
+    for path in sorted(CNVS_DIR.glob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        pages.append(yaml.safe_load(text.split("---\n")[1]))
+    return pages
 
 
-def get_pathway_genes_hgnc(pathways: list, protein_coding_genes: set) -> dict:
-    """
-    For each pathway, get protein-coding gene HGNC symbols.
-    Maps NCBI/Ensembl IDs via BridgeDb, then filters to protein-coding only.
-    Returns: {pathway_id: "GENE1;GENE2;..."}
-    """
-    pathway_ids = {}
-    all_ncbi_ids = set()
-    all_ensembl_ids = set()
-    
-    def split_ids(raw_str, prefix):
-        """Split IDs that may be separated by comma or semicolon."""
-        ids = []
-        if not raw_str:
-            return ids
-        for part in raw_str.split(","):
-            for subpart in part.split(";"):
-                clean_id = subpart.replace(prefix, "").strip()
-                if clean_id and not clean_id.startswith(("ensembl:", "ncbigene:")):
-                    ids.append(clean_id)
-        return ids
-    
-    for pw in pathways:
-        if pw.get("species") != "Homo sapiens":
-            continue
-        
-        pw_id = pw.get("id", "")
-        ncbi_ids = split_ids(pw.get("ncbigene", ""), "ncbigene:")
-        ensembl_ids = split_ids(pw.get("ensembl", ""), "ensembl:")
-        
-        all_ncbi_ids.update(ncbi_ids)
-        all_ensembl_ids.update(ensembl_ids)
-        pathway_ids[pw_id] = {"ncbi_ids": ncbi_ids, "ensembl_ids": ensembl_ids}
-    
-    # Batch map all IDs to HGNC symbols via BridgeDb
-    print(f"Mapping {len(all_ncbi_ids)} NCBI Gene IDs via BridgeDb...")
-    ncbi_to_hgnc = map_ids_to_hgnc_bridgedb(list(all_ncbi_ids), "L")
-    print(f"  -> Mapped {len(ncbi_to_hgnc)} NCBI IDs")
-    
-    print(f"Mapping {len(all_ensembl_ids)} Ensembl IDs via BridgeDb...")
-    ensembl_to_hgnc = map_ids_to_hgnc_bridgedb(list(all_ensembl_ids), "En")
-    print(f"  -> Mapped {len(ensembl_to_hgnc)} Ensembl IDs")
-    
-    # Combine mapped genes for each pathway, filtering to protein-coding only
-    result = {}
-    for pw_id, data in pathway_ids.items():
-        genes = set()
-        for ncbi_id in data["ncbi_ids"]:
-            if ncbi_id in ncbi_to_hgnc:
-                symbol = ncbi_to_hgnc[ncbi_id]
-                if symbol in protein_coding_genes:
-                    genes.add(symbol)
-        for ensembl_id in data["ensembl_ids"]:
-            if ensembl_id in ensembl_to_hgnc:
-                symbol = ensembl_to_hgnc[ensembl_id]
-                if symbol in protein_coding_genes:
-                    genes.add(symbol)
-        result[pw_id] = ";".join(sorted(genes)) if genes else ""
-    
-    return result
+def load_pathway_genes():
+    """Return the pathway gene table and {wikipathways_id: sorted protein-coding symbols}."""
+    path = sorted((DATA_DIR / "data" / "latest").glob("pathway_genes_*.tsv"))[-1]
+    df = pd.read_csv(path, sep="\t", dtype=str, keep_default_na=False)
+    coding = df[(df["locus_group"] == "protein-coding gene") & (df["symbol"] != "")]
+    return df, coding.groupby("wikipathways_id")["symbol"].apply(lambda s: sorted(set(s))).to_dict()
 
-def get_list(value):
-    return value if isinstance(value, list) else []
 
-def safe_get(d, key, default=""):
-    return d.get(key, default) if isinstance(d, dict) else default
-
-ORPHADATA_DEFAULT = {
-    "orphacode": "NA",
-    "cause": "NA",
-    "definition": "NA",
-    "prevalence": "NA",
-    "phenotypes_obligate(100%)": [],
-    "phenotypes_very_frequent(99-80%)": [],
-    "phenotypes_frequent(79-30%)": [],
-    "phenotypes_occasional(29-5%)": [],
-    "phenotypes_very_rare(<4-1%)": [],
-    "phenotypes_excluded(0%)": [],
-    "omim": [],
-}
-
-def build_row(base, gene, orpha, phenotype=None, freq_category=None):
-    freq_map = {
-        "obligate(100%)": "orphadata_phenotypes_obligate(100%)",
-        "very_frequent(99-80%)": "orphadata_phenotypes_very_frequent(99-80%)",
-        "frequent(79-30%)": "orphadata_phenotypes_frequent(79-30%)",
-        "occasional(29-5%)": "orphadata_phenotypes_occasional(29-5%)",
-        "very_rare(<4-1%)": "orphadata_phenotypes_very_rare(<4-1%)",
-        "excluded(0%)": "orphadata_phenotypes_excluded(0%)"
+def entity_tables(pages):
+    cnvs, genes, disorders, phenotypes = [], [], [], []
+    for page in pages:
+        cnvs.append({
+            "cnv": page["cnv"], "locus": page["locus"],
+            "region_GRCh37": page["region_hg19"], "region_GRCh38": page["region_hg38"],
+            "chromosome": page["chromosome"], "start_GRCh37": page["start"],
+            "end_GRCh37": page["end"], "size_GRCh37": page["size"],
+            "start_GRCh38": page["start_hg38"], "end_GRCh38": page["end_hg38"], "size_GRCh38": page["size_hg38"],
+            "cnv_types": ";".join(sorted({o["cnv_type"] for o in page["orphadata"] if o["cnv_type"]})),
+            "orphacodes": ";".join(o["orphacode"] for o in page["orphadata"]),
+            "wikipathways_id": page["wikipathways_id"], "pathway_name": page["pathway_name"],
+            "gene_count": page["gene_count"], "protein_coding_count": page["protein_coding_count"],
+            "pubmed_ids": ";".join(page["pubmed_ids"]), "description": page["description"],
+        })
+        for gene in page["genes"]:
+            genes.append({"cnv": page["cnv"], **gene})
+        for orpha in page["orphadata"]:
+            disorders.append({
+                "cnv": page["cnv"], "orphacode": orpha["orphacode"], "name": orpha["name"],
+                "cause": orpha["cause"], "cnv_type": orpha["cnv_type"], "prevalence": orpha["prevalence"],
+                "omim_ids": ";".join(orpha["omim"]), "definition": orpha["definition"],
+            })
+            for frequency in FREQUENCIES:
+                for phenotype in orpha[f"phenotypes_{frequency}"]:
+                    phenotypes.append({"orphacode": orpha["orphacode"], "hpo_id": phenotype["hpo_id"],
+                                       "hpo_label": phenotype["name"], "frequency": frequency})
+    return {
+        "cnvs": pd.DataFrame(cnvs),
+        "cnv_genes": pd.DataFrame(genes),
+        "cnv_disorders": pd.DataFrame(disorders),
+        "disorder_phenotypes": pd.DataFrame(phenotypes).drop_duplicates(),
     }
 
-    row = {
-        **base,
-        "genes_hgnc_symbol": safe_get(gene, "symbol"),
-        "genes_hgnc_name": safe_get(gene, "name"),
-        "genes_hgnc_id": safe_get(gene, "hgnc_id"),
-        "genes_entrez_id": safe_get(gene, "entrez_id"),
-        "genes_ensembl_id": safe_get(gene, "ensembl_id"),
-        "genes_uniprot_id": safe_get(gene, "uniprot_id"),
-        "orphadata_orphacode": safe_get(orpha, "orphacode"),
-        "orphadata_cause": safe_get(orpha, "cause"),
-        "orphadata_definition": safe_get(orpha, "definition"),
-        "orphadata_prevalence": safe_get(orpha, "prevalence"),
-        "orphadata_phenotypes_obligate(100%)": "",
-        "orphadata_phenotypes_very_frequent(99-80%)": "",
-        "orphadata_phenotypes_frequent(79-30%)": "",
-        "orphadata_phenotypes_occasional(29-5%)": "",
-        "orphadata_phenotypes_very_rare(<4-1%)": "",
-        "orphadata_phenotypes_excluded(0%)": "",
-        "orphadata_hpo_id": "",
-        "orphadata_omim_id": ";".join(get_list(orpha.get("omim"))),
+
+def xlsx_rows(page, pathway_symbols):
+    base = {
+        "cnv": page["cnv"], "locus": page["locus"], "chromosome": page["chromosome"],
+        "start": page["start"], "end": page["end"],
+        "region_GRCh37": page["region_hg19"], "region_GRCh38": page["region_hg38"],
+        "description": page["description"], "pubmed_ids": ";".join(page["pubmed_ids"]),
+        "wikipathways_id": page["wikipathways_id"],
+        "pathway_genes": ";".join(pathway_symbols.get(page["wikipathways_id"], [])),
     }
-
-    if phenotype and freq_category in freq_map:
-        col_name = freq_map[freq_category]
-        row[col_name] = safe_get(phenotype, "name")
-        row["orphadata_hpo_id"] = safe_get(phenotype, "hpo_id")
-
-    return row
-
-def flatten_yaml_to_rows(yaml_path):
-    rows = []
-    with open(yaml_path, "r", encoding="utf-8") as f:
-        documents = list(yaml.safe_load_all(f))
-
-    for data in documents:
-        if not data:
-            continue
-
-        base = {
-            "cnv": data.get("cnv", ""),
-            "locus": data.get("locus", ""),
-            "chromosome": data.get("chromosome", ""),
-            "start": data.get("start", ""),
-            "end": data.get("end", ""),
-            "region_GRCh37": data.get("region", ""),
-            "region_GRCh38": data.get("region_hg38", ""),
-            "description": data.get("description", ""),
-            "pubmed_ids": ";".join(get_list(data.get("pubmed_ids"))),
-            "wikipathways_id": data.get("wikipathways_id", ""),
+    orphas = page["orphadata"] or [{"orphacode": "NA", "cause": "NA", "definition": "NA", "prevalence": "NA",
+                                    "omim": [], **{f"phenotypes_{f}": [] for f in FREQUENCIES}}]
+    for gene in page["genes"] or [{}]:
+        gene_part = {
+            "genes_hgnc_symbol": gene.get("symbol"), "genes_hgnc_name": gene.get("name"),
+            "genes_hgnc_id": gene.get("hgnc_id"), "genes_entrez_id": gene.get("entrez_id"),
+            "genes_ensembl_id": gene.get("ensembl_id"), "genes_uniprot_id": gene.get("uniprot_id"),
         }
+        for orpha in orphas:
+            orpha_part = {
+                "orphadata_orphacode": orpha["orphacode"], "orphadata_cause": orpha["cause"],
+                "orphadata_definition": orpha["definition"], "orphadata_prevalence": orpha["prevalence"],
+                "orphadata_omim_id": ";".join(orpha["omim"]),
+            }
+            phenotype_rows = [(f, p) for f in FREQUENCIES for p in orpha[f"phenotypes_{f}"]]
+            for frequency, phenotype in phenotype_rows or [(None, None)]:
+                row = {**base, **gene_part, **orpha_part}
+                if phenotype:
+                    row[f"orphadata_phenotypes_{frequency}"] = phenotype["name"]
+                    row["orphadata_hpo_id"] = phenotype["hpo_id"]
+                yield row
 
-        genes = get_list(data.get("genes", [{}]))
-        orphadata_list = get_list(data.get("orphadata"))
-        if not orphadata_list:
-            orphadata_list = [ORPHADATA_DEFAULT.copy()]
 
-        for gene in genes:
-            for orpha in orphadata_list:
-                has_phenotypes = False
-                for freq_key, freq_cat in [
-                    ("phenotypes_obligate(100%)", "obligate(100%)"),
-                    ("phenotypes_very_frequent(99-80%)", "very_frequent(99-80%)"),
-                    ("phenotypes_frequent(79-30%)", "frequent(79-30%)"),
-                    ("phenotypes_occasional(29-5%)", "occasional(29-5%)"),
-                    ("phenotypes_very_rare(<4-1%)", "very_rare(<4-1%)"),
-                    ("phenotypes_excluded(0%)", "excluded(0%)")
-                ]:
-                    phenotypes = get_list(orpha.get(freq_key))
-                    if not phenotypes:
-                        continue
-                    has_phenotypes = True
-                    for pheno in phenotypes:
-                        row = build_row(base, gene, orpha, pheno, freq_cat)
-                        rows.append(row)
-                
-                # If no phenotypes, still generate a row for this gene/orpha combo
-                if not has_phenotypes:
-                    row = build_row(base, gene, orpha)
-                    rows.append(row)
-
-    return rows
+def json_record(page, pathway_symbols):
+    return {
+        "cnv": page["cnv"], "locus": page["locus"], "chromosome": page["chromosome"],
+        "start": page["start"], "end": page["end"],
+        "region_GRCh37": page["region_hg19"], "region_GRCh38": page["region_hg38"],
+        "description": page["description"], "pubmed_ids": page["pubmed_ids"],
+        "wikipathways_id": page["wikipathways_id"],
+        "pathway_genes": pathway_symbols.get(page["wikipathways_id"], []),
+        "region_genes": [{k: g[k] for k in ("symbol", "name", "hgnc_id", "entrez_id", "ensembl_id", "uniprot_id")}
+                         for g in page["genes"]],
+        "orphadata": [{
+            "orphacode": o["orphacode"], "name": o["name"], "cause": o["cause"],
+            "definition": o["definition"], "prevalence": o["prevalence"], "omim_ids": o["omim"],
+            "phenotypes": {f: o[f"phenotypes_{f}"] for f in FREQUENCIES},
+        } for o in page["orphadata"]],
+    }
 
 
 def main():
-    cnvs_dir = Path("_cnvs")
-    latest_dir = Path("cnv-data/data/latest")
-    output_dir = Path("assets/data")
-    output_dir.mkdir(exist_ok=True)
+    pages = load_pages()
+    pathway_genes, pathway_symbols = load_pathway_genes()
 
-    # Load protein-coding genes from HGNC first
-    protein_coding_genes = load_protein_coding_genes(latest_dir)
+    rows = [row for page in pages for row in xlsx_rows(page, pathway_symbols)]
+    pd.DataFrame(rows).reindex(columns=XLSX_COLUMNS).to_excel(OUTPUT_DIR / "CNVPathwayAtlas-data.xlsx", index=False)
 
-    # Fetch WikiPathways data and build pathway->genes mapping
-    print("Fetching WikiPathways data...")
-    all_pathways = fetch_wikipathways_json()
-    pathway_to_genes = get_pathway_genes_hgnc(all_pathways, protein_coding_genes)
-    print(f"Built pathway gene mapping for {len(pathway_to_genes)} pathways")
+    records = [json_record(page, pathway_symbols) for page in pages]
+    (OUTPUT_DIR / "CNVPathwayAtlas-data.json").write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\n")
 
-    # Process YAML files
-    yaml_files = list(cnvs_dir.glob("*.yml")) + list(cnvs_dir.glob("*.md"))
-    print(f"Found {len(yaml_files)} YAML files in {cnvs_dir}")
-    all_rows = []
+    tsv_dir = OUTPUT_DIR / "tsv"
+    tsv_dir.mkdir(exist_ok=True)
+    tables = entity_tables(pages)
+    tables["pathway_genes"] = pathway_genes
+    for name, df in tables.items():
+        df.to_csv(tsv_dir / f"{name}.tsv", sep="\t", index=False, lineterminator="\n")
 
-    for yml in yaml_files:
-        try:
-            all_rows.extend(flatten_yaml_to_rows(yml))
-        except Exception as e:
-            print(f"[ERROR] {yml.name}: {e}")
+    print(f"Exported {len(pages)} CNVs: {len(rows)} XLSX rows, JSON, and {len(tables)} TSV tables")
 
-    df = pd.DataFrame(all_rows)
-    print(f"Generated {len(df)} rows from YAML files")
-
-    # Add pathway genes column
-    if "wikipathways_id" in df.columns:
-        df["pathway_genes"] = df["wikipathways_id"].map(pathway_to_genes).fillna("")
-    else:
-        df["pathway_genes"] = ""
-
-    column_order = [
-        "cnv", "locus", "chromosome", "start", "end", 
-        "region_GRCh37", "region_GRCh38",
-        "description", "pubmed_ids",
-        "genes_hgnc_symbol", "genes_hgnc_name", "genes_hgnc_id", "genes_entrez_id",
-        "genes_ensembl_id", "genes_uniprot_id", "wikipathways_id", "pathway_genes",
-        "orphadata_orphacode", "orphadata_cause", "orphadata_definition",
-        "orphadata_prevalence",
-        "orphadata_phenotypes_obligate(100%)",
-        "orphadata_phenotypes_very_frequent(99-80%)",
-        "orphadata_phenotypes_frequent(79-30%)",
-        "orphadata_phenotypes_occasional(29-5%)",
-        "orphadata_phenotypes_very_rare(<4-1%)",
-        "orphadata_phenotypes_excluded(0%)",
-        "orphadata_hpo_id",
-        "orphadata_omim_id", 
-    ]
-
-    # Make sure all expected columns exist
-    for col in column_order:
-        if col not in df.columns:
-            df[col] = ""
-
-    df = df[column_order]
-
-    df.to_excel(output_dir / "CNVPathwayAtlas-data.xlsx", index=False) 
-       
-    # Build JSON
-    cnv_json = {}
-    for _, row in df.iterrows():
-        cnv_name = row["cnv"]
-        if cnv_name not in cnv_json:
-            cnv_json[cnv_name] = {
-                "cnv": cnv_name,
-                "locus": row["locus"],
-                "chromosome": row["chromosome"],
-                "start": row["start"],
-                "end": row["end"],
-                "region_GRCh37": row["region_GRCh37"],
-                "region_GRCh38": row["region_GRCh38"],
-                "description": row["description"],
-                "pubmed_ids": row["pubmed_ids"].split(";") if row["pubmed_ids"] else [],
-                "wikipathways_id": row["wikipathways_id"],
-                "pathway_genes": row["pathway_genes"].split(";") if row["pathway_genes"] else [],
-                "region_genes": [],
-                "orphadata": {}
-            }
-        
-        # Add gene
-        gene_symbol = row["genes_hgnc_symbol"]
-        if gene_symbol:
-            gene_entry = {
-                "symbol": gene_symbol,
-                "name": row["genes_hgnc_name"],
-                "hgnc_id": row["genes_hgnc_id"],
-                "entrez_id": row["genes_entrez_id"],
-                "ensembl_id": row["genes_ensembl_id"],
-                "uniprot_id": row["genes_uniprot_id"]
-            }
-            if gene_entry not in cnv_json[cnv_name]["region_genes"]:
-                cnv_json[cnv_name]["region_genes"].append(gene_entry)
-        
-        # Add orphadata
-        orphacode = row["orphadata_orphacode"]
-        if orphacode and orphacode != "NA":
-            if orphacode not in cnv_json[cnv_name]["orphadata"]:
-                cnv_json[cnv_name]["orphadata"][orphacode] = {
-                    "orphacode": orphacode,
-                    "cause": row["orphadata_cause"],
-                    "definition": row["orphadata_definition"],
-                    "prevalence": row["orphadata_prevalence"],
-                    "omim_ids": row["orphadata_omim_id"].split(";") if row["orphadata_omim_id"] else [],
-                    "phenotypes": {
-                        "obligate(100%)": [],
-                        "very_frequent(99-80%)": [],
-                        "frequent(79-30%)": [],
-                        "occasional(29-5%)": [],
-                        "very_rare(<4-1%)": [],
-                        "excluded(0%)": []
-                    }
-                }
-            
-            # Add phenotypes to frequency category
-            orpha = cnv_json[cnv_name]["orphadata"][orphacode]
-            hpo_id = row["orphadata_hpo_id"] or None
-            for cat, col in [
-                ("obligate(100%)", "orphadata_phenotypes_obligate(100%)"),
-                ("very_frequent(99-80%)", "orphadata_phenotypes_very_frequent(99-80%)"),
-                ("frequent(79-30%)", "orphadata_phenotypes_frequent(79-30%)"),
-                ("occasional(29-5%)", "orphadata_phenotypes_occasional(29-5%)"),
-                ("very_rare(<4-1%)", "orphadata_phenotypes_very_rare(<4-1%)"),
-                ("excluded(0%)", "orphadata_phenotypes_excluded(0%)")
-            ]:
-                pheno_name = row[col]
-                if pheno_name:
-                    pheno_entry = {"name": pheno_name, "hpo_id": hpo_id}
-                    if pheno_entry not in orpha["phenotypes"][cat]:
-                        orpha["phenotypes"][cat].append(pheno_entry)
-    
-    # Convert orphadata dict to list for each CNV
-    for cnv_name in cnv_json:
-        cnv_json[cnv_name]["orphadata"] = list(cnv_json[cnv_name]["orphadata"].values())
-    
-    import json
-    
-    def format_json_compact_arrays(data):
-        """Format JSON with compact arrays for pathway_genes."""
-        lines = []
-        json_str = json.dumps(data, indent=2, default=str)
-        
-        import re
-        def compact_array(match):
-            arr_content = match.group(1)
-            # Remove newlines and extra spaces
-            items = re.findall(r'"([^"]*)"', arr_content)
-            return '"pathway_genes": [' + ', '.join(f'"{item}"' for item in items) + ']'
-        
-        json_str = re.sub(
-            r'"pathway_genes": \[\s*((?:"[^"]*",?\s*)+)\]',
-            compact_array,
-            json_str
-        )
-        return json_str
-    
-    with open(output_dir / "CNVPathwayAtlas-data.json", "w") as f:
-        f.write(format_json_compact_arrays(list(cnv_json.values())))
-    
-    print("Exported: CNVPathwayAtlas-data.xlsx, and .json")
 
 if __name__ == "__main__":
     main()
