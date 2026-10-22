@@ -2,12 +2,12 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Documentation"
-    url: /documentation/
   - title: "CNVs Explorer"
     url: /cnvs-overview/
   - title: "Phenotype Browser"
     url: /phenotype-browser/
+  - title: "Documentation"
+    url: /documentation/
   - title: "Publications"
     url: /publications/
   - title: "Contact"

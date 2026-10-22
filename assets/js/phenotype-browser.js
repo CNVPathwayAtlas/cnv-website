@@ -32,8 +32,12 @@ var PhenotypeBrowser = (function () {
         chromosome: [{ v: "equals", l: "=" }],
         size: [{ v: "greater", l: ">" }, { v: "less", l: "<" }]
     };
-    var FR = { obligate: 4, very_frequent: 3, frequent: 2, occasional: 1 };
-    var FR_LABEL = { obligate: "Obligate", very_frequent: "Very Frequent", frequent: "Frequent", occasional: "Occasional"};
+    // Orphanet frequency classes: rank (higher is more frequent) and labels
+    var FR = { obligate: 5, very_frequent: 4, frequent: 3, occasional: 2, very_rare: 1, excluded: 0 };
+    var FR_LABEL = { obligate: "Obligate", very_frequent: "Very Frequent", frequent: "Frequent",
+        occasional: "Occasional", very_rare: "Very Rare", excluded: "Excluded" };
+    var FR_RANGE = { obligate: "100%", very_frequent: "99–80%", frequent: "79–30%",
+        occasional: "29–5%", very_rare: "<4–1%", excluded: "0%" };
     var PAL = [
         "#3b82f6", "#ef4444", "#f59e0b", "#10b981", "#8b5cf6", "#ec4899",
         "#06b6d4", "#84cc16", "#f97316", "#6366f1", "#14b8a6", "#e11d48",
@@ -553,7 +557,7 @@ var PhenotypeBrowser = (function () {
                 var f = bfreqRowDisorder(dis, row.pids);
                 if (f) {
                     var label = FR_LABEL[f.f] || f.f;
-                    h += '<td class="freq-cell freq-text freq-text-' + f.f + '" title="' + esc(f.l) + ' (' + f.f.replace(/_/g, " ") + ')">'
+                    h += '<td class="freq-cell freq-text freq-text-' + f.f + '" title="' + esc(f.l) + ' (' + label + ' ' + (FR_RANGE[f.f] || '') + ')">'
                         + label + '</td>';
                 } else {
                     h += '<td class="freq-cell empty-cell">&middot;</td>';
@@ -925,7 +929,8 @@ var PhenotypeBrowser = (function () {
                 ? (((loc.end - loc.start) / 1e3).toFixed(1) + ' kb') : '–') + '</td>';
             h += '<td class="gene-list">' + esc((loc.gene_symbols || []).join(", ")) + '</td>';
             h += '<td class="pheno-summary-cell">' + pl.map(function (p) {
-                return '<span title="' + esc(p.id) + '">' + esc(p.label) + '</span>';
+                return '<span title="' + esc(p.id) + '">' + esc(p.label) + '</span>'
+                    + ' <small class="freq-text-' + p.frequency + '">(' + (FR_LABEL[p.frequency] || p.frequency) + ')</small>';
             }).join(", ") + '</td>';
             h += '</tr>';
         });
@@ -1009,7 +1014,9 @@ var PhenotypeBrowser = (function () {
                 "chr" + (loc.chromosome || "") + ":" + (loc.start || 0) + "-" + (loc.end || 0),
                 (loc.end || 0) - (loc.start || 0), loc.gene_count || 0,
                 (loc.gene_symbols || []).join("; "),
-                pl.map(function (p) { return p.label + " (" + p.id + ")"; }).join("; ")
+                pl.map(function (p) {
+                    return p.label + " (" + p.id + "; " + (FR_LABEL[p.frequency] || p.frequency) + " " + (FR_RANGE[p.frequency] || "") + ")";
+                }).join("; ")
             ]);
         });
         var t = csv.map(function (r) {
